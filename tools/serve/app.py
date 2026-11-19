@@ -550,6 +550,7 @@ a.brand { color: var(--text); }
 /* The nav links are one group in the top-right corner, so no single button floats mid-nav. */
 .topnav .navlinks { margin-left: auto; display: flex; align-items: center; gap: 10px; }
 .topnav .navbtn { margin-left: 0; }
+.crumbs { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .navbtn.navcur { border-color: var(--line-strong); background: rgba(13, 162, 231, .14); }
 .shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 26px; align-items: start; }
 .shell .content { border-left: 1px solid rgba(29, 36, 53, .8); padding-left: 26px; min-height: 60vh; }
@@ -675,6 +676,27 @@ details.chapter[open] .chapterbody { animation: fadeup .35s ease both; }
   h2 { font-size: 19px; }
   body { padding: 0 14px 56px; }
   h1, h2, h3, .sub, .lead { overflow-wrap: anywhere; }
+  /* The topnav becomes two rows: the brand and the links share the first, and
+     the crumb path drops to its own line, clipped with an ellipsis instead of
+     wrapping word by word into a sliver. */
+  .topnav { flex-wrap: wrap; gap: 6px 10px; padding: 10px 0 8px; }
+  .topnav > .brand { font-size: 15px; white-space: nowrap; }
+  .topnav .navlinks { order: 2; }
+  .topnav .navbtn { padding: 6px 14px; }
+  .topnav .crumbs { order: 3; flex-basis: 100%; gap: 7px; }
+  .topnav .crumbs > .sub:first-child { display: none; }
+  .topnav .crumbs > :last-child { min-width: 0; overflow: hidden;
+                                  text-overflow: ellipsis; white-space: nowrap; }
+  /* Chapters and tables: less inset, tighter cells, and design names that
+     wrap, so the first columns stay readable. */
+  details.chapter { padding: 2px 14px 4px; }
+  table.lt { font-size: 11px; }
+  table.lt td, table.lt th { padding: 4px 8px; }
+  .subtable { padding: 6px 8px; }
+  .subtable table.lt td:nth-child(2) { min-width: 150px; }
+  .subtable table.lt td:last-child { min-width: 180px; }
+  .subtable table.lt td:nth-child(2) code { white-space: normal; overflow-wrap: anywhere; }
+  table.lt, .subtable { -webkit-overflow-scrolling: touch; }
 }
 
 /* Back to top: a floating bubble, shown once the reader scrolls past the hero. */
@@ -713,12 +735,17 @@ def esc(value) -> str:
 def _topnav(challenge: str | None = None, campaign: str | None = None,
             current: str | None = None) -> str:
     parts = ["<div class='topnav'><a class='brand' href='/'>Protein design workbench</a>"]
+    crumbs = []
     if challenge:
-        parts.append(f"<span class='sub'>/</span>"
-                     f"<a class='brand' href='/ch/{esc(challenge)}'>"
-                     f"{esc(CHALLENGE_INFO.get(challenge, {}).get('title') or challenge)}</a>")
+        crumbs.append(f"<span class='sub'>/</span>"
+                      f"<a class='brand' href='/ch/{esc(challenge)}'>"
+                      f"{esc(CHALLENGE_INFO.get(challenge, {}).get('title') or challenge)}</a>")
     if campaign:
-        parts.append(f"<span class='sub'>/</span><span class='sub'>{esc(campaign)}</span>")
+        crumbs.append(f"<span class='sub'>/</span><span class='sub'>{esc(campaign)}</span>")
+    if crumbs:
+        # One wrapper, so the narrow layout can drop the whole path to its own
+        # line and clip it with an ellipsis.
+        parts.append("<span class='crumbs'>" + "".join(crumbs) + "</span>")
     # The links sit together in the top-right corner, and the current page's link is marked.
     home = " navcur" if current == "home" else ""
     about = " navcur" if current == "about" else ""
