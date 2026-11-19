@@ -134,7 +134,9 @@ Three layers, all free:
    D1 free tier allows 100,000 writes per day, and one page view is one
    write. The Worker skips obvious bots and the smoke-check agent. A `/stats`
    page and `/stats.json` show the last 30 days: page views per day, unique
-   visitors per day, unique visitors per country, and the top paths.
+   visitors per day, unique visitors per country, and the top paths. Both are
+   private: they open only with the STATS_KEY secret as a `?key=` parameter,
+   and they return 404 without it.
 3. **Workers Logs and an uptime check.** `[observability] enabled = true`
    collects request logs. The free tier carries 200,000 events per day with 3
    day retention until 2026-12-01, then 0.5 GB per day with 7 day retention.
@@ -172,8 +174,9 @@ enabled = true
 The script is small. Every request reaches `env.ASSETS.fetch(request)`. A page
 view also writes one D1 row through `ctx.waitUntil`, so the write never
 delays the response. `/stats` renders from D1. `/stats.json` returns the same
-data as JSON. The pattern list needs a check at build: every page route must
-be covered, and asset fetches must stay out.
+data as JSON. Both require the STATS_KEY secret as a `?key=` parameter and
+answer 404 without it. The pattern list needs a check at build: every page
+route must be covered, and asset fetches must stay out.
 
 Costs: page views invoke the script and count against the free 100,000
 requests per day. Asset fetches do not invoke the script.
@@ -249,9 +252,11 @@ switch, so a push cannot publish the site before you arm it.
    the returned id into `site/wrangler.toml`.
 3. Register the site in Cloudflare Web Analytics ("Add a site", with the
    exact hostname). Put the token into `site/config.json`.
-4. Set the counter salt, once the Worker exists:
-   `npx wrangler@4.165.0 secret put COUNTER_SALT --config site/wrangler.toml`.
-   Without it the counter stores unsalted hashes.
+4. Set the Worker secrets, once the Worker exists:
+   `npx wrangler@4.165.0 secret put COUNTER_SALT --config site/wrangler.toml`
+   (without it the counter stores unsalted hashes) and
+   `npx wrangler@4.165.0 secret put STATS_KEY --config site/wrangler.toml`
+   (the key that opens the private `/stats` page).
 5. Set the repository variable `CF_DEPLOY` to `1` to arm the deploy.
 6. Answer the open questions in section 10.
 
@@ -263,7 +268,9 @@ Local, before any deploy:
 - `npx wrangler dev --config site/wrangler.toml --port 8788` serves the dist
   the way Cloudflare will, including the Worker and a local D1. Check the
   index, one challenge home, one campaign page, one explorer, one history,
-  the About page and `/stats`. Port 8787 is the Hermes web UI.
+  the About page and `/stats` (start the dev Worker with
+  `--var STATS_KEY:dev-local-key` and open `/stats?key=dev-local-key`).
+  Port 8787 is the Hermes web UI.
 
 The CI smoke check, after every deploy:
 
@@ -271,7 +278,7 @@ The CI smoke check, after every deploy:
 - `/ch/05-pmhc`, `/ch/05-pmhc/history`, `/lineage/05-pmhc/c1-main-funnel` and
   `/about` answer 200. The check follows redirects.
 - `/engine/molstar-bundle.js` matches the built file byte for byte.
-- `/stats.json` answers 200 with valid JSON.
+- `/stats.json` answers 404 without the key (the private counter gate).
 - An unknown path answers the 404 page.
 - The check sends a descriptive User-Agent, because workers.dev screens
   automated clients. It also retries, because a deploy takes time to reach

@@ -1,6 +1,8 @@
 /**
  * The deployed workbench: Cloudflare serves the static export, and this
- * script counts page views into D1 and renders /stats.
+ * script counts page views into D1 and renders /stats. The stats page
+ * and /stats.json are private: they open only with the STATS_KEY secret
+ * as a ?key= parameter, and they return 404 without it.
  *
  * The script runs only for the page routes named in run_worker_first
  * (site/wrangler.toml). Asset fetches never invoke it. Every page view is
@@ -18,6 +20,16 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === "/stats" || url.pathname === "/stats.json") {
+      // Private: the page and the JSON open only with the key from the
+      // STATS_KEY secret. Without the secret, or with a wrong key, the
+      // route is indistinguishable from a missing page.
+      const key = url.searchParams.get("key") || "";
+      if (!env.STATS_KEY || key !== env.STATS_KEY) {
+        return new Response("Not found", {
+          status: 404,
+          headers: { "content-type": "text/plain; charset=utf-8" },
+        });
+      }
       return statsResponse(env, url);
     }
     const response = await env.ASSETS.fetch(request);
@@ -92,10 +104,17 @@ async function statsResponse(env, url) {
       paths: paths.results,
     };
     if (url.pathname === "/stats.json") {
-      return Response.json(data);
+      return Response.json(data, {
+        headers: { "cache-control": "no-store", "x-robots-tag": "noindex" },
+      });
     }
-    return new Response(statsHtml(data), {
-      headers: { "content-type": "text/html; charset=utf-8" },
+    return new Response(statsHtml(data, url.searchParams.get("key") || ""), {
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "no-store",
+        "referrer-policy": "no-referrer",
+        "x-robots-tag": "noindex",
+      },
     });
   } catch (error) {
     return new Response("stats unavailable: " + error.message, { status: 500 });
@@ -121,7 +140,7 @@ function table(head, rows) {
   );
 }
 
-function statsHtml(data) {
+function statsHtml(data, key) {
   const totals = data.totals;
   return `<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -144,7 +163,7 @@ static assets are not counted. "Visitors" counts distinct salted visitor
 hashes: no cookies, no raw addresses. Generated ${esc(data.generated)}.</div>
 <div class="sub" style="margin-top:8px">Total: ${esc(totals.pageviews)} page
 views, ${esc(totals.visitors)} visitors since ${esc(totals.since ?? "no data yet")}.
-<a href="/stats.json">JSON</a> · <a href="/">workbench</a></div>
+<a href="/stats.json?key=${esc(key)}">JSON</a> · <a href="/">workbench</a></div>
 <h2>Per day (last ${esc(data.daily.length)})</h2>
 ${table(["day", "page views", "visitors"], data.daily.map((d) => [d.day, d.pageviews, d.visitors]))}
 <h2>Countries</h2>

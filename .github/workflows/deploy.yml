@@ -104,10 +104,9 @@ jobs:
           got=$(curl -sS -A "$UA" -o "$RUNNER_TEMP/engine.js" -w '%{http_code}' "$APP_URL/engine/molstar-bundle.js")
           test "$got" = "200" || { echo "::error::/engine/molstar-bundle.js answered $got"; exit 1; }
           cmp "$RUNNER_TEMP/engine.js" site/dist/engine/molstar-bundle.js || { echo "::error::the served engine differs from the build"; exit 1; }
-          # The stats endpoint answers JSON.
-          got=$(curl -sS -A "$UA" -o "$RUNNER_TEMP/stats.json" -w '%{http_code}' "$APP_URL/stats.json")
-          test "$got" = "200" || { echo "::error::/stats.json answered $got"; exit 1; }
-          python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$RUNNER_TEMP/stats.json" || { echo "::error::/stats.json is not valid JSON"; exit 1; }
+          # The stats endpoint is private: without the key it answers 404.
+          got=$(curl -sS -A "$UA" -o /dev/null -w '%{http_code}' "$APP_URL/stats.json")
+          test "$got" = "404" || { echo "::error::/stats.json answered $got without the key"; exit 1; }
           # An unknown path answers the 404 page.
           got=$(curl -sS -A "$UA" -o /dev/null -w '%{http_code}' "$APP_URL/no-such-path-404check")
           test "$got" = "404" || { echo "::error::an unknown path answered $got"; exit 1; }

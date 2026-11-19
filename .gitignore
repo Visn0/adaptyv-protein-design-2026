@@ -55,3 +55,4 @@ site/.wrangler/
 
 # Demo recorder's node dependencies (site/scripts/package.json pins them).
 node_modules/
+.dev.vars
