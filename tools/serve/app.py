@@ -764,10 +764,12 @@ def _plain(html_fragment: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html_fragment)).strip()
 
 
-# The columns that carry one long value — a design name, a sequence, a note. They keep one
+# The columns that carry one long value — a design name, a sequence. They keep one
 # line each and scroll sideways instead of wrapping, so one long value cannot make every row
 # of the table tall.
-_LONG_COLUMNS = {"design", "designs", "sequence", "note"}
+_LONG_COLUMNS = {"design", "designs", "sequence"}
+# A column that never earns its width, whatever it holds: the note is prose the reader skips.
+_DROP_COLUMNS = {"note", "notes"}
 # A cell that says nothing. A column where every row is one of these is noise, and it goes.
 _EMPTY_CELLS = {"", "—", "–", "-", "·", "n/a"}
 
@@ -788,7 +790,7 @@ def _tidy_tables(html: str) -> str:
     def tidy(match: re.Match) -> str:
         table = match.group(0)
         rows = re.findall(r"(<tr[^>]*>)(.*?)</tr>", table, re.S)
-        if len(rows) < 2:
+        if not rows:
             return table
         cells = [re.findall(r"<(td|th)([^>]*)>(.*?)</\1>", row, re.S) for _, row in rows]
         width = max(len(row) for row in cells)
@@ -796,8 +798,11 @@ def _tidy_tables(html: str) -> str:
             return table  # a rowspan/colspan table: not this pass's business
         keep = []
         for column in range(width):
+            # A named column goes whatever it holds, even when the table has no rows yet.
+            if _plain(cells[0][column][2]).lower() in _DROP_COLUMNS:
+                continue
             texts = [_plain(row[column][2]).lower() for row in cells[1:]]
-            if all(text in _EMPTY_CELLS for text in texts):
+            if texts and all(text in _EMPTY_CELLS for text in texts):
                 continue
             keep.append(column)
         if not keep:
@@ -809,6 +814,8 @@ def _tidy_tables(html: str) -> str:
             longest = max(texts, key=len, default="")
             if header in _LONG_COLUMNS or (len(longest) > 40 and " " not in longest):
                 long_columns.add(column)
+        if len(keep) == width and not long_columns:
+            return table
         rebuilt = []
         for index, (open_tag, _) in enumerate(rows):
             pieces = []
