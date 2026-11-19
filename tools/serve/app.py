@@ -606,7 +606,7 @@ a.brand { color: var(--text); }
               color: #cbd5e1; font-size: 13.5px; font-weight: 500; }
 .about-link:hover { text-decoration: none; border-color: var(--line-strong); color: var(--text); }
 .about-link svg { width: 15px; height: 15px; flex: none; }
-.tagline { margin: 10px 0 0; color: #c6cdd9; font-size: 16.5px; max-width: 640px;
+.tagline { margin: 10px 0 0; color: #c6cdd9; font-size: 16.5px; max-width: 1040px;
            text-align: justify; }
 /* The competition's name is one item: it never splits across two lines. */
 .nobr { white-space: nowrap; }
