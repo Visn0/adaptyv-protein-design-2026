@@ -687,8 +687,8 @@ details.chapter[open] .chapterbody { animation: fadeup .35s ease both; }
   .topnav .crumbs > .sub:first-child { display: none; }
   .topnav .crumbs > :last-child { min-width: 0; overflow: hidden;
                                   text-overflow: ellipsis; white-space: nowrap; }
-  /* Chapters and tables: less inset, tighter cells, and design names that
-     wrap, so the first columns stay readable. */
+  /* Chapters and tables: less inset and tighter cells, so the first columns stay
+     readable on a phone. The long columns scroll at every width. */
   details.chapter { padding: 2px 14px 4px; }
   table.lt { font-size: 11px; }
   table.lt td, table.lt th { padding: 4px 6px; }
@@ -698,9 +698,21 @@ details.chapter[open] .chapterbody { animation: fadeup .35s ease both; }
   /* The chip drops the redundant "/ 100" suffix on a phone, so the
      whole score stays visible. The scale is in the intro and legend. */
   .subtable .vchip .sub { display: none; }
-  .subtable table.lt td:nth-child(2) code { white-space: normal; overflow-wrap: anywhere; }
   table.lt, .subtable { -webkit-overflow-scrolling: touch; }
 }
+
+/* A long column — a design name, a sequence, a note — keeps one line and scrolls
+   sideways, so one long value cannot make every row of a table tall. */
+table.lt td.long { max-width: 320px; overflow-x: auto; white-space: nowrap;
+                   overscroll-behavior-x: contain; }
+table.lt td.long code { font-size: 11px; }
+/* The download control that sits above a submission table. */
+.tabletools { display: flex; justify-content: flex-end; margin: 4px 0 0; }
+.csvbtn { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
+          border: 1px solid var(--line); border-radius: 999px; background: rgba(19, 22, 38, .9);
+          color: #cbd5e1; font: inherit; font-size: 12px; cursor: pointer; }
+.csvbtn:hover { border-color: var(--line-strong); color: var(--text); }
+.csvbtn svg { flex: none; }
 
 /* Back to top: a floating bubble, shown once the reader scrolls past the hero. */
 .totop { position: fixed; right: 22px; bottom: 22px; z-index: 40; width: 42px; height: 42px;
@@ -733,6 +745,70 @@ TO_TOP_HTML = (
 
 def esc(value) -> str:
     return _html.escape(str(value))
+
+
+def _plain(html_fragment: str) -> str:
+    """A table cell's text, without its tags, for the tidy pass's decisions."""
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html_fragment)).strip()
+
+
+# The columns that carry one long value — a design name, a sequence, a note. They keep one
+# line each and scroll sideways instead of wrapping, so one long value cannot make every row
+# of the table tall.
+_LONG_COLUMNS = {"design", "designs", "sequence", "note"}
+# A cell that says nothing. A column where every row is one of these is noise, and it goes.
+_EMPTY_CELLS = {"", "—", "–", "-", "·", "n/a"}
+
+
+def _tidy_tables(html: str) -> str:
+    """Tidy every long table before the page is assembled.
+
+    Two rules, both for the reader: a column that carries nothing in any row is dropped,
+    and the identifier columns (design, sequence, note) scroll instead of wrapping.
+    """
+
+    def add_class(attrs: str, name: str) -> str:
+        if "class=" in attrs:
+            return re.sub(r"class='([^']*)'", lambda m: f"class='{m.group(1)} {name}'",
+                          attrs, count=1)
+        return f"{attrs} class='{name}'"
+
+    def tidy(match: re.Match) -> str:
+        table = match.group(0)
+        rows = re.findall(r"(<tr[^>]*>)(.*?)</tr>", table, re.S)
+        if len(rows) < 2:
+            return table
+        cells = [re.findall(r"<(td|th)([^>]*)>(.*?)</\1>", row, re.S) for _, row in rows]
+        width = max(len(row) for row in cells)
+        if any(len(row) != width for row in cells):
+            return table  # a rowspan/colspan table: not this pass's business
+        keep = []
+        for column in range(width):
+            texts = [_plain(row[column][2]).lower() for row in cells[1:]]
+            if all(text in _EMPTY_CELLS for text in texts):
+                continue
+            keep.append(column)
+        if not keep:
+            return table
+        long_columns = set()
+        for column in keep:
+            header = _plain(cells[0][column][2]).lower()
+            texts = [_plain(row[column][2]) for row in cells[1:]]
+            longest = max(texts, key=len, default="")
+            if header in _LONG_COLUMNS or (len(longest) > 40 and " " not in longest):
+                long_columns.add(column)
+        rebuilt = []
+        for index, (open_tag, _) in enumerate(rows):
+            pieces = []
+            for column in keep:
+                tag, attrs, inner = cells[index][column]
+                if tag == "td" and column in long_columns:
+                    attrs = add_class(attrs, "long")
+                pieces.append(f"<{tag}{attrs}>{inner}</{tag}>")
+            rebuilt.append(f"{open_tag}{''.join(pieces)}</tr>")
+        return f"<table class='lt'>{''.join(rebuilt)}</table>"
+
+    return re.sub(r"<table class='lt'>.*?</table>", tidy, html, flags=re.S)
 
 
 def _topnav(challenge: str | None = None, campaign: str | None = None,
@@ -814,6 +890,7 @@ def _page(title: str, body: str, challenge: str | None = None,
           current_experiment: str | None = None,
           campaign: str | None = None, totop: bool = True,
           current: str | None = None) -> str:
+    body = _tidy_tables(body)
     page_body = body
     if with_sidebar and challenge:
         page_body = (f"<div class='shell'><aside class='sidebar'>"
@@ -1155,6 +1232,38 @@ def _history_section_html(challenge: str) -> str:
     return "".join(parts)
 
 
+# The download control above a submission table: the reader can take the table away as CSV.
+_CSV_BUTTON = (
+    "<div class='tabletools'>"
+    "<button class='csvbtn' type='button' data-csv='{name}'"
+    " title='Download this table as CSV'>"
+    "<svg viewBox='0 0 24 24' width='14' height='14' fill='none' stroke='currentColor'"
+    " stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>"
+    "<path d='M12 3v11'/><path d='M7.5 9.5 12 14l4.5-4.5'/><path d='M4 19.5h16'/></svg>"
+    "<span>CSV</span></button></div>"
+)
+# The button turns the table it sits in into a file, in the browser: no server behind it, and
+# the same code works on the static export. The BOM keeps Excel from mangling the sequences.
+_CSV_JS = (
+    "<script>(function(){"
+    "function cell(v){return '\"' + v.replace(/\"/g, '\"\"') + '\"'}"
+    "document.querySelectorAll('[data-csv]').forEach(function(btn){"
+    "btn.addEventListener('click', function(){"
+    "var wrap=btn.closest('.subtable');var table=wrap&&wrap.querySelector('table');"
+    "if(!table){return}"
+    "var lines=[];"
+    "table.querySelectorAll('tr').forEach(function(tr){var cells=[];"
+    "tr.querySelectorAll('th,td').forEach(function(c){"
+    "cells.push(cell((c.textContent||'').replace(/\\s+/g,' ').trim()))});"
+    "lines.push(cells.join(','))});"
+    "var blob=new Blob(['\\ufeff'+lines.join('\\r\\n')],{type:'text/csv;charset=utf-8'});"
+    "var a=document.createElement('a');a.href=URL.createObjectURL(blob);"
+    "a.download=(btn.getAttribute('data-csv')||'table')+'.csv';"
+    "document.body.appendChild(a);a.click();a.remove();"
+    "setTimeout(function(){URL.revokeObjectURL(a.href)},1500)})})})();</script>"
+)
+
+
 def _submission_section_html(challenge: str) -> str:
     """The submission — its own section on the challenge page.
 
@@ -1166,6 +1275,7 @@ def _submission_section_html(challenge: str) -> str:
     scores = _selection_scores(challenge)
     if not rows:
         return ""
+    csv_button = _CSV_BUTTON.format(name=f"{challenge}-final-submission")
     by_design = {}
     lineage_path = common.CHALLENGES_DIR / challenge / "lineage.json"
     if lineage_path.exists():
@@ -1203,18 +1313,19 @@ def _submission_section_html(challenge: str) -> str:
                 + num_cell(p.get("human"), best_h)
                 + num_cell(p.get("mouse"), best_m)
                 + num_cell(p.get("ph"), best_ph, plus=True)
-                + "<td><code style='font-size:11px;word-break:break-all;white-space:normal'>"
+                + "<td><code>"
                 f"{esc(row.get('sequence', ''))}</code></td>"
                 "</tr>")
         return (_TABLES_STYLE
                 + "<div class='sub'><b>The submission set — the final proteins, in "
                   "rank order (row order is the ranking).</b> The best value in each "
                   "column is highlighted in green.</div>"
-                + "<div class='subtable'><table class='lt'>"
+                + "<div class='subtable'>" + csv_button + "<table class='lt'>"
                 + "<tr><th>#</th><th>design</th><th>score</th><th>human</th><th>mouse</th>"
                   "<th>switch</th><th>sequence</th></tr>" + "".join(trs) + "</table></div>"
                 + _metric_legend_html(["ipsae", "delta_log_Ka", "pdockq2"])
-                + _methodology_html(challenge))
+                + _methodology_html(challenge)
+                + _CSV_JS)
 
     best_ip = max((p["ipsae_min"] for p in submitted if p.get("ipsae_min") is not None),
                   default=None)
@@ -1240,7 +1351,7 @@ def _submission_section_html(challenge: str) -> str:
                else num_cell(p.get("pdockq2"), best_pd))
             + (f"<td>{esc(p.get('tier') or '—')}</td>" if has_ipdae
                else f"<td>{esc(p.get('activation') or '—')}</td>")
-            + "<td><code style='font-size:11px;word-break:break-all;white-space:normal'>"
+            + "<td><code>"
             f"{esc(row.get('sequence', ''))}</code></td>"
             + "</tr>")
     return (_TABLES_STYLE
@@ -1252,7 +1363,7 @@ def _submission_section_html(challenge: str) -> str:
               "v4 composite score, which counts the organizer's gate as a term - two "
               "formulas on one scale. The best value in each numeric "
               "column is highlighted in green.</div>"
-            + "<div class='subtable'><table class='lt'>"
+            + "<div class='subtable'>" + csv_button + "<table class='lt'>"
             + "<tr><th>#</th><th>design</th><th>campaign</th><th>score</th><th>ipSAE</th>"
               + ("<th>i_pDAE</th><th>specificity tier</th>" if has_ipdae
                  else "<th>pDockQ2</th><th>activation geometry</th>")
@@ -1266,7 +1377,8 @@ def _submission_section_html(challenge: str) -> str:
                 f"All {len(rows)} designs on the receptor, each with its interface residues. "
                 "The eye icon on the left toolbar opens the design list (the top three are "
                 "shown together).")
-            + _methodology_html(challenge))
+            + _methodology_html(challenge)
+                + _CSV_JS)
 
 
 def _goal_html(exp: dict) -> str:
