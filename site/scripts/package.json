@@ -1,0 +1,12 @@
+{
+  "name": "workbench-demo-recorder",
+  "private": true,
+  "type": "module",
+  "description": "Records the README walkthroughs of the workbench (see record-demo.mjs).",
+  "scripts": {
+    "record": "node record-demo.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "1.63.0"
+  }
+}

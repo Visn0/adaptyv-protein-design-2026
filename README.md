@@ -10,13 +10,9 @@ every challenge, experiment and structure.
 ![The workbench: the index, the five challenges and the tools](site/demo/workbench-home.gif)
 
 The recording above shows the local website in a real browser: the index,
-the five challenge cards and the tools table. Every challenge has a take
-of its own — [02 TNF-α](site/demo/challenge-02-tnfa.gif),
-[03 GLP1R](site/demo/challenge-03-glp1r.gif),
-[04 TfR1](site/demo/challenge-04-tfr1.gif),
-[05 pMHC](site/demo/challenge-05-pmhc.gif) — and every take has a
-full-size MP4 next to its GIF. To record them again after a page change,
-run `pdt serve`, then `npm --prefix site/scripts install` and
+the five challenge cards and the tools table. The same take is a full-size
+MP4 at `site/demo/workbench-home.mp4`. To record the tour again after a
+page change, run `pdt serve` and then
 `node site/scripts/record-demo.mjs --route home`.
 
 ## Deploy the website
