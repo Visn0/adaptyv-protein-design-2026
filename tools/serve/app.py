@@ -547,6 +547,10 @@ video { width: 100%; border-radius: 14px; border: 1px solid var(--line); backgro
 .brand { font-weight: 600; color: var(--text); letter-spacing: -.3px; }
 a.brand { color: var(--text); }
 .navbtn { margin-left: auto; }
+/* The nav links are one group in the top-right corner, so no single button floats mid-nav. */
+.topnav .navlinks { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.topnav .navbtn { margin-left: 0; }
+.navbtn.navcur { border-color: var(--line-strong); background: rgba(13, 162, 231, .14); }
 .shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 26px; align-items: start; }
 .shell .content { border-left: 1px solid rgba(29, 36, 53, .8); padding-left: 26px; min-height: 60vh; }
 .sidebar { position: sticky; top: 76px; border: 1px solid var(--line); border-radius: 16px;
@@ -593,6 +597,21 @@ a.brand { color: var(--text); }
 .hero-text { animation: fadeup .45s ease both; }
 .headline { font-size: 17px; font-weight: 600; margin: 12px 0 6px; letter-spacing: -.2px; }
 .hero-desc { color: #c6cdd9; font-size: 14.5px; max-width: 560px; }
+/* About page: heading and the two profiles on one line, the intro under them, prose in a panel. */
+.about-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; }
+.about-head h1 { margin: 0; }
+.about-links { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.about-link { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 11px;
+              border: 1px solid var(--line); border-radius: 999px; background: rgba(19, 22, 38, .9);
+              color: #cbd5e1; font-size: 13.5px; font-weight: 500; }
+.about-link:hover { text-decoration: none; border-color: var(--line-strong); color: var(--text); }
+.about-link svg { width: 15px; height: 15px; flex: none; }
+.tagline { margin: 10px 0 0; color: #c6cdd9; font-size: 16.5px; max-width: 640px; }
+.panel { border: 1px solid var(--line); border-radius: 16px; background: var(--panel);
+         padding: 20px 22px; margin: 18px 0 0; }
+.panel h2 { margin: 0; }
+.about-prose { margin: 12px 0 0; color: #c6cdd9; max-width: 780px; }
+.back-link { margin-top: 20px; font-size: 13.5px; }
 .viewer-caption { margin-top: 10px; text-align: center; }
 .objectives { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
               gap: 16px; margin: 14px 0; }
@@ -680,7 +699,8 @@ def esc(value) -> str:
     return _html.escape(str(value))
 
 
-def _topnav(challenge: str | None = None, campaign: str | None = None) -> str:
+def _topnav(challenge: str | None = None, campaign: str | None = None,
+            current: str | None = None) -> str:
     parts = ["<div class='topnav'><a class='brand' href='/'>Protein design workbench</a>"]
     if challenge:
         parts.append(f"<span class='sub'>/</span>"
@@ -688,8 +708,11 @@ def _topnav(challenge: str | None = None, campaign: str | None = None) -> str:
                      f"{esc(CHALLENGE_INFO.get(challenge, {}).get('title') or challenge)}</a>")
     if campaign:
         parts.append(f"<span class='sub'>/</span><span class='sub'>{esc(campaign)}</span>")
-    parts.append("<a class='navbtn' href='/about'>About</a> "
-                 "<a class='navbtn' href='/'>Home</a></div>")
+    # The links sit together in the top-right corner, and the current page's link is marked.
+    home = " navcur" if current == "home" else ""
+    about = " navcur" if current == "about" else ""
+    parts.append(f"<span class='navlinks'><a class='navbtn{home}' href='/'>Home</a>"
+                 f"<a class='navbtn{about}' href='/about'>About</a></span></div>")
     return "".join(parts)
 
 
@@ -748,7 +771,8 @@ def _page(title: str, body: str, challenge: str | None = None,
           current_run: str | None = None, with_sidebar: bool = False,
           sidebar_rows: list[dict] | None = None,
           current_experiment: str | None = None,
-          campaign: str | None = None, totop: bool = True) -> str:
+          campaign: str | None = None, totop: bool = True,
+          current: str | None = None) -> str:
     page_body = body
     if with_sidebar and challenge:
         page_body = (f"<div class='shell'><aside class='sidebar'>"
@@ -761,7 +785,7 @@ def _page(title: str, body: str, challenge: str | None = None,
         "<meta name='viewport' content='width=device-width,initial-scale=1'>"
         f"<title>{esc(title)}</title><style>{CSS}</style></head><body>"
         "<a class='skip' href='#main'>Skip to content</a>"
-        f"{_topnav(challenge, campaign)}{page_body}"
+        f"{_topnav(challenge, campaign, current)}{page_body}"
         f"{TO_TOP_HTML if totop else ''}</body></html>"
     )
 
@@ -869,43 +893,62 @@ def _herohome() -> str:
         "<div class='sub' style='margin-bottom:6px'>Every tool this workspace has tried so "
         "far, what we used it for, and where it lives.</div>")
     body.append(_TABLES_STYLE + _tools_table_html())
-    return _page("workbench", "".join(body))
+    return _page("workbench", "".join(body), current="home")
 
 
 def page_about() -> str:
-    """The About page: who built this, and how to reach him."""
-    links = (
-        "<div class='rowline' style='margin-top:14px'>"
-        "<a class='navbtn' href='https://www.linkedin.com/in/anton-chernysh/'"
-        " target='_blank' rel='me noopener'>LinkedIn</a> <a class='navbtn'"
-        " href='https://github.com/Visn0' target='_blank' rel='me noopener'>GitHub</a>"
-        "</div>"
+    """The About page: who built this, and how to reach him.
+
+    The layout follows the reference site's about page: the heading and the two
+    profiles on one line, the one-line intro under them, then the prose in a panel.
+    """
+    linkedin_icon = (
+        "<svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' focusable='false'>"
+        "<path d='M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 "
+        "2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28z"
+        "M5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45z"
+        "M22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 "
+        "1.78-1.72V1.72C24 .77 23.2 0 22.22 0z'/></svg>"
+    )
+    github_icon = (
+        "<svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' focusable='false'>"
+        "<path d='M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 "
+        "0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7"
+        ".08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29"
+        "-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18"
+        "a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 "
+        "1.19 3.1 0 4.43-2.69 5.41-5.25 5.69.41.35.78 1.05.78 2.12 0 1.53-.01 2.76-.01 3.14 0 .31"
+        ".21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z'/></svg>"
     )
     body = [
-        "<div class='hero'>",
-        "<div class='eyebrow'>About</div>",
-        "<h1>Anton Chernysh</h1>",
-        "<div class='lead'>I am a site reliability engineer in Zurich. "
-        "This workbench is my entry for the Anthropic \u00d7 Adaptyv 2026 "
-        "protein-design competition.</div>",
-        links,
+        "<section class='hero'>",
+        "<div class='about-head'>",
+        "<h1>About me</h1>",
+        "<ul class='about-links'>",
+        f"<li><a class='about-link' href='https://www.linkedin.com/in/anton-chernysh/'"
+        f" target='_blank' rel='me noopener'>{linkedin_icon}<span>LinkedIn</span></a></li>",
+        f"<li><a class='about-link' href='https://github.com/Visn0' target='_blank'"
+        f" rel='me noopener'>{github_icon}<span>GitHub</span></a></li>",
+        "</ul>",
         "</div>",
-        "<div class='card'>",
-        "<p>I build and scale infrastructure for startups, with five years of "
-        "taking products from an early prototype to production systems that "
-        "stay up under real traffic. I write production code in Go and Python, "
-        "and I care about the whole lifecycle: architecture, observability, "
-        "incident response, and the optimizations that make systems faster "
-        "and cheaper to run.</p>",
-        "<p>This workspace is the competition work itself: one folder per "
-        "challenge, every campaign kept, the negative results included, and "
-        "every number sourced from the dated records beside it. The site you "
-        "are reading is built from the same files the local app serves.</p>",
-        "</div>",
-        "<div class='sub' style='margin-top:18px'>"
-        "<a href='/'>\u2190 back to the workbench</a></div>",
+        "<p class='tagline'>I am a site reliability engineer in Zurich. This workbench is my "
+        "entry for the Anthropic \u00d7 Adaptyv 2026 protein-design competition.</p>",
+        "</section>",
+        "<section class='panel'>",
+        "<h2>Anton Chernysh</h2>",
+        "<p class='about-prose'>I build and scale infrastructure for startups, with five years "
+        "of taking products from an early prototype to production systems that stay up under "
+        "real traffic. I write production code in Go and Python, and I care about the whole "
+        "lifecycle: architecture, observability, incident response, and the optimizations "
+        "that make systems faster and cheaper to run.</p>",
+        "<p class='about-prose'>This workspace is the competition work itself: one folder per "
+        "challenge, every campaign kept, the negative results included, and every number "
+        "sourced from the dated records beside it. The site you are reading is built from the "
+        "same files the local app serves.</p>",
+        "</section>",
+        "<p class='back-link'><a href='/'>\u2190 Back to the workbench</a></p>",
     ]
-    return _page("about", "".join(body))
+    return _page("about", "".join(body), current="about")
 
 
 # ------------------------------------------------------- lineage (campaign)
