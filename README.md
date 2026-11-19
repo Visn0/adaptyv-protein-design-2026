@@ -7,13 +7,14 @@ every challenge, experiment and structure.
 
 ## What the site looks like
 
-![The workbench: the index, the five challenges and the tools](site/demo/workbench-home.gif)
+![The workbench: the index, then challenges 03, 04 and 05](site/demo/workbench-tour.gif)
 
 The recording above shows the local website in a real browser: the index,
-the five challenge cards and the tools table. The same take is a full-size
-MP4 at `site/demo/workbench-home.mp4`. To record the tour again after a
-page change, run `pdt serve` and then
-`node site/scripts/record-demo.mjs --route home`.
+then challenges 03, 04 and 05 in turn — the card, the page, the target
+structure and the submission record of each, and back to the index. The
+same take is a full-size MP4 at `site/demo/workbench-tour.mp4`. To record
+the tour again after a page change, run `pdt serve` and then
+`node site/scripts/record-demo.mjs --route tour`.
 
 ## Deploy the website
 

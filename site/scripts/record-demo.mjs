@@ -11,11 +11,12 @@
  *   .venv/bin/python -m tools.cli serve --port 8737 &
  *   npm --prefix site/scripts install
  *   node site/scripts/record-demo.mjs --route home
+ *   node site/scripts/record-demo.mjs --route tour
  *   node site/scripts/record-demo.mjs --route 02-tnfa
  *
  * Options:
  *   --base <url>    the running app        (default http://127.0.0.1:8737/)
- *   --route <name>  home | 01-egfr | 02-tnfa | 03-glp1r | 04-tfr1 | 05-pmhc
+ *   --route <name>  home | tour | 01-egfr | 02-tnfa | 03-glp1r | 04-tfr1 | 05-pmhc
  *   --out <path>    where the take lands   (default site/demo/<route>.<ext>)
  *   --head          show the browser window
  *   --no-gif        skip the GIF encode (the MP4 alone is enough for a look)
@@ -46,17 +47,21 @@ const WITH_GIF = !argv.includes('--no-gif');
 // encode. `size` must be given explicitly — it defaults to the viewport scaled to fit 800x800.
 const VIEWPORT = { width: 1280, height: 800 };
 
-// The GIF is the README's moving picture. The numbers are measured, not chosen: the same take
-// at 1000px/12fps is 17 MB, which nobody should be handed; 800px/8fps with a 64-colour palette
-// and no dither is a few MB and still legible. The GIF window is computed per take from the
-// measured click moment, so it opens just before the click and stays short.
+// The GIF is the README's moving picture. The numbers are measured, not chosen: the tour take
+// (36 s) at 640px/6fps/48 colours is 7 MB, which is too heavy to open; 560px/6fps/40 colours is
+// 5 MB and the headings stay legible. The GIF window is computed per take: a tour starts just
+// before its first click, a single page just after it has painted.
 const GIF_FPS = 6;
-const GIF_WIDTH = 640;
-const GIF_COLORS = 48;
+const GIF_WIDTH = 560;
+const GIF_COLORS = 40;
 const GIF_SECONDS = 10;
 const GIF_LEAD = 3.0; // how long before the click the GIF starts: the recorder's clock runs ahead
 // of the video file (the browser starts capturing after the page is created, and the click
 // takes time to dispatch), so the window is generous and always opens on the index.
+
+// The tour's stops, in order. Each stop is one visit: the card, the page, the structure
+// explorer, then back to the index for the next one.
+const TOUR_STOPS = ['03-glp1r', '04-tfr1', '05-pmhc'];
 
 // --------------------------------------------------------------------- pacing
 // Every pause in one place, in milliseconds. Re-timing a take must never mean touching the
@@ -72,6 +77,8 @@ const PACE = {
   homeHero: 1500, // the index hero, before the scroll starts
   homeScroll: 7500, // the one continuous glide down the index
   homeEnd: 2000, // the final hold on the tools table
+  // The tour runs the same story three times, so each stop is tighter than a solo take.
+  tour: { settle: 400, hero: 400, toViewer: 2200, viewer: 1200 },
 };
 
 const beat = (page, ms) => page.waitForTimeout(ms);
@@ -143,7 +150,9 @@ async function moveTo(page, selector) {
   }
   const x = box.x + box.width / 2;
   const y = box.y + box.height / 2;
-  await page.mouse.move(x, y, { steps: 20 });
+  // Fewer steps than it looks like it needs: every step repaints the page, and under software
+  // rendering twenty of them cost seconds of the take.
+  await page.mouse.move(x, y, { steps: 12 });
   return { x, y };
 }
 
@@ -221,6 +230,7 @@ const headerHeight = (page) =>
 // ------------------------------------------------------------------------ run
 const names = {
   home: 'workbench-home',
+  tour: 'workbench-tour',
   '01-egfr': 'challenge-01-egfr',
   '02-tnfa': 'challenge-02-tnfa',
   '03-glp1r': 'challenge-03-glp1r',
@@ -255,7 +265,11 @@ const page = await context.newPage();
 const videoStart = Date.now();
 const marks = {};
 const stamp = (key) => {
-  marks[key] = (Date.now() - videoStart) / 1000;
+  // The first value wins: a tour stamps the same key on every stop, and the GIF window must
+  // open on the first click, not the last one.
+  if (marks[key] === undefined) {
+    marks[key] = (Date.now() - videoStart) / 1000;
+  }
 };
 const problems = [];
 page.on('console', (message) => {
@@ -269,6 +283,65 @@ page.on('requestfailed', (request) =>
 );
 
 const notes = [];
+
+/** One stop of a take: click a challenge card on the index, wait for its page, let it answer. */
+async function visitChallenge(page, route, pace, notes) {
+  const card = `a.card[href='/ch/${route}']`;
+  // The card can sit below the fold on the index. Bring it into the middle of the viewport
+  // with a short glide first, exactly as a reader would, then click it where it now is.
+  const cardTop = await topOf(page, card);
+  if (cardTop !== null) {
+    const target = Math.max(0, cardTop - (await viewportHeight(page)) * 0.42);
+    await glide(page, target, PACE.toCard, await headerHeight(page));
+  }
+  const at = await moveTo(page, card);
+  if (!at) {
+    throw new Error(`challenge card not found: ${card}`);
+  }
+  await beat(page, 400);
+  stamp('click');
+  await Promise.all([
+    page.waitForURL(`**/ch/${route}`, { timeout: 20_000 }),
+    page.mouse.click(at.x, at.y),
+  ]);
+  await page.waitForLoadState('load');
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForSelector('main h1', { timeout: 15_000 });
+  // The explorer fills in after its structure payload arrives; wait for it, but do not fail
+  // the take if this challenge has none.
+  try {
+    await page.waitForSelector('.tgt3d:not(.viewer-loading)', { timeout: 25_000 });
+  } catch {
+    notes.push(`no structure explorer became ready on ${route}`);
+  }
+  // Put the pointer on the new page too, to the right of the text, so the cursor is present
+  // while the page is read and then dims like a real pointer that is not moving.
+  await page.mouse.move(1080, 330, { steps: 14 });
+  await beat(page, pace.settle);
+  await beat(page, pace.hero);
+  const header = await headerHeight(page);
+  const viewerTop = await topOf(page, '.tgt-sechead');
+  await glide(page, viewerTop ?? (await pageBottom(page)), pace.toViewer, header);
+  await beat(page, pace.viewer);
+}
+
+/** Back to the index through the sticky nav's Home button, wherever the page is scrolled. */
+async function goHome(page) {
+  const at = await moveTo(page, "a.navbtn[href='/']");
+  if (!at) {
+    throw new Error('home button not found');
+  }
+  await beat(page, 400);
+  await Promise.all([
+    page.waitForURL(BASE, { timeout: 20_000 }),
+    page.mouse.click(at.x, at.y),
+  ]);
+  await page.waitForLoadState('load');
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForSelector('a.card', { timeout: 15_000 });
+  await beat(page, 450);
+}
+
 try {
   // ------------------------------------------------------------- the flow
   await page.goto(BASE, { waitUntil: 'load' });
@@ -284,51 +357,24 @@ try {
     await beat(page, PACE.homeHero);
     await glide(page, await pageBottom(page), PACE.homeScroll, await headerHeight(page));
     await beat(page, PACE.homeEnd);
+  } else if (ROUTE === 'tour') {
+    // The tour: the index, then every stop in order — click the card, let the page and its
+    // structure explorer answer, then go back to the index and repeat.
+    await beat(page, PACE.homeHero);
+    for (const stop of TOUR_STOPS) {
+      await visitChallenge(page, stop, PACE.tour, notes);
+      await goHome(page);
+    }
+    await beat(page, PACE.end);
+    stamp('end');
   } else {
     // One challenge: click its card, hold on the hero, glide to the structure explorer and let
     // it turn, then glide through the rest of the page to the end.
-    const card = `a.card[href='/ch/${ROUTE}']`;
-    // The card can sit below the fold on the index. Bring it into the middle of the viewport
-    // with a short glide first, exactly as a reader would, then click it where it now is.
-    const cardTop = await topOf(page, card);
-    if (cardTop !== null) {
-      const target = Math.max(0, cardTop - (await viewportHeight(page)) * 0.42);
-      await glide(page, target, PACE.toCard, await headerHeight(page));
-    }
-    const at = await moveTo(page, card);
-    if (!at) {
-      throw new Error(`challenge card not found: ${card}`);
-    }
-    await beat(page, 500);
-    stamp('click');
-    await Promise.all([
-      page.waitForURL(`**/ch/${ROUTE}`, { timeout: 20_000 }),
-      page.mouse.click(at.x, at.y),
-    ]);
-    await page.waitForLoadState('load');
-    await page.evaluate(() => document.fonts.ready);
-    await page.waitForSelector('main h1', { timeout: 15_000 });
-    // The explorer fills in after its structure payload arrives; wait for it, but do not fail
-    // the take if this challenge has none.
-    try {
-      await page.waitForSelector('.tgt3d:not(.viewer-loading)', { timeout: 25_000 });
-    } catch {
-      notes.push(`no structure explorer became ready on ${ROUTE}`);
-    }
-    // Put the pointer on the new page too, to the right of the text, so the cursor is present
-    // while the page is read and then dims like a real pointer that is not moving.
-    await page.mouse.move(1080, 330, { steps: 14 });
-    await beat(page, PACE.settle);
-
-    await beat(page, PACE.hero);
-    const viewerTop = await topOf(page, '.tgt-sechead');
-    const header = await headerHeight(page);
-    await glide(page, viewerTop ?? (await pageBottom(page)), PACE.toViewer, header);
-    await beat(page, PACE.viewer);
+    await visitChallenge(page, ROUTE, PACE, notes);
     // End on the submission section: the page's tail after it is the methodology prose, which
     // is a wall of text and a weak final shot.
     const endTop = await headingTop(page, 'Final submission');
-    await glide(page, endTop ?? (await pageBottom(page)), PACE.toEnd, header);
+    await glide(page, endTop ?? (await pageBottom(page)), PACE.toEnd, await headerHeight(page));
     await beat(page, PACE.end);
   }
 } finally {
@@ -373,7 +419,13 @@ if (WITH_GIF) {
   const gifStart = marks.click !== undefined
     ? Math.max(0, marks.click - GIF_LEAD)
     : (marks.ready ?? 0.9);
-  const trim = ['-ss', gifStart.toFixed(2), '-i', mp4, '-t', String(GIF_SECONDS)];
+  // A tour is one long take: the window is the tour itself, from the first click to the end.
+  const gifSeconds = ROUTE === 'tour' && marks.end !== undefined
+    ? Math.max(4, Math.min(marks.end - gifStart, 40))
+    : GIF_SECONDS;
+  // `-t` before the input it belongs to: between the two `-i`s it would limit the palette
+  // image instead of the video, and every GIF would run to the end of the take.
+  const trim = ['-ss', gifStart.toFixed(2), '-t', String(gifSeconds), '-i', mp4];
   const scale = `fps=${GIF_FPS},scale=${GIF_WIDTH}:-1:flags=lanczos`;
   const first = spawnSync('ffmpeg',
     ['-y', '-loglevel', 'error', ...trim, '-vf',
@@ -382,7 +434,7 @@ if (WITH_GIF) {
     ['-y', '-loglevel', 'error', ...trim, '-i', palette, '-lavfi',
      `${scale}[x];[x][1:v]paletteuse=dither=none`, '-loop', '0', gif]);
   if (first.status === 0 && second.status === 0) {
-    console.log(`gif       -> ${gif} (from ${gifStart.toFixed(1)}s, ${GIF_SECONDS}s)`);
+    console.log(`gif       -> ${gif} (from ${gifStart.toFixed(1)}s, ${gifSeconds.toFixed(1)}s)`);
   } else {
     console.warn('the GIF was not written');
   }
