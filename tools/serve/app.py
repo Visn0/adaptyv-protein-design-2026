@@ -64,6 +64,7 @@ CHALLENGE_INFO = {
         "conditions": "Bind at pH 6.5. Do not bind at pH 7.4.",
         "goal": "A binder with a histidine pH switch near the epitope.",
         "status": "We could not take part: it closed before this workspace existed.",
+        "outcome": "skipped",
         "metrics": ["selectivity", "ipsae", "iptm"],
         "bars": ["dock"],
         "fun_fact": "EGFR was the first growth-factor receptor ever cloned (1984). Antibodies "
@@ -77,6 +78,7 @@ CHALLENGE_INFO = {
         "conditions": "Bind human at pH 7.4. Do not bind at pH 6.0. Also bind mouse.",
         "goal": "A conditional binder for the receptor-binding site between two protomers.",
         "status": "Closed. Designs submitted.",
+        "outcome": "completed",
         "metrics": ["delta_log_Ka", "ipsae", "pdockq2", "iptm"],
         "bars": ["dock", "coverage", "mouse"],
         "fun_fact": "TNF-α got its name for a strange effect: it kills tumour cells in mice. "
@@ -91,6 +93,7 @@ CHALLENGE_INFO = {
         "conditions": "Agonist design.",
         "goal": "A binder that binds the receptor and activates it (cAMP reporter).",
         "status": "Closed. Campaigns complete.",
+        "outcome": "completed",
         # the metrics that score the designs (see tools/insights.py METRICS)
         "metrics": ["activation", "ipsae_min", "pdockq2", "groove_site", "tm_site",
                     "ecl3_site", "plddt"],
@@ -115,6 +118,7 @@ CHALLENGE_INFO = {
         "conditions": "Bind human at pH 7.4. Do not bind at pH 6.0. Also bind mouse.",
         "goal": "A binder against the apical domain, with a pH switch.",
         "status": "Closed. Campaigns complete.",
+        "outcome": "completed",
         # "human"/"mouse"/"ph" are target-tab ids, not insights.METRICS keys, so the
         # legend rendered empty. No human-vs-mouse selectivity metric exists yet; these
         # are the challenge-agnostic interface numbers that do.
@@ -136,6 +140,7 @@ CHALLENGE_INFO = {
                       "peptide-free MHC.",
         "goal": "A binder that reads the mutant position 6 of the peptide and nothing else.",
         "status": "Closed. Designs submitted.",
+        "outcome": "completed",
         "metrics": ["ipsae", "pdockq2", "iptm"],
         "bars": [],
         "fun_fact": "Position 6 — the one residue that separates the two peptides — sits in "
@@ -439,6 +444,9 @@ code { font-family: 'Geist Mono', ui-monospace, Menlo, monospace; background: rg
 .badge.running { color: var(--accent); background: rgba(13, 162, 231, .12); }
 .badge.waiting_inputs { color: var(--amber); background: rgba(245, 166, 35, .12); }
 .badge.reference { color: var(--violet); background: rgba(167, 139, 250, .12); }
+/* The index cards' outcome labels: what happened to each challenge. */
+.badge.completed { color: var(--green); background: rgba(52, 211, 153, .12); }
+.badge.skipped { color: var(--muted); background: rgba(148, 163, 184, .12); }
 /* Verdict chips: what a run proves, and what it does not. */
 .vchip { display: inline-block; padding: 2px 11px; border-radius: 999px; font-size: 11.5px;
          font-weight: 600; font-family: 'Geist Mono', ui-monospace, Menlo, monospace; letter-spacing: .04em; }
@@ -1014,9 +1022,13 @@ def _herohome() -> str:
         else:
             visual = ("<div class='card3d card3d-empty'>Target structure is not in the "
                       "workspace yet.</div>")
+        outcome = info.get("outcome")
+        outcome_badge = (f"<span class='badge {esc(outcome)}'>{esc(outcome)}</span>"
+                         if outcome else "")
         body.append(
             f"<a class='card' href='/ch/{esc(challenge)}'>"
-            f"<div class='chipline'><span class='chip'>Challenge {esc(number)}</span></div>"
+            f"<div class='chipline'><span class='chip'>Challenge {esc(number)}</span>"
+            f"{outcome_badge}</div>"
             f"<h3>{esc(info.get('title', challenge))}</h3>"
             f"<div class='sub'>{esc(info.get('tagline', ''))}</div>"
             f"{visual}"
