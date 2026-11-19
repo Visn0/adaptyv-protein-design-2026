@@ -691,10 +691,13 @@ details.chapter[open] .chapterbody { animation: fadeup .35s ease both; }
      wrap, so the first columns stay readable. */
   details.chapter { padding: 2px 14px 4px; }
   table.lt { font-size: 11px; }
-  table.lt td, table.lt th { padding: 4px 8px; }
-  .subtable { padding: 6px 8px; }
-  .subtable table.lt td:nth-child(2) { min-width: 150px; }
+  table.lt td, table.lt th { padding: 4px 6px; }
+  .subtable { padding: 4px 6px; }
+  .subtable table.lt td:nth-child(2) { min-width: 140px; }
   .subtable table.lt td:last-child { min-width: 180px; }
+  /* The chip drops the redundant "/ 100" suffix on a phone, so the
+     whole score stays visible. The scale is in the intro and legend. */
+  .subtable .vchip .sub { display: none; }
   .subtable table.lt td:nth-child(2) code { white-space: normal; overflow-wrap: anywhere; }
   table.lt, .subtable { -webkit-overflow-scrolling: touch; }
 }
