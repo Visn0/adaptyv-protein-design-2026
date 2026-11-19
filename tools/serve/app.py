@@ -606,11 +606,14 @@ a.brand { color: var(--text); }
               color: #cbd5e1; font-size: 13.5px; font-weight: 500; }
 .about-link:hover { text-decoration: none; border-color: var(--line-strong); color: var(--text); }
 .about-link svg { width: 15px; height: 15px; flex: none; }
-.tagline { margin: 10px 0 0; color: #c6cdd9; font-size: 16.5px; max-width: 640px; }
+.tagline { margin: 10px 0 0; color: #c6cdd9; font-size: 16.5px; max-width: 640px;
+           text-align: justify; }
+/* The competition's name is one item: it never splits across two lines. */
+.nobr { white-space: nowrap; }
 .panel { border: 1px solid var(--line); border-radius: 16px; background: var(--panel);
          padding: 20px 22px; margin: 18px 0 0; }
 .panel h2 { margin: 0; }
-.about-prose { margin: 12px 0 0; color: #c6cdd9; max-width: 780px; }
+.about-prose { margin: 12px 0 0; color: #c6cdd9; max-width: 780px; text-align: justify; }
 .back-link { margin-top: 20px; font-size: 13.5px; }
 .viewer-caption { margin-top: 10px; text-align: center; }
 .objectives { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -932,7 +935,8 @@ def page_about() -> str:
         "</ul>",
         "</div>",
         "<p class='tagline'>I am a site reliability engineer in Zurich. This workbench is my "
-        "entry for the Anthropic \u00d7 Adaptyv 2026 protein-design competition.</p>",
+        "entry for the <span class='nobr'>Anthropic \u00d7 Adaptyv 2026</span> protein-design "
+        "competition.</p>",
         "</section>",
         "<section class='panel'>",
         "<h2>Anton Chernysh</h2>",
