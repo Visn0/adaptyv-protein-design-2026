@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adaptyv-protein-design-2026"
+version = "0.2.0"
+description = "Local protein-design workshop: per-challenge workspaces (Anthropic x Adaptyv 2026) + shared tools, an experiment runner, and reports."
+# PROPKA 3.5.1 breaks on Python >= 3.14 (PEP 649 deferred annotations), so the ceiling is real.
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "numpy>=1.24",
+    "biopython>=1.83",
+    "propka>=3.5",
+    "pandas>=2.0",
+    # scipy >= 1.17 requires numpy >= 2.0, which dockq and prodigy-prot
+    # both pin below; the pair is unsatisfiable without this ceiling.
+    "scipy>=1.11,<1.17",
+    "pyyaml>=6.0",
+    "requests>=2.31",
+    "py3dmol>=2.5",      # `pdt serve` built-in structure viewer
+]
+
+# The real-physics stack (pipeline `md`). Kept optional: the rest of the
+# workspace runs without it, and the md stages say what to install.
+[project.optional-dependencies]
+md = ["openmm>=8.2", "pdbfixer>=1.9", "mdtraj>=1.10"]
+
+[project.scripts]
+pdt = "tools.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["tools*"]

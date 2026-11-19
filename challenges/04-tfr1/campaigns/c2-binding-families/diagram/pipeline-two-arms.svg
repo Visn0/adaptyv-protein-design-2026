@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" font-family="'JetBrains Mono','SF Mono','Cascadia Code',monospace">
+<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+<rect width="100%" height="100%" fill="#0f172a"/>
+<rect width="100%" height="100%" fill="url(#grid)"/>
+<text x="40" y="44" fill="#f8fafc" font-size="16" font-weight="700">Campaign 2 — per-design wall time by arm (Gantt)</text>
+<text x="40" y="64" fill="#94a3b8" font-size="9">measured campaign-2 numbers · RTX 5070 (12 GB) · one GPU, serial folds · 81 designs</text>
+<g font-size="8" fill="#64748b">
+<text x="320" y="94" text-anchor="middle">0</text>
+<text x="431" y="94" text-anchor="middle">2</text>
+<text x="543" y="94" text-anchor="middle">4</text>
+<text x="654" y="94" text-anchor="middle">6</text>
+<text x="766" y="94" text-anchor="middle">8</text>
+<text x="877" y="94" text-anchor="middle">10</text>
+<text x="989" y="94" text-anchor="middle">12</text>
+<text x="1100" y="94" text-anchor="middle">min</text>
+</g>
+<g stroke="#1e293b" stroke-width="0.7" stroke-dasharray="3,5">
+<line x1="320" y1="100" x2="320" y2="236"/>
+<line x1="431" y1="100" x2="431" y2="236"/>
+<line x1="543" y1="100" x2="543" y2="236"/>
+<line x1="654" y1="100" x2="654" y2="236"/>
+<line x1="766" y1="100" x2="766" y2="236"/>
+<line x1="877" y1="100" x2="877" y2="236"/>
+<line x1="989" y1="100" x2="989" y2="236"/>
+<line x1="1100" y1="100" x2="1100" y2="236"/>
+</g>
+<text x="40" y="136" fill="#f8fafc" font-size="10.5" font-weight="600">RFD4 arm (49)</text>
+<text x="40" y="151" fill="#64748b" font-size="8">hosted NIM · own sequences · ~20 s per design generation</text>
+<rect x="320.0" y="120" width="18.4" height="22" rx="3" fill="#22d3ee" opacity="0.92"/>
+<rect x="342.3" y="120" width="473.6" height="22" rx="3" fill="#f472b6" opacity="0.92"/>
+<text x="579.1" y="134.5" fill="#0b1220" font-size="8" font-weight="600" text-anchor="middle">fold</text>
+<rect x="818.6" y="120" width="13.9" height="22" rx="3" fill="#fbbf24" opacity="0.92"/>
+<text x="342.4" y="115" fill="#e2e8f0" font-size="8">hosted gen</text>
+<text x="836.6" y="115" fill="#e2e8f0" font-size="8">screen + score</text>
+<text x="40" y="200" fill="#f8fafc" font-size="10.5" font-weight="600">genie3 arm (32)</text>
+<text x="40" y="215" fill="#64748b" font-size="8">local GPU · CA-only MPNN sequences (2 min)</text>
+<rect x="320.0" y="184" width="44.6" height="22" rx="3" fill="#22d3ee" opacity="0.92"/>
+<rect x="367.4" y="184" width="111.4" height="22" rx="3" fill="#a78bfa" opacity="0.92"/>
+<text x="423.1" y="198.5" fill="#0b1220" font-size="8" font-weight="600" text-anchor="middle">MPNN</text>
+<rect x="481.6" y="184" width="473.6" height="22" rx="3" fill="#f472b6" opacity="0.92"/>
+<text x="718.4" y="198.5" fill="#0b1220" font-size="8" font-weight="600" text-anchor="middle">fold</text>
+<rect x="957.9" y="184" width="13.9" height="22" rx="3" fill="#fbbf24" opacity="0.92"/>
+<text x="368.6" y="179" fill="#e2e8f0" font-size="8">generate</text>
+<text x="975.9" y="179" fill="#e2e8f0" font-size="8">screen + score</text>
+<text x="40" y="254" fill="#64748b" font-size="8.5">81 designs, 405 samples · ~11.5 h GPU in 16 h wall (the host crash cost 4.5 h; the pass resumed mid-design)</text>
+<text x="40" y="267" fill="#64748b" font-size="8.5">20 designs cleared the line · top e12rfd4_r5d1 0.779 · arm rates 22 % (RFD4) vs 28 % (genie3), Fisher p = 0.605</text>
+</svg>

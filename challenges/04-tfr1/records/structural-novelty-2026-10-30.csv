@@ -1,0 +1,7 @@
+design,ref,tm_score,aligned_len,coverage_of_design,hit
+c3_e12b2_20_s2_n10q,VP1u_11RN,0.31,49,0.45,False
+c3_e12b2_20_s2_n10q,ctrl_2ds25,0.28,52,0.48,False
+c3_e12b2_20_s2_n10q,ctrl_tb14,0.29,46,0.43,False
+c3_e12rfd4_r6d2_s1_n30q,VP1u_11RN,0.33,47,0.46,False
+c3_e12rfd4_r6d2_s1_n30q,ctrl_2ds25,0.34,53,0.52,False
+c3_e12rfd4_r6d2_s1_n30q,ctrl_tb14,0.29,52,0.51,False

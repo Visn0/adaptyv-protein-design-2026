@@ -1,0 +1,20 @@
+rank,design,score,peptide_read_g12d,ipdae_pep_g12d,e_score,gate,length_aa,molecule_class,family,mutation
+1,evorepair-wave2-pep__run-016__design_0005__g12d-L58K-Q15K,90.5,0.554,0.663,-3.65,below,72,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 2 · charge-repair child",L58K-Q15K
+2,evomini-wave1__run-014__design_0005__g12d-A16K,87.1,0.663,0.809,-3.75,pass,66,single_chain,"RFdiffusion4 (NIM) · MINI hotspot set, wave 1 · evolution-loop child",A16K
+3,nim-wave3__run-001__design_0004__g12d__c7,82.8,0.784,0.880,-1.13,pass,77,single_chain,"RFdiffusion4 (NIM) · wave-3 NIM set, wave 3",
+4,wave2-pep__run-024__design_0007__g12d__c5,79.1,0.632,0.809,-0.87,pass,92,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 2",
+5,evowave2-pep__run-026__design_0003__g12d-V24K,68.7,0.682,0.834,-1.35,pass,73,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 2 · evolution-loop child",V24K
+6,nat-wave1__run-004__design_0001__g12d,66.1,0.675,0.845,0.14,pass,84,single_chain,"RFdiffusion4 (NIM) · NATURAL hotspot set, wave 1",
+7,peprim-wave1__run-013__design_0007__g12d__c1,65.7,0.706,0.849,0.85,pass,79,single_chain,"RFdiffusion4 (NIM) · PEPRIM hotspot set, wave 1",
+8,wave2-pep__run-049__design_0002__g12d,65.6,0.596,0.749,-1.92,below,64,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 2",
+9,wave1-pep__run-016__design_0003__g12d,65.6,0.664,0.780,-1.69,pass,71,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 1",
+10,evorepair-nat-wave1__run-011__design_0004__g12d-N71K,,0.676,0.764,-0.78,pass,86,single_chain,"RFdiffusion4 (NIM) · NATURAL hotspot set, wave 1 · charge-repair child",N71K
+11,wave1-pep__run-033__design_0003__g12d,63.3,0.675,0.810,0.23,pass,74,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 1",
+12,evopeprim-wave1__run-001__design_0002__g12d-W57K,,0.641,0.770,-2.09,pass,98,single_chain,"RFdiffusion4 (NIM) · PEPRIM hotspot set, wave 1 · evolution-loop child",W57K
+13,wave2-pep__run-054__design_0005__g12d,61.5,0.463,0.542,1.47,below,91,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 2",
+14,evonim-wave3__run-001__design_0004__g12d__c7-I13K,58.9,0.766,0.860,-2.63,pass,77,single_chain,"RFdiffusion4 (NIM) · wave-3 NIM set, wave 3 · evolution-loop child",
+15,evomini-wave1__run-014__design_0005__g12d-Q48K,57.2,0.694,0.827,-2.90,pass,66,single_chain,"RFdiffusion4 (NIM) · MINI hotspot set, wave 1 · evolution-loop child",Q48K
+16,evomini-wave1__run-014__design_0005__g12d-L23K,56.4,0.663,0.807,-3.20,pass,66,single_chain,"RFdiffusion4 (NIM) · MINI hotspot set, wave 1 · evolution-loop child",L23K
+17,evowave1-pep__run-016__design_0003__g12d-Q54K,55.4,0.655,0.775,-2.84,pass,71,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 1 · evolution-loop child",Q54K
+18,evomini-wave1__run-014__design_0005__g12d-A47K,55.1,0.650,0.759,-2.77,pass,66,single_chain,"RFdiffusion4 (NIM) · MINI hotspot set, wave 1 · evolution-loop child",A47K
+19,evowave2-pep__run-049__design_0002__g12d-A46K,54.7,0.637,0.767,-2.60,pass,64,single_chain,"RFdiffusion4 (NIM) · PEP hotspot set, wave 2 · evolution-loop child",A46K

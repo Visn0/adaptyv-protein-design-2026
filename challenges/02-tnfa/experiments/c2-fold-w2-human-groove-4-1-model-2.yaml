@@ -1,0 +1,13 @@
+name: c2-fold-w2-human-groove-4-1-model-2
+challenge: 02-tnfa
+pipeline: fold
+description: "W2 human fold of the X2 shortlist design config_c2-x2-rfd3-s1-groove-4_1_model_2.pdb (rank 6, 84 aa) against the human TNF-alpha trimer: five Boltz-2 samples on the RTX 5070, every sample scored with IPSAE."
+resources: cpu   # the import stage is CPU work; the fold itself ran on the GPU
+requires_network: false
+stages: [import]
+params:
+  source: data/boltz2/w2-human-groove-4_1_model_2
+  design: config_c2-x2-rfd3-s1-groove-4_1_model_2.pdb
+  binder_chain: A
+  target_chains: B,C,D
+  input_pdb: handoff/designs/pdb/config_c2-x2-rfd3-s1-groove-4_1_model_2.pdb

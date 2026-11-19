@@ -1,0 +1,22 @@
+# Campaign 12: RFD4-Proteina protein-binder design against the human GLP1R
+# full construct (active-state geometry), targeting the message-region hotspots
+# that the activation-geometry gate measures. Chain B = the construct (the CIF's label id) as
+# numbered in our folds (fold n = UniProt n - 23).
+c12r-trimmed:
+  input: challenges/03-glp1r/inputs/target-trimmed-150-432.cif
+  contig: "60-100, /0, B150-409"
+  conditions:
+    C_CRDGRP:
+      1:
+        - select: "sel('B/*/*/[N,CA,C,O]') and not has_nan_coord()"
+    C_SEQ:
+      true:
+        - select: "sel('B')"
+    C_HOT:
+      true:
+        - select: "sel('B/*/275/[N,CA,C,O,CB,OG1,CG2]')"          # T298
+        - select: "sel('B/*/276/[N,CA,C,O,CB,CG,CD,NE,CZ,NH1,NH2]')"  # R299
+        - select: "sel('B/*/277/[N,CA,C,O,CB,CG,CD,OE1,NE2]')"     # N300
+        - select: "sel('B/*/283/[N,CA,C,O,CB,CG,CD1,CD2,NE1,CE2,CE3,CZ2,CZ3,CH2]')"  # W306
+        - select: "sel('B/*/357/[N,CA,C,O,CB,CG,CD,NE,CZ,NH1,NH2]')"  # R380
+        - select: "sel('B/*/361/[N,CA,C,O,CB,CG,CD1,CD2]')"        # L384

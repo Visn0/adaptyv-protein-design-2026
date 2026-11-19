@@ -1,0 +1,189 @@
+{
+  "name": "e1b-d7x-t3-3-v6",
+  "source": [
+    "~/c2-work/genie3/folds/e1b-d7x-t3-3-v6/boltz_results_e1b-d7x-t3-3-v6/predictions/e1b-d7x-t3-3-v6/e1b-d7x-t3-3-v6_model_2.cif"
+  ],
+  "binder_chains": [
+    "A"
+  ],
+  "target_chains": [
+    "B",
+    "C",
+    "D"
+  ],
+  "interface_residues": [
+    [
+      10,
+      "A"
+    ],
+    [
+      14,
+      "A"
+    ],
+    [
+      15,
+      "B"
+    ],
+    [
+      16,
+      "B"
+    ],
+    [
+      18,
+      "B"
+    ],
+    [
+      21,
+      "A"
+    ],
+    [
+      26,
+      "A"
+    ],
+    [
+      27,
+      "A"
+    ],
+    [
+      29,
+      "A"
+    ],
+    [
+      30,
+      "A"
+    ],
+    [
+      33,
+      "A"
+    ],
+    [
+      34,
+      "A"
+    ],
+    [
+      36,
+      "A"
+    ],
+    [
+      37,
+      "A"
+    ],
+    [
+      38,
+      "A"
+    ],
+    [
+      40,
+      "A"
+    ],
+    [
+      41,
+      "A"
+    ],
+    [
+      44,
+      "A"
+    ],
+    [
+      46,
+      "A"
+    ],
+    [
+      60,
+      "B"
+    ],
+    [
+      62,
+      "B"
+    ],
+    [
+      68,
+      "D"
+    ],
+    [
+      69,
+      "D"
+    ],
+    [
+      70,
+      "D"
+    ],
+    [
+      72,
+      "D"
+    ],
+    [
+      92,
+      "D"
+    ],
+    [
+      108,
+      "B"
+    ],
+    [
+      110,
+      "B"
+    ],
+    [
+      132,
+      "D"
+    ],
+    [
+      133,
+      "D"
+    ],
+    [
+      138,
+      "B"
+    ],
+    [
+      139,
+      "B"
+    ],
+    [
+      140,
+      "B"
+    ],
+    [
+      141,
+      "B"
+    ]
+  ],
+  "interface_count": 34,
+  "modes": [
+    "cartoon",
+    "surface",
+    "plddt",
+    "hydrophobicity",
+    "interface"
+  ],
+  "views": 3,
+  "view_note": "viewpoints 0/1/2 are 120-degree azimuth steps at 15-degree elevation",
+  "mode_notes": {
+    "cartoon": "ribbon cartoon; binder pink, target chains cyan family",
+    "surface": "molecular surface (quality medium); same chain colours",
+    "plddt": "cartoon coloured by the B-factor column (Boltz-2 folds carry pLDDT; blue = high)",
+    "hydrophobicity": "cartoon coloured by residue hydrophobicity",
+    "interface": "cartoon plus interface residues as amber ball-and-stick (4.5 A heavy-atom contact)"
+  },
+  "files": [
+    "e1b-d7x-t3-3-v6_cartoon_view0.png",
+    "e1b-d7x-t3-3-v6_cartoon_view1.png",
+    "e1b-d7x-t3-3-v6_cartoon_view2.png",
+    "e1b-d7x-t3-3-v6_surface_view0.png",
+    "e1b-d7x-t3-3-v6_surface_view1.png",
+    "e1b-d7x-t3-3-v6_surface_view2.png",
+    "e1b-d7x-t3-3-v6_plddt_view0.png",
+    "e1b-d7x-t3-3-v6_plddt_view1.png",
+    "e1b-d7x-t3-3-v6_plddt_view2.png",
+    "e1b-d7x-t3-3-v6_hydrophobicity_view0.png",
+    "e1b-d7x-t3-3-v6_hydrophobicity_view1.png",
+    "e1b-d7x-t3-3-v6_hydrophobicity_view2.png",
+    "e1b-d7x-t3-3-v6_interface_view0.png",
+    "e1b-d7x-t3-3-v6_interface_view1.png",
+    "e1b-d7x-t3-3-v6_interface_view2.png"
+  ],
+  "failures": [],
+  "generated": "2026-10-17T16:29:10+00:00",
+  "note": "Rendered from a predicted structure with Mol*; a fold is a model, not a binding measurement."
+}

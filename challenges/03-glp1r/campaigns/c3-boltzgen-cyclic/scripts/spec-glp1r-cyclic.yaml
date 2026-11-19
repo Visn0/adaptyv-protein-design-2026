@@ -1,0 +1,17 @@
+entities:
+  # GLP1R ECD + ECD-TMD junction (chain R, UniProt numbering 29-129 + 136-241)
+  - file:
+      path: ../../../inputs/target-ecd-junction.pdb
+      include:
+        - chain:
+            id: R
+      # The design should bind the orthosteric groove + junction residues
+      binding_types:
+        - chain:
+            id: R
+            binding: 39,41,60,63,93,100,163,176,187,200
+  # One designed cyclic peptide, length 12-18
+  - protein:
+      id: E
+      sequence: 12..18
+      cyclic: True

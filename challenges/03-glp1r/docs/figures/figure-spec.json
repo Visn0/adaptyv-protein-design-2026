@@ -1,0 +1,231 @@
+{
+  "challenge": "03-glp1r",
+  "funnel": {
+    "title": "The funnel: 800 designs in, 20 designs out",
+    "subtitle": "Green chips are free CPU screens that run in seconds, orange chips cost GPU minutes, and the pink chip is the expensive verification round - every design re-folded five times against the full 409-residue receptor",
+    "generation": {
+      "heading": "Generation - 800 scored designs",
+      "sub": "five independent generators plus one re-sequencer, all conditioned on the ECD-TMD junction or deeper; counts from records/selection-scores-2026-10-23.csv",
+      "slices": [
+        {
+          "label": "RFD4-Proteina \u00b7 401",
+          "count": 401,
+          "color": "#60a5fa",
+          "legend": "RFD4-Proteina (hosted, NVIDIA's free GPU pool): three rounds - the deep message region at 60-100 aa (256), the ECD-TMD junction block K197/Q210/Q221/Q234 (73), the deep region at 40-70 aa (72)"
+        },
+        {
+          "label": "SolubleMPNN \u00b7 154",
+          "count": 154,
+          "color": "#34d399",
+          "legend": "SolubleMPNN re-sequencing: not a generator - champion backbones re-sequenced with the interface pinned and only the periphery redesigned (40 + 33 + 81)"
+        },
+        {
+          "label": "BoltzGen \u00b7 145",
+          "count": 145,
+          "color": "#a3e635",
+          "legend": "BoltzGen 0.3.2: cyclic peptides on the junction constraint (55), the 20-24 aa length class (30), the junction recipe at 60-design scale (60)"
+        },
+        {
+          "label": "RFdiffusion3 \u00b7 67",
+          "count": 67,
+          "color": "#f59e0b",
+          "legend": "RFdiffusion3: miniproteins, contig 60-100, first against groove+junction hotspots and then against the junction alone - the comparison that produced the split rule"
+        },
+        {
+          "label": "BindCraft2 \u00b7 18",
+          "count": 18,
+          "color": "#22d3ee",
+          "legend": "BindCraft2: 15-18 aa peptides at the junction, its own gates relaxed so that raw output reaches our independent screen (it accepted 0 of 50)"
+        },
+        {
+          "label": "EvoBind \u00b7 15",
+          "count": 15,
+          "color": "#f472b6",
+          "legend": "EvoBind: peptides designed from sequence alone, no backbone and no template - the only route whose GLP1R designs have activated the receptor in published cAMP assays"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "kind": "filter",
+        "title": "Co-fold against the full receptor",
+        "text": "Boltz-2 2.2.1, 5 diffusion samples per design, seed 42, binder as chain A and the whole 409-residue construct as chain B, receptor MSA depth-capped at 1024 rows. Never a cut-down target: a binder designed against the extracellular domain alone clashes into the omitted transmembrane bundle. The uncapped server MSA needed 14.65 GiB and was killed; capped, a fold runs about 90 s at ~11.7 GiB.",
+        "cost": "expensive - GPU hours, 5 models per design",
+        "tone": "pink"
+      },
+      {
+        "kind": "result",
+        "heading": "800 designs, five models each",
+        "sub": "one shared pipeline, so every generator's output is scored by the same script with the same settings"
+      },
+      {
+        "kind": "filter",
+        "title": "Two-domain binding screen",
+        "text": "Per sample: ipSAE >= 0.80 (the line calibrated in challenge 2) AND at least one groove residue within 4.5 A AND at least one TM-pocket residue within 4.5 A AND zero atom pairs closer than 2.0 A. Contacts decide where a design binds; confidence never substitutes. Run by campaigns/c1-two-domain/scripts/screen_folds_c3.py.",
+        "cost": "free - CPU seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "222 two-domain HITs",
+        "sub": "a high ipSAE on the groove alone is labelled groove-only - the published antagonist outcome"
+      },
+      {
+        "kind": "filter",
+        "title": "Activation-geometry gate",
+        "text": "Six GLP-1 message-region contacts (an anion to R190, an aromatic at Y148, a small group at W306, an H-bond to Q234, a hydrophobe at E387, ECL3 contact) plus the insertion depth below the vestibule-rim centroid. Cutoffs declared before any design existed and calibrated on four experimental structures: 6X18 GLP-1 reads 6/6 at 20.59 A, the groove-only control 0/6 at 7.3 A. Run on all five samples per design by campaigns/c8-deep-junction/scripts/rescore-all.py.",
+        "cost": "free - CPU seconds per sample",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "87 designs carry the full 6/6 pattern",
+        "sub": "the gate also reports pose agreement: how many of the five samples land in the deep tier"
+      },
+      {
+        "kind": "filter",
+        "title": "Wrap-pose check",
+        "text": "A binder lying across the receptor can collect deep contacts without inserting anything. The hormone-footprint lens (19 reference contacts from 6X18) exposed the class: three of the four designs that reached the pool's ceiling of 6 of 19 were wrapping at depths of 57-74 A. Beyond the declared 30 A threshold a design loses a full point of activation credit.",
+        "cost": "free - CPU seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "Wrapping poses penalised, not trusted",
+        "sub": "pool ceiling on the harsh lens is 6 of 19; the ranking's leaders reproduce 3 to 5"
+      },
+      {
+        "kind": "filter",
+        "title": "Hard quality floors",
+        "text": "Applied before ranking, because the composite under-weights what makes a design untestable: no design below 63 pLDDT, none below 0.18 pDockQ2, and no low-complexity sequence (residue entropy below 2.5 bits, a single residue above 45 % of the chain, or a homopolymer run of 6 or more). The floors exist because the selector once returned a 24-residue poly-alanine tract that scored 88.4.",
+        "cost": "free - CPU seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "486 removed, 314 eligible",
+        "sub": "the floors cut more than half the pool before a single design is ranked"
+      },
+      {
+        "kind": "filter",
+        "title": "Composite ranking and de-duplication",
+        "text": "total = 2*A + 1.5*B + 1*E + 0.5*R, each term capped at 5.0: A is activation evidence (6/6 with strong pose agreement = 5), B is binding on ipSAE bands with a bonus at pDockQ2 >= 0.30, E is expression risk from pLDDT and hydropathy bands, R is the fraction of the groove / TM-pocket / ECL3 path recovered. Activation outweighs binding because the organizers' prompt says evidence for the hardest goal wins. Any sequence >= 90 % identical to one already kept is rejected; the family count breaks ties only.",
+        "cost": "free - CPU seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "Top 20 by score",
+        "sub": "the cut is tight: the twentieth entry scores 87.8 and the first design below the line scores 87.8 on a total 0.02 lower"
+      },
+      {
+        "kind": "filter",
+        "title": "The organizers' prescreen",
+        "text": "adaptyvbio/binder-prescreen against its 225-entry GLP1R reference set (215 GLP-1 analogue peptides, 7 antibody chains, 3 peptide-Fc fusions): 18 pass and 2 return no_reference_signal - both peptides under the tool's documented 25-residue floor. Target similarity 0.00 on nineteen entries, every cluster size 1.",
+        "cost": "free - CPU seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "Zero flags",
+        "sub": "no entry is a known binder or a near-match to one"
+      }
+    ],
+    "final": {
+      "heading": "20 designs submitted",
+      "sub": "13 to 96 residues; 17 at the full 6/6 activation pattern and 3 at 5/6; insertion depths 17.6 to 29.3 A around the hormone's own 20.6 A; six method families"
+    },
+    "note": {
+      "title": "The loop that fed champions back in.",
+      "text": "Interface-pinned SolubleMPNN re-sequencing ran three times on backbones that had already passed the gate - campaign 1's champions (40 variants), the one c1 design with the full 6/6 geometry (33), and all 27 full-geometry RFD4 champions (81). It is not machine learning: nothing is trained, the interface residues within 4 A are held fixed so the pose survives by construction, and every child is judged by the same fold-and-score instruments as its parent. The third pass returned 25 full-geometry variants from 81 - a 31 % rate, the highest of any single pass in the challenge, generator rounds included."
+    }
+  },
+  "molecular_figures": [
+    {
+      "slug": "junction-epitope",
+      "caption": "The same epitope reached three ways. Left: c13-junction-b43-d02, the 96-residue junction-conditioned RFD4 champion that leads the submission (6/6 at 19.2 A, all five samples deep, ipSAE 0.918). Middle: c2-run1-b206, the 15-residue EvoBind peptide that reproduces the full pattern at 20.6 A - the hormone's own depth in 6X18 is 20.59 A. Right: e1-r0025, the 66-residue RFdiffusion3 miniprotein with the pool's highest ipSAE at 0.933 and 5 of 6 contacts. The receptor is the same full 409-residue construct in all three panels; the designs differ by a factor of six in size and land in the same place.",
+      "panels": [
+        {
+          "label": "c13-junction-b43-d02 - 96 aa, 6/6 at 19.2 A",
+          "source_page": "viewers/multiview/c13-junction.html",
+          "item_ids": [
+            "c13-junction-b43-d02",
+            "target"
+          ],
+          "focus_chains": [
+            "A"
+          ],
+          "near_chains": [
+            "B"
+          ]
+        },
+        {
+          "label": "c2-run1-b206 - 15 aa EvoBind peptide, 6/6 at 20.6 A",
+          "source_page": "viewers/multiview/c2-peptide-agonists.html",
+          "item_ids": [
+            "c2-run1-b206",
+            "target"
+          ],
+          "focus_chains": [
+            "A"
+          ],
+          "near_chains": [
+            "B"
+          ]
+        },
+        {
+          "label": "e1-r0025 - 66 aa RFdiffusion3 miniprotein, ipSAE 0.933",
+          "source_page": "viewers/multiview/c1-two-domain.html",
+          "item_ids": [
+            "e1-r0025",
+            "target"
+          ],
+          "focus_chains": [
+            "A"
+          ],
+          "near_chains": [
+            "B"
+          ]
+        }
+      ],
+      "align_to_first": true,
+      "share_focus": true
+    },
+    {
+      "slug": "resequencing-family",
+      "caption": "The re-sequencing loop in one picture. Left: c12-b21-d08, the 81-residue RFD4-Proteina champion (6/6 at 20.1 A, 5/5 pose agreement, ipSAE 0.869). Right: c12-mpnn-b21-d08-v1, the interface-pinned SolubleMPNN variant of the same backbone - the interface residues within 4 A are held fixed and only the periphery is redesigned, so the pose is preserved by construction (6/6 at 20.3 A, 5/5, ipSAE 0.869, pLDDT 79.8 against the parent's 79.1). Both are in the submitted twenty; this pass produced the best full-geometry yield of the challenge, 25 of 81.",
+      "panels": [
+        {
+          "label": "parent: c12-b21-d08 (RFD4-Proteina)",
+          "source_page": "viewers/multiview/c12-rfd4-proteina.html",
+          "item_ids": [
+            "c12-b21-d08",
+            "target"
+          ],
+          "focus_chains": [
+            "A"
+          ],
+          "near_chains": [
+            "B"
+          ]
+        },
+        {
+          "label": "variant: c12-mpnn-b21-d08-v1 (SolubleMPNN, interface pinned)",
+          "source_page": "viewers/multiview/c12-mpnn-variants.html",
+          "item_ids": [
+            "c12-mpnn-b21-d08-v1",
+            "target"
+          ],
+          "focus_chains": [
+            "A"
+          ],
+          "near_chains": [
+            "B"
+          ]
+        }
+      ],
+      "share_focus": true,
+      "align_to_first": true
+    }
+  ]
+}

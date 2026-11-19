@@ -1,0 +1,195 @@
+{
+  "name": "mce-14-mouse",
+  "source": [
+    "~/c2-work/genie3/folds/mce-14/boltz_results_mce-14/predictions/mce-14/mce-14_model_0.cif"
+  ],
+  "binder_chains": [
+    "A"
+  ],
+  "target_chains": [
+    "B",
+    "C",
+    "D"
+  ],
+  "interface_residues": [
+    [
+      7,
+      "A"
+    ],
+    [
+      10,
+      "A"
+    ],
+    [
+      14,
+      "A"
+    ],
+    [
+      15,
+      "D"
+    ],
+    [
+      16,
+      "D"
+    ],
+    [
+      17,
+      "D"
+    ],
+    [
+      18,
+      "D"
+    ],
+    [
+      21,
+      "A"
+    ],
+    [
+      26,
+      "A"
+    ],
+    [
+      29,
+      "A"
+    ],
+    [
+      30,
+      "A"
+    ],
+    [
+      33,
+      "A"
+    ],
+    [
+      34,
+      "A"
+    ],
+    [
+      36,
+      "A"
+    ],
+    [
+      37,
+      "A"
+    ],
+    [
+      38,
+      "A"
+    ],
+    [
+      40,
+      "A"
+    ],
+    [
+      41,
+      "A"
+    ],
+    [
+      44,
+      "A"
+    ],
+    [
+      45,
+      "A"
+    ],
+    [
+      46,
+      "A"
+    ],
+    [
+      60,
+      "D"
+    ],
+    [
+      62,
+      "D"
+    ],
+    [
+      67,
+      "B"
+    ],
+    [
+      68,
+      "B"
+    ],
+    [
+      69,
+      "B"
+    ],
+    [
+      71,
+      "B"
+    ],
+    [
+      91,
+      "B"
+    ],
+    [
+      104,
+      "D"
+    ],
+    [
+      107,
+      "D"
+    ],
+    [
+      109,
+      "D"
+    ],
+    [
+      131,
+      "B"
+    ],
+    [
+      132,
+      "B"
+    ],
+    [
+      137,
+      "D"
+    ],
+    [
+      138,
+      "D"
+    ],
+    [
+      139,
+      "D"
+    ],
+    [
+      140,
+      "D"
+    ],
+    [
+      143,
+      "D"
+    ]
+  ],
+  "interface_count": 38,
+  "modes": [
+    "cartoon",
+    "surface",
+    "interface"
+  ],
+  "views": 3,
+  "view_note": "viewpoints 0/1/2 are 120-degree azimuth steps at 15-degree elevation",
+  "mode_notes": {
+    "cartoon": "ribbon cartoon; binder pink, target chains cyan family",
+    "surface": "molecular surface (quality medium); same chain colours",
+    "interface": "cartoon plus interface residues as amber ball-and-stick (4.5 A heavy-atom contact)"
+  },
+  "files": [
+    "mce-14-mouse_cartoon_view0.png",
+    "mce-14-mouse_cartoon_view1.png",
+    "mce-14-mouse_cartoon_view2.png",
+    "mce-14-mouse_surface_view0.png",
+    "mce-14-mouse_surface_view1.png",
+    "mce-14-mouse_surface_view2.png",
+    "mce-14-mouse_interface_view0.png",
+    "mce-14-mouse_interface_view1.png",
+    "mce-14-mouse_interface_view2.png"
+  ],
+  "failures": [],
+  "generated": "2026-10-17T18:07:45+00:00",
+  "note": "Rendered from a predicted structure with Mol*; a fold is a model, not a binding measurement."
+}

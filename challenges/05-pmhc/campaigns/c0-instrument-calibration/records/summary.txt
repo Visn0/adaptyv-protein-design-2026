@@ -1,0 +1,82 @@
+arm | instrument | metric | mean | min | max | n
+pos-g12d | boltz | b2m_contacts_45 | 0.000 | 0 | 0 | 5
+pos-g12d | boltz | b2m_read | 0.746 | 0.726 | 0.762 | 5
+pos-g12d | boltz | hla_contacts_45 | 227.600 | 221 | 233 | 5
+pos-g12d | boltz | hla_read | 0.903 | 0.894 | 0.91 | 5
+pos-g12d | boltz | p6_min_dist | 2.996 | 2.97 | 3.03 | 5
+pos-g12d | boltz | peptide_binder_residues | 8.000 | 8 | 8 | 5
+pos-g12d | boltz | peptide_contacts_45 | 58.600 | 56 | 61 | 5
+pos-g12d | boltz | peptide_read | 0.652 | 0.629 | 0.669 | 5
+pos-wt | boltz | b2m_contacts_45 | 0.000 | 0 | 0 | 5
+pos-wt | boltz | b2m_read | 0.789 | 0.776 | 0.807 | 5
+pos-wt | boltz | hla_contacts_45 | 233.400 | 222 | 243 | 5
+pos-wt | boltz | hla_read | 0.925 | 0.92 | 0.933 | 5
+pos-wt | boltz | p6_min_dist | 3.076 | 3.02 | 3.1 | 5
+pos-wt | boltz | peptide_binder_residues | 8.000 | 8 | 8 | 5
+pos-wt | boltz | peptide_contacts_45 | 70.200 | 68 | 73 | 5
+pos-wt | boltz | peptide_read | 0.695 | 0.679 | 0.721 | 5
+neg-peptidefree | boltz | b2m_contacts_45 | 0.000 | 0 | 0 | 5
+neg-peptidefree | boltz | b2m_read | 0.312 | 0.28 | 0.35 | 5
+neg-peptidefree | boltz | hla_contacts_45 | 228.800 | 216 | 235 | 5
+neg-peptidefree | boltz | hla_read | 0.487 | 0.456 | 0.53 | 5
+neg-shuffled | boltz | b2m_contacts_45 | 4.800 | 0 | 24 | 5
+neg-shuffled | boltz | b2m_read | 0.000 | 0.0 | 0.0 | 5
+neg-shuffled | boltz | hla_contacts_45 | 465.800 | 319 | 583 | 5
+neg-shuffled | boltz | hla_read | 0.005 | 0.0 | 0.012 | 5
+neg-shuffled | boltz | p6_min_dist | 4.064 | 2.61 | 6.18 | 5
+neg-shuffled | boltz | peptide_binder_residues | 8.400 | 1 | 12 | 5
+neg-shuffled | boltz | peptide_contacts_45 | 91.200 | 19 | 151 | 5
+neg-shuffled | boltz | peptide_read | 0.005 | 0.0 | 0.013 | 5
+pos-g12d | chai | b2m_contacts_45 | 126.200 | 0 | 522 | 5
+pos-g12d | chai | hla_contacts_45 | 987.400 | 883 | 1099 | 5
+pos-g12d | chai | iptm | 0.141 | 0.139 | 0.144 | 5
+pos-g12d | chai | p6_min_dist | 2.756 | 2.05 | 3.66 | 5
+pos-g12d | chai | peptide_binder_residues | 18.800 | 15 | 23 | 5
+pos-g12d | chai | peptide_contacts_45 | 182.400 | 129 | 250 | 5
+pos-wt | chai | b2m_contacts_45 | 113.800 | 0 | 333 | 5
+pos-wt | chai | hla_contacts_45 | 977.400 | 606 | 1448 | 5
+pos-wt | chai | iptm | 0.142 | 0.138 | 0.144 | 5
+pos-wt | chai | p6_min_dist | 3.132 | 2.33 | 4.13 | 5
+pos-wt | chai | peptide_binder_residues | 18.800 | 14 | 26 | 5
+pos-wt | chai | peptide_contacts_45 | 222.600 | 144 | 345 | 5
+neg-peptidefree | chai | b2m_contacts_45 | 107.400 | 0 | 356 | 5
+neg-peptidefree | chai | hla_contacts_45 | 1197.400 | 758 | 1642 | 5
+neg-peptidefree | chai | iptm | 0.132 | 0.126 | 0.135 | 5
+neg-shuffled | chai | b2m_contacts_45 | 132.200 | 0 | 358 | 5
+neg-shuffled | chai | hla_contacts_45 | 1074.600 | 734 | 1517 | 5
+neg-shuffled | chai | iptm | 0.139 | 0.134 | 0.141 | 5
+neg-shuffled | chai | p6_min_dist | 2.894 | 2.49 | 3.86 | 5
+neg-shuffled | chai | peptide_binder_residues | 12.600 | 9 | 17 | 5
+neg-shuffled | chai | peptide_contacts_45 | 134.400 | 58 | 194 | 5
+pos-g12d | chai-msa | b2m_contacts_45 | 0.000 | 0 | 0 | 5
+pos-g12d | chai-msa | hla_contacts_45 | 204.600 | 134 | 246 | 5
+pos-g12d | chai-msa | iptm | 0.895 | 0.883 | 0.902 | 5
+pos-g12d | chai-msa | p6_min_dist | 2.598 | 2.02 | 3.3 | 5
+pos-g12d | chai-msa | peptide_binder_residues | 9.600 | 9 | 11 | 5
+pos-g12d | chai-msa | peptide_contacts_45 | 87.800 | 67 | 95 | 5
+pos-wt | chai-msa | b2m_contacts_45 | 0.000 | 0 | 0 | 5
+pos-wt | chai-msa | hla_contacts_45 | 241.800 | 182 | 290 | 5
+pos-wt | chai-msa | iptm | 0.877 | 0.876 | 0.879 | 5
+pos-wt | chai-msa | p6_min_dist | 2.536 | 2.03 | 3.87 | 5
+pos-wt | chai-msa | peptide_binder_residues | 9.400 | 8 | 10 | 5
+pos-wt | chai-msa | peptide_contacts_45 | 101.600 | 84 | 123 | 5
+neg-peptidefree | chai-msa | b2m_contacts_45 | 0.000 | 0 | 0 | 5
+neg-peptidefree | chai-msa | hla_contacts_45 | 328.800 | 280 | 364 | 5
+neg-peptidefree | chai-msa | iptm | 0.797 | 0.795 | 0.8 | 5
+neg-shuffled | chai-msa | b2m_contacts_45 | 0.000 | 0 | 0 | 5
+neg-shuffled | chai-msa | hla_contacts_45 | 442.400 | 281 | 546 | 5
+neg-shuffled | chai-msa | iptm | 0.653 | 0.65 | 0.656 | 5
+neg-shuffled | chai-msa | p6_min_dist | 2.342 | 1.47 | 3.09 | 5
+neg-shuffled | chai-msa | peptide_binder_residues | 14.400 | 13 | 17 | 5
+neg-shuffled | chai-msa | peptide_contacts_45 | 151.600 | 92 | 201 | 5
+
+delta (pos-g12d - pos-wt), boltz means:
+  b2m_contacts_45: +0.000
+  b2m_read: -0.043
+  hla_contacts_45: -5.800
+  hla_read: -0.022
+  iptm: +nan
+  p6_min_dist: -0.080
+  peptide_binder_residues: +0.000
+  peptide_contacts_45: -11.600
+  peptide_read: -0.043

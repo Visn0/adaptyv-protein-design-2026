@@ -1,0 +1,6 @@
+design,delta_log_Ka,fold_selectivity,ddG_kcal_per_mol,effective_sites,delta_nu_at_high_pH,delta_nu_at_low_pH
+ds-mce-14-v6-human.pdb,-0.113,0.8,0.154,2,-0.045,0.242
+v6-human.pdb,-0.167,0.7,0.228,1,0.005,0.255
+ds-mce-14-v6-mouse.pdb,-0.712,0.2,0.971,2,0.183,0.704
+ds-mce-14-v7-mouse.pdb,-0.946,0.1,1.291,3,-0.004,1.227
+mce-14-mouse.pdb,-0.991,0.1,1.352,4,-0.052,1.292

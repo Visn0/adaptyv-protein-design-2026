@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1060" viewBox="0 0 1200 1060" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="1060" fill="#0b0c14"/>
+  <text x="60" y="52" fill="#e8edf7" font-size="27" font-weight="bold">Challenge 2 — the experiment log</text>
+  <text x="60" y="80" fill="#8b97ad" font-size="15">Research → X1 (negative) → X2 (positive). 15 October 2026. Every number below is measured, not estimated.</text>
+
+  <!-- spine boxes -->
+  <!-- 1 -->
+  <rect x="60" y="112" width="520" height="80" rx="10" fill="#131a2b" stroke="#1d2435"/>
+  <text x="80" y="140" fill="#0da2e7" font-size="13" font-weight="bold">PHASE 0 · RESEARCH</text>
+  <text x="80" y="163" fill="#e8edf7" font-size="16" font-weight="bold">Three public entries reviewed</text>
+  <text x="80" y="183" fill="#8b97ad" font-size="13">RFdiffusion 0/48 docked · BoltzGen 5 runs, best ipTM 0.46 · notes 01–07 written</text>
+
+  <!-- 2 -->
+  <rect x="60" y="236" width="520" height="80" rx="10" fill="#131a2b" stroke="#1d2435"/>
+  <text x="80" y="264" fill="#0da2e7" font-size="13" font-weight="bold">PLAN · PRE-REGISTERED</text>
+  <text x="80" y="287" fill="#e8edf7" font-size="16" font-weight="bold">X1 spec, stop rules, hotspot rule</text>
+  <text x="80" y="307" fill="#8b97ad" font-size="13">pass bar: ipSAE ≥ 0.6 ∧ pDockQ2 ≥ 0.23 ∧ ≥100 contacts · span ≤15 Å · full trimer</text>
+
+  <!-- 3 -->
+  <rect x="60" y="360" width="520" height="80" rx="10" fill="#131a2b" stroke="#1d2435"/>
+  <text x="80" y="388" fill="#0da2e7" font-size="13" font-weight="bold">TOOLING</text>
+  <text x="80" y="411" fill="#e8edf7" font-size="16" font-weight="bold">Tamarind agent key · local stack</text>
+  <text x="80" y="431" fill="#8b97ad" font-size="13">no login needed · 10 jobs/month · validate free · Mac MPS fork imports (checkpoint blocked)</text>
+
+  <!-- 4 -->
+  <rect x="60" y="484" width="520" height="80" rx="10" fill="#131a2b" stroke="#4a86e8"/>
+  <text x="80" y="512" fill="#0da2e7" font-size="13" font-weight="bold">X1 · SUBMITTED</text>
+  <text x="80" y="535" fill="#e8edf7" font-size="16" font-weight="bold">3 × BoltzGen, 150 designs</text>
+  <text x="80" y="555" fill="#8b97ad" font-size="13">S1 {A65,A67,C75} · S2 {A103,B103,B112} · S3 none · ~60 min each · 3 jobs</text>
+
+  <!-- 5 -->
+  <rect x="60" y="608" width="520" height="80" rx="10" fill="#1d1418" stroke="#e75f5f"/>
+  <text x="80" y="636" fill="#e75f5f" font-size="13" font-weight="bold">X1 · VERDICT — NEGATIVE</text>
+  <text x="80" y="659" fill="#e8edf7" font-size="16" font-weight="bold">0 / 150 designs dock</text>
+  <text x="80" y="679" fill="#8b97ad" font-size="13">best design→target ipTM 0.36 · ipSAE ≈ 0 · touches the surface, no confident interface</text>
+
+  <!-- 6 -->
+  <rect x="60" y="732" width="520" height="80" rx="10" fill="#101d18" stroke="#34c98e"/>
+  <text x="80" y="760" fill="#34c98e" font-size="13" font-weight="bold">X2 · COMPLETE — PLACEMENT WORKS</text>
+  <text x="80" y="783" fill="#e8edf7" font-size="16" font-weight="bold">58 / 72 designs in the groove</text>
+  <text x="80" y="803" fill="#8b97ad" font-size="13">spanning two protomers · 72/72 touch the 60s loop · 27 clashy · billed 6 jobs</text>
+
+  <!-- 7 -->
+  <rect x="60" y="856" width="520" height="80" rx="10" fill="#101d18" stroke="#34c98e"/>
+  <text x="80" y="884" fill="#34c98e" font-size="13" font-weight="bold">DECISIVE CO-FOLD · PASSED</text>
+  <text x="80" y="907" fill="#e8edf7" font-size="16" font-weight="bold">1 of 5 samples passes the bar</text>
+  <text x="80" y="927" fill="#8b97ad" font-size="13">ipSAE 0.80 · pDockQ2 0.24 vs X1's 0.005 · seed variance is the caveat</text>
+
+  <!-- arrows -->
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3a4356"/>
+    </marker>
+  </defs>
+  <line x1="320" y1="192" x2="320" y2="234" stroke="#3a4356" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="320" y1="316" x2="320" y2="358" stroke="#3a4356" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="320" y1="440" x2="320" y2="482" stroke="#3a4356" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="320" y1="564" x2="320" y2="606" stroke="#3a4356" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="320" y1="688" x2="320" y2="730" stroke="#3a4356" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="320" y1="812" x2="320" y2="854" stroke="#3a4356" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- right annotations -->
+  <text x="620" y="140" fill="#8b97ad" font-size="13.5">Key facts carried forward:</text>
+  <text x="620" y="164" fill="#c9d3e4" font-size="13">• the 36 Å hotspot map failed; ≤15 Å worked (C1)</text>
+  <text x="620" y="185" fill="#c9d3e4" font-size="13">• partial targets let binders fill the missing protomer</text>
+
+  <text x="620" y="264" fill="#c9d3e4" font-size="13">Pre-registration in research-phase-0 §5.</text>
+  <text x="620" y="285" fill="#c9d3e4" font-size="13">S1 built from 3WD5 contacts + mouse conservation</text>
+  <text x="620" y="306" fill="#c9d3e4" font-size="13">+ exposure; winner spans 12.7 Å across two protomers.</text>
+
+  <text x="620" y="388" fill="#c9d3e4" font-size="13">Key path: ~/.config/tamarind/api_key</text>
+  <text x="620" y="409" fill="#c9d3e4" font-size="13">Claim URL issued → Clerk sign-in (Google / email / SSO)</text>
+
+  <text x="620" y="512" fill="#c9d3e4" font-size="13">Settings: 70–95 aa binders · numDesigns 50 · refold ON</text>
+  <text x="620" y="533" fill="#c9d3e4" font-size="13">· binding-site post-filter OFF (adherence measured locally)</text>
+  <text x="620" y="554" fill="#c9d3e4" font-size="13">· full trimer A+B+C, never a partial target</text>
+
+  <text x="620" y="636" fill="#c9d3e4" font-size="13">Evidence: S1 best 162/639 atoms within 4 Å of the trimer</text>
+  <text x="620" y="657" fill="#c9d3e4" font-size="13">(closest pair 1.4 Å) — yet interface ipSAE ≈ 0.005.</text>
+  <text x="620" y="678" fill="#c9d3e4" font-size="13">The no-hotspot diagnostic S3 fails too → site is not the limiter.</text>
+
+  <text x="620" y="760" fill="#c9d3e4" font-size="13">Quota lesson: rfdiffusion3 bills ≈1 job per 8 designs.</text>
+  <text x="620" y="781" fill="#c9d3e4" font-size="13">boltzgen bills 1 job per run (X1: 3 jobs).</text>
+  <text x="620" y="802" fill="#c9d3e4" font-size="13">Quota resets 1 November — after the C2 deadline.</text>
+
+  <text x="620" y="884" fill="#c9d3e4" font-size="13">Placement measured locally; Boltz-2 (independent) folded 5 samples:</text>
+  <text x="620" y="905" fill="#c9d3e4" font-size="13">1 passed (ipSAE 0.80), 1 near (0.53), 1 partial, 2 lost it.</text>
+  <text x="620" y="926" fill="#c9d3e4" font-size="13">Next: repeat folds (PC route) · switch layer · mouse check.</text>
+
+  <!-- footer band -->
+  <rect x="60" y="962" width="1080" height="66" rx="10" fill="#101623" stroke="#1d2435"/>
+  <text x="80" y="988" fill="#8b97ad" font-size="13">Rules that held through every step:</text>
+  <text x="80" y="1010" fill="#c9d3e4" font-size="13">full trimer only · hotspot span ≤15 Å · pass bar fixed before the spend · one writer per file · watchers download results on settle · every claim dated and sourced</text>
+</svg>

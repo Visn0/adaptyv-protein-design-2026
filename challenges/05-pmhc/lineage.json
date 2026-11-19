@@ -1,0 +1,1345 @@
+{
+  "experiments": [
+    {
+      "id": "c0-instrument-calibration",
+      "title": "C0 — calibrating the instruments on this target",
+      "date": "2026-10-29",
+      "verdict": "The co-fold screens are blind to single-point peptide discrimination — proven with controls. Specificity must ride on interaction rules, not confidence deltas.",
+      "best": false,
+      "scores": {},
+      "summary": "Folded the organizers' own crystal structures plus a known-good control set (the published JDI TCR, shuffled-peptide and peptide-free negatives) and read every instrument against them. Boltz-2 and BindCraft2 read the wrong sign on the mutant-vs-wild-type comparison (ipTM delta -0.043); Chai-1 with MSAs was the first instrument with the correct sign. The target's chemistry was measured directly from the crystals: the G12D aspartate sits buried (10% exposed), salt-bridged to HLA R114 and hydrogen-bonded to Q70 — the discrimination is an electrostatic field perturbation, exactly what the JDI TCR reads indirectly. 2026-11-03: a third instrument class failed its control - the Rosetta desolvation ddG read +0.0 without repack and -0.1 with interface repack on the JDI control, so it is disqualified. Fold confidence, contact physics and shape ensembles (BioEmu2, flat WT/G12D contrast) now all fail their controls here; only the explicit-electrostatics E-score passes.",
+      "goal": "Find out which instruments can see this target's specificity before trusting any of them.",
+      "goal_extra": [
+        "Strategy difference: the only campaign whose deliverable is a decision, not designs — it judges instruments and rules, and every later campaign inherits that calibration.",
+        "Answers: can a co-fold screen separate G12D from WT? (No.)",
+        "Answers: what interaction should a designed binder make? (A basic residue in the 6-8 A shell above P6/P7 — the JDI TCR's indirect electrostatic read.)"
+      ],
+      "verdict_detail": "Controls: the known JDI TCR reads 0.94-0.95 peptide ipTM in its own complex; the peptide-free and shuffled controls collapse (0.49 / 0.005). Boltz-2 and BindCraft2 read G12D-vs-WT with the wrong sign (their deltas are disqualified as a specificity signal); Chai-1 with MSAs reads 0.895 vs 0.877 — correct sign, supporting evidence only. i_pDAE (BindCraft2's interface pDAE) was added after the benchmark review showed it has the best top-decile precision of the fold metrics. 2026-11-03 instrument audit (corrected 20-design table): E_v2 unchanged vs v1 on every entry; two designs have shell histidines at 6.88 A and 6.10 A from the D6 carboxylate - the polar-read class the charge model cannot see. 2026-11-03, that desolvation instrument: built (Rosetta fa_sol ddG on the JDI control) and FAILED - ddG +0.0 without repack, -0.1 with interface repack - so it is disqualified for ranking. Three instrument classes now fail their controls on this target: fold confidence (C0, sign inversion), contact physics (Rosetta, zero) and shape ensembles (BioEmu2, flat WT/G12D contrast). Only the explicit-electrostatics E-score passes - the project's core finding.",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — the target files and the control set",
+          "date": "2026-10-29",
+          "tools": [
+            "Gemmi",
+            "Boltz-2"
+          ],
+          "text": "Three organizer structures (G12D complex, WT complex, peptide-free) plus RCSB references; controls built from the published JDI TCR with a 621-residue Fv trim that this host can fold without crashing.",
+          "steps": [],
+          "outcome": "9 control folds, all instruments calibrated.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — the instrument matrix",
+          "date": "2026-10-30",
+          "tools": [
+            "Boltz-2",
+            "Chai-1",
+            "BindCraft2",
+            "IPSAE"
+          ],
+          "text": "Every instrument read against the same controls: Boltz-2 (5 models per fold), Chai-1 (single-sequence and MSA routes), BindCraft2 filters, ipSAE and i_pDAE interface metrics. Only the MSA route of Chai-1 separates mutant from wild type with the correct sign.",
+          "steps": [],
+          "outcome": "Specificity ranking rides on rules + the three-state panel, not on any single confidence number.",
+          "viewer": []
+        },
+        {
+          "id": "r1",
+          "title": "R — the interaction rules from the crystals",
+          "date": "2026-10-31",
+          "tools": [
+            "Gemmi",
+            "FreeSASA"
+          ],
+          "text": "Measured from the organizer crystals: Asp6 SASA 8.8 A2 (10.4% free), OD2-R114 2.95 A salt bridge, OD2-Q70 3.08 A hydrogen bond, closest JDI atom 7.51 A. The 10-mer register is the productive one; the 9-mer is a flattened decoy.",
+          "steps": [],
+          "outcome": "The design rules: a peptide-first footprint (arc over the ridge P4-P8) plus a basic nitrogen in the 6-8 A shell above P6/P7.",
+          "viewer": []
+        },
+        {
+          "id": "a1",
+          "title": "A - the 2026-11-03 instrument audit",
+          "date": "2026-11-03",
+          "tools": [],
+          "text": "An external review caught the E-score's blind spot: v1 carried Asp/Glu/Lys/Arg only, blind to histidine - the residue class the native JDI discriminator itself uses (TCRbeta His100, 7.5 A from the carboxylate). The fix, escore2.py, is PROPKA-aware: each binder His gets a pKa, the fraction f = 1/(1+10^(7.4-pKa)) puts +0.5*f on the ring nitrogens, calibration matched to v1 exactly. Re-read on all 20 submissions: every shell histidine reads 0% protonated (the HLA R114 +1 field disfavours it), so E_v2 equals v1 on the whole set and the corrected 20-design table is unchanged; no charged His exists in any shell, and the two closest shell histidines sit at 6.88 A and 6.10 A from the carboxylate. The finding that matters: the set's shell readers are polar groups (Ser/Thr/Tyr/Asn/Gln/His at 6-7 A), not charged ones - a charge-Coulomb score undercounts them, and a polar/desolvation instrument is the open item.",
+          "steps": [],
+          "outcome": "Blind spot fixed; E_v2 equals v1 on all 20; no ranking changes.",
+          "viewer": []
+        },
+        {
+          "id": "d1",
+          "title": "D - the desolvation instrument (control failed)",
+          "date": "2026-11-03",
+          "tools": [
+            "Rosetta ref2015"
+          ],
+          "text": "Built the external review's suggested desolvation upgrade: interface analysis, a P6 D->G mutation and a fa_sol decomposition in Rosetta. The standing control discipline applies: the JDI fold must read positive (it prefers the mutant peptide). It read +0.0 without repack and -0.1 with interface repack. The mutation is invisible to a fixed-charge force field because there are no contacts to change - the nearest JDI atom sits 7.5 A away (the C0 measurement). The interface repack drops absolute energies by about 96 REU and leaves the mutation effect at zero. The Wu 2022 precedent does not transfer: their mutated residue sits in the interface, ours is read through the field.",
+          "steps": [],
+          "outcome": "Disqualified - do not rank on it. Three instrument classes now fail their controls on this target: fold confidence (C0, sign inversion), contact physics (Rosetta, zero) and shape ensembles (BioEmu2, flat WT/G12D contrast). Only direct electrostatics reads the mutation - the core finding.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "pos-g12d"
+      ]
+    },
+    {
+      "id": "c1-main-funnel",
+      "title": "C1 — the main funnel (four NIM waves)",
+      "date": "2026-10-31",
+      "verdict": "239 designs folded, 40 tri-stated, 6 dual-signal. The pipeline works end to end; specificity is rare — about 15% of tri-stated candidates.",
+      "best": true,
+      "scores": {},
+      "summary": "Four hosted RFdiffusion4 NIM waves conditioned on the peptide ridge (hotspots P4-P8), screened for the peptide-first footprint before sequence assignment, folded against G12D, then tri-stated (mutant / wild-type / peptide-free). The best designs arc over the ridge and read the mutant's electrostatic field with basic residues — the C0 rule, executed at scale.",
+      "goal": "Run the full design funnel at volume: generate, screen, fold, tri-state, rank.",
+      "goal_extra": [
+        "Strategy difference: the volume campaign — every later campaign varies one axis (peptide-only, natural mimics, charge-first, minibinders) against this baseline.",
+        "Answers: does the peptide-first screen transfer to real folds? (Yes — passers land 0.85-0.97 ipTM at 4x the rate of unscreened designs.)"
+      ],
+      "verdict_detail": "Wave yields: pose screen passes about 20% of every wave; of the folded passers, roughly a quarter are JDI-like (ipTM >= 0.8). Of 40 tri-stated candidates, 6 carry both signals (WT discrimination dWT >= 0.15 and free-state dependence dfree >= 0.2) and none is vetoed. Stage 3 added multi-seed folds (max spread 0.009), Chai-1 MSA cross-checks and the homology screen — which found that 60 of 279 designs (21%) were near-copies of natural immune proteins.",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — generation against the ridge",
+          "date": "2026-10-31",
+          "tools": [
+            "RFD4-Proteina",
+            "ProteinMPNN"
+          ],
+          "text": "Four hosted NIM waves (239 designs kept) with the ridge hotspots, sequence assignment on the screened backbones.",
+          "steps": [],
+          "outcome": "239 designs entered folding.",
+          "viewer": []
+        },
+        {
+          "id": "f1",
+          "title": "F — folding and the first gate",
+          "date": "2026-10-31",
+          "tools": [
+            "Boltz-2",
+            "IPSAE"
+          ],
+          "text": "Every passer folded against the G12D complex, five models per design; reads: ipTM, ipSAE, i_pDAE. The scorer was smoke-tested against the C0 controls before use.",
+          "steps": [],
+          "outcome": "24 JDI-like folds; 5 pass the strict peptide gate.",
+          "viewer": []
+        },
+        {
+          "id": "t1",
+          "title": "T — the three-state panel",
+          "date": "2026-11-01",
+          "tools": [
+            "Boltz-2",
+            "Chai-1"
+          ],
+          "text": "Every candidate folded against WT and the peptide-free MHC; vetoes for designs that read better on the wrong state; multi-seed stability and Chai-1 MSA checks on the finalists.",
+          "steps": [],
+          "outcome": "6 dual-signal designs; the stage-3 top-20 assembled.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "wave2-pep__run-054__design_0005__g12d",
+        "wave1-pep__run-007__design_0000__g12d",
+        "wave2-pep__run-024__design_0007__g12d",
+        "peprim-wave1__run-012__design_0006__g12d",
+        "wave2-pep__run-009__design_0007__g12d"
+      ]
+    },
+    {
+      "id": "c2-peptide-only",
+      "title": "C2 — peptide-only readers (mining campaign)",
+      "date": "2026-11-01",
+      "verdict": "A mining campaign, not a generation one: 44 folds from the existing pool, 1 strict gate passer — and it became the submission's number two.",
+      "best": false,
+      "scores": {},
+      "summary": "No new generation: the 1,121 unfolded designs from earlier waves were re-mined by peptide contact share (>= 0.45, ridge contacts >= 10), because a binder that touches mostly the peptide has fewer chances to hold on to the healthy frame. 45 designs selected (top share 0.96 — a near-pure peptide reader), folded and scored.",
+      "goal": "Test the opposite interface shape from the main funnel's groove-floor binders: minimal HLA contact, maximal peptide contact.",
+      "goal_extra": [
+        "Strategy difference: no new generator call — it re-mines the existing design pool by a geometry property (peptide contact share), the cheapest possible campaign.",
+        "Answers: does a peptide-dense interface concentrate the mutation signal? (Yes — the family's signature holds.)"
+      ],
+      "verdict_detail": "44/45 folded, 6 JDI-like, 1 passing the strict gate. The leader (wave1-pep run-033 design_0003) clears the organizer gate, folds JDI-like and keeps a peptide-heavy interface — tri-stated at dWT +0.359 / dfree +0.392, submission entry 2. nim-wave3 run-010 design_0002 is the most peptide-focused fold (0.67 share) and is submission entry 11. Note: the fold's share can differ from the generator pose's share — the fold rearranges contacts.",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — re-mine the pool by peptide share",
+          "date": "2026-11-01",
+          "tools": [],
+          "text": "1,121 unfolded designs screened by peptide contact share (>= 0.45) and ridge contact count (>= 10).",
+          "steps": [],
+          "outcome": "45 designs selected, top share 0.96.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — folds and the tri-state",
+          "date": "2026-11-01",
+          "tools": [
+            "Boltz-2",
+            "IPSAE"
+          ],
+          "text": "G12D folds, the standard scorer, then the three-state panel for the winners.",
+          "steps": [],
+          "outcome": "1 strict passer (submission #2); the peptide-dense signature is real but rare.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "wave1-pep__run-033__design_0003__g12d",
+        "wave1-pep__run-026__design_0000__g12d",
+        "wave2-pep__run-024__design_0001__g12d",
+        "nim-wave3__run-010__design_0002__g12d"
+      ]
+    },
+    {
+      "id": "c3-natural-reader",
+      "title": "C3 — the natural reader's pattern",
+      "date": "2026-11-01",
+      "verdict": "The best yield of the variant campaigns (4 strict passers of 32, 28%) — the only conditioning set with experimental provenance, and it delivered two submission entries.",
+      "best": false,
+      "scores": {},
+      "summary": "Nature already solved this problem: the molecules evolved to read this exact target are T-cell receptors. The JDI TCR's contact atoms were measured from the real 7OW6 crystal — 17 atoms from P4 to P9, backbone-dominated, with the P7 backbone as the anchor and P6 read through its carbonyl, not its mutant side chain (the mutation acts as a field). The generator was conditioned on exactly those atoms.",
+      "goal": "Condition the generator on a real, functional reader's interaction pattern instead of our own hotspot guess.",
+      "goal_extra": [
+        "Strategy difference: the only campaign whose hotspot set comes from an experimentally verified reader of this exact target.",
+        "Answers: does a natural binding mode transfer to a de novo binder? (Yes — best gate-pass rate of the variants.)"
+      ],
+      "verdict_detail": "160 designs generated (nat-wave1), 32 folded, 9 JDI-like, 4 passing the strict gate (28%). nat-wave1 run-011 design_0004 (ipTM 0.966, i_pDAE 0.862, submission 19) and nat-wave1 run-004 design_0001 (0.959 / 0.845, submission 17).",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — measure the natural reader",
+          "date": "2026-11-01",
+          "tools": [
+            "Gemmi"
+          ],
+          "text": "Peptide atoms within 4.5 A of the JDI TCR: P4 CA; P5 CB, O; P6 C, O; P7 N, CA, C, O; P8 N, CA, C, CB, CG1, CG2; P9 N, CA — 17 atoms, backbone-dominated.",
+          "steps": [],
+          "outcome": "The NATURAL hotspot set: what a real reader actually touches.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — generate and fold on the natural pattern",
+          "date": "2026-11-01",
+          "tools": [
+            "RFD4-Proteina",
+            "ProteinMPNN",
+            "Boltz-2"
+          ],
+          "text": "nat-wave1 generation on the NATURAL set, the standard pose screen, G12D folds, tri-state for the winners.",
+          "steps": [],
+          "outcome": "4 strict passers (28%) — the variant campaigns' best; two submission entries.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "nat-wave1__run-011__design_0004__g12d",
+        "nat-wave1__run-015__design_0000__g12d",
+        "nat-wave1__run-005__design_0001__g12d",
+        "nat-wave1__run-004__design_0001__g12d"
+      ]
+    },
+    {
+      "id": "c4-charge-first",
+      "title": "C4 — charge first",
+      "date": "2026-11-01",
+      "verdict": "Zero strict passers of 25 folds — the tightest conditioning focus did not convert. An honest negative with a clear cause.",
+      "best": false,
+      "scores": {},
+      "summary": "The mutation is one extra negative charge, so this campaign conditioned the generator on the mutation's neighbourhood only (the P5-P7 ridge, 6 atoms) so every design had to solve the charge problem locally, with the C0 electrostatic rule promoted from filter to core gate.",
+      "goal": "Force every design to address the mutated charge directly instead of spreading contacts over the whole ridge.",
+      "goal_extra": [
+        "Strategy difference: the narrowest hotspot window of any campaign — 6 atoms around the mutation.",
+        "Answers: does local charge focus beat ridge-wide coverage? (No — the narrow window starves the interface.)"
+      ],
+      "verdict_detail": "25 designs folded, 4 JDI-like, 0 strict passers, and none reached the tri-state panel. The tight window produces designs that engage P5-P7 but lack the broader anchor contacts the gate requires — the interface starves.",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — the TIGHT set",
+          "date": "2026-11-01",
+          "tools": [
+            "RFD4-Proteina",
+            "ProteinMPNN"
+          ],
+          "text": "Generation on a 6-atom hotspot window (P5-P7 ridge) with the C0 electrostatic rule as the primary screen criterion.",
+          "steps": [],
+          "outcome": "25 designs folded.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — the read",
+          "date": "2026-11-01",
+          "tools": [
+            "Boltz-2",
+            "IPSAE"
+          ],
+          "text": "Standard folds and scoring; no design reaches the strict gate.",
+          "steps": [],
+          "outcome": "0 strict passers — negative, cause understood (interface starvation).",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "tight-wave1__run-013__design_0000__g12d",
+        "tight-wave1__run-003__design_0001__g12d",
+        "tight-wave1__run-007__design_0007__g12d",
+        "tight-wave1__run-018__design_0005__g12d"
+      ]
+    },
+    {
+      "id": "c5-minibinders",
+      "title": "C5 — minibinders",
+      "date": "2026-11-01",
+      "verdict": "30% JDI-like (11 of 37) — tied for the best yield; short chains hold up and one carries the project's strongest free-state dependence.",
+      "best": false,
+      "scores": {},
+      "summary": "Every design so far was a 60-110 residue chain; this campaign conditioned the same ridge hotspots but constrained the binder to 30-50 residues. Short, stiff binders are cheaper to make, easier to keep folded, and concentrate the interface on fewer contacts — precision over surface.",
+      "goal": "Test whether small binders read this groove as well as large ones.",
+      "goal_extra": [
+        "Strategy difference: varies binder size (the challenge allows 10-250 aa; nothing forces large binders).",
+        "Answers: do 30-50 aa designs reach the same fold quality? (Yes — 11 of 37 JDI-like.)"
+      ],
+      "verdict_detail": "37 designs folded, 11 JDI-like (30%), 3 passing the strict gate. mini-wave1 run-011 design_0001 carries the strongest free-state dependence in the project (dfree +0.701, and its child +0.752). The short format is viable; the yields match the main funnel per folded design.",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — the MINI set",
+          "date": "2026-11-01",
+          "tools": [
+            "RFD4-Proteina",
+            "ProteinMPNN"
+          ],
+          "text": "Same ridge hotspots as the main funnel, binder length constrained to 30-50 residues.",
+          "steps": [],
+          "outcome": "37 designs folded.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — the read",
+          "date": "2026-11-01",
+          "tools": [
+            "Boltz-2",
+            "IPSAE"
+          ],
+          "text": "Standard folds and scoring; the minibinders fold cleanly and the best one tops the dependence axis.",
+          "steps": [],
+          "outcome": "3 strict passers; the dependence champion of the project.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "mini-wave1__run-011__design_0001__g12d",
+        "mini-wave1__run-014__design_0005__g12d",
+        "mini-wave1__run-019__design_0002__g12d",
+        "mini-wave1__run-012__design_0006__g12d"
+      ]
+    },
+    {
+      "id": "c6-optimization",
+      "title": "C6 — the optimization loop (children)",
+      "date": "2026-11-01",
+      "verdict": "The redesign preserves stability (apo folds equal or better than the parents) but naturalization erodes the discrimination signal in 8 of 10 children — the specificity lives in the exact sequence, not the interface geometry alone.",
+      "best": false,
+      "scores": {},
+      "summary": "After the campaigns reported, the best designs across all of them became parents: ProteinMPNN sequence design with the binding interface frozen (atoms within 8 A of the target held fixed) produced 8 children per parent, plus an apo-fold stability check (each binder folded alone). 80 children folded against G12D; the best child of each parent then went through the three-state panel.",
+      "goal": "The cheapest remaining source of improvement: sequence-level polish around a proven interface.",
+      "goal_extra": [
+        "Strategy difference: no new backbone — it optimizes the existing winners' sequences for stability and expressibility.",
+        "Answers: does a naturalized surface keep the specificity? (Mostly no — a genuinely useful negative.)"
+      ],
+      "verdict_detail": "6 of 10 parents got children equal-or-better on the G12D reads (best gain +0.08 i_pDAE). All 20 apo folds read pLDDT 0.93-0.97, children consistently slightly above their parents. But the WT discrimination collapsed in 8 of 10 children — a frozen interface is not enough; boltz reads naturalized sequences as more confident on every state. Two exceptions kept the dual signal: wave1-pep run-007 design_0000's child c6 (dWT +0.349 / dfree +0.350, submission 3) and wave2-pep run-009 design_0007's child c2 (dWT +0.347, submission 4). Several children improved the dependence axis (dfree up to +0.752).",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — parents and interface extraction",
+          "date": "2026-11-01",
+          "tools": [
+            "Gemmi",
+            "ProteinMPNN"
+          ],
+          "text": "The ten best designs across C1-C5 became parents; each parent's complex was extracted to PDB and its interface residues listed (binder atoms within 8 A of the target).",
+          "steps": [],
+          "outcome": "10 parents prepped.",
+          "viewer": []
+        },
+        {
+          "id": "s1",
+          "title": "S — children with the interface frozen",
+          "date": "2026-11-01",
+          "tools": [
+            "ProteinMPNN"
+          ],
+          "text": "8 children per parent (T=0.1), only non-interface residues redesigned; 80 children built and folded against G12D.",
+          "steps": [],
+          "outcome": "80 children folded; 6/10 parents matched or beaten.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — tri-state and the apo check",
+          "date": "2026-11-02",
+          "tools": [
+            "Boltz-2",
+            "Chai-1"
+          ],
+          "text": "The best child of each parent folded against WT and the peptide-free MHC, plus the apo set (each binder folded alone - the cheapest stability read).",
+          "steps": [],
+          "outcome": "2 children kept the dual signal; stability confirmed across all 20 apo folds.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "wave1-pep__run-007__design_0000__g12d__c6",
+        "wave2-pep__run-009__design_0007__g12d__c2",
+        "wave2-pep__run-024__design_0007__g12d__c5",
+        "mini-wave1__run-011__design_0001__g12d__c5"
+      ]
+    },
+    {
+      "id": "c7-cheap-prediction",
+      "title": "C7 — predicting a winner without folding it",
+      "date": "2026-11-02 → 2026-11-03",
+      "verdict": "Split result: hand-mined rules work, a learned screen does not. Five features read off our own dual-signal winners picked 3 of 8 never-folded candidates correctly, a 2.5x lift on the pool base rate and including the project's best WT discriminator. The surrogate trained on the same labels returned a top 50 that folded to zero hits, below the random rate. Cheap triage is possible from explicit interface geometry and impossible from sequence composition alone.",
+      "best": false,
+      "scores": {},
+      "summary": "Two attempts to rank a design before paying for its fold. The first mined five features from the project's own winners and tested them out of sample. The second trained a cross-validated sequence-composition surrogate on every E-scored design and folded its own top 50 from the 1.6k never-folded pool. The contrast is the finding: features that name where a charge sits relative to the P6 aspartate carry signal, and features that only count what is in the sequence cannot see where those charges land after the chain folds.",
+      "goal": "Turn the accumulated data into a filter that predicts WT discrimination before spending folds on it.",
+      "goal_extra": [
+        "Strategy difference: no generation and no new tool — it mines the project's own 417 folded designs for the features of the winners.",
+        "Answers: can our own data predict specificity? (Yes — first out-of-sample test passed.)"
+      ],
+      "verdict_detail": "3 of 8 candidates tri-stated as dual-signal (38% vs the 15% pool baseline). The top hit, nim-wave3 run-021 design_0001, is the project's strongest WT discriminator (dWT +0.457, dfree +0.603) and its most stable design (apo pLDDT 0.981) — submission entry 1. wave2-pep run-024 design_0001 and nim-wave3 run-010 design_0002 also entered the submission (entries 8 and 11). All 8 candidates show at least peptide dependence; zero vetoes.",
+      "chapters": [
+        {
+          "id": "m1",
+          "title": "M — mine the winners' features",
+          "date": "2026-11-02",
+          "tools": [],
+          "text": "All 40 tri-stated designs joined with composition, secondary-structure and generator-pose features; effect sizes computed for the dual-signal set against the rest.",
+          "steps": [],
+          "outcome": "Five rules with a combined 7/7 in-sample hit rate.",
+          "viewer": []
+        },
+        {
+          "id": "t1",
+          "title": "T — the out-of-sample test",
+          "date": "2026-11-02",
+          "tools": [
+            "Boltz-2",
+            "IPSAE"
+          ],
+          "text": "Rule score >= 4/5 applied to every folded design never tri-stated; 8 candidates folded against WT and the peptide-free MHC.",
+          "steps": [],
+          "outcome": "3 new dual-signal designs — the rules passed their first blind test.",
+          "viewer": []
+        },
+        {
+          "id": "c13-t1",
+          "title": "T - training and cross-validation",
+          "date": "2026-11-03",
+          "tools": [
+            "scikit-learn"
+          ],
+          "text": "Gradient-boosted regression on composition features (length, the 20 amino-acid fractions, net charge, polar and aromatic fractions, gravy, longest hydrophobic run) against the folded designs' E_D6 and i_pDAE, read with 5-fold cross-validation.",
+          "steps": [],
+          "outcome": "No value signal (R2 at or below zero); a weak rank correlation, reported honestly before the test.",
+          "viewer": []
+        },
+        {
+          "id": "f1",
+          "title": "F - the top-50 test",
+          "date": "2026-11-03",
+          "tools": [
+            "Boltz-2",
+            "PROPKA 3.5.1"
+          ],
+          "text": "The top 50 predicted candidates were folded against G12D and E-scored, then read against the strong and soft bars.",
+          "steps": [],
+          "outcome": "0 of 50 on both bars - below the base rate. The route is closed.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "nim-wave3__run-021__design_0001__g12d",
+        "wave2-pep__run-024__design_0001__g12d",
+        "nim-wave3__run-010__design_0002__g12d",
+        "wave1-pep__run-019__design_0004__g12d",
+        "tight-wave1__run-019__design_0001__g12d",
+        "wave2-pep__run-025__design_0000__g12d",
+        "nat-wave1__run-019__design_0001__g12d"
+      ]
+    },
+    {
+      "id": "c8-cross-panning",
+      "title": "C8 — cross-panning against the variant peptides",
+      "date": "2026-11-02",
+      "verdict": "Flat at P6 for every design: this instrument cannot resolve single-point peptide variants — the C0 finding, confirmed at the variant level.",
+      "best": false,
+      "scores": {},
+      "summary": "The field's most predictive specificity filter — folding the designs against single-residue peptide variants — was tested directly: 42 folds across the 9-mer register, G12V and G12C for the top 14 designs.",
+      "goal": "Test whether the cross-panning filter works with Boltz-2 as the instrument.",
+      "goal_extra": [
+        "Strategy difference: a validation campaign — it tests an instrument, not designs.",
+        "Answers: can fold reads separate P6 variants? (No.)"
+      ],
+      "verdict_detail": "The G12V/G12C deltas are 0.000-0.068 — flat; the instrument is blind to P6 substitutions, exactly as C0 established for the WT comparison. No design reads cross-reactive (nothing exceeds its G12D read), so no red flags — but no discrimination evidence either. One consistent side-signal: the 9-mer register reads lower than the 10-mer in all 14 designs (weak register preference). Specificity ranking stays on the three-state panel.",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — the variant states",
+          "date": "2026-11-02",
+          "tools": [
+            "Boltz-2"
+          ],
+          "text": "42 folds: the 9-mer register (the flattened decoy), G12V and G12C, on the top 12 designs plus the 2 best children.",
+          "steps": [],
+          "outcome": "No vetoes; no new signal.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — the read",
+          "date": "2026-11-02",
+          "tools": [
+            "Boltz-2",
+            "IPSAE"
+          ],
+          "text": "Peptide interface reads compared against each design's G12D baseline.",
+          "steps": [],
+          "outcome": "Filter unusable with this instrument — documented.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "mini-wave1__run-011__design_0001__g12d__c5__nine",
+        "peprim-wave1__run-001__design_0002__g12d__nine",
+        "nat-wave1__run-011__design_0004__g12d__c1__g12v"
+      ]
+    },
+    {
+      "id": "c9-generator-hunt",
+      "title": "C9 — the generator hunt",
+      "date": "2026-11-02 → 2026-11-08",
+      "verdict": "Four attempts to replace or improve the hosted generator, and the frozen released model wins all four. genie3's CA-only route scored 0 of 70; BoltzGen reached 0.101 peptide_read against RFD4-Proteina's 0.577 on an identical funnel; the LoRA fine-tune was closed on the 12 GB card after six verified attempts, and the checkpoint trained on rented silicon destroyed the model's target conditioning. 100 raw designs from the frozen model then passed the organizer gate nine times and still lost the wild-type test to the evolved champions by an order of magnitude. The generator ends this campaign local, inspectable and deliberately unchanged.",
+      "best": false,
+      "scores": {},
+      "summary": "Every design on this site begins as a backbone from the hosted RFD4-Proteina NIM — the one stage the project could not run, inspect or fine-tune. This campaign opens that stage and then tries to beat it. It covers the third-generator trial (genie3), the local RFD4-Proteina copy and its parity check against the hosted service, a competing generator (BoltzGen) measured on the same funnel, wet-lab label sets for calibrating the score (ATLAS, SKEMPI2), the reward-tuned LoRA plan and the 12 GB wall that stopped it, the fine-tuned checkpoint that produced clean proteins 14 A away from the peptide, and the 100-design pristine batch whose three-arm specificity panel settled the question. Most of its experiments are negative, and that is the value: it fixes the generator as a trusted frozen input and locates this project's discriminating power in the selection loop instead.",
+      "goal": "Add a third, independent generator to the portfolio.",
+      "goal_extra": [
+        "Strategy difference: a different architecture entirely — not a variation of the RFdiffusion line.",
+        "Answers: does the third generator transfer to this target? (Not via the CA-only pipeline.)"
+      ],
+      "verdict_detail": "Best fold 0.661 ipTM, peptide reads <= 0.04 across 70 designs. Diagnosis: genie3 emits CA-only traces (one atom per residue), so the pose screen is sidechain-blind and the sequence assignment lacks interface context — the fold ranking does not correlate with the screen share. The retry path is documented: fold each backbone with its designed sequence first, screen the folded structures, then triage.",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G — generate and convert",
+          "date": "2026-11-02",
+          "tools": [
+            "Genie 3",
+            "Gemmi"
+          ],
+          "text": "100 backbones in about an hour; the output is a CA trace in binder-first chain order, remapped to the project layout.",
+          "steps": [],
+          "outcome": "100 backbones, 100 sequence sets.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — fold both slices",
+          "date": "2026-11-02",
+          "tools": [
+            "ProteinMPNN",
+            "Boltz-2"
+          ],
+          "text": "ProteinMPNN CA-only (designing the binder chain only), a CA-trace pose screen, then folds of the top 30 and a second slice of 40.",
+          "steps": [],
+          "outcome": "0 of 70 pass; the negative reproduced exactly.",
+          "viewer": []
+        },
+        {
+          "id": "gen",
+          "title": "The generator is open and runs locally",
+          "date": "2026-11-04",
+          "tools": [
+            "RFD4-Proteina"
+          ],
+          "text": "The hosted NIM's RFD4-Proteina is public: nvidia/RFD4-Proteina and the Diffusers build, BSD 3-Clause, released 2026-10-19, 435.6M parameters, 1.74 GB in FP32. It runs in BF16 on the local 12 GB GPU with the same annotated-CIF conditioning our NIM requests used, and it emits sequence and all-atom structure together. The release is itself a rank-32 LoRA of a pretrain-base, which is the fine-tuning route. Smoke run (scripts/rfd4_smoke.py): the shipped example first, then our target - a 64-residue binder against the G12D pMHC in about one minute, chains A/B/C held fixed at 276/99/10 residues, one new chain added.",
+          "steps": [],
+          "outcome": "The generator runs locally, about one minute per design.",
+          "viewer": []
+        },
+        {
+          "id": "target",
+          "title": "The target verified against the challenge reference",
+          "date": "2026-11-04",
+          "tools": [],
+          "text": "The challenge's three parts against our local structure, 7OW6 chains A-C with the TCR removed: beta2-microglobulin exact (99 residues), the G12D peptide VVVGADGVGK exact, and HLA-A*11:01 at 99.1 percent identity. The only difference is the disordered C-terminal tail LSSQT (5 residues), which the crystal does not resolve and which sits far from the binding groove. Construct numbering 25-305 maps cleanly onto our chain.",
+          "steps": [],
+          "outcome": "Target confirmed: the binder is designed against the right surface.",
+          "viewer": []
+        },
+        {
+          "id": "labels",
+          "title": "Wet-lab labels for calibrating the scores",
+          "date": "2026-11-04",
+          "tools": [
+            "ATLAS",
+            "SKEMPI2"
+          ],
+          "text": "Downloaded under custom-model/data/. ATLAS holds 1,174 TCR-mutant affinities on pMHC with KD, dG and dDeltaG, plus 803 TCR-pMHC structures. SKEMPI2 holds 7,085 measured mutation effects, 764 of them at TCR/pMHC interfaces. The sharpest external fact: the JDI TCR binds the KRAS G12D decamer on HLA-A*11:01 at 63 uM, affinity enhancement takes it to 743 pM, and the wild-type peptide stays at 3.0 uM (PDB 7PB2 and 7OW6 for G12D, 7OW5 for WT); the paper attributes the selectivity to indirect electrostatic differences, the thesis this project has tested all along. The loop's own reward needs no labels - this data is here to measure how well the scores track real binding.",
+          "steps": [],
+          "outcome": "Labels in place; the site-specific E-score keeps its sign control, the composite stays uncalibrated.",
+          "viewer": []
+        },
+        {
+          "id": "plan",
+          "title": "The chosen loop: reward-tuned LoRA",
+          "date": "2026-11-04",
+          "tools": [
+            "RFD4-Proteina",
+            "ProteinMPNN",
+            "Boltz-2"
+          ],
+          "text": "The chosen strategy is a RAFT-style loop. Generate N backbones around the fixed peptide motif; sequence them with ProteinMPNN or LigandMPNN; co-fold each with boltz; score with the composite (interface metrics, the tri-state, the E-score); keep the top-K under the existing gates; LoRA-SFT on the winners; repeat, with held-out designs as the guard against reward collapse. One cycle is about 1.5 to 2 h. Rejected alternatives: RFdiffusion-based particle steering (older model, porting is real work) and reward backpropagation through the trajectory (research-grade). Also recorded: an integrated local pipeline (RFAA or RFdiffusion generator, one orchestrator) and, later, a parametric helix-bundle generator that optimizes the pose against the E-score directly. The loop is drawn out in custom-model/diagram-pipeline.html (the frozen submission path against the RAFT training loop; the LoRA adapter is the only trained component).",
+          "steps": [],
+          "outcome": "Plan recorded; the first tuning cycle was attempted and is blocked on the 12 GB card (see the tune chapter).",
+          "viewer": []
+        },
+        {
+          "id": "batch",
+          "title": "The local baseline, and it matches the hosted funnel",
+          "date": "2026-11-04",
+          "tools": [
+            "Boltz-2"
+          ],
+          "text": "32 designs from the local RFD4-Proteina (seeds 1000-1031, about one minute each), then the whole pipeline - co-fold, s1 screen, E-score - in about 90 minutes. Result: 6 of 32 interfaces are JDI-like (ipTM >= 0.8), 19 percent against the hosted campaign's about 15 percent, best interface batch1-017 at ipTM_pep 0.959. The organizer epitope gate (peptide_read >= 0.61) caught none of them: the best read 0.577 (batch1-008), just under. No design scored E below -1.0, and the strongest interfaces carry positive E (wrong field direction) - exactly the raw-design behaviour the hosted funnel showed. Raw generation is not the bottleneck: the local model matches the hosted one at about a third of the wall time, with no rate limits. These 32 designs and their scores are themselves training material for the reward loop.",
+          "steps": [],
+          "outcome": "Local generation is at parity; specificity stays the rare commodity.",
+          "viewer": []
+        },
+        {
+          "id": "boltzgen",
+          "title": "A competing generator, measured and not adopted",
+          "date": "2026-11-04",
+          "tools": [
+            "BoltzGen"
+          ],
+          "text": "BoltzGen (MIT, all-atom binder design) was run on our target: 8 designs through its full six-step pipeline, on a spec that mirrors the shipped peptide-in-pMHC example, then through our own funnel after fixing a chain-order mismatch (BoltzGen emits the binder as chain A; our pipeline expects A = HLA). Head-to-head with the local batch: its designs dock confidently (ipTM_pep 0.965-0.974, 8 of 8) but do not engage the peptide epitope (peptide_read 0.101 max against the local RFD4's 0.577) and sit flat on the E-score (best -0.06 against -0.86). Its internal metrics rank these designs as good; the epitope-specific instruments disagree. Eight designs is a small sample and its recommended campaign is 10,000 or more, so this is a plumbing verdict, not a final quality claim - but nothing here motivates displacing the RFD4, and the training program proceeds against the RFD4 as planned.",
+          "steps": [],
+          "outcome": "BoltzGen not adopted; the RFD4 stays the generator.",
+          "viewer": []
+        },
+        {
+          "id": "calib",
+          "title": "The E-score against wet-lab affinity: a scope found",
+          "date": "2026-11-04",
+          "tools": [
+            "ATLAS"
+          ],
+          "text": "First calibration of the electrostatic instrument against measured binding. A whole-interface Coulomb sum (E_int) was computed for 12 ATLAS structures that carry a median Kd (61 were selected, 12 had usable affinity rows), then compared with log10 Kd: Pearson r = -0.08. The naive whole-interface form does not predict measured affinity, so interface-wide electrostatics is not an affinity proxy here. The site-specific E-score - charged groups against the P6 aspartate, distance-dependent dielectric - keeps its one passing control, the JDI sign check (-0.67), and stays the specificity instrument. The mutant-versus-wild-type reading is a local effect, which is the scope note, not a failure of the instrument.",
+          "steps": [],
+          "outcome": "Scope caveat recorded; the site-specific E-score still passes its control.",
+          "viewer": []
+        },
+        {
+          "id": "oom",
+          "title": "The tune hits the 12 GB wall (honest record)",
+          "date": "2026-11-04",
+          "tools": [
+            "diffusers",
+            "peft"
+          ],
+          "text": "The first LoRA fine-tune of RFD4-Proteina used the official diffusers example on 8 of the best batch1 complexes. Every configuration failed in the same place, the forward-backward pass on the ~490-residue complex: rank 32 / alpha 64 and rank 8 / alpha 32, bf16, gradient checkpointing, expandable_segments on and off. The failing allocation is small (102 MiB) - the card sits at the edge, not far over. The 4-bit route fails too: an NF4 base loads in 1.2 GB, a tenth of the card, but training allocates about 26 GiB of activations, so the wall is the activations, not the weights. Six verified fixes (quant configs, peft-versus-transformers helper moves, HF interface stubs, VAE kwarg leakage) reached the same place. Conclusion, final for this machine: the 12 GB card cannot fine-tune this model on our target's complexes at any setting tried. Options recorded, in order: train on shorter class I complexes from ATLAS (cheapest, untested), quantized base with LoRA, or tune a different component - the frozen RFD4 already generates at parity, so the specificity gap is not a generator problem.",
+          "steps": [],
+          "outcome": "Fine-tune blocked on 12 GB; the next step needs smaller complexes or a different component.",
+          "viewer": []
+        },
+        {
+          "id": "trunc",
+          "title": "The truncated-complex attempt: the wall does not move",
+          "date": "2026-11-04",
+          "tools": [
+            "RFD4-Proteina"
+          ],
+          "text": "The remaining idea was to shrink the training complexes instead of the model. A truncated dataset was built (binder + peptide + full beta2m + HLA residues 1-200, the groove-carrying part: 379 residues against 449) and the same 4-bit recipe ran on it. At 520 tokens against the full complex's 620 the out-of-memory peak moved from 25.99 to 25.86 GiB, so a 16 percent length cut moved the peak by 0.5 percent: the allocation is effectively input-independent at our sizes, and fine-tuning is not reachable on this card by input shaping. The design-side route replaced it the same day - the loop with the v4 composite improved the submission with no training at all, on the 18 gate passers the v3 composite could not rank (see the next chapter). The choice of fallback (shorter class I complexes, a quantized base, or another component) still needs the owner's decision and is recorded in the site-sync TODO.",
+          "steps": [],
+          "outcome": "Truncation does not move the wall; the fine-tune needs a bigger card or a smaller model.",
+          "viewer": []
+        },
+        {
+          "id": "rank",
+          "title": "The composite gains the organizer's gate term (v4)",
+          "date": "2026-11-04",
+          "tools": [],
+          "text": "The v3 composite (30 i_pDAE, 20 ipTM, 20 dfree, 20 E, 10 dWT) had no term for the surface the organizers name as the target: the peptide in the groove. Composite v4 keeps the same shape and adds a 20 percent peptide_read term (25 i_pDAE, 15 ipTM, 15 dfree, 15 E, 10 dWT, 20 peptide_read), with a hard veto on a positive E. Re-ranking the generation-4 pool (104 designs) finds 18 designs that clear the organizers' own archive gate (peptide_read >= 0.61), best 0.766, which the v3 ranking could not see. The evolution loop's own selection moved to this ranking the same evening, so the loop breeds from the gate top. The consequence is on the submission table: six of the gate passers entered the twenty (C10).",
+          "steps": [],
+          "outcome": "The composite can see the organizer's gate, and the loop breeds from it.",
+          "viewer": []
+        },
+        {
+          "id": "audit",
+          "title": "Tool audit and the 2026 field",
+          "date": "2026-11-04",
+          "tools": [
+            "Boltz-2",
+            "Chai-1",
+            "OpenDDE"
+          ],
+          "text": "boltz 2.2.1 is the latest release, and its affinity head does NOT cover protein-protein binding, so there is still no direct Kd estimate for a binder from boltz: the E-score and the interface metrics remain the specificity instruments. The open models released after our NIM campaigns started, all candidates for the generator slot: BoltzGen (MIT, all-atom binder design), PXDesign (ByteDance, Apache 2.0, 17 to 82 percent nanomolar hit rates on seven targets) and Protenix-v2. Chai-2 is access-gated but reports a peptide-MHC target among its validated cases. OpenDDE was installed for a second co-folding opinion and then shelved: it rebooted the host twice, its retry pass collected 20 complex files and produced no scores, and it is a binder-versus-nonbinder instrument, not a G12D-versus-WT one. PXDesign/Protenix-v2 was never run - it needs conda or Docker and its recommended server sends the target off-machine - so it stays the backup generator. APBS is not installed and is an optional post-deadline addition; Complexa and OpenFold3 were available and unused; no all-atom MD or FEP run was made, because the BioEmu2 ensembles cover thermal stability.",
+          "steps": [],
+          "outcome": "boltz cannot give a binder Kd; BoltzGen was then measured on our target and not adopted (see its chapter). OpenDDE is shelved, and no unused tool can move the submission's fate.",
+          "viewer": []
+        },
+        {
+          "id": "prov",
+          "title": "The provenance record of the top three",
+          "date": "2026-11-04",
+          "tools": [],
+          "text": "The chain of the set's best three designs is now written down end to end (records/final2/PROVENANCE.md): hosted generation, fold and screens, one repair swap, one evolution swap, then the full instrument set. Rank 1 L58K-Q15K (Q15K took it to 90.5, E -3.65), rank 2 A16K (67.5 to 87.1, E -3.75, the set's best read) and rank 3 W57K (84.3) - the order as this record was written, before the evening's epitope-gate re-cut moved W57K out of the set (C10). All three begin at the same place: a backbone from the hosted generator. Stages 3 to 10 are already ours or open (boltz, chai-lab, ProteinMPNN, BioEmu2). The submission's methods text is written from these records (records/final2/METHODS.md).",
+          "steps": [],
+          "outcome": "Provenance recorded; the single external dependency is the generator stage, which this campaign now owns.",
+          "viewer": []
+        },
+        {
+          "id": "f1",
+          "title": "F — the tune on rented silicon",
+          "date": "2026-11-05",
+          "tools": [
+            "RFD4-Proteina"
+          ],
+          "text": "Local training was closed first, after six verified out-of-memory attempts on the 12 GB card: the 435M model needs about 26 GiB per allocation. The tune moved to a rented A100-80GB, ran the official tutorial recipe against the test dataset, and kept a checkpoint ladder every ten epochs in a persisting volume.",
+          "steps": [],
+          "outcome": "99 epochs, 4,775 steps, epoch-99 checkpoint downloaded. Spend 24.43 of 30 dollars.",
+          "viewer": []
+        },
+        {
+          "id": "f2",
+          "title": "G — the comparison that misled",
+          "date": "2026-11-07",
+          "tools": [
+            "Boltz-2",
+            "Gemmi"
+          ],
+          "text": "100 designs were generated from the tuned checkpoint and 100 from the released weights, then scored with the same geometry pass. Both sets produced 4-chain complexes, and both were clean.",
+          "steps": [],
+          "outcome": "Fine-tuned 3.76 A CA-CA, 0 broken backbones; pristine 3.84 A, 0 broken. Read at the time as parity. The reading was internal to the chain and could not see placement.",
+          "viewer": []
+        },
+        {
+          "id": "f3",
+          "title": "P — the placement check that reversed it",
+          "date": "2026-11-07",
+          "tools": [
+            "Gemmi"
+          ],
+          "text": "For each generated complex, measure the binder-to-peptide distance, the peptide contact count, and the closest approach to the MHC. A real pose sits at 2.5-4 A; below 1.5 A the atoms interpenetrate, which no real structure does.",
+          "steps": [],
+          "outcome": "Fine-tuned: median 14.2 A from the peptide, 0 peptide contacts, 59 of 100 designs interpenetrating the MHC. Pristine: median 2.7 A, 59 contact atoms, no clashes. The tuned checkpoint was withdrawn.",
+          "viewer": []
+        },
+        {
+          "id": "p1",
+          "title": "G — 100 designs through the fold funnel",
+          "date": "2026-11-08",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2",
+            "Gemmi"
+          ],
+          "text": "100 raw designs were converted to fold inputs with canonical chains, folded at five diffusion samples each, and scored. The fold batch ran 100 of 100 with no failures in about two hours of local GPU time.",
+          "steps": [],
+          "outcome": "9 of 100 pass the organizer gate; 27 of 100 are JDI-like. pr-089 reads 0.756, above the champion's 0.754.",
+          "viewer": []
+        },
+        {
+          "id": "p2",
+          "title": "S — the three-arm specificity panel",
+          "date": "2026-11-08",
+          "tools": [
+            "Boltz-2",
+            "Gemmi"
+          ],
+          "text": "Every gate passer was folded again with the wild-type peptide and with no peptide at all, and the top three across three seeds. A design only counts when the mutant arm passes the gate while both other arms fail it.",
+          "steps": [],
+          "outcome": "pr-089 separates mutant from wild type by 0.029. The submitted champions separate them by 0.65 to 0.76. Five new designs pass all three criteria, the best by 0.205.",
+          "viewer": []
+        },
+        {
+          "id": "p3",
+          "title": "E — the electrostatic instrument agrees",
+          "date": "2026-11-08",
+          "tools": [
+            "Gemmi"
+          ],
+          "text": "The histidine-aware E-score was run on the new candidates as an independent check, reading the charge environment around the mutant aspartate.",
+          "steps": [],
+          "outcome": "Every new design reads -0.28 or higher and places no histidine in the shell. The champions read -2.60 to -3.75. Third instrument, same answer: no new design displaces the submitted set.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "c9-g3_0",
+        "c9-g3_47",
+        "c9-g3_83",
+        "batch1-017",
+        "batch1-008",
+        "batch1-027",
+        "pr-000",
+        "ft-000",
+        "pr-089",
+        "pr-081",
+        "pr-001"
+      ]
+    },
+    {
+      "id": "c10-final-selection",
+      "title": "C10 — wave four and the final selection",
+      "date": "2026-11-02",
+      "verdict": "The strongest generation wave of the project (10 of 39 JDI-like, top i_pDAE 0.870) and the original twenty: 11 dual-signal designs, 5 affinity champions, 4 validated champions - all homology-clean, all instrument-validated. Two repair rounds and one evolution generation then swapped six weak entries, and the loop's generation 4 swapped three more (A16K 87.1, E23K 79.5, V24K 68.7). A final re-cut on 2026-11-04 moved the set onto the organizers' own epitope gate: six validated gate readers entered (peptide_read 0.637-0.766) and six entries left. A final cut on 2026-11-08 ran the organizers' ipSAE gate (peptide_read >= 0.61) over the twenty: sixteen passed, three of the four below it were restored on their wild-type separation and one (E23K) left. The submitted set is nineteen; the best E-score is -3.75.",
+      "best": null,
+      "scores": {},
+      "summary": "A final sampling wave (200 designs) produced the project's strongest affinity reads. Then the protocol's selection ran over all tri-stated candidates under a composite that weights the control-validated instruments first (i_pDAE, ipTM, peptide-free dependence, E-score; WT discrimination demoted after it failed its own control); vetoes out; the de-novo homology gate (a 100% antibody V-region copy was caught and excluded); a diversity cap of two designs per generation run. Every one of the twenty then got the full instrument set: three-seed folds, Chai-1 MSA cross-checks, apo stability, and the homology screen. Two charge-directed repair rounds (2026-11-02, 2026-11-03) and the evolution loop's first generation (2026-11-03) replaced six weak entries with stronger swaps; the loop's generation 4 (2026-11-04) then replaced three more (A16K 87.1, E23K 79.5, V24K 68.7). The current order is records/final2/ranking-v2.csv, also written to the submission file. The set's best E-score is now -3.75 (the generation-4 swap A16K, past Q15K's -3.65) and its number one scores 90.5 (the evolution swap Q15K, dWT +0.747 - a project record); the top four entries all score above 76. On 2026-11-04 the set was re-cut on the organizers' own epitope gate: the six strongest gate readers of the generation-4 pool entered (peptide_read 0.637-0.766, E -2.60 to -3.20, all three-seed validated) and six entries left. On 2026-11-08 a two-for-two panel swap brought N71K and W57K back, then the organizers' ipSAE gate (peptide_read >= 0.61) was applied: sixteen of the twenty passed, three of the four below it were restored on their wild-type separation and one (E23K) left. The submitted set is nineteen designs; their metrics table is records/submitted-19-metrics-2026-11-08.csv.",
+      "goal": "Assemble the submitted set under the competition's own ranking logic and validate every entry.",
+      "goal_extra": [
+        "Strategy difference: the closing campaign — it decides what gets submitted, not what gets made.",
+        "Answers: which nineteen designs carry the strongest combined evidence? (See the submission.)"
+      ],
+      "verdict_detail": "Wave four: 39 folded, 10 JDI-like (the best wave), top i_pDAE 0.870. Final twenty: 11 dual-signal (dWT up to +0.457, dfree up to +0.769), 5 wave-four affinity champions (i_pDAE up to 0.870), 4 validated affinity/dependence champions - every one with a negative E-score (set best -1.78). Seed medians 0.960-0.993 (spread <= 0.01), Chai-1 MSA reads supporting only (several sit inside the negative band), apo pLDDT >= 0.93, zero homology hits at 90% identity, zero vetoes. 2026-11-03: after the two repair rounds and the evolution gen-1 swaps, the set's best E was -3.65 and its number one scores 90.5 (the evolution swap Q15K, dWT +0.747 - a project record); the top four entries all score above 76. 2026-11-04: the loop's generation 4 replaced three more entries (A16K 87.1, E23K 79.5, V24K 68.7) and the set's best E is now -3.75. 2026-11-04: the twenty were re-cut on the organizers' epitope gate (rerank v4) - six gate passers entered, six entries left, and the deliverables were re-verified 20/20/20. 2026-11-08: a two-for-two panel swap (N71K and W57K back) lifted gate compliance to 16 of 20; then the organizers' ipSAE gate (peptide_read >= 0.61) was applied - sixteen of the twenty passed, three of the four below it were restored on their wild-type separation and one (E23K) left. The submitted set is nineteen designs, 64-98 aa, sixteen above the gate.",
+      "chapters": [
+        {
+          "id": "w1",
+          "title": "W — wave four",
+          "date": "2026-11-02",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2"
+          ],
+          "text": "200 fresh designs on the proven ridge conditioning; 39 pose-screen passers folded; 10 JDI-like with the strongest affinity reads of the project.",
+          "steps": [],
+          "outcome": "The best raw-affinity wave.",
+          "viewer": []
+        },
+        {
+          "id": "s1",
+          "title": "S — the selection",
+          "date": "2026-11-02",
+          "tools": [
+            "MMseqs2"
+          ],
+          "text": "All 65 tri-stated candidates ranked under the competition protocol; homology gate (SwissProt, 90% identity) and the diversity cap applied.",
+          "steps": [],
+          "outcome": "Twenty picked with a documented rationale.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V — full instrument coverage",
+          "date": "2026-11-02",
+          "tools": [
+            "Boltz-2",
+            "Chai-1",
+            "IPSAE"
+          ],
+          "text": "Three-seed folds, Chai-1 MSA cross-checks, apo stability and the homology screen for every entry.",
+          "steps": [],
+          "outcome": "All twenty validated; the package frozen.",
+          "viewer": []
+        },
+        {
+          "id": "r1",
+          "title": "R — the repair round and the ensembles",
+          "date": "2026-11-02",
+          "tools": [
+            "ProteinMPNN",
+            "Boltz-2",
+            "PROPKA 3.5.1",
+            "BioEmu2"
+          ],
+          "text": "24 charge-directed variants of the top six (basic swaps at the aspartate shell, 8-11 A) produced 11 fold-clean E-score improvements; the strict win (L58K: E -0.96 to -1.78, fold reads unchanged) replaced its parent and leads the set. BioEmu2 contact-conditioned ensembles then showed the reading persists under thermal motion (K58-D6 at 7.4 +- 0.8 A across 16 frames) while the interface breathes.",
+          "steps": [],
+          "outcome": "The set's final upgrade, and the mechanism's robustness confirmed.",
+          "viewer": []
+        },
+        {
+          "id": "q1",
+          "title": "Q - the liability and charge-clash screens",
+          "date": "2026-11-02",
+          "tools": [],
+          "text": "Two final screens on the submitted twenty. Liabilities (binderkit assess): 11 designs flagged, all minor - Asp-Pro cleavage sites, NG deamidation and DG isomerisation motifs, five hydrophobic runs of 8-10; mini-wave1 run-014 design_0005 (gravy 1.11) is the one expression risk to watch. Charge clashes (same-sign charged atoms within 4 A): the set is electrostatically clean - max 2 same-sign pairs (wave2-pep run-054 design_0005); 19 of the 20 designs sit at 0-1.",
+          "steps": [],
+          "outcome": "All flagged items minor and recorded; the twenty stand.",
+          "viewer": []
+        },
+        {
+          "id": "r2",
+          "title": "R2 - the second repair round",
+          "date": "2026-11-03",
+          "tools": [
+            "ProteinMPNN",
+            "Boltz-2",
+            "PROPKA 3.5.1"
+          ],
+          "text": "36 charge-directed variants of the nine weak-E entries; three beat their parents on the full composite and entered the set. A58K lifts its design from 62.5 to 80.1 (E -0.46 to -1.77, interface quality improved); H27K replaces the native-like shell histidine itself with a lysine - the external review's observation turned into a design fix - and lifts rank 20 into the top five (H27K and N71K left the set again in the 2026-11-04 epitope-gate re-cut, C10); N71K charges the residue nearest the carboxylate in its design (best dWT of the three, +0.287). One variant was rejected despite a large E gain (its peptide dependence collapsed), and five entries resisted repair. The set's top four entries now all score above 76.",
+          "steps": [],
+          "outcome": "Three swaps; the set's average E-term roughly tripled. All three then cleared the full instrument set: A58K (seeds 0.971-0.980, spread 0.009; chai 0.801; apo 0.967), H27K (0.969-0.978, spread 0.009; chai 0.764; apo 0.967), N71K (0.977-0.981, spread 0.004 - the tightest in the project; chai 0.769; apo 0.968) - all inside the established bands.",
+          "viewer": []
+        },
+        {
+          "id": "gate",
+          "title": "E - the epitope-gate re-cut",
+          "date": "2026-11-04",
+          "tools": [],
+          "text": "The twenty were re-cut on the criterion the organizers name: how often the interface reads the peptide in the groove. Six designs of the generation-4 pool clear their archive gate (peptide_read 0.637-0.766) with E -2.60 to -3.20 and three-seed validation: c7-I13K 0.766 (E -2.63), Q48K 0.694 (E -2.90), L23K 0.663 (E -3.20), Q54K 0.655 (E -2.84), A47K 0.650 (E -2.77) and A46K 0.637 (E -2.60). They replaced six entries: W57K, A58K-F50K, H27K, N71K, nim-wave3 run-021 design_0001 and mini-wave1 run-011 design_0001 c5. The submission CSV, the FASTA and the score file were rewritten by one script and checked 20/20/20 (count, order and sequences matched). The six new entries carry the v4 composite score (54.7-58.9), which counts the gate as a term, so their score column and the v2 scores of the other fourteen are not the same formula.",
+          "steps": [],
+          "outcome": "Six gate passers in, six entries out; the twenty re-verified in all three files.",
+          "viewer": []
+        },
+        {
+          "id": "cut",
+          "title": "F - the final cut to nineteen",
+          "date": "2026-11-08",
+          "tools": [
+            "IPSAE"
+          ],
+          "text": "The organizers' ipSAE gate (peptide_read >= 0.61, the mean peptide ipSAE over the five boltz models) was applied to the twenty: sixteen passed and four failed. Three of the four were restored after their reads were audited - L58K-Q15K 0.554, wave2-pep-049 0.596 and wave2-pep-054 0.463 all read the wild-type peptide near zero, so their separation is large - and one left. E23K (0.545) was the weakest of the four on separation (0.232) and reads the wild-type complex at 0.313, so it fails the mutation-specificity criterion. The submitted set is nineteen designs, 64-98 aa, 8 campaign parents and 11 evolution/repair children, 13 unique backbones; sixteen sit above the gate. The validator passes 19/19.",
+          "steps": [],
+          "outcome": "One design out; the nineteen re-verified in all three files.",
+          "viewer": []
+        }
+      ],
+      "proteins": [
+        {
+          "design": "evorepair-wave2-pep__run-016__design_0005__g12d-L58K-Q15K",
+          "ipsae_min": null,
+          "ipdae": 0.684,
+          "score": 90.5,
+          "tier": "dual-signal",
+          "d_wt": 0.747,
+          "d_free": 0.766
+        },
+        {
+          "design": "evomini-wave1__run-014__design_0005__g12d-A16K",
+          "ipsae_min": 0.663,
+          "ipdae": 0.809,
+          "score": 87.1,
+          "tier": "dual-signal",
+          "d_wt": 0.269,
+          "d_free": 0.574
+        },
+        {
+          "design": "nim-wave3__run-001__design_0004__g12d__c7",
+          "ipsae_min": 0.784,
+          "ipdae": 0.88,
+          "score": 82.8,
+          "tier": "dependence",
+          "d_wt": 0.01,
+          "d_free": 0.536
+        },
+        {
+          "design": "wave2-pep__run-024__design_0007__g12d__c5",
+          "ipsae_min": 0.632,
+          "ipdae": 0.809,
+          "score": 79.1,
+          "tier": "dependence",
+          "d_wt": 0.06,
+          "d_free": 0.677
+        },
+        {
+          "design": "evowave2-pep__run-026__design_0003__g12d-V24K",
+          "ipsae_min": 0.682,
+          "ipdae": 0.834,
+          "score": 68.7,
+          "tier": "affinity",
+          "d_wt": 0.029,
+          "d_free": 0.046
+        },
+        {
+          "design": "nat-wave1__run-004__design_0001__g12d",
+          "ipsae_min": 0.675,
+          "ipdae": 0.845,
+          "score": 66.1,
+          "tier": "dependence",
+          "d_wt": 0.037,
+          "d_free": 0.678
+        },
+        {
+          "design": "peprim-wave1__run-013__design_0007__g12d__c1",
+          "ipsae_min": 0.706,
+          "ipdae": 0.849,
+          "score": 65.7,
+          "tier": "dependence",
+          "d_wt": 0.023,
+          "d_free": 0.665
+        },
+        {
+          "design": "wave2-pep__run-049__design_0002__g12d",
+          "ipsae_min": 0.565,
+          "ipdae": 0.728,
+          "score": 65.6,
+          "tier": "dWT only",
+          "d_wt": 0.181,
+          "d_free": 0.027
+        },
+        {
+          "design": "wave1-pep__run-016__design_0003__g12d",
+          "ipsae_min": 0.664,
+          "ipdae": 0.78,
+          "score": 65.6,
+          "tier": "affinity",
+          "d_wt": 0.009,
+          "d_free": 0.029
+        },
+        {
+          "design": "evorepair-nat-wave1__run-011__design_0004__g12d-N71K",
+          "ipsae_min": null,
+          "ipdae": null,
+          "tier": null,
+          "note": "epitope-gate addition (composite v4)"
+        },
+        {
+          "design": "wave1-pep__run-033__design_0003__g12d",
+          "ipsae_min": 0.675,
+          "ipdae": 0.81,
+          "score": 63.3,
+          "tier": "dual-signal",
+          "d_wt": 0.359,
+          "d_free": 0.392
+        },
+        {
+          "design": "evopeprim-wave1__run-001__design_0002__g12d-W57K",
+          "ipsae_min": null,
+          "ipdae": 0.797,
+          "score": 84.3,
+          "tier": "dual-signal",
+          "d_wt": 0.252,
+          "d_free": 0.516
+        },
+        {
+          "design": "wave2-pep__run-054__design_0005__g12d",
+          "ipsae_min": 0.52,
+          "ipdae": 0.608,
+          "score": 61.5,
+          "tier": "dual-signal",
+          "d_wt": 0.308,
+          "d_free": 0.682
+        },
+        {
+          "design": "evonim-wave3__run-001__design_0004__g12d__c7-I13K",
+          "ipsae_min": 0.766,
+          "ipdae": 0.86,
+          "tier": null,
+          "note": "epitope-gate addition (composite v4)"
+        },
+        {
+          "design": "evomini-wave1__run-014__design_0005__g12d-Q48K",
+          "ipsae_min": 0.694,
+          "ipdae": 0.827,
+          "tier": null,
+          "note": "epitope-gate addition (composite v4)"
+        },
+        {
+          "design": "evomini-wave1__run-014__design_0005__g12d-L23K",
+          "ipsae_min": 0.663,
+          "ipdae": 0.807,
+          "tier": null,
+          "note": "epitope-gate addition (composite v4)"
+        },
+        {
+          "design": "evowave1-pep__run-016__design_0003__g12d-Q54K",
+          "ipsae_min": 0.655,
+          "ipdae": 0.775,
+          "tier": null,
+          "note": "epitope-gate addition (composite v4)"
+        },
+        {
+          "design": "evomini-wave1__run-014__design_0005__g12d-A47K",
+          "ipsae_min": 0.65,
+          "ipdae": 0.759,
+          "tier": null,
+          "note": "epitope-gate addition (composite v4)"
+        },
+        {
+          "design": "evowave2-pep__run-049__design_0002__g12d-A46K",
+          "ipsae_min": 0.637,
+          "ipdae": 0.767,
+          "tier": null,
+          "note": "epitope-gate addition (composite v4)"
+        }
+      ],
+      "viewer": [
+        "wave4-pep__run-017__design_0007__g12d",
+        "wave4-pep__run-015__design_0000__g12d",
+        "wave4-pep__run-007__design_0002__g12d",
+        "wave4-pep__run-008__design_0000__g12d",
+        "wave4-pep__run-020__design_0007__g12d",
+        "repair-wave2-pep__run-016__design_0005__g12d-L58K",
+        "repair-wave4-pep__run-007__design_0002__g12d-A58K",
+        "repair-nat-wave1__run-011__design_0000__g12d-H27K",
+        "repair-nat-wave1__run-011__design_0004__g12d-N71K"
+      ]
+    },
+    {
+      "id": "c11-direct-grip",
+      "title": "C11 — conditioning for a direct grip",
+      "date": "2026-11-02",
+      "verdict": "Both waves negative, and together decisive: the generator cannot be talked into touching the buried aspartate. Two hundred designs of the strongest working conditioning gave 30 pose-screen passers and zero swaps, with the affinity-strong designs reading wrong-sign electrostatics. Asked point-blank for a salt bridge to the mutant carboxylate, the generator still settled at 8-10 A. The indirect field-reading doctrine is confirmed by the failure of its alternative.",
+      "best": false,
+      "scores": {},
+      "summary": "Two generation waves that pushed the conditioning instead of the selection. The fifth wave asked for more of whatever the strongest earlier conditioning had produced. The salt wave asked for the thing the target physics says is hard: a direct ionic contact with the Asp6 carboxylate, which is about 90 percent buried and already salt-bridged to the HLA's own Arg114. Neither wave produced a submittable design, and the second one explains why the first could not.",
+      "goal": "Test whether the strongest-conditioning campaign scales with more shots.",
+      "goal_extra": [
+        "Strategy difference: quantity at a fixed strategy, judged by the validated instrument.",
+        "Answers: does more of the same produce an E-passing candidate? (Roughly 1 in 30, and those fold weakly.)"
+      ],
+      "verdict_detail": "Best reads of the wave: 0.973/0.871 (E +1.38), 0.965/0.817 (E +0.20), 0.964/0.749 (E -0.10); the single E -1.82 design reads 0.801/0.176. Composite estimate ~57 against the set's twentieth place 60.9.",
+      "chapters": [
+        {
+          "id": "w5",
+          "title": "W — the fifth wave",
+          "date": "2026-11-02",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2",
+            "PROPKA 3.5.1"
+          ],
+          "text": "200 designs generated clean; 30 pose-screen passers folded; every one E-scored against the frozen set.",
+          "steps": [],
+          "outcome": "Negative — no swaps; the set stands.",
+          "viewer": []
+        },
+        {
+          "id": "i",
+          "title": "I — the idea",
+          "date": "2026-11-02",
+          "tools": [],
+          "text": "The conditioning catalog has per-atom channels beyond hotspots: hbond, saltbridge, rasa, secondary structure, pi-stacking, pi-cation. The builder now writes hbond = ACCEPTOR and saltbridge = NEGATIVE on the D6 carboxylate.",
+          "steps": [],
+          "outcome": "A new request channel, accepted by the NIM.",
+          "viewer": []
+        },
+        {
+          "id": "p",
+          "title": "P — the pilot",
+          "date": "2026-11-02",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2",
+            "PROPKA 3.5.1"
+          ],
+          "text": "Eight designs generated and folded; binder atoms measured against the carboxylate oxygens.",
+          "steps": [],
+          "outcome": "Zero contacts — an 8-10 A floor. The buried charge stays unreachable.",
+          "viewer": []
+        }
+      ],
+      "proteins": [],
+      "viewer": [
+        "wave5-peprim__run-014__design_0002__g12d",
+        "wave5-peprim__run-021__design_0006__g12d",
+        "wave5-peprim__run-021__design_0003__g12d",
+        "wave6-salt__run-001__design_0000__g12d",
+        "wave6-salt__run-001__design_0004__g12d",
+        "wave6-salt__run-001__design_0002__g12d"
+      ]
+    },
+    {
+      "id": "c14-evolution-loop",
+      "title": "C14 — the evolution loop (generations 1-20)",
+      "date": "2026-11-03 → 2026-11-05",
+      "verdict": "The project's most productive campaign and its clearest ceiling. Generations 1 and 4 produced the top two designs of the submission — 79.1 to 90.5 and 67.5 to 87.1 — plus three further entrants; the other eighteen generations promoted nothing. Four loop bugs were found and fixed along the way, including generations that re-bred byte-identical children and a breeder that could not read the sequences of the winners it had itself swapped in.",
+      "best": true,
+      "scores": {},
+      "summary": "Twenty generations of mutate-and-select over the submitted set. For each top parent the loop proposes single swaps at unsampled shell positions 5-13 A from the P6 aspartate plus combo mutants stacking known repair hits, folds and E-scores them, sends the qualifiers through the tri-state panel, and admits a child only on a +1.0 composite margin with three-seed validation. The cycle went from hand-driven to unattended autopilot across its first three generations. Its wins are concentrated at the front: generation 1 gave the number-one design (Q15K, 90.5, E -3.65, dWT +0.747) and generation 4 promoted three single-lysine swaps. From generation 5 the loop plateaued twice, both times on repetition it could not see in itself, and both causes were diagnosed and repaired — the second fix landing after the run that exposed it.",
+      "goal": "Close the loop: let the validated instruments choose the parents and the mutations, and generate the next set automatically.",
+      "goal_extra": [
+        "Strategy difference: the first self-driving campaign - the fitness function is the calibrated composite, the operators are the swaps the project had already validated by hand.",
+        "Answers: does the repair trick generalise when the loop, not a human, picks the positions? (Yes - 3 of 52 folds entered the set.)"
+      ],
+      "verdict_detail": "Three swaps earned entry on the full composite: Q15K (from L58K; E -1.78 to -3.65, score 90.5, and the first design strong on every axis - dWT +0.747, a project record, with dfree +0.766 and E -3.65), W57K (84.3, E -2.09) and F50K (81.8, E -2.55). 11 of the 52 children qualified on the fold gate. Rejected despite qualifying: peprim-001's T53K sibling (84.4 against the W57K's 84.3 - a dead heat decided by the validated instrument, E -1.64 vs -2.09), nim-001 c7's children A64K (82.5, carrying the project's best interface quality at i_pDAE 0.853) and V59K (80.5), both just under their parent 82.8, and wave2-024's V15K (79.7 vs 79.1, inside the anti-churn threshold). Validation: three Boltz-2 seeds each (Q15K spread 0.006, W57K 0.004, F50K 0.010), chai 0.812 / 0.763 / 0.793, apo pLDDT 0.963 / 0.963 / 0.959 - all in band. The W57K was produced in the round-1 repair but never tri-stated then; the loop recovered it as a full entrant. Cost: about 2.5 h per generation (52 folds plus 16 tri-state arms); the loop continues.",
+      "chapters": [
+        {
+          "id": "g1",
+          "title": "G - the generation",
+          "date": "2026-11-03",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2"
+          ],
+          "text": "52 children of the current top-8 parents: basic swaps at up to six unsampled shell positions (5-13 A from the P6 aspartate) plus combos stacking the known repair hits. All folded against G12D and E-scored. The gen-1 combo operator was buggy (it built from variant templates, so the combo yamls repeated a variant's sequence); fixed in evo.py before generation 2 (parent-yaml templates, duplicate-position exclusion, cap 8).",
+          "steps": [],
+          "outcome": "11 children qualify; 3 enter the set.",
+          "viewer": []
+        },
+        {
+          "id": "e1",
+          "title": "E - entry on the full composite",
+          "date": "2026-11-03",
+          "tools": [
+            "Boltz-2",
+            "PROPKA 3.5.1",
+            "Chai-1"
+          ],
+          "text": "Each qualifier received the tri-state panel (the WT and peptide-free arms) and the composite the selection uses; three swaps beat their parents and replaced them in the set.",
+          "steps": [],
+          "outcome": "Q15K 90.5 (the new number one), W57K 84.3, F50K 81.8.",
+          "viewer": []
+        },
+        {
+          "id": "v1",
+          "title": "V - the v5 validation",
+          "date": "2026-11-03",
+          "tools": [
+            "Boltz-2",
+            "Chai-1"
+          ],
+          "text": "The three entrants received the full instrument set: three Boltz-2 seeds, chai-1 with MSAs, an apo fold and the E-score.",
+          "steps": [],
+          "outcome": "All in band (seeds 0.970-0.976, chai 0.763-0.812, apo >= 0.959); the v5 set is fully validated.",
+          "viewer": []
+        },
+        {
+          "id": "g2",
+          "title": "G2 - the autonomous cycle",
+          "date": "2026-11-03",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2"
+          ],
+          "text": "The autopilot now runs the whole cycle per generation: breed from the top-16, fold against G12D, E-score, tri-state the qualifiers, compare the composites and apply a winner, then queue the validation. The guardrails live in evo-apply.py: a +1.0 composite margin over the parent's set score, one winner per parent family, and the fold gates (peptide ipTM at or above 0.93, i_pDAE at or above 0.60). val-run.sh runs the swapped designs through three Boltz-2 seeds, chai-1 and an apo fold on its own. Result: generations 2 and 3 each folded 28 children and tri-stated 4 qualifiers. The best composite was 88.6 (L58K-Q15K-A56K, E -3.22, dWT +0.597, dfree +0.710) against its parent Q15K's 90.5, so the +1.0 anti-churn margin rejected it. L58K-Q15K-L51K holds the best E read so far (-3.74, under the record -3.65) but loses the wild-type arm (dWT -0.010) and lands at 78.9.",
+          "steps": [],
+          "outcome": "Two generations ran unattended. Neither promoted a swap.",
+          "viewer": []
+        },
+        {
+          "id": "g3",
+          "title": "G3 - the plateau and the fix",
+          "date": "2026-11-03",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2"
+          ],
+          "text": "Generation 3 wrote 28 fold names and two score tables byte-identical to generation 2's. Cause: the breeder read only the repair and generation-1 fold trees for mutations already tried and drew its parents from a fixed list, so it rebuilt the same children. The fix in evo.py breeds from the current top-16 and scans every generation tree, so the tried-position set grows with the work.",
+          "steps": [],
+          "outcome": "Plateau read from the identical fold sets, fixed before generation 4.",
+          "viewer": []
+        },
+        {
+          "id": "g4",
+          "title": "G4 - the generation that paid",
+          "date": "2026-11-04",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2"
+          ],
+          "text": "Generation 4 ran the whole cycle unattended on the repaired breeder: 35 children of the current top-16, folded against G12D and E-scored; 26 cleared the fold gate and went to the tri-state panel (52 arms); the apply step compared composites under the +1.0 margin and the one-winner-per-family rule, and swapped three children in.",
+          "steps": [],
+          "outcome": "Three swaps: 67.5 to 87.1, 65.1 to 79.5, 64.1 to 68.7.",
+          "viewer": []
+        },
+        {
+          "id": "v4",
+          "title": "V - the three entrants validated",
+          "date": "2026-11-04",
+          "tools": [
+            "Boltz-2",
+            "Chai-1"
+          ],
+          "text": "The three swaps received the full instrument set on their own: three Boltz-2 seeds each, chai-1 with MSAs and an apo fold.",
+          "steps": [],
+          "outcome": "All in band (seeds 0.972-0.981, chai 0.774-0.814, apo recorded); all three stand in the submission.",
+          "viewer": []
+        },
+        {
+          "id": "g5",
+          "title": "G5-12 - the second ceiling",
+          "date": "2026-11-04",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2"
+          ],
+          "text": "Eight further generations ran back to back and promoted nothing. Each bred 13 or 14 children and none cleared the fold gate, so the tri-state panel and the apply step saw no candidate. Generations 6 to 12 are byte-identical, and their logs show why: the three swapped-in winners are skipped with 'no sequence found', so the breeder cannot make children of them, and the remaining positions of the other parents were already tried, leaving only the combo operator - which rebuilds the same combos without a duplicate check.",
+          "steps": [],
+          "outcome": "Eight generations, zero swaps; the loop did not detect the repetition.",
+          "viewer": []
+        },
+        {
+          "id": "fix",
+          "title": "The breeder rewritten after the run (evo.py v4)",
+          "date": "2026-11-04",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2"
+          ],
+          "text": "The byte-identical rebuild had one cause: the combo operator took the first three known mutations of a parent and rebuilt that same combo every generation, with no check against what already existed. The combo operator (evo.py v4) now walks untried PAIRS of each family's known mutations and skips a combo file already written in that generation's fold directory. The later runs show that this check holds inside one generation only (G13-20). The parent-sequence gap closed the same evening: the fold and yaml lookups now fall back to a recursive search over every fold tree of the project, so the three swapped-in winners resolve - generation 14's build log no longer skips them. The breeder also ranks by the v4 composite (see C17), so it works from the epitope-gate top instead of the gate-blind v2 ranking. That composite counts the organizers' epitope gate, and the generation-4 pool it re-ranks holds 18 passers of the gate (peptide_read >= 0.61, best 0.766) that the v2 ranking could not see; six of them entered the submission the same day (C10). One gap stays open and is recorded in the site-sync TODO: the loop has no convergence or plateau rule - the autopilot stops only at the end of the requested generation range.",
+          "steps": [],
+          "outcome": "Combo operator and parent-sequence lookup fixed and committed; the repeat check holds inside one generation only (G13-20), and a plateau stop stays open.",
+          "viewer": []
+        },
+        {
+          "id": "g13",
+          "title": "G13-20 - the plateau holds",
+          "date": "2026-11-05",
+          "tools": [
+            "RFD4-Proteina",
+            "Boltz-2"
+          ],
+          "text": "The loop ran eight more generations with no human in the promotion path, one every two to three hours, and promoted nothing. Generation 13 built 52 children and was left incomplete. Generation 14 ran twice: the first pass built nothing, the second bred 67 children from the v4 ranking, 14 cleared the fold gate, the tri-state panel ran 28 arms and no winner cleared the margin. Generations 15 to 20 bred 60 children each and all six wrote the same child set: the same 60 fold names, the same structures, the same E table and the same s1 outcome inside them (4 children reach the organizer's peptide gate, 27 interfaces are JDI-like), so the same folds were paid for six times at about 2.5 h each. All six then sent 12 qualifiers to the tri-state panel (24 arms) and no winner cleared the margin - generation 19 and generation 20 cleared none either. Generation 20 was the last generation of the requested range (14 to 20), so the run ended there at 14:55 on 2026-11-05 and the loop stopped without a plateau rule. The cause sits in the fixed operator: the v4 combo dedupe skips a combo only when that file already exists in the current generation's fold directory, which is empty at build time, so nothing is skipped across generations. Three of the sixteen parents also carry a v4 score of -1 (no E read in the v4 table) and stayed in the breed list.",
+          "steps": [],
+          "outcome": "Eight generations, zero promotions; the repeated child set recurred in six of them.",
+          "viewer": []
+        }
+      ],
+      "proteins": [
+        {
+          "design": "evomini-wave1__run-014__design_0005__g12d-A16K",
+          "phase": "g4",
+          "ipsae_min": 0.663,
+          "iptm": 0.964,
+          "note": "from mini-wave1 67.5; E -3.75; seeds 0.981, chai 0.814"
+        },
+        {
+          "design": "evonim-wave3__run-013__design_0003__g12d-E23K",
+          "phase": "g4",
+          "ipsae_min": 0.6,
+          "iptm": 0.963,
+          "note": "from nim-wave3 65.1; E -2.88; seeds 0.972, chai 0.777"
+        },
+        {
+          "design": "evowave2-pep__run-026__design_0003__g12d-V24K",
+          "phase": "g4",
+          "ipsae_min": 0.682,
+          "iptm": 0.964,
+          "note": "from wave2-pep 64.1; E -1.35; seeds 0.979, chai 0.774"
+        }
+      ],
+      "viewer": [
+        "evorepair-wave2-pep__run-016__design_0005__g12d-L58K-Q15K",
+        "evopeprim-wave1__run-001__design_0002__g12d-W57K",
+        "evorepair-wave4-pep__run-007__design_0002__g12d-A58K-F50K",
+        "evoevorepair-wave2-pep__run-016__design_0005__g12d-L58K-Q15K-A56K",
+        "evoevorepair-wave2-pep__run-016__design_0005__g12d-L58K-Q15K-L51K",
+        "evonim-wave3__run-001__design_0004__g12d__c7-I13K",
+        "evomini-wave1__run-014__design_0005__g12d-A16K",
+        "evonim-wave3__run-013__design_0003__g12d-E23K",
+        "evowave2-pep__run-026__design_0003__g12d-V24K"
+      ]
+    }
+  ]
+}

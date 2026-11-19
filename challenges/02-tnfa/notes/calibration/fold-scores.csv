@@ -1,0 +1,7 @@
+design,samples,best_ipsae,best_ipsae_min,best_pdockq2,best_iptm,their_ipsae_min_boltz2,outcome,kd_nM
+calib-rank05-genie3,5,0.901,0.932,0.283,0.955,0.87814355,binder/binder,4.230418627536011
+calib-rank15-pxdesign,5,0.863,0.904,0.245,0.96,0.90722364,binder/binder,0.703069877783462
+calib-rank02-genie3,5,0.269,0.364,0.068,0.748,0.056768492,binder/binder,2.097197079386056
+calib-loser-mythos-r08,5,0.906,0.939,0.567,0.977,0.92026,non_binder/non_binder,
+calib-loser-mythos-r03,5,0.91,0.941,0.506,0.971,0.89457196,non_binder/non_binder,
+calib-loser-mythos-r04,5,0.894,0.93,0.49,0.969,0.8945217,non_binder/non_binder,

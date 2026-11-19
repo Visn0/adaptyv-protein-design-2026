@@ -1,0 +1,259 @@
+1
+00:00:00,400 --> 00:00:02,575
+The campaign that produced the champion.
+
+2
+00:00:02,575 --> 00:00:07,538
+The method, the steps, the tools —
+and two of the designs, in motion.
+
+3
+00:00:08,700 --> 00:00:13,138
+The ancestry in one line:
+Genie three made the backbones.
+
+4
+00:00:13,138 --> 00:00:17,125
+Full-backbone ProteinMPNN
+built families on the best one.
+
+5
+00:00:17,125 --> 00:00:19,750
+A mutation round lifted the human record.
+
+6
+00:00:19,750 --> 00:00:22,750
+A mouse-first redesign made it cross-reactive.
+
+7
+00:00:22,750 --> 00:00:26,000
+Two selection generations
+tightened both species.
+
+8
+00:00:26,000 --> 00:00:28,650
+And one histidine gave it the pH switch.
+
+9
+00:00:28,650 --> 00:00:31,400
+Every link had a measured decision behind it.
+
+10
+00:00:32,600 --> 00:00:34,238
+First, calibration.
+
+11
+00:00:34,238 --> 00:00:41,038
+We re-scored the released campaign — one hundred and fifty
+designs — and reproduced their scores within three hundredths.
+
+12
+00:00:41,038 --> 00:00:47,650
+The bar: below zero point eight, almost
+no binders; at or above, a quarter bound.
+
+13
+00:00:47,650 --> 00:00:55,262
+The generator decides more than the filter: Genie three made
+eight of their twenty-three binders; ours, one of forty.
+
+14
+00:00:56,400 --> 00:01:06,662
+The format came first: single small chains, the full trimer, the junction
+of two protomers — the released hotspot pair, B one-oh-two and D sixty-two.
+
+15
+00:01:06,662 --> 00:01:12,200
+Genie three then made the backbones — open
+source, sixty-six seconds per design.
+
+16
+00:01:12,200 --> 00:01:18,150
+Batch one: eight designs, one clean
+fold — d seven, sixty-four residues.
+
+17
+00:01:18,150 --> 00:01:23,588
+Batch two: sixteen designs — the d
+twelve family, ninety-two residues.
+
+18
+00:01:23,588 --> 00:01:26,362
+Backbone choice dominates everything after it.
+
+19
+00:01:27,567 --> 00:01:28,854
+Then the sequences.
+
+20
+00:01:28,854 --> 00:01:34,967
+The first family came out capped — the CA-only lesson:
+without the side chains, every score stays low.
+
+21
+00:01:34,967 --> 00:01:37,929
+The fix: re-sequence the folded backbone.
+
+22
+00:01:37,929 --> 00:01:48,179
+Eighteen variants of d seven — zero point six three to zero point eight five — every
+fold at the designed site; a control backbone stayed below zero point one nine.
+
+23
+00:01:48,179 --> 00:01:51,279
+Fold first; expand families on the winners.
+
+24
+00:01:52,400 --> 00:01:54,450
+Every candidate met the same gate.
+
+25
+00:01:54,450 --> 00:01:58,637
+Boltz two co-folds it: five
+samples, seed forty-two.
+
+26
+00:01:58,637 --> 00:02:06,775
+I P S A E scores the interface at the designed two-protomer junction,
+and a site check requires both halves of the epitope to touch.
+
+27
+00:02:06,775 --> 00:02:10,825
+Score and site, together —
+neither is evidence alone.
+
+28
+00:02:10,825 --> 00:02:12,375
+Both designs passed.
+
+29
+00:02:13,533 --> 00:02:15,633
+Two of the designs, in motion.
+
+30
+00:02:15,633 --> 00:02:22,746
+D seven x t three dash three — real all-atom
+molecular dynamics against human TNF-alpha.
+
+31
+00:02:22,746 --> 00:02:25,746
+Pink is the binder; blue is the target.
+
+32
+00:02:25,746 --> 00:02:29,546
+About three quarters of the interface
+contacts hold through the run.
+
+33
+00:02:29,546 --> 00:02:32,308
+A physics test of the pose, not an assay.
+
+34
+00:02:33,633 --> 00:02:41,046
+The second design: b two x d twelve dash two —
+the independent scaffold, ninety-two residues.
+
+35
+00:02:41,046 --> 00:02:43,158
+Same treatment, same physics.
+
+36
+00:02:43,158 --> 00:02:47,996
+Fifty-three interface pairs at the start,
+and the contact count holds through the run.
+
+37
+00:02:47,996 --> 00:02:50,396
+The backup sits where it was designed to sit.
+
+38
+00:02:51,700 --> 00:02:52,687
+Then mouse.
+
+39
+00:02:52,687 --> 00:03:00,087
+The first check said the family kept the designed interface on
+mouse — but degraded, below the band of released mouse binders.
+
+40
+00:03:00,087 --> 00:03:07,388
+So we stopped checking and started selecting: sixty-four
+sequences designed against the mouse protein, sixteen folded.
+
+41
+00:03:07,388 --> 00:03:11,762
+mce fourteen: the first design
+strong on both species at once.
+
+42
+00:03:12,933 --> 00:03:15,296
+Two selection generations locked it in.
+
+43
+00:03:15,296 --> 00:03:24,883
+ds-mce-14-v6 — one substitution — at zero point eight
+five six human and zero point eight five four mouse.
+
+44
+00:03:24,883 --> 00:03:29,096
+The ds two family pushed the mouse
+side to zero point eight six eight.
+
+45
+00:03:29,096 --> 00:03:34,596
+Then the family plateaued — the pre-registered
+move: change the input, not the volume.
+
+46
+00:03:35,700 --> 00:03:38,550
+Now the switch — the objective ranked first.
+
+47
+00:03:38,550 --> 00:03:43,900
+The linkage check found no switch at all —
+slightly tighter in acid, the wrong direction.
+
+48
+00:03:43,900 --> 00:03:47,712
+The retrofit: histidines
+against the interface lysine.
+
+49
+00:03:47,712 --> 00:03:52,262
+The first version, three histidines,
+flipped the sign but cost binding.
+
+50
+00:03:52,262 --> 00:04:04,388
+A position scan found the fix: at residue thirty-three, one histidine on the salt bridge kept the
+binding — the strongest switch measured here, fifty-four point seven times toward pH seven point four.
+
+51
+00:04:05,567 --> 00:04:16,917
+That is the champion: S R two, D S mce fourteen, V six, R two C
+— one substitution, E thirty-three H, of the best dual design.
+
+52
+00:04:16,917 --> 00:04:23,017
+Human zero point eight four nine, mouse zero
+point eight four seven, five of five on both.
+
+53
+00:04:23,017 --> 00:04:28,779
+Every switch ships with its paired control — the
+lab subtracts everything except the histidine.
+
+54
+00:04:29,967 --> 00:04:37,142
+Final tally: eight designs submitted — five switch
+variants, two paired controls, and the human-target record.
+
+55
+00:04:37,142 --> 00:04:39,954
+Everything is prediction
+until the lab runs it.
+
+56
+00:04:39,954 --> 00:04:49,804
+Tools: Genie three, ProteinMPNN, Boltz two, I P S A
+E, PROPKA linkage, OpenMM dynamics, Mol star renders.

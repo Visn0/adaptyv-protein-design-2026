@@ -1,0 +1,229 @@
+{
+  "challenge": "04-tfr1",
+  "funnel": {
+    "title": "The funnel: 388 backbones in, 20 designs out",
+    "subtitle": "green = free (CPU, seconds), orange = GPU minutes, pink = the expensive verification round only the final twenty earn",
+    "generation": {
+      "heading": "Generation - 388 backbones over six waves",
+      "sub": "two generators (local Genie 3, hosted RFD4-Proteina NIM) conditioned on explicit hotspot sets, built against the 221-residue apical block of 11QC chain A",
+      "slices": [
+        {
+          "label": "C1 triage \u00b7 RFD4 \u00b7 97",
+          "count": 97,
+          "color": "#60a5fa",
+          "legend": "C1 RFD4-Proteina: 24-25 designs on each of the four apical patches E0/E1/E2/E12; 24/24 obey the named tip, E12's two-anchor patch the thinnest"
+        },
+        {
+          "label": "C1 triage \u00b7 Genie 3 \u00b7 96",
+          "count": 96,
+          "color": "#34d399",
+          "legend": "C1 Genie 3: 24 per patch, CA-only ProteinMPNN sequences, all 96 pass the geometry screen"
+        },
+        {
+          "label": "C2 batch-2 \u00b7 E12 \u00b7 81",
+          "count": 81,
+          "color": "#a3e635",
+          "legend": "C2 batch-2: 49 RFD4 + 32 Genie 3, all on the surviving E12 anchors K344/K374 - the generator comparison"
+        },
+        {
+          "label": "C2 batch-3 \u00b7 RFD4 \u00b7 48",
+          "count": 48,
+          "color": "#f59e0b",
+          "legend": "C2 batch-3: 24 more E12 designs, plus 24 on the triple-cation set E3 {231,344,374} that the N251 glycan closed"
+        },
+        {
+          "label": "C2 wave-2 \u00b7 hybrid + long \u00b7 42",
+          "count": 42,
+          "color": "#22d3ee",
+          "legend": "C2 wave 2: 26 RFD4 + 16 RFdiffusion on the hybrid set H {R208,Y211,K344,K374} and a 110-140 aa length sweep"
+        },
+        {
+          "label": "C5 two-chain units \u00b7 24",
+          "count": 24,
+          "color": "#f472b6",
+          "legend": "C5: RFD4 asked for two designed chains that must hold the target and each other - the architecture probe"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "kind": "filter",
+        "title": "Geometry and glycan screen",
+        "text": "min binder-target CA distance >= 3.0 A, >= 3 target CAs within 8 A, a designed hotspot within 12 A; then a footprint check against the N251 glycan (scripts/work/screen-gen-geometry.py)",
+        "cost": "free - seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "All 96 triage designs pass; 11 designs excluded on the glycan",
+        "sub": "9 of 24 E3 designs and 2 of 24 two-chain units were built into N251"
+      },
+      {
+        "kind": "filter",
+        "title": "Unrestrained co-fold (Boltz-2)",
+        "text": "5 samples per design against the full 639-residue protomer (peak 11.29 GiB of the 12.2 GB card, ~2.5 min per design), scored for ipSAE AND at-site contact AND clash (scripts/screen_folds_c4.py v2)",
+        "cost": "GPU minutes",
+        "tone": "orange"
+      },
+      {
+        "kind": "result",
+        "heading": "0 clean at-site samples of 495",
+        "sub": "the native parvovirus binder floats 42-55 A away too: the read is fold-limited, recorded as cannot-decide, not as an epitope verdict"
+      },
+      {
+        "kind": "filter",
+        "title": "Restrained co-fold with the engagement gate (Chai-1)",
+        "text": "pocket restraints on the designed anchors (8 A), 5 samples, seed 42, ~12 min per design; a read counts only when the worst anchor distance is <= 8 A and a binder residue sits at the site. Native reference 0.42-0.48; advance line 0.45",
+        "cost": "GPU minutes",
+        "tone": "orange"
+      },
+      {
+        "kind": "result",
+        "heading": "E12 advances: 8 of 24 vs E0's 5 of 24",
+        "sub": "E1/E2 re-screen 0 of 48 engaged; E3 1 of 15; C2 then clears 20 of 81, top 0.779"
+      },
+      {
+        "kind": "filter",
+        "title": "The switch layer",
+        "text": "histidines placed 3.5-8.5 A from an anchor lysine NZ at rSASA >= 0.20, built on the parent's own MSA and restraints; gate 1 = binding within 0.10 of the parent; mechanism = PROPKA pKa bound vs free per engineered site",
+        "cost": "GPU minutes + free PROPKA",
+        "tone": "orange"
+      },
+      {
+        "kind": "result",
+        "heading": "21 of 29 variants keep their binding; 13 carry forward",
+        "sub": "engaging sites shift -0.5 to -2.8 pKa units; far-edge picks read flat (-0.05, -0.15); one site reads the wrong way (+0.48)"
+      },
+      {
+        "kind": "filter",
+        "title": "Mouse cross-fold",
+        "text": "the identical restrained protocol against mouse TfR1 (AlphaFold Q62351), anchors mapped through the alignment to K346/K376 - never by a fixed offset, because the constructs carry an indel",
+        "cost": "GPU minutes",
+        "tone": "orange"
+      },
+      {
+        "kind": "result",
+        "heading": "63 designs paired human vs mouse",
+        "sub": "two mouse-competent candidates; the three tightest human parents fall to 0.364 / 0.266 / 0.257"
+      },
+      {
+        "kind": "filter",
+        "title": "The selector: floors, composite, diversity",
+        "text": "pLDDT >= 63, entropy >= 2.5 bits, top residue <= 45%, no homopolymer run of 6, at least one engaged sample; then total = 2.0*S + 1.5*X + 1.5*B + 1.0*E; then one design per 0.90-identity cluster (campaigns/c6-selection/scripts/select-top20.py)",
+        "cost": "free - seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "314 scored, 129 fail the floors, 39 held as near-neighbours",
+        "sub": "membership survived a from-scratch re-run with two adjacent ranks swapped"
+      },
+      {
+        "kind": "filter",
+        "title": "The verification round",
+        "text": "unrestrained re-folds (no restraints at all), Boltz-2 ipSAE and pDockQ2, a seed-7 repeat on the top three, US-align novelty against the known-binder structures, the organizers' prescreen v0.5 (6,695 TfR1 references), the sequence-liability screen with repair variants folded on the full stack, and the dimer clash check",
+        "cost": "the expensive round",
+        "tone": "pink"
+      },
+      {
+        "kind": "result",
+        "heading": "11 of 20 engage unrestrained, 5 of them in every sample",
+        "sub": "20/20 prescreen pass, 0 of 20 structural hits (max TM 0.49), zero N-glycosylation sequons, two repairs swapped in at no measured cost"
+      }
+    ],
+    "final": {
+      "heading": "20 designs submitted",
+      "sub": "60-108 aa, single_chain, 20 distinct backbones across 7 families; 5 at switch class S5, 4 reading mouse >= 0.60; 20/20 pass the prescreen"
+    },
+    "note": {
+      "title": "Loops that fed new variants back in.",
+      "text": "No new backbones, only new sequences on proven ones: the C3 histidine retrofit (29 variants on 10 families), the switch-transfer round (10 variants on the three strongest switch-less parents, which put 53h and 13_48 into the twenty), the Proton-PottsMPNN pH-conditioned redesign arm (4 sane variants, closed at parity) and the liability repair round (5 variants, 2 swapped in, 3 held with their measured cost recorded)."
+    }
+  },
+  "molecular_figures": [
+    {
+      "slug": "human-vs-mouse",
+      "caption": "The champion c3_e12rfd4_r4d5_d2 folded under the identical restrained protocol against the human apical domain (restrained ipTM 0.782, 5 of 5 samples engaged) and against the mouse receptor (0.688). Only the target changes between the panels: the same sequence, the same restraint set mapped through the alignment to mouse K346/K376, the same five samples.",
+      "panels": [
+        {
+          "label": "Human TfR1 - restrained ipTM 0.782, 5/5 engaged",
+          "source_page": "viewers/multiview/c6-selection.html",
+          "item_ids": [
+            "target",
+            "c3_e12rfd4_r4d5_d2"
+          ],
+          "focus_chains": [
+            "B"
+          ],
+          "near_chains": [
+            "A"
+          ]
+        },
+        {
+          "label": "Mouse TfR1 - 0.688, the same binder",
+          "source_page": "viewers/multiview/c6-selection.html",
+          "item_ids": [
+            "target-mouse",
+            "c4mn_c3_e12rfd4_r4d5_d2"
+          ],
+          "focus_chains": [
+            "B"
+          ],
+          "near_chains": [
+            "A"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "switch-ladder",
+      "caption": "One family, three sequences, one backbone: the campaign-2 parent e12rfd4_r5d1 (restrained 0.779) and its single- and double-histidine switch variants, each folded under the identical restraints against the human apical domain. The engineered histidines face the conserved anchor lysines K344 and K374; nothing else about the design changes between the panels.",
+      "panels": [
+        {
+          "label": "Parent e12rfd4_r5d1 - no interface histidine, 0.779",
+          "source_page": "viewers/multiview/c2-binding-families.html",
+          "item_ids": [
+            "target",
+            "e12rfd4_r5d1"
+          ],
+          "focus_chains": [
+            "B"
+          ],
+          "near_chains": [
+            "A"
+          ]
+        },
+        {
+          "label": "One histidine (H27, 4.51 A to K344) - 0.781, pKa shift -1.35",
+          "source_page": "viewers/multiview/c3-switch-layer.html",
+          "item_ids": [
+            "target",
+            "c3_e12rfd4_r5d1_s1"
+          ],
+          "focus_chains": [
+            "B"
+          ],
+          "near_chains": [
+            "A"
+          ]
+        },
+        {
+          "label": "Two histidines (H27 + H8, both anchors) - 0.779, submitted at rank 2",
+          "source_page": "viewers/multiview/c3-switch-layer.html",
+          "item_ids": [
+            "target",
+            "c3_e12rfd4_r5d1_d2"
+          ],
+          "focus_chains": [
+            "B"
+          ],
+          "near_chains": [
+            "A"
+          ]
+        }
+      ],
+      "align_to_first": true,
+      "share_focus": true
+    }
+  ]
+}

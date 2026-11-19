@@ -1,0 +1,9 @@
+{
+  "c5-c2": {
+    "input": "challenges/05-pmhc/inputs/7OW6-G12D-noTCR.pdb",
+    "contig": "60-110,/0,A1-276,B1-99,C1-10",
+    "select_hotspots": "C4,C5,C6,C7,C8",
+    "infer_ori_strategy": "hotspots",
+    "is_non_loopy": true
+  }
+}

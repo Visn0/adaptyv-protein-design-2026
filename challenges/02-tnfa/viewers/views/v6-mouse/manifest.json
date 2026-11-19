@@ -1,0 +1,183 @@
+{
+  "name": "v6-mouse",
+  "source": [
+    "~/c2-work/genie3/folds/mc-e1b-d7x-t3-3-v6/boltz_results_mc-e1b-d7x-t3-3-v6/predictions/mc-e1b-d7x-t3-3-v6/mc-e1b-d7x-t3-3-v6_model_3.cif"
+  ],
+  "binder_chains": [
+    "A"
+  ],
+  "target_chains": [
+    "B",
+    "C",
+    "D"
+  ],
+  "interface_residues": [
+    [
+      7,
+      "A"
+    ],
+    [
+      10,
+      "A"
+    ],
+    [
+      14,
+      "A"
+    ],
+    [
+      15,
+      "B"
+    ],
+    [
+      16,
+      "B"
+    ],
+    [
+      18,
+      "B"
+    ],
+    [
+      21,
+      "A"
+    ],
+    [
+      26,
+      "A"
+    ],
+    [
+      30,
+      "A"
+    ],
+    [
+      33,
+      "A"
+    ],
+    [
+      34,
+      "A"
+    ],
+    [
+      36,
+      "A"
+    ],
+    [
+      37,
+      "A"
+    ],
+    [
+      38,
+      "A"
+    ],
+    [
+      40,
+      "A"
+    ],
+    [
+      41,
+      "A"
+    ],
+    [
+      44,
+      "A"
+    ],
+    [
+      45,
+      "A"
+    ],
+    [
+      46,
+      "A"
+    ],
+    [
+      60,
+      "B"
+    ],
+    [
+      62,
+      "B"
+    ],
+    [
+      67,
+      "C"
+    ],
+    [
+      68,
+      "C"
+    ],
+    [
+      69,
+      "C"
+    ],
+    [
+      71,
+      "C"
+    ],
+    [
+      104,
+      "B"
+    ],
+    [
+      107,
+      "B"
+    ],
+    [
+      109,
+      "B"
+    ],
+    [
+      131,
+      "C"
+    ],
+    [
+      132,
+      "C"
+    ],
+    [
+      136,
+      "B"
+    ],
+    [
+      137,
+      "B"
+    ],
+    [
+      138,
+      "B"
+    ],
+    [
+      139,
+      "B"
+    ],
+    [
+      140,
+      "B"
+    ]
+  ],
+  "interface_count": 35,
+  "modes": [
+    "cartoon",
+    "surface",
+    "interface"
+  ],
+  "views": 3,
+  "view_note": "viewpoints 0/1/2 are 120-degree azimuth steps at 15-degree elevation",
+  "mode_notes": {
+    "cartoon": "ribbon cartoon; binder pink, target chains cyan family",
+    "surface": "molecular surface (quality medium); same chain colours",
+    "interface": "cartoon plus interface residues as amber ball-and-stick (4.5 A heavy-atom contact)"
+  },
+  "files": [
+    "v6-mouse_cartoon_view0.png",
+    "v6-mouse_cartoon_view1.png",
+    "v6-mouse_cartoon_view2.png",
+    "v6-mouse_surface_view0.png",
+    "v6-mouse_surface_view1.png",
+    "v6-mouse_surface_view2.png",
+    "v6-mouse_interface_view0.png",
+    "v6-mouse_interface_view1.png",
+    "v6-mouse_interface_view2.png"
+  ],
+  "failures": [],
+  "generated": "2026-10-17T18:09:39+00:00",
+  "note": "Rendered from a predicted structure with Mol*; a fold is a model, not a binding measurement."
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=chai restrained screen, campaign-4 mouse cross-fold (c4-screen-list.txt)
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Restart=on-failure
+RestartSec=30
+WorkingDirectory=%h/c4-work/chai
+ExecStart=/bin/bash %h/c4-work/bin/chai-screen-batch.sh %h/c4-work/chai/c4-screen-list.txt
+StandardOutput=append:%h/c4-work/logs/c4-screen.log
+StandardError=append:%h/c4-work/logs/c4-screen.log
+[Install]
+WantedBy=default.target

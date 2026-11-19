@@ -1,0 +1,9 @@
+{
+  "x3a-rbs": {
+    "input": "challenges/02-tnfa/handoff/rfd3/target-x3a-rbs.pdb",
+    "contig": "70-95,/0,A10-19,A22-30,A35-64,A74-99,A116-142,A149-157,B6-23,B25-43,B46-48,B56-65,B114-121,B134,B139,B141-157,C57,C119-123,C157",
+    "select_hotspots": "A83,A87,A89,B147",
+    "infer_ori_strategy": "hotspots",
+    "is_non_loopy": true
+  }
+}

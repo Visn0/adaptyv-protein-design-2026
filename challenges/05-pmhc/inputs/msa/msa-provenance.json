@@ -1,0 +1,37 @@
+{
+ "060c29dd851f-d1024.a3m": {
+  "fetched": "2026-10-30",
+  "rows": 415,
+  "source": "mmseqs-swissprot+pdb"
+ },
+ "3c7486ad1c1e-d1024.a3m": {
+  "fetched": "2026-10-30",
+  "rows": 169,
+  "source": "mmseqs-swissprot+pdb"
+ },
+ "413ec08e1b9a-d1024.a3m": {
+  "fetched": "2026-10-30",
+  "rows": 258,
+  "source": "mmseqs-swissprot+pdb"
+ },
+ "6832726484b0-d1024.a3m": {
+  "fetched": "2026-10-30",
+  "rows": 597,
+  "source": "mmseqs-swissprot+pdb"
+ },
+ "90e703709962-d1024.a3m": {
+  "fetched": "2026-10-30",
+  "rows": 608,
+  "source": "mmseqs-swissprot+pdb"
+ },
+ "c56917c149b0-d1024.a3m": {
+  "fetched": "2026-10-30",
+  "rows": 254,
+  "source": "mmseqs-swissprot+pdb"
+ },
+ "faaa3da8a3c9-d1024.a3m": {
+  "fetched": "2026-10-30",
+  "rows": 396,
+  "source": "mmseqs-swissprot+pdb"
+ }
+}

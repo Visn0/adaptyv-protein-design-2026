@@ -1,0 +1,1398 @@
+{
+ "results": {
+  "e1b2-r0036": {
+   "id": "e1b2-r0036",
+   "sequence": "LTAAEIVDNHKNLASVPAVAAGLAPVIALITALYQLLAMRNARAFCDALRAGKVAAAATTACQEP",
+   "length": 65,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.3824,
+     "monobody": 0.2703,
+     "darpin": 0.1964
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": null
+   },
+   "focus_chain": "W",
+   "focus_region": "LTAAEIVDNHKNLASVPAVAAGLAPVIALITALYQLLAMRNARAFCDALRAGKVAAAATTACQEP",
+   "n_chains": 1,
+   "chain_lengths": [
+    65
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1403,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "LTAAEIVDNHKNLASVPAVAAGLAPVIALITALYQLLAMRNARAFCDALRAGKVAAAATTACQEP",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b2-r0036",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {}
+  },
+  "e1-r0014": {
+   "id": "e1-r0014",
+   "sequence": "VAIATAALIQFQNNLAALEAALALRDAAGSPLGDPCSILCALLALSPAAAQALCAKLLAELC",
+   "length": 62,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2326,
+     "monobody": 0.2647,
+     "darpin": 0.3091
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": null
+   },
+   "focus_chain": "W",
+   "focus_region": "VAIATAALIQFQNNLAALEAALALRDAAGSPLGDPCSILCALLALSPAAAQALCAKLLAELC",
+   "n_chains": 1,
+   "chain_lengths": [
+    62
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1357,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "VAIATAALIQFQNNLAALEAALALRDAAGSPLGDPCSILCALLALSPAAAQALCAKLLAELC",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1-r0014",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {}
+  },
+  "e1b-r0059": {
+   "id": "e1b-r0059",
+   "sequence": "AQNASLQEAFTIVANRDLLTLIALATASLVHPANGVILDICSSIREAANLLAEAAASMSLSPETQAARLLNQTVNLLVQVLIAVISFALVSAALAAL",
+   "length": 97,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.3778,
+     "monobody": 0.2364,
+     "darpin": 0.2442
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "AQNASLQEAFTIVANRDLLTLIALATASLVHPANGVILDICSSIREAANLLAEAAASMSLSPETQAARLLNQTVNLLVQVLIAVISFALVSAALAAL",
+   "n_chains": 1,
+   "chain_lengths": [
+    97
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.19,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "AQNASLQEAFTIVANRDLLTLIALATASLVHPANGVILDICSSIREAANLLAEAAASMSLSPETQAARLLNQTVNLLVQVLIAVISFALVSAALAAL",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0059",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1-r0033": {
+   "id": "e1-r0033",
+   "sequence": "AVQAAPISADTAAALVAALAPSPAILAAAAPTTGVDLSAATPAQQLVVAASNAAGCGNPAPQACFTAMQEIVAQDARAADLLAASVAEA",
+   "length": 89,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.1905,
+     "monobody": 0.1833,
+     "darpin": 0.2821
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "AVQAAPISADTAAALVAALAPSPAILAAAAPTTGVDLSAATPAQQLVVAASNAAGCGNPAPQACFTAMQEIVAQDARAADLLAASVAEA",
+   "n_chains": 1,
+   "chain_lengths": [
+    89
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1661,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00221|other|developed_binder|ChEMBL|CHEMBL6068241|EFSUBAGLUTIDE_ALFA",
+     "region_reference_seq": "HGEGTFTSDVSSYLEEQAAKEFIAWLVKGGGSSGAPPPSGGGGSERKSCVECPPCPAPPVAGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSHEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTERVVSVLTVVHQDWLNGKEYKCKVSNKGLPSSIEKTISKTKGQPREPQVYTLPPSREEMTKNQVSLTCLVKGEYPSDIAVEWESNGQPENNYKTTPPMLDSDGSFFLYSKLTVDKSRWQQGNVFSCSVMHEALHNHYTQKSLSLSPG",
+     "region_query_seq": "AVQAAPISADTAAALVAALAPSPAILAAAAPTTGVDLSAATPAQQLVVAASNAAGCGNPAPQACFTAMQEIVAQDARAADLLAASVAEA",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1-r0033",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1-r0025": {
+   "id": "e1-r0025",
+   "sequence": "MSNDEANAQAATLTAATACACDATFPTAAVEIYRAAATGKSGEEALQAALAALALASLINTLAEHL",
+   "length": 66,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2439,
+     "monobody": 0.1915,
+     "darpin": 0.2679
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": null
+   },
+   "focus_chain": "W",
+   "focus_region": "MSNDEANAQAATLTAATACACDATFPTAAVEIYRAAATGKSGEEALQAALAALALASLINTLAEHL",
+   "n_chains": 1,
+   "chain_lengths": [
+    66
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1448,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "MSNDEANAQAATLTAATACACDATFPTAAVEIYRAAATGKSGEEALQAALAALALASLINTLAEHL",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1-r0025",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {}
+  },
+  "e1b-r0023": {
+   "id": "e1b-r0023",
+   "sequence": "MAQLALLADTVNALAMKHAFAGQAVDLALISKLAVARAALLLITVLTAAGQAIVLADSGLLTLRFLRDALSSAITDQALVALADACVAAGLA",
+   "length": 92,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2,
+     "monobody": 0.2,
+     "darpin": 0.2963
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "MAQLALLADTVNALAMKHAFAGQAVDLALISKLAVARAALLLITVLTAAGQAIVLADSGLLTLRFLRDALSSAITDQALVALADACVAAGLA",
+   "n_chains": 1,
+   "chain_lengths": [
+    92
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.181,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "MAQLALLADTVNALAMKHAFAGQAVDLALISKLAVARAALLLITVLTAAGQAIVLADSGLLTLRFLRDALSSAITDQALVALADACVAAGLA",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0023",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1b-r0022": {
+   "id": "e1b-r0022",
+   "sequence": "AGKDAFDAALEQANINDMLTVLALLNADMAAATLAYNVINGGYRLRAVNAQRNLTAAELDALAEAQAVLL",
+   "length": 70,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.3111,
+     "monobody": 0.1795,
+     "darpin": 0.3226
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": null
+   },
+   "focus_chain": "W",
+   "focus_region": "AGKDAFDAALEQANINDMLTVLALLNADMAAATLAYNVINGGYRLRAVNAQRNLTAAELDALAEAQAVLL",
+   "n_chains": 1,
+   "chain_lengths": [
+    70
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1674,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "AGKDAFDAALEQANINDMLTVLALLNADMAAATLAYNVINGGYRLRAVNAQRNLTAAELDALAEAQAVLL",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0022",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {}
+  },
+  "e1b-r0050": {
+   "id": "e1b-r0050",
+   "sequence": "LDAALAAALADTLLGAIMALELAKQAALANPANTAPFQQAIVKTQSPATAAQIAVIAAAVVALLAQSIIAGALLPGAIAAVTTLVNKMLDALLAVQ",
+   "length": 96,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2667,
+     "monobody": 0.1754,
+     "darpin": 0.2262
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "LDAALAAALADTLLGAIMALELAKQAALANPANTAPFQQAIVKTQSPATAAQIAVIAAAVVALLAQSIIAGALLPGAIAAVTTLVNKMLDALLAVQ",
+   "n_chains": 1,
+   "chain_lengths": [
+    96
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1674,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "LDAALAAALADTLLGAIMALELAKQAALANPANTAPFQQAIVKTQSPATAAQIAVIAAAVVALLAQSIIAGALLPGAIAAVTTLVNKMLDALLAVQ",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0050",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1b2-r0065": {
+   "id": "e1b2-r0065",
+   "sequence": "AVAKIQEEIAALWNIVQALVLAADPSAASIAQQLASLAVVQSATPLEAVALQQNAMTDASAAKAANATRLLACYLAGTAQNVAD",
+   "length": 84,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.1778,
+     "monobody": 0.0833,
+     "darpin": 0.2933
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "AVAKIQEEIAALWNIVQALVLAADPSAASIAQQLASLAVVQSATPLEAVALQQNAMTDASAAKAANATRLLACYLAGTAQNVAD",
+   "n_chains": 1,
+   "chain_lengths": [
+    84
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1719,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "AVAKIQEEIAALWNIVQALVLAADPSAASIAQQLASLAVVQSATPLEAVALQQNAMTDASAAKAANATRLLACYLAGTAQNVAD",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b2-r0065",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1b-r0037": {
+   "id": "e1b-r0037",
+   "sequence": "VLLLMAGVAVAAIACHIAASQILAQGGSLAAAQALLMASQIAICTSTFVLSSVLGSIEAQVDLALLAYMSDQAVAAFADAVRAGSFAP",
+   "length": 88,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.225,
+     "monobody": 0.1176,
+     "darpin": 0.3117
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "VLLLMAGVAVAAIACHIAASQILAQGGSLAAAQALLMASQIAICTSTFVLSSVLGSIEAQVDLALLAYMSDQAVAAFADAVRAGSFAP",
+   "n_chains": 1,
+   "chain_lengths": [
+    88
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1719,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "VLLLMAGVAVAAIACHIAASQILAQGGSLAAAQALLMASQIAICTSTFVLSSVLGSIEAQVDLALLAYMSDQAVAAFADAVRAGSFAP",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0037",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1b-r0019": {
+   "id": "e1b-r0019",
+   "sequence": "LLAALLVIHLVASIVETALTQASEQLIATGASADTLAELTRTLALLADFCDTIELILLTACGAPTAIATAWQQFMDRLSAQAFMESIKQQA",
+   "length": 91,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2,
+     "monobody": 0.2353,
+     "darpin": 0.2963
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "LLAALLVIHLVASIVETALTQASEQLIATGASADTLAELTRTLALLADFCDTIELILLTACGAPTAIATAWQQFMDRLSAQAFMESIKQQA",
+   "n_chains": 1,
+   "chain_lengths": [
+    91
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1855,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "LLAALLVIHLVASIVETALTQASEQLIATGASADTLAELTRTLALLADFCDTIELILLTACGAPTAIATAWQQFMDRLSAQAFMESIKQQA",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0019",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1-r0023": {
+   "id": "e1-r0023",
+   "sequence": "DLAEYLNTLSVAAFSASLNPLMSAAQRAAACIANATATAASDNALAARCEAALAAAAALA",
+   "length": 60,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2727,
+     "monobody": 0.2222,
+     "darpin": 0.4151
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": null
+   },
+   "focus_chain": "W",
+   "focus_region": "DLAEYLNTLSVAAFSASLNPLMSAAQRAAACIANATATAASDNALAARCEAALAAAAALA",
+   "n_chains": 1,
+   "chain_lengths": [
+    60
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1403,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "DLAEYLNTLSVAAFSASLNPLMSAAQRAAACIANATATAASDNALAARCEAALAAAAALA",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1-r0023",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {}
+  },
+  "e1b-r0036": {
+   "id": "e1b-r0036",
+   "sequence": "APAPIVADAAGVAAFQAALAAVALATQDQLTAALVLALCSPHRSVLLAQLATASAAILAAADVAARAGVSAAEQKRAMLDTHKMLVAAMLVISTAGA",
+   "length": 97,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2222,
+     "monobody": 0.1905,
+     "darpin": 0.2857
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "APAPIVADAAGVAAFQAALAAVALATQDQLTAALVLALCSPHRSVLLAQLATASAAILAAADVAARAGVSAAEQKRAMLDTHKMLVAAMLVISTAGA",
+   "n_chains": 1,
+   "chain_lengths": [
+    97
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.181,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "APAPIVADAAGVAAFQAALAAVALATQDQLTAALVLALCSPHRSVLLAQLATASAAILAAADVAARAGVSAAEQKRAMLDTHKMLVAAMLVISTAGA",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0036",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1b-r0039": {
+   "id": "e1b-r0039",
+   "sequence": "LSAALALQAQAAAALGLTASAIALHNAALQIAAMLFAVQAALPAAVVSTAAILAEQAYLEAKAVDAFVSYLKAMG",
+   "length": 75,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2667,
+     "monobody": 0.2791,
+     "darpin": 0.3284
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": null
+   },
+   "focus_chain": "W",
+   "focus_region": "LSAALALQAQAAAALGLTASAIALHNAALQIAAMLFAVQAALPAAVVSTAAILAEQAYLEAKAVDAFVSYLKAMG",
+   "n_chains": 1,
+   "chain_lengths": [
+    75
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1538,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "LSAALALQAQAAAALGLTASAIALHNAALQIAAMLFAVQAALPAAVVSTAAILAEQAYLEAKAVDAFVSYLKAMG",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0039",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {}
+  },
+  "e1b2-r0024": {
+   "id": "e1b2-r0024",
+   "sequence": "ADTAAKNALHAALASANTVDQLAAMLLSTMIDAGMVTAGSTTLLSALAAACASRAEAIAAGSLSAAEIEAARQAIGMNLLLAALIQALRDLAIAILL",
+   "length": 97,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2683,
+     "monobody": 0.1429,
+     "darpin": 0.2941
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "ADTAAKNALHAALASANTVDQLAAMLLSTMIDAGMVTAGSTTLLSALAAACASRAEAIAAGSLSAAEIEAARQAIGMNLLLAALIQALRDLAIAILL",
+   "n_chains": 1,
+   "chain_lengths": [
+    97
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1674,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "ADTAAKNALHAALASANTVDQLAAMLLSTMIDAGMVTAGSTTLLSALAAACASRAEAIAAGSLSAAEIEAARQAIGMNLLLAALIQALRDLAIAILL",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b2-r0024",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1b2-r0056": {
+   "id": "e1b2-r0056",
+   "sequence": "AAQAAAISAASLVLSAIANLAFLLTKSSANGLTMSGFISIAAANLLLIPGAAVTGQLIAYLSTQSAQALQTKLQE",
+   "length": 75,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.1818,
+     "monobody": 0.2353,
+     "darpin": 0.3175
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": null
+   },
+   "focus_chain": "W",
+   "focus_region": "AAQAAAISAASLVLSAIANLAFLLTKSSANGLTMSGFISIAAANLLLIPGAAVTGQLIAYLSTQSAQALQTKLQE",
+   "n_chains": 1,
+   "chain_lengths": [
+    75
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1674,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "AAQAAAISAASLVLSAIANLAFLLTKSSANGLTMSGFISIAAANLLLIPGAAVTGQLIAYLSTQSAQALQTKLQE",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b2-r0056",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {}
+  },
+  "e1b2-r0080": {
+   "id": "e1b2-r0080",
+   "sequence": "MAIAKAIAIVLALVVAAAEPAGISPALDSAVQLLNVLYEAVANAVPVELIARLVACHFGGASAAAQEAVATELALAAAGNLLAAIATA",
+   "length": 88,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2432,
+     "monobody": 0.1864,
+     "darpin": 0.2821
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "MAIAKAIAIVLALVVAAAEPAGISPALDSAVQLLNVLYEAVANAVPVELIARLVACHFGGASAAAQEAVATELALAAAGNLLAAIATA",
+   "n_chains": 1,
+   "chain_lengths": [
+    88
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1719,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "MAIAKAIAIVLALVVAAAEPAGISPALDSAVQLLNVLYEAVANAVPVELIARLVACHFGGASAAAQEAVATELALAAAGNLLAAIATA",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b2-r0080",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1-r0005": {
+   "id": "e1-r0005",
+   "sequence": "KTQALTLLANILALQASANKAVAASTADPALAAAAIAAIGAAGLAAAAQAFNALLQIQATELSADAVLAAALEAVAIKDFHLATG",
+   "length": 85,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2667,
+     "monobody": 0.1698,
+     "darpin": 0.3056
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "KTQALTLLANILALQASANKAVAASTADPALAAAAIAAIGAAGLAAAAQAFNALLQIQATELSADAVLAAALEAVAIKDFHLATG",
+   "n_chains": 1,
+   "chain_lengths": [
+    85
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1493,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "KTQALTLLANILALQASANKAVAASTADPALAAAAIAAIGAAGLAAAAQAFNALLQIQATELSADAVLAAALEAVAIKDFHLATG",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1-r0005",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  },
+  "e1b-r0021": {
+   "id": "e1b-r0021",
+   "sequence": "FLNSASGKAAFSHLLSLQAHKDLQAQIAANTTTAIVAGAATAVLKALGVSPATATVVVVLLSAAVATITAIANAAA",
+   "length": 76,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2558,
+     "monobody": 0.1538,
+     "darpin": 0.3175
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": null
+   },
+   "focus_chain": "W",
+   "focus_region": "FLNSASGKAAFSHLLSLQAHKDLQAQIAANTTTAIVAGAATAVLKALGVSPATATVVVVLLSAAVATITAIANAAA",
+   "n_chains": 1,
+   "chain_lengths": [
+    76
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1493,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00220|other|developed_binder|ChEMBL|CHEMBL4297576+|EFINOPEGDUTIDE",
+     "region_reference_seq": "PSCPAPEFLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAKGQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK",
+     "region_query_seq": "FLNSASGKAAFSHLLSLQAHKDLQAQIAANTTTAIVAGAATAVLKALGVSPATATVVVVLLSAAVATITAIANAAA",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b-r0021",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {}
+  },
+  "e1b2-r0029": {
+   "id": "e1b2-r0029",
+   "sequence": "DLAAAIATLLATGAAHMQARLSSADALAAQCGKAIGSAVAAVNQHAAAVHPNVNLLLSLLNALIDYYSQATANDFCNWLQANAALPG",
+   "length": 87,
+   "category": "miniprotein",
+   "region_kind": "whole",
+   "category_confidence": 0.5,
+   "category_evidence": {
+    "framework_identity": {
+     "affibody": 0.2791,
+     "monobody": 0.2222,
+     "darpin": 0.3919
+    },
+    "gate": 0.85,
+    "min_length": {
+     "affibody": 34,
+     "monobody": 56,
+     "darpin": 94
+    },
+    "antibody_numbering": "no_valid_domain",
+    "antibody_reject": null,
+    "antibody_numbering_reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing)."
+   },
+   "focus_chain": "W",
+   "focus_region": "DLAAAIATLLATGAAHMQARLSSADALAAQCGKAIGSAVAAVNQHAAAVHPNVNLLLSLLNALIDYYSQATANDFCNWLQANAALPG",
+   "n_chains": 1,
+   "chain_lengths": [
+    87
+   ],
+   "declared_class": null,
+   "declared_class_match": null,
+   "prior_art": {},
+   "target": {
+    "whole": null,
+    "region": {
+     "region_identity": 0.1661,
+     "region_compared": true,
+     "region_exact": false,
+     "region_reference": "GLP1B00221|other|developed_binder|ChEMBL|CHEMBL6068241|EFSUBAGLUTIDE_ALFA",
+     "region_reference_seq": "HGEGTFTSDVSSYLEEQAAKEFIAWLVKGGGSSGAPPPSGGGGSERKSCVECPPCPAPPVAGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSHEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTERVVSVLTVVHQDWLNGKEYKCKVSNKGLPSSIEKTISKTKGQPREPQVYTLPPSREEMTKNQVSLTCLVKGEYPSDIAVEWESNGQPENNYKTTPPMLDSDGSFFLYSKLTVDKSRWQQGNVFSCSVMHEALHNHYTQKSLSLSPG",
+     "region_query_seq": "DLAAAIATLLATGAAHMQARLSSADALAAQCGKAIGSAVAAVNQHAAAVHPNVNLLLSLLNALIDYYSQATANDFCNWLQANAALPG",
+     "region_chain": "W",
+     "region_label": "cdr3",
+     "binder_status": null,
+     "named_agent": null,
+     "citation": null,
+     "supporting_exact_regions": 0,
+     "corpus_occurrences": null,
+     "per_region": {},
+     "region_decisive": true
+    },
+    "substring": null
+   },
+   "batch": {
+    "cluster_representative": "e1b2-r0029",
+    "cluster_size": 1
+   },
+   "verdict": "pass",
+   "flags": [
+    "pass"
+   ],
+   "reasons": {},
+   "context": {
+    "antibody_numbering_failed": {
+     "reason": "Unexpected AA at conserved position (conserved cysteine or tryptophan missing).",
+     "category": "miniprotein",
+     "note": "sequence was not recognised as an antibody domain, so the paratope arm did not run; it was judged on whole-sequence evidence only"
+    }
+   }
+  }
+ },
+ "dropped": [],
+ "timing": {
+  "classify_regions": 0.21,
+  "reference_annotation": 0.0,
+  "target_whole": 0.73,
+  "target_region": 0.15,
+  "target_substring": 0.01,
+  "batch_cluster": 1.09
+ },
+ "config": {
+  "known_sequence": 0.95,
+  "near_known_sequence": 0.8,
+  "target_known_identity": 0.9,
+  "target_known_coverage": 0.8,
+  "target_known": 0.9,
+  "target_homolog": 0.7,
+  "region_match": 0.8,
+  "region_min_length": 5,
+  "region_corpus_max": 100,
+  "verbatim_fragment_min_length": 20,
+  "substring_corpus_max": 100,
+  "prior_art_region_known": 0.9,
+  "prior_art_top_hits": 3,
+  "batch_cluster_identity": 0.95,
+  "batch_cluster_coverage": 0.8,
+  "db_root": null,
+  "mmseqs_bin": "mmseqs",
+  "threads": 0,
+  "include_patent_arm": true,
+  "allow_missing_arms": false,
+  "target": "glp1r",
+  "extras": {}
+ },
+ "target": {
+  "slug": "glp1r",
+  "name": "GLP-1 receptor",
+  "uniprot": "P43220",
+  "fasta": "~/c3-work/prescreen/prescreen/data/targets/glp1r/glp1r_binders.fasta",
+  "cdr_csv": "~/c3-work/prescreen/prescreen/data/targets/glp1r/glp1r_binder_cdrs.csv",
+  "references": 225,
+  "checksum": "f59ee97fc81fadfc"
+ }
+}

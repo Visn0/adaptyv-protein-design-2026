@@ -1,0 +1,190 @@
+{
+  "name": "dsmce14v6-human",
+  "source": [
+    "~/c2-work/genie3/folds/dsh-mce-14-v6/boltz_results_dsh-mce-14-v6/predictions/dsh-mce-14-v6/dsh-mce-14-v6_model_1.cif"
+  ],
+  "binder_chains": [
+    "A"
+  ],
+  "target_chains": [
+    "B",
+    "C",
+    "D"
+  ],
+  "interface_residues": [
+    [
+      7,
+      "A"
+    ],
+    [
+      10,
+      "A"
+    ],
+    [
+      14,
+      "A"
+    ],
+    [
+      15,
+      "C"
+    ],
+    [
+      16,
+      "C"
+    ],
+    [
+      17,
+      "C"
+    ],
+    [
+      18,
+      "C"
+    ],
+    [
+      21,
+      "A"
+    ],
+    [
+      24,
+      "A"
+    ],
+    [
+      26,
+      "A"
+    ],
+    [
+      29,
+      "A"
+    ],
+    [
+      30,
+      "A"
+    ],
+    [
+      33,
+      "A"
+    ],
+    [
+      34,
+      "A"
+    ],
+    [
+      36,
+      "A"
+    ],
+    [
+      37,
+      "A"
+    ],
+    [
+      40,
+      "A"
+    ],
+    [
+      41,
+      "A"
+    ],
+    [
+      43,
+      "A"
+    ],
+    [
+      44,
+      "A"
+    ],
+    [
+      46,
+      "A"
+    ],
+    [
+      60,
+      "C"
+    ],
+    [
+      62,
+      "C"
+    ],
+    [
+      68,
+      "B"
+    ],
+    [
+      69,
+      "B"
+    ],
+    [
+      70,
+      "B"
+    ],
+    [
+      72,
+      "B"
+    ],
+    [
+      92,
+      "B"
+    ],
+    [
+      105,
+      "C"
+    ],
+    [
+      108,
+      "C"
+    ],
+    [
+      110,
+      "C"
+    ],
+    [
+      132,
+      "B"
+    ],
+    [
+      133,
+      "B"
+    ],
+    [
+      138,
+      "C"
+    ],
+    [
+      139,
+      "C"
+    ],
+    [
+      140,
+      "C"
+    ],
+    [
+      141,
+      "C"
+    ],
+    [
+      144,
+      "C"
+    ]
+  ],
+  "interface_count": 38,
+  "modes": [
+    "cartoon",
+    "interface"
+  ],
+  "views": 3,
+  "view_note": "viewpoints 0/1/2 are 120-degree azimuth steps at 15-degree elevation",
+  "mode_notes": {
+    "cartoon": "ribbon cartoon; binder pink, target chains cyan family",
+    "interface": "cartoon plus interface residues as amber ball-and-stick (4.5 A heavy-atom contact)"
+  },
+  "files": [
+    "dsmce14v6-human_cartoon_view0.png",
+    "dsmce14v6-human_cartoon_view1.png",
+    "dsmce14v6-human_cartoon_view2.png",
+    "dsmce14v6-human_interface_view0.png",
+    "dsmce14v6-human_interface_view1.png",
+    "dsmce14v6-human_interface_view2.png"
+  ],
+  "failures": [],
+  "generated": "2026-10-17T18:15:23+00:00",
+  "note": "Rendered from a predicted structure with Mol*; a fold is a model, not a binding measurement."
+}

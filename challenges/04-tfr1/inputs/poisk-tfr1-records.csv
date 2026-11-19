@@ -1,0 +1,440 @@
+patent_id,antibody_identifier,discovery_methodology.source_organism,target.protein_name,target.gene_names,epitope.antigenic_site_name,epitope.type,epitope.mutagenesis_residues,epitope.structural_contact_residues,epitope.ligand_receptor_competition,epitope.functional_properties,target.binding_affinity.affinity_value,target.binding_affinity.method,target.binding_conditions,audit.verdict,unique_record_id
+6329508,Chimeric 128.1,Mouse,Transferrin Receptor,,,,,,,,,,,PLAUSIBLE,000710
+7736647,BA120g,Mouse,CD71,,,,,,,,,,,CONFIRMED,005355
+8409573,BA120g,Mouse,CD71,"Transferrin Receptor, TfR",,Functional/Competitive,,,,"Inhibits proliferation of tumor cell lines (A375, M74, Dauv1, Jurkat, K562, Dev).",,,Binding assessed in presence of Human AB serum or Ferritransferrin,REVIEW,012311
+8663598,VHD4,Human,Transferrin Receptor,,,Not Specified,,,,Internalization via receptor-mediated endocytosis.,3.3 x 10^-7 M,ELISA,,CONFIRMED,015012
+8663598,VHA3,Human,Transferrin Receptor,,,Not Specified,,,,Internalization via receptor-mediated endocytosis; Inhibition of cell growth (K562 and U87).,2.8 x 10^-7 M,ELISA,,CONFIRMED,015013
+9593165,TfR427 VL Variant Series,Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,028286
+9593165,3GH7 (Prior Art),Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,028287
+9593165,3TF12 (Prior Art),Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,028288
+9593165,TfR006,Human,Transferrin Receptor,,,,,,,,IC50: 34 ng/mL,Cell Growth Inhibition Assay,,CONFIRMED,028289
+9593165,TfR423 VL Variant Series,Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,028290
+9593165,TfR412 VH Variant Series,Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,028292
+9593165,TfR425 VL Variant Series,Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,028293
+9593165,3GH7 (Optimized/Synthesized),Human,Transferrin Receptor,,,,,,,,,,,PLAUSIBLE,028295
+9593165,TfR421 VL Variant Series,Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,028297
+9593165,3TF12 (Optimized/Synthesized),Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,028298
+9670274,Antibody 8D3,Mouse,Transferrin Receptor,,,Not Specified,,,Transferrin,Blood-brain-barrier shuttle,,,,CONFIRMED,029303
+9708406,15G11.v5,Humanized,Transferrin Receptor,,Apical Domain,Not Specified,,,"Does NOT block HFE, Does NOT block Transferrin",,KD 8.91E-09 M,SPR,,REVIEW,030180
+9708406,13C3,Mouse,Transferrin Receptor,,Apical Domain,Not Specified,,,,,,,,REVIEW,030181
+9708406,7A4 (also 7B10),Mouse,Transferrin Receptor,TFRC,Apical Domain,Not Specified,,,"Does NOT block HFE, Does NOT block Transferrin",,KD 1.90E-10 M,SPR,,REVIEW,030182
+9708406,13D4,Mouse,Transferrin Receptor,,Non-apical Domain,Not Specified,,,,,,,,REVIEW,030183
+9708406,15D2,Mouse,Transferrin Receptor,,Apical Domain,Not Specified,,,,,,,,REVIEW,030184
+9708406,Humanized 15G11 Variant (SEQ 117/120),Humanized,Transferrin Receptor,,Apical Domain,Not Specified,,,,,,,,REVIEW,030185
+9708406,8A2,Mouse,Transferrin Receptor,,Apical Domain,Not Specified,,,,,,,,REVIEW,030188
+9708406,1B12,Mouse,Transferrin Receptor,,Non-apical Domain,Not Specified,,,,,,,,REVIEW,030189
+9708406,Humanized 15G11 Variant (SEQ 111/114),Humanized,Transferrin Receptor,,Apical Domain,Not Specified,,,,,,,,REVIEW,030190
+9708406,16G5,Mouse,Transferrin Receptor,,Apical Domain,Not Specified,,,,,,,,REVIEW,030191
+9708406,4C2,Mouse,Transferrin Receptor,,Non-apical Domain,Not Specified,,,,,,,,REVIEW,030192
+9708406,10D11,Mouse,Transferrin Receptor,,Apical Domain,Not Specified,,,,,,,,REVIEW,030193
+9708406,15G11.53A,Humanized,Transferrin Receptor,,Apical Domain,Not Specified,,,,,KD 1.29E-08 M,SPR,,REVIEW,030194
+9708406,15G11.52A,Humanized,Transferrin Receptor,,Apical Domain,Not Specified,,,,,KD 4.44E-08 M,SPR,,REVIEW,030195
+9708406,7G7,Mouse,Transferrin Receptor,,Non-apical Domain,Not Specified,,,"Does NOT block HFE, Does NOT block Transferrin",,,,,REVIEW,030196
+9708406,Humanized 15G11 Variant (SEQ 123/126),Humanized,Transferrin Receptor,,Apical Domain,Not Specified,,,,,,,,REVIEW,030197
+9862763,Anti-transferrin receptor antibody,,Transferrin Receptor,,,,,,,,,,,REVIEW,033279
+9890209,Antibody 8D3 (Murine),Mouse,Transferrin Receptor,,,Not Specified,,,,Transports antibodies across the blood-brain barrier.,,,,CONFIRMED,033904
+9890209,Antibody 8D3 (Murine Variant 2),Mouse,Transferrin Receptor,,,Not Specified,,,,Transports antibodies across the blood-brain barrier.,,,,CONFIRMED,033905
+9994641,Clone B84,Human,human transferrin receptor,,Peptide 1 (SEQ ID NO: 1),Linear,,,,Highest brain distribution (Crosses BBB),,,,PLAUSIBLE,035728
+10179817,Table 12 Group J,Humanized,CD71,,,,,,,,,,,CONFIRMED,039369
+10179817,Ab21.12 (Humanized),Humanized,CD71,,,,,,,,0.14-0.3 nM,ELISA,,PLAUSIBLE,039370
+10179817,Table 12 Group C,Humanized,CD71,,,,,,,,,,,CONFIRMED,039371
+10179817,Activatable Anti-CD71 Library (Ab21.12-based),Humanized,CD71,,,,,,,,Varies (1.59 nM - >100 nM),ELISA,,CONFIRMED,039372
+10179817,M21 (Murine),Mouse,CD71,,,,,,,,,,,CONFIRMED,039373
+10179817,Table 12 Group B,Humanized,CD71,,,,,,,,,,,CONFIRMED,039374
+10179817,Table 12 Group K,Humanized,CD71,,,,,,,,,,,CONFIRMED,039375
+10179817,Table 12 Group D,,CD71,,,,,,,,,,,REVIEW,039376
+10202455,Clone 12A1,Human,Transferrin Receptor 1 (TfR1),,,,,,,,OD450 of 1.7,ELISA,,CONFIRMED,039825
+10233252,scFv H7,Human,Transferrin Receptor,,,Not Specified,,,Transferrin,Retains ~56% binding at pH 5.5 after 10 minutes; used as wild-type control.,160 +/- 30 pM,Yeast Surface Display / Flow Cytometry,pH 7.4,PLAUSIBLE,040439
+10251952,Anti-TfR2/Biotin Bispecific,Humanized,"Transferrin Receptor, Biotin",,,,,,,,,,,REVIEW,040670
+10251952,Anti-TfR2/Biotin Bispecific,Humanized,"Transferrin Receptor, Biotin",,,,,,,,,,,REVIEW,040671
+10316082,8D3 (Murine Parent of Shuttle - Variant 2),Mouse,Transferrin Receptor,,,Not Specified,,,Human Transferrin,Blood-brain-barrier shuttle,,,,CONFIRMED,041961
+10316082,8D3 (Murine Parent of Shuttle),Mouse,Transferrin Receptor,,,Not Specified,,,,Blood-brain-barrier shuttle,,,,PLAUSIBLE,041962
+10323089,MAb 128.1,Mouse,Transferrin Receptor,,,,,,,,"Off-rate: 6.06E-04 1/s (Human), 5.47E-02 1/s (Cyno)",SPR (Biacore),,CONFIRMED,042051
+10323089,Humanized Clone 299 (Lead 24/37),Humanized,Transferrin Receptor,,,,,,,,Off-rate: 0.1 - 0.005 1/s,SPR,,REVIEW,042054
+10323089,Clone 299 (Parent),Rabbit,Transferrin Receptor,,,,,,,,Off-rate: 6.16E-04 1/s (Human),SPR (Biacore),,CONFIRMED,042057
+10508151,Anti-TfR52A M108L,Humanized,Transferrin Receptor,TfR,,,,,,,,Not Specified,,REVIEW,045829
+10508151,Clone 1B12,Mouse,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,045830
+10508151,Humanized 7G7 Variants,Humanized,Transferrin Receptor,TfR,,,,,,,4.58E-08 M,SPR,,CONFIRMED,045831
+10508151,Clone 16F6,Mouse,Transferrin Receptor,TfR,,,,,,,3.13E-09 M,SPR,,CONFIRMED,045832
+10508151,Clone 15D2,Mouse,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,045833
+10508151,Clone 15G11,Mouse,Transferrin Receptor,TfR,Apical Domain,Not Specified,,,,,3.37E-09 M,SPR,,REVIEW,045837
+10508151,Anti-TfR2/Ag2 Full Antibody,Humanized,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,045838
+10508151,15G11.v5,Humanized,Transferrin Receptor,TfR,Apical Domain,Not Specified,,,,Does not compete with Transferrin,4.70E-09 M,SPR,,PLAUSIBLE,045839
+10508151,Clone 7G7,Mouse,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,045840
+10508151,Clone 4C2,Mouse,Transferrin Receptor,TfR,,,,,,,,,,PLAUSIBLE,045841
+10508151,Clone 16G4,Mouse,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,045842
+10508151,Anti-TfR2 M108L,Humanized,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,045843
+10508151,Humanized 16F6 Variants,Humanized,Transferrin Receptor,TfR,,,,,,,1.29E-09 M,SPR,,CONFIRMED,045844
+10508151,Clone 16G5,Mouse,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,045845
+10508151,15G11.92A,Humanized,Transferrin Receptor,TfR,,,,,,,270 nM,SPR,,CONFIRMED,045846
+10508151,Humanized 7A4 Variants,Humanized,Transferrin Receptor,TfR,,,,,,,,,,REVIEW,045847
+10508151,Clone 8A2,Mouse,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,045848
+10561737,TfR1-Bio,,Transferrin Receptor,TFRC,,,,,,,,,,CONFIRMED,047240
+10561737,TfR1-Bio,,Transferrin Receptor,,,,,,,,,,,CONFIRMED,047241
+10562973,8D3,Mouse,Transferrin Receptor,TFRC,"Epitope Mapping Peptides 373, 374, 375",Not Specified,,,,Transports payload across Blood-Brain Barrier,,,,REVIEW,047389
+10647761,8D3 (Murine),Mouse,Transferrin Receptor,,"Epitope comprised within SEQ ID NO: 52, 53 and 54",Not Specified,,,Transferrin,BBB Transport,,,,CONFIRMED,049250
+10759864,Humanized Anti-hTfR Antibody No. 3N,Humanized,Transferrin Receptor,,,Not Specified,,,,,< 1.0 x 10^-12 M,BLI (Octet),,REVIEW,051741
+10759864,Mouse Anti-hTfR Antibody No. 3,Mouse,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,051742
+10759864,Humanized Anti-hTfR Antibody No. 3,Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,PLAUSIBLE,051743
+10806795,Anti-TfR2-Bio Bispecific,,"Transferrin Receptor, Biotin",,,,,,,,,,,PLAUSIBLE,052457
+10806795,Anti-TfR2-Bio Bispecific,,"Transferrin Receptor, Biotin",,,,,,,,,,,PLAUSIBLE,052458
+10806795,Anti-TfR2-Dig Bispecific,,"Transferrin Receptor, Digoxigenin",,,,,,,,,,,PLAUSIBLE,052460
+10806795,Anti-TfR2-Dig Bispecific,,"Transferrin Receptor, Digoxigenin",,,,,,,,,,,PLAUSIBLE,052463
+10806795,Anti-TfR2-Dig Bispecific,,"Transferrin Receptor, Digoxigenin",,,,,,,,,,,PLAUSIBLE,052469
+10806795,Anti-TfR2-Dig Bispecific,,"Transferrin Receptor, Digoxigenin",,,,,,,,,,,PLAUSIBLE,052470
+10806795,Anti-TfR2-Bio Bispecific,,"Transferrin Receptor, Biotin",,,,,,,,,,,PLAUSIBLE,052472
+10806795,Anti-TfR2-Bio Bispecific,,"Transferrin Receptor, Biotin",,,,,,,,,,,PLAUSIBLE,052475
+10808036,15G11.W92A,Humanized,Transferrin Receptor,TFRC,Apical Domain,Not Specified,,,,,270 nM,SPR,,REVIEW,052510
+10808036,10D11,Mouse,Transferrin Receptor,TFRC,,,,,,,,,,REVIEW,052511
+10808036,7A4,Mouse,Transferrin Receptor,"TFRC, CD71",Apical Domain,Not Specified,,,,Does not inhibit Transferrin binding (for humanized version),1.90E-10 M,SPR,,REVIEW,052513
+10808036,7G7,Mouse,Transferrin Receptor,TFRC,Non-apical Domain,Not Specified,,,,,,,,REVIEW,052514
+10808036,Anti-TfR Humanized Variant (Group 3),Humanized,Transferrin Receptor,TFRC,,,,,,,,,,REVIEW,052515
+10808036,16F6,Mouse,Transferrin Receptor,TFRC,Apical Domain,Not Specified,,,,,3.13E-09 M,SPR,,REVIEW,052516
+10808036,15G11.N52A,Humanized,Transferrin Receptor,TFRC,Apical Domain,Not Specified,,,,,52 nM,SPR,,REVIEW,052518
+10808036,15G11.v5,Humanized,Transferrin Receptor,TFRC,Apical Domain,Not Specified,,,,Does not inhibit Transferrin binding,4.70E-09 M,SPR,,REVIEW,052519
+10808036,15D2,Mouse,Transferrin Receptor,TFRC,,,,,,,,,,REVIEW,052520
+10808036,Anti-TfR Humanized Variant (Group 2),Humanized,Transferrin Receptor,TFRC,,,,,,,,,,REVIEW,052521
+10808036,Anti-TfR Humanized Variant (Group 1),Humanized,Transferrin Receptor,TFRC,,,,,,,,,,REVIEW,052523
+10808036,13D4,Mouse,Transferrin Receptor,TFRC,Non-apical Domain,Not Specified,,,,,,,,REVIEW,052524
+10808036,15G11.T53A,Humanized,Transferrin Receptor,TFRC,Apical Domain,Not Specified,,,,,24 nM,SPR,,REVIEW,052525
+10808036,8A2,Mouse,Transferrin Receptor,TFRC,Apical Domain,Not Specified,,,,,,,,REVIEW,052526
+10822402,Anti-Transferrin Receptor (Bispecific Component),Humanized,Transferrin Receptor,,,Not Specified,,,,BBB Transport,,,,REVIEW,052659
+10913800,13E4_VH4 Family,Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,,,,REVIEW,054986
+10913800,13E4_VH1 Fc Variants,Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,,,,REVIEW,054988
+10913800,13E4-Variant 2iii,Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,0.95 pM,SPR (ProteOn XPR36),,CONFIRMED,054989
+10913800,13E4-Variant 9iii,Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,5.27 pM,SPR (ProteOn XPR36),,CONFIRMED,054990
+10913800,13E4-Variant 15i,Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,8.51 pM,SPR (ProteOn XPR36),,REVIEW,054991
+10913800,Chimeric 13E4 (13E4_WT),Mouse,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,1.1 pM,SPR (ProteOn XPR36),25 degrees C,REVIEW,054992
+10941205,TfR Binding Site (Variable Region),Human,Transferrin Receptor,,,,,,,,,,,REVIEW,055471
+10941205,Antibody 0015 (TfR Arm),Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,055472
+10941205,General Bispecific Construct (TfR Arm),Human,Transferrin Receptor,,,,,,,,,,,CONFIRMED,055475
+11008403,4C2,Mouse,Transferrin Receptor,,,,,,,,,,,REVIEW,056771
+11008403,15D2,Mouse,Transferrin Receptor,,,,,,,,,,,REVIEW,056772
+11008403,13C3,Mouse,Transferrin Receptor,,,,,,,,,,,REVIEW,056775
+11008403,7G7,Mouse,Transferrin Receptor,,,,,,,,,,,REVIEW,056776
+11008403,13D4,Mouse,Transferrin Receptor,,,,,,,,,,,REVIEW,056778
+11008403,7A4.v15,Humanized,Transferrin Receptor,,,,,,,,3.48E-10 M,SPR,,REVIEW,056779
+11008403,15G11.v5,Humanized,Transferrin Receptor,,Apical Domain,Not Specified,,,,,4.70E-09 M,SPR,,REVIEW,056780
+11008403,Anti-TfR2 M108L,Humanized,Transferrin Receptor,,,,,,,,,,,REVIEW,056781
+11008403,15G11,Mouse,Transferrin Receptor,,,,,,,,3.37E-09 M,SPR,,REVIEW,056782
+11008403,8A2,Mouse,Transferrin Receptor,,,,,,,,,,,REVIEW,056783
+11008403,Anti-TfR2/6266.hIgG1.LALAPG.YTE.M108L,Humanized,Transferrin Receptor,,,,,,,,,,,REVIEW,056784
+11008403,16F6.v4,Humanized,Transferrin Receptor,,,,,,,,1.29E-09 M,SPR,,REVIEW,056785
+11008403,1B12,Mouse,Transferrin Receptor,,,,,,,,,,,REVIEW,056787
+11008403,16F6,Mouse,Transferrin Receptor,,,,,,,,3.13E-09 M,SPR,,REVIEW,056788
+11008403,Anti-TfR52A M108L,Humanized,Transferrin Receptor,,,,,,,,7.22E-08 M,SPR,,REVIEW,056789
+11008403,10D11,Mouse,Transferrin Receptor,,,,,,,,,,,REVIEW,056790
+11028179,13E4_WT (Parent/Chimeric),Mouse,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,KD = 1.1 pM (average of n = 3 replicates),SPR,"25 degrees C, pH 7.4",REVIEW,057299
+11028179,13E4 Variant 9 Family (VH1/VL3),Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,"KD = 1.21-5.27 pM (variants 9-i, 9-ii, 9-iii)",SPR,"25 degrees C, pH 7.4",PLAUSIBLE,057300
+11028179,13E4 Variant 2 Family (VH2/VL1),Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,"KD = 0.43-0.95 pM (variants 2-i, 2-ii, 2-iii)",SPR,"25 degrees C, pH 7.4",PLAUSIBLE,057301
+11028179,13E4 VL2 Family,Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,,,,REVIEW,057302
+11028179,13E4 Variant 15 Family (VH3/VL4),Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,"KD = 8.51-13.1 pM (variants 15-i, 15-ii, 15-iii)",SPR,"25 degrees C, pH 7.4",PLAUSIBLE,057303
+11028179,13E4 VH4 Family,Humanized,Transferrin Receptor 1 (TfR1),TFRC,,,,,,,,,,CONFIRMED,057304
+11098129,Anti-TfR2/Ag2.hIgG1.LALAPG.YTE.M108L (TfR Arm),Humanized,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,059346
+11098129,Anti-TfR52A M108L,Humanized,Transferrin Receptor,TfR,,,,,,,,Not Specified,,PLAUSIBLE,059347
+11098129,Humanized 7G7 Variants (e.g. 7G7.v1),Humanized,Transferrin Receptor,TfR,,,,,,,4.58E-08 M,SPR,,PLAUSIBLE,059348
+11098129,Anti-TfR Hybridoma Clones,Mouse,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,059349
+11098129,Humanized 16F6 Variants (e.g. 16F6.v4),Humanized,Transferrin Receptor,TfR,,,,,,,1.29E-09 M,SPR,,REVIEW,059351
+11098129,Humanized 7A4 Variants (e.g. 7A4.v15),Humanized,Transferrin Receptor,TfR,,,,,,,3.48E-10 M,SPR,,PLAUSIBLE,059352
+11098129,Anti-TfR2 M108L,Humanized,Transferrin Receptor,TfR,,,,,,,,,,CONFIRMED,059354
+11098129,Humanized 15G11 Variants (e.g. 15G11.v5),Humanized,Transferrin Receptor,TfR,Apical Domain,Not Specified,,,"Non-competing with Transferrin, Non-competing with HFE",,4.70E-09 M,SPR,,PLAUSIBLE,059356
+11111308,hGBA-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,CONFIRMED,059681
+11111308,Humanized Anti-hTfR Antibody No. 3N,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,059682
+11111308,hASM-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,6.89 x 10^-11 M,BLI (Octet),,CONFIRMED,059683
+11111308,hGUSB-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,CONFIRMED,059684
+11111308,hPPT-1-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,REVIEW,059685
+11111308,Mouse Anti-hTfR Antibody No. 3,Mouse,Transferrin receptor protein 1,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,059686
+11111308,hARSA-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,CONFIRMED,059687
+11111308,hAC-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,CONFIRMED,059688
+11111308,hTPP-1-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,CONFIRMED,059689
+11111308,hFUCA1-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,CONFIRMED,059690
+11111308,Humanized Anti-hTfR Antibody No. 3 Variants,Humanized,Transferrin receptor protein 1,,,,,,,,2.39 x 10^-11 M,BLI (Octet),,CONFIRMED,059691
+11111308,hIDUA-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,CONFIRMED,059692
+11111308,hGALC-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,PLAUSIBLE,059693
+11111308,hSGSH-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,CONFIRMED,059694
+11111308,hNAGLU-Anti-hTfR Antibody Fusion,Humanized,Transferrin receptor protein 1,,,,,,,,< 1.00 x 10^-12 M,BLI (Octet),,PLAUSIBLE,059695
+11111309,Humanized Transferrin Receptor Antibody (Variable Region),Humanized,Transferrin Receptor,"TFRC, CD71",,,,,,,,,,PLAUSIBLE,059696
+11111309,Humanized Transferrin Receptor Antibody (Fab),,Transferrin Receptor,"TFRC, CD71",,,,,,,,,,REVIEW,059697
+11111309,Mouse Transferrin Receptor Antibody (Variable Region),Mouse,Transferrin Receptor,"TFRC, CD71, TFR1",SEQ ID NO: 5,Linear,,,,Internalization,10^-11 M to 10^-6 M,Not Specified,,PLAUSIBLE,059699
+11111309,Humanized Transferrin Receptor Antibody (Full IgG1),Humanized,Transferrin Receptor,"TFRC, CD71",,,,,,,,,,CONFIRMED,059700
+11130815,Humanized Anti-hTfR Antibody No. 1 (Specific Pair),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,060179
+11130815,Humanized Anti-hTfR Antibody No. 2 (Full Chain),Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,REVIEW,060180
+11130815,Mouse Anti-hTfR Antibody No. 1,Mouse,Transferrin Receptor,,,,,,,,5.09 x 10^-12 M,BLI (Octet),,CONFIRMED,060181
+11130815,Humanized Anti-hTfR Antibody No. 3 (Specific Pair),Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,060182
+11130815,Humanized Anti-hTfR Antibody No. 1 (Full Chain),Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,060183
+11130815,hBDNF-anti-hTfR Fusion Proteins (Heavy Chain Constructs),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,060184
+11130815,Humanized Anti-hTfR Antibody No. 1 (Variable Regions),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,060185
+11130815,Humanized Anti-hTfR Antibody No. 2 (Specific Pair),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,060186
+11130815,Mouse Anti-hTfR Antibody No. 2,Mouse,Transferrin Receptor,,,,,,,,1.12 x 10^-11 M,BLI (Octet),,CONFIRMED,060187
+11130815,Mouse Anti-hTfR Antibody No. 3,Mouse,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,060188
+11130815,Humanized Anti-hTfR Antibody No. 3 (Variants),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,060189
+11130815,Humanized Anti-hTfR Antibody No. 2 (Variable Regions),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,060190
+11130815,Mouse Anti-hTfR Antibody Series (Nos 4-14),Mouse,Transferrin Receptor,,,,,,,,Varies by clone (see Table 4),BLI (Octet),,CONFIRMED,060191
+11130815,Humanized Anti-hTfR Antibody No. 3-2,Humanized,Transferrin Receptor,,,,,,,,2.39 x 10^-11 M,BLI (Octet),,CONFIRMED,060192
+11130815,Humanized Anti-hTfR Antibody No. 3-3,Humanized,Transferrin Receptor,,,,,,,,2.09 x 10^-11 M,BLI (Octet),,CONFIRMED,060193
+11130815,Humanized Anti-hTfR Antibody No. 3-4,Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,060194
+11230605,"mAb1 (and variants mAb5, mAb9, mAb13, INA01 variant 12)",Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,0.315 nM,SPR,,CONFIRMED,062774
+11230605,"mAb4 (and variants mAb8, mAb12, mAb16, INA01 variant 17)",Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,,,,CONFIRMED,062775
+11230605,"mAb2 (and variants mAb6, mAb10, mAb14, INA01 variant 14)",Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,,,,REVIEW,062776
+11230605,"mAb3 (and variants mAb7, mAb11, mAb15, INA01 variant 13)",Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,,,,CONFIRMED,062777
+11230605,A24 (Parental),Mouse,Transferrin Receptor,"TfR, CD71",,,,,,,,,,REVIEW,062778
+11230605,mAb1 (Full Length),Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,0.315 nM,SPR,,CONFIRMED,062779
+11248045,Mouse Anti-hTfR Antibody No. 1,Mouse,Transferrin Receptor,,,,,,,,5.09 x 10^-12 M,BLI (Octet),,CONFIRMED,063305
+11248045,TPP-1-anti-hTfR Fusion Heavy Chain,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063306
+11248045,I2S-anti-hTfR 3 Fusion Heavy Chain,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063307
+11248045,Mouse Anti-hTfR Antibody No. 5,Mouse,Transferrin Receptor,,,,,,,,3.64 x 10^-11 M,BLI (Octet),,CONFIRMED,063308
+11248045,Humanized Anti-hTfR Antibody No. 1,Humanized,Transferrin Receptor,,,,,,,,,BLI (Octet),,PLAUSIBLE,063309
+11248045,Humanized Anti-hTfR Antibody No. 2,Humanized,Transferrin Receptor,,,,,,,,<1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,063310
+11248045,Humanized No. 2 Variable Region Variants,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063311
+11248045,Humanized Anti-hTfR Antibody No. 3,Humanized,Transferrin Receptor,,,,,,,,<1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,063312
+11248045,Humanized No. 3 (IgG4) Heavy Chain Variant,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063313
+11248045,Humanized No. 3 Variable Region Variants,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063314
+11248045,Mouse Anti-hTfR Antibody No. 8,Mouse,Transferrin Receptor,,,,,,,,<1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,063315
+11248045,Single-chain antibody,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063316
+11248045,Mouse Anti-hTfR Antibody No. 9,Mouse,Transferrin Receptor,,,,,,,,,BLI (Octet),,PLAUSIBLE,063317
+11248045,PPT-1-anti-hTfR Fusion Heavy Chain,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063318
+11248045,Mouse Anti-hTfR Antibody No. 2,Mouse,Transferrin Receptor,,,,,,,,1.12 x 10^-11 M,BLI (Octet),,CONFIRMED,063319
+11248045,Mouse Anti-hTfR Antibody No. 13,Mouse,Transferrin Receptor,,,,,,,,<1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,063320
+11248045,Humanized No. 1 Variable Region Variants,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063321
+11248045,Mouse Anti-hTfR Antibody No. 3,Mouse,Transferrin Receptor,,,,,,,,<1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,063322
+11248045,Mouse Anti-hTfR Antibody No. 6,Mouse,Transferrin Receptor,,,,,,,,9.58 x 10^-10 M,BLI (Octet),,CONFIRMED,063323
+11248045,Mouse Anti-hTfR Antibody No. 10,Mouse,Transferrin Receptor,,,,,,,,1.13 x 10^-9 M,BLI (Octet),,CONFIRMED,063324
+11248045,I2S-anti-hTfR 1 Fusion Heavy Chain,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063325
+11248045,SGSH-anti-hTfR Fusion Heavy Chain,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,063326
+11248045,Mouse Anti-hTfR Antibody No. 4,Mouse,Transferrin Receptor,,,,,,,,1.20 x 10^-10 M,BLI (Octet),,CONFIRMED,063327
+11248045,Mouse Anti-hTfR Antibody No. 14,Mouse,Transferrin Receptor,,,,,,,,,BLI (Octet),,PLAUSIBLE,063328
+11248045,Mouse Anti-hTfR Antibody No. 7,Mouse,Transferrin Receptor,,,,,,,,8.22 x 10^-11 M,BLI (Octet),,CONFIRMED,063329
+11248045,Mouse Anti-hTfR Antibody No. 12,Mouse,Transferrin Receptor,,,,,,,,4.32 x 10^-10 M,BLI (Octet),,CONFIRMED,063330
+11248045,Humanized Anti-hTfR Antibody No. 3-4,Humanized,Transferrin Receptor,,,,,,,,<1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,063331
+11248045,Mouse Anti-hTfR Antibody No. 11,Mouse,Transferrin Receptor,,,,,,,,,BLI (Octet),,PLAUSIBLE,063332
+11267896,Group K Anti-CD71 (scFv),Human,CD71,TfR1,,,,,,,,,,PLAUSIBLE,064070
+11267896,Group H Anti-CD71 (Rep),Human,CD71,TfR1,,,,,,,,,,CONFIRMED,064071
+11267896,Group C Anti-CD71 (Rep),Human,CD71,TfR1,,,,,,,,,,CONFIRMED,064072
+11267896,Ab21.12 (Humanized M21),Humanized,CD71,"TfR1, TFRC",,,,,,,0.14-14 nM,BLI (Octet),,PLAUSIBLE,064073
+11267896,Group J Anti-CD71 (VH Only),Human,CD71,TfR1,,,,,,,,,,CONFIRMED,064074
+11267896,Activatable Anti-CD71 Series (TF Variants),Humanized,CD71,TfR1,,,,,,,9.14-69.99 nM,ELISA,Uncleaved State,CONFIRMED,064075
+11267896,Group L Anti-CD71 (Rep),Human,CD71,TfR1,,,,,,,,,,CONFIRMED,064076
+11267896,Group D Anti-CD71 (Rep),Human,CD71,TfR1,,,,,,,,,,CONFIRMED,064077
+11267896,Group E Anti-CD71,,CD71,TfR1,,,,,,,,,,PLAUSIBLE,064078
+11267896,Murine M21,Mouse,CD71,TfR1,,,,,,,3 nM,FACS,,CONFIRMED,064079
+11273223,TfR2-Dig Bispecific (Reduced Affinity),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,064153
+11273223,TfR2-Dig Bispecific (Reduced Affinity),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,064154
+11273223,TfR1-Dig Bispecific (High Affinity),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,064166
+11273223,TfR2-Bio Bispecific (Reduced Affinity),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,064167
+11273223,TfR1-Dig Bispecific (High Affinity),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,064176
+11273223,TfR2-Bio Bispecific (Reduced Affinity),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,064178
+11286300,Murine 8D3 (Variant 2),Mouse,Transferrin Receptor,,,,,,,,,,,CONFIRMED,064469
+11286300,Humanized 8D3,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,064471
+11286305,Humanized IgG1 Antibody,Humanized,Transferrin Receptor,"TFRC, CD71, TFR1",,Not Specified,,,,Internalization,10^-11 M to 10^-6 M,Not Specified,,REVIEW,064490
+11286305,Mouse Transferrin Receptor Antibody (Variable Regions),Mouse,Transferrin Receptor,"TFRC, CD71, TFR1",,Not Specified,,,,Internalization,10^-11 M to 10^-6 M,Not Specified,,REVIEW,064491
+11286305,Humanized Transferrin Receptor Antibody (Variable Regions),Humanized,Transferrin Receptor,"TFRC, CD71, TFR1",C89 to F760,Not Specified,,,Transferrin,Internalization,10^-11 M to 10^-6 M,Not Specified,,REVIEW,064492
+11390682,Humanized Transferrin Receptor Antibody (Full IgG1/Kappa),Humanized,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,,,,CONFIRMED,067204
+11390682,Humanized Transferrin Receptor Antibody (Fab),Humanized,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,,,,CONFIRMED,067205
+11390682,Mouse Transferrin Receptor Antibody (Variable Regions),Mouse,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,10^-11 M to 10^-6 M,Not Specified,,CONFIRMED,067206
+11390682,Humanized Transferrin Receptor Antibody (Variable Regions),Humanized,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,,,,CONFIRMED,067207
+11459396,MOG-Seldeg-TfR (Chain B),Human,Transferrin Receptor,,,,,,,,< 10 uM,Not Specified,near-neutral pH,CONFIRMED,069407
+11459396,MOG-Seldeg-TfR Arginine Variant (Chain A),Human,Transferrin Receptor,,,,,,,,< 10 uM,Not Specified,near-neutral pH,CONFIRMED,069408
+11459396,MOG-Seldeg-TfR Arginine Variant (Chain B),Human,Transferrin Receptor,,,,,,,,< 10 uM,Not Specified,near-neutral pH,CONFIRMED,069409
+11459396,MOG-Seldeg-TfR (Chain A),Human,Transferrin Receptor,,,,,,,,< 10 uM,Not Specified,near-neutral pH,CONFIRMED,069410
+11512135,Humanized anti-hTfR antibody No. 1 (Variable Regions),Humanized,Transferrin Receptor,,,,,,,,,,,PLAUSIBLE,070856
+11512135,Humanized anti-hTfR antibody No. 2,Humanized,Transferrin Receptor,,Extracellular region (Cys89-Phe C-term),Linear,,,,Crosses Blood Brain Barrier (BBB),,,,CONFIRMED,070857
+11512135,hI2S-Humanized anti-hTfR antibody No. 2 (Fusion),Humanized,Transferrin Receptor,,,,,,,,,,,PLAUSIBLE,070858
+11512135,Humanized anti-hTfR antibody No. 2 (Variable Regions),Humanized,Transferrin Receptor,,,,,,,,,,,PLAUSIBLE,070859
+11512135,hI2S-Humanized anti-hTfR antibody No. 1 (Fusion),Humanized,Transferrin Receptor,,,,,,,,,,,REVIEW,070860
+11512135,Humanized anti-hTfR antibody No. 1,Humanized,Transferrin Receptor,,Extracellular region (Cys89-Phe C-term),Linear,,,,Crosses Blood Brain Barrier (BBB),,,,CONFIRMED,070861
+11512135,Humanized anti-hTfR antibody No. 3,Humanized,Transferrin Receptor,,Extracellular region (Cys89-Phe C-term),Linear,,,,Crosses Blood Brain Barrier (BBB),,,,PLAUSIBLE,070862
+11512135,Humanized anti-hTfR antibody No. 3 (Variable Regions),Humanized,Transferrin Receptor,,,,,,,,,,,PLAUSIBLE,070863
+11572404,Anti-Transferrin Receptor Bispecific Arm,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,072249
+11584793,Clone 299 Humanized Pair (7/34),Rabbit,Transferrin Receptor,,,,,,,,,,,CONFIRMED,072534
+11584793,Humanized Clone 299 (Lead),Rabbit,Transferrin Receptor,,,,,,,,off-rate 0.1 l/s - 0.005 l/s,SPR,,CONFIRMED,072537
+11584793,Clone 299 (Parent Rabbit),Rabbit,Transferrin Receptor,,,,,,,,,,,CONFIRMED,072539
+11584793,128.1,Mouse,Transferrin Receptor,,,,,,,,off-rate 6.06E-04 1/s,SPR (Biacore),,CONFIRMED,072543
+11584793,Clone 494 Variants (VH),Mouse,Transferrin Receptor,,,,,,,,,,,PLAUSIBLE,072546
+11584793,Humanized 299 VH Variants,Rabbit,Transferrin Receptor,,,,,,,,,,,REVIEW,072548
+11603411,Antibody 0040,,CD20; Transferrin Receptor,,,,,,,,,,,CONFIRMED,072990
+11603411,Antibody 0039,,CD20; Transferrin Receptor,,,,,,,,,,,CONFIRMED,072991
+11603411,Antibody 0042,,CD20; Transferrin Receptor,,,,,,,,,,,CONFIRMED,072992
+11603411,Bispecific Antibody (SEQ 1-4),,CD20; Transferrin Receptor,,,,,,,,,,,CONFIRMED,072994
+11603411,Anti-TfR Binding Domain,,Transferrin Receptor,,,,,,,,,,,CONFIRMED,072995
+11648318,Humanized 3M12 Fab VH4/Vk2,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074302
+11648318,Humanized 3A4 IgG WT,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074303
+11648318,Humanized 3M12 IgG VH4/Vk2,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074304
+11648318,Humanized 3A4 Fab WT,Humanized,Transferrin Receptor 1,,,,,,,,,,,REVIEW,074305
+11648318,Humanized 3M12 VH4/Vk3,Humanized,Transferrin Receptor 1,,3M12 Epitope,Not Specified,,"[{""residue"": ""K"", ""position"": 261}, {""residue"": ""S"", ""position"": 273}, {""residue"": ""Y"", ""position"": 282}, {""residue"": ""T"", ""position"": 362}, {""residue"": ""S"", ""position"": 368}, {""residue"": ""S"", ""position"": 370}, {""residue"": ""K"", ""position"": 371}]",,,3.41E-10 M,SPR (Biacore),,PLAUSIBLE,074306
+11648318,Humanized 5H12 IgG C33Y/Vk3,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074307
+11648318,Mouse 3-A4 N54S,Mouse,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074308
+11648318,Mouse 3-A4,Mouse,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,074309
+11648318,Humanized 5H12 Fab C33Y/Vk3,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074310
+11648318,Humanized 3M12 IgG VH3/Vk2,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074311
+11648318,Humanized 5H12 VH5(C33D)/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,9.91E-10 M,SPR (Biacore),,CONFIRMED,074312
+11648318,Humanized 3A4 VH3(N54S)/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,1.34E-09 M,SPR (Biacore),,CONFIRMED,074313
+11648318,Humanized 3M12 IgG VH4/Vk3,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074314
+11648318,Humanized 5H12 Fab C33D/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074315
+11648318,Humanized 3A4 VH3(N54T)/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,3.09E-9 M,SPR (Biacore),,PLAUSIBLE,074316
+11648318,Humanized 3A4 Fab N54T,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074317
+11648318,Mouse 3-M12,Mouse,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074318
+11648318,Humanized 3M12 Fab VH3/Vk2,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074319
+11648318,Mouse 5-H12,Mouse,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074320
+11648318,Humanized 3M12 Fab VH4/Vk3,Humanized,Transferrin Receptor 1,,,,,,,,7.68E-10 M,SPR,,REVIEW,074321
+11648318,Humanized 3M12 VH4/Vk2,Humanized,Transferrin Receptor 1,,3M12 Epitope,Not Specified,"K261, S273, Y282, T362, S368, S370, K371",,,,3.96E-10 M,SPR (Biacore),,CONFIRMED,074322
+11648318,Humanized 3A4 IgG N54T,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074323
+11648318,Humanized 3M12 Fab VH3/Vk3,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074324
+11648318,Humanized 5H12 VH5(C33Y)/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,6.26E-10 M,SPR (Biacore),,CONFIRMED,074325
+11648318,Humanized 3A4 VH3/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,1.50E-09 M,SPR (Biacore),,CONFIRMED,074326
+11648318,Mouse 5-H12 C33Y,Mouse,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074327
+11648318,Humanized 3M12 IgG VH3/Vk3,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074328
+11648318,Humanized 5H12 IgG C33D/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074329
+11648318,Humanized 5H12 Fab C33Y/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074330
+11648318,Humanized 5H12 VH5(C33Y)/Vk3,Humanized,Transferrin Receptor 1,,,,,,,,6.27E-10 M,SPR (Biacore),,CONFIRMED,074331
+11648318,Mouse 3-A4 N54T,Mouse,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074332
+11648318,Humanized 5H12 IgG C33Y/Vk4,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074333
+11648318,Humanized 3A4 IgG N54S,Humanized,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074334
+11648318,Mouse 5-H12 C33D,Mouse,Transferrin Receptor 1,,,,,,,,,,,CONFIRMED,074335
+11672872,Murine 3-A4,Mouse,Transferrin receptor protein 1,,,,,,,,,,,REVIEW,074924
+11672872,Humanized 3A4 VH3/Vk4,Mouse,Transferrin receptor protein 1,,,,,,,,1.50E-09 M,SPR (Biacore),,CONFIRMED,074925
+11672872,Humanized 5H12 VH5 C33Y/Vk3,Mouse,Transferrin receptor protein 1,,,,,,,,6.27E-10 M,SPR (Biacore),,CONFIRMED,074926
+11672872,Murine 5-H12,Mouse,Transferrin receptor protein 1,,,,,,,,,,,REVIEW,074927
+11672872,Humanized 5H12 VH5 C33Y/Vk4,Mouse,Transferrin receptor protein 1,,,,,,,,6.26E-10 M,SPR (Biacore),,CONFIRMED,074928
+11672872,Humanized 3M12 VH4/Vk2,Mouse,Transferrin receptor protein 1,,,,,,,,3.96E-10 M,SPR (Biacore),,CONFIRMED,074929
+11672872,Humanized 5H12 VH5 C33D/Vk4,Mouse,Transferrin receptor protein 1,,,,,,,,9.91E-10 M,SPR (Biacore),,CONFIRMED,074930
+11672872,Humanized 3M12 VH3/Vk2,Mouse,Transferrin receptor protein 1,,,,,,,,3.95E-10 M,SPR (Biacore),,CONFIRMED,074931
+11672872,Murine 3-M12,Mouse,Transferrin receptor protein 1,,,,,,,,,,,REVIEW,074932
+11672872,Humanized 3A4 VH3 N54S/Vk4,Mouse,Transferrin receptor protein 1,,,,,,,,1.34E-09 M,SPR (Biacore),,CONFIRMED,074933
+11672872,Humanized 3M12 VH3/Vk3,Mouse,Transferrin receptor protein 1,,,,,,,,3.45E-10 M,SPR (Biacore),,CONFIRMED,074934
+11672872,Humanized 3A4 VH3 N54T/Vk4,Mouse,Transferrin receptor protein 1,,,,,,,,3.09E-09 M,SPR (Biacore),,CONFIRMED,074935
+11672872,Humanized 3M12 VH4/Vk3,Mouse,Transferrin receptor protein 1,"TFRC, TFR1",,Discontinuous/Conformational,,"[{""residue"": ""K"", ""position"": 261}, {""residue"": ""S"", ""position"": 273}, {""residue"": ""Y"", ""position"": 282}, {""residue"": ""T"", ""position"": 362}, {""residue"": ""S"", ""position"": 368}, {""residue"": ""S"", ""position"": 370}, {""residue"": ""K"", ""position"": 371}]",,,3.41E-10 M,SPR (Biacore),,PLAUSIBLE,074936
+11787868,Antibody 0015,,Human A-beta Protein and Human Transferrin Receptor,,,,,,,,off-rate 1.98E-2 to 2.03E-2 1/s,SPR (Biacore),,CONFIRMED,077293
+11787868,Transferrin Receptor Binding Domain (Variable Region),,human transferrin receptor,,,,,,,,,,,REVIEW,077294
+11795233,Humanized Anti-TfR Antibody (Variable Regions),Humanized,Transferrin Receptor,"TFRC, CD71",Extracellular Epitope,Not Specified,,,,,,,,CONFIRMED,077436
+11795233,Mouse Anti-TfR Antibody (Variable Regions),Mouse,Transferrin Receptor,"TFRC, CD71, TFR1",Apical Domain,Not Specified,,,,Internalization,10^-11 M to 10^-6 M,Not Specified,,CONFIRMED,077437
+11795233,Heavy Chain FAB (Mouse VH),Mouse,Transferrin Receptor,TFRC,,,,,,,,,,REVIEW,077438
+11795233,Humanized Anti-TfR Antibody (Full Length),Humanized,Transferrin Receptor,TFRC,,Not Specified,,,,,,,,CONFIRMED,077440
+11795234,Humanized Anti-Transferrin Receptor Antibody (IgG1),Humanized,Transferrin receptor protein 1,"TFRC, CD71, TFR1",,,,,,,5 pM - 500 nM,Biosensor,,PLAUSIBLE,077441
+11795234,Humanized Anti-Transferrin Receptor Antibody (Variable),Humanized,Transferrin receptor protein 1,"TFRC, CD71, TFR1",,,,,,,5 pM - 500 nM,Biosensor,,CONFIRMED,077443
+11795234,Humanized Anti-Transferrin Receptor Antibody (Fab),Humanized,Transferrin receptor protein 1,"TFRC, CD71, TFR1",,,,,,,5 pM - 500 nM,Biosensor,,CONFIRMED,077444
+11795234,Mouse Anti-Transferrin Receptor Antibody (Variable),Mouse,Transferrin receptor protein 1,"TFRC, CD71, TFR1",Apical domain,Not Specified,,,,Internalization,5 pM - 500 nM,SPR (Biacore),,PLAUSIBLE,077446
+11827702,Fc hIgG1.agly-ANTIBODY-A Fab VL fusion variants,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077924
+11827702,RabANTIBODY-B,Rabbit,Transferrin Receptor 1 (TfR1),,,Discontinuous/Conformational,,"[{""residue"": ""D"", ""position"": 139}, {""residue"": ""T"", ""position"": 141}, {""residue"": ""K"", ""position"": 145}, {""residue"": ""G"", ""position"": 490}, {""residue"": ""T"", ""position"": 491}, {""residue"": ""V"", ""position"": 517}, {""residue"": ""T"", ""position"": 518}, {""residue"": ""Y"", ""position"": 573}, {""residue"": ""K"", ""position"": 574}, {""residue"": ""I"", ""position"": 577}, {""residue"": ""E"", ""position"": 578}, {""residue"": ""R"", ""position"": 579}, {""residue"": ""I"", ""position"": 580}, {""residue"": ""P"", ""position"": 581}, {""residue"": ""E"", ""position"": 582}]",,Binds protease-like domain,5.8 nM,SPR,,CONFIRMED,077925
+11827702,Humanized Antibody B VH (Other Variants),Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077926
+11827702,TfR1 ANTIBODY-A HC-H2C hIgG1 Fab'(1C)/LC-L0 hKappa,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077927
+11827702,Humanized Antibody A (H2C/L0),Humanized,Transferrin Receptor 1 (TfR1),,Apical Domain,Discontinuous/Conformational,,,,,,,,CONFIRMED,077928
+11827702,TfR1 ANTIBODY-A HC-H2C hIgG1G4 Fab/LC-L0 hKappa,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077929
+11827702,TfR1 ANTIBODY-A HC-H2C hIgG1 Fab (deltaC214)/LC-L0 hKappa,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077930
+11827702,Fc hIgG1.agly-ANTIBODY-A Fab VH fusion variants,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,REVIEW,077931
+11827702,Humanized Antibody B Variants,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077932
+11827702,Fc hIgG1.agly ANTIBODY-A Fab bivalent USD,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077933
+11827702,Humanized Antibody A Variants,,Transferrin Receptor 1 (TfR1),,,,,,,,,,,REVIEW,077934
+11827702,Fc hIgG1.agly-SG4SG4-ANTIBODY-A VH-VL scFv,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077935
+11827702,huANTIBODY-A bivalent RSU hIgG1.agly,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077937
+11827702,Fc hIgG1.agly-SG4SG4-ANTIBODY-A VL-VH scFv,,Transferrin Receptor 1 (TfR1),,,,,,,,,,,PLAUSIBLE,077938
+11827702,huANTIBODY-A monovalent RSU hIgG1.agly (KIH-SS),Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077939
+11827702,RabANTIBODY-A,Rabbit,Transferrin Receptor 1 (TfR1),,,Discontinuous/Conformational,,"[{""residue"": ""K"", ""position"": 231}, {""residue"": ""D"", ""position"": 245}, {""residue"": ""L"", ""position"": 246}, {""residue"": ""Y"", ""position"": 247}, {""residue"": ""T"", ""position"": 248}, {""residue"": ""P"", ""position"": 249}, {""residue"": ""E"", ""position"": 350}, {""residue"": ""G"", ""position"": 351}, {""residue"": ""D"", ""position"": 352}, {""residue"": ""C"", ""position"": 353}, {""residue"": ""P"", ""position"": 354}, {""residue"": ""S"", ""position"": 355}, {""residue"": ""D"", ""position"": 356}, {""residue"": ""K"", ""position"": 358}, {""residue"": ""T"", ""position"": 359}, {""residue"": ""D"", ""position"": 360}, {""residue"": ""S"", ""position"": 361}, {""residue"": ""R"", ""position"": 364}, {""residue"": ""M"", ""position"": 365}, {""residue"": ""V"", ""position"": 366}, {""residue"": ""T"", ""position"": 367}, {""residue"": ""E"", ""position"": 369}]",,Binds apical domain,5.2 nM,SPR,,PLAUSIBLE,077940
+11827702,Fc hIgG1.agly ANTIBODY-A Fab one-armed USD,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,REVIEW,077941
+11827702,TfR1 ANTIBODY-B HC-H4C hIgG1 Fab/LC-L2 hKappa,,Transferrin Receptor 1 (TfR1),,,,,,,,,,,REVIEW,077942
+11827702,TfR1 ANTIBODY-A HC-H2C hIgG4Fab/LC-L0 hKappa,Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,PLAUSIBLE,077944
+11827702,Humanized Antibody A VH (Other Variants),Humanized,Transferrin Receptor 1 (TfR1),,,,,,,,,,,CONFIRMED,077945
+11834510,13E4-Variant 15iii,,Transferrin Receptor 1,TFRC,,,,,,,KD = 9.99 pM (ka 6.947e5 M-1s-1; kd 6.94e-6 s-1),SPR,25 °C,REVIEW,078310
+11834510,13E4-Variant 2ii,,Transferrin Receptor 1,TFRC,,,,,,,0.49 pM,SPR,"25 °C, 10 mM HEPES, 150 mM NaCl, pH 7.4, 0.05% tween-20, 0.2 mg/ml BSA",CONFIRMED,078312
+11834510,13E4-Variant 9i,,Transferrin Receptor 1,TFRC,,,,,,,1.21 pM,SPR,25 °C,CONFIRMED,078313
+11834510,13E4_VH1 Variable Region,,Transferrin Receptor 1,TFRC,,,,,,,,,,PLAUSIBLE,078314
+11834510,13E4-Variant 15ii,,Transferrin Receptor 1,TFRC,,,,,,,13.1 pM,SPR,25 °C,CONFIRMED,078315
+11834510,13E4_VH3 Full Chain Variants,,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078317
+11834510,13E4-Variant 2iii,,Transferrin Receptor 1,TFRC,,,,,,,0.95 pM,SPR,25 °C,CONFIRMED,078318
+11834510,13E4_Murine_VH Variable Region,,Transferrin Receptor 1,TFRC,,,,,,,,,,PLAUSIBLE,078320
+11834510,13E4-Variant 15i,,Transferrin Receptor 1,TFRC,,,,,,,8.51 pM,SPR,25 °C,CONFIRMED,078321
+11834510,13E4-Variant 9iii,,Transferrin Receptor 1,TFRC,,,,,,,5.27 pM,SPR,25 °C,CONFIRMED,078324
+11834510,13E4_VH2 Variable Region,,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078325
+11834510,13E4_VH2 Full Chain Variants,,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078326
+11834510,13E4-Variant 2i,,Transferrin Receptor 1,TFRC,,,,,,,0.43 pM,SPR,"25 °C, 10 mM HEPES, 150 mM NaCl, pH 7.4, 0.05% tween-20, 0.2 mg/ml BSA",CONFIRMED,078327
+11834510,13E4_VH4 Variable Region,,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078328
+11834510,13E4_VH4 Full Chain Variants,,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078329
+11834510,13E4_VH3 Variable Region,,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078330
+11834510,13E4-Variant 9ii,,Transferrin Receptor 1,TFRC,,,,,,,2.31 pM,SPR,25 °C,CONFIRMED,078332
+11839660,Humanized 3M12 VH4/Vk2,Humanized,Transferrin Receptor 1,TFRC,"TfR1 extracellular domain (258-291, 358-381)",Not Specified,,"[{""residue"": ""K"", ""position"": 261}, {""residue"": ""S"", ""position"": 273}, {""residue"": ""Y"", ""position"": 282}, {""residue"": ""T"", ""position"": 362}, {""residue"": ""S"", ""position"": 368}, {""residue"": ""S"", ""position"": 370}, {""residue"": ""K"", ""position"": 371}]",,"Internalizing, crosses BBB, targets muscle",396 pM,SPR (Biacore),,CONFIRMED,078381
+11839660,Humanized 3M12 VH4/Vk3,Humanized,Transferrin Receptor 1,TFRC,"TfR1 extracellular domain (258-291, 358-381)",Not Specified,,"[{""residue"": ""K"", ""position"": 261}, {""residue"": ""S"", ""position"": 273}, {""residue"": ""Y"", ""position"": 282}, {""residue"": ""T"", ""position"": 362}, {""residue"": ""S"", ""position"": 368}, {""residue"": ""S"", ""position"": 370}, {""residue"": ""K"", ""position"": 371}]",,"Internalizing, crosses BBB, targets muscle",341 pM,SPR (Biacore),,PLAUSIBLE,078382
+11839660,Humanized 3A4 VH3(N54T)/Vk4,Humanized,Transferrin Receptor 1,TFRC,,,,,,,,SPR (Biacore),,REVIEW,078383
+11839660,Mouse 3-A4,Mouse,Transferrin Receptor 1,"TFRC, TfR1",,,,,,,,,,REVIEW,078384
+11839660,Mouse 5-H12 C33Y,Mouse,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078385
+11839660,Mouse 3-M12,Mouse,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078386
+11839660,Humanized 3A4 VH3/Vk4,Humanized,Transferrin Receptor 1,TFRC,,,,,,,1.50 nM,SPR (Biacore),,CONFIRMED,078387
+11839660,Mouse 5-H12 C33D,Mouse,Transferrin Receptor 1,TFRC,,,,,,,,,,REVIEW,078388
+11839660,Humanized 3M12 VH3/Vk3,Humanized,Transferrin Receptor 1,TFRC,"TfR1 extracellular domain (258-291, 358-381)",Not Specified,,"[{""residue"": ""K"", ""position"": 261}, {""residue"": ""S"", ""position"": 273}, {""residue"": ""Y"", ""position"": 282}, {""residue"": ""T"", ""position"": 362}, {""residue"": ""S"", ""position"": 368}, {""residue"": ""S"", ""position"": 370}, {""residue"": ""K"", ""position"": 371}]",,"Internalizing, crosses BBB, targets muscle",345 pM,SPR (Biacore),,CONFIRMED,078389
+11839660,Humanized 3M12 VH3/Vk2,Humanized,Transferrin Receptor 1,TFRC,,Not Specified,,,,"Internalizing, crosses BBB, targets muscle",,SPR (Biacore),,REVIEW,078390
+11839660,Humanized 5H12 VH5(C33Y)/Vk3,Humanized,Transferrin Receptor 1,TFRC,,,,,,,627 pM,SPR (Biacore),,CONFIRMED,078391
+11839660,Mouse 5-H12,Mouse,Transferrin Receptor 1,TFRC,,,,,,,,,,CONFIRMED,078392
+11839660,Humanized 5H12 VH5(C33Y)/Vk4,Humanized,Transferrin Receptor 1,TFRC,,,,,,,,SPR (Biacore),,REVIEW,078393
+11839660,Humanized 3A4 VH3(N54S)/Vk4,Humanized,Transferrin Receptor 1,TFRC,,,,,,,1.34 nM,SPR (Biacore),,REVIEW,078394
+11839660,Humanized 5H12 VH5(C33D)/Vk4,Humanized,Transferrin Receptor 1,TFRC,,,,,,,991 pM,SPR (Biacore),,PLAUSIBLE,078395
+11939391,MAb11-22.1,Mouse,Transferrin Receptor 1 (TfR1),TFRC,Non-Transferrin binding site,Functional/Competitive,,,Transferrin (Non-competing),Induces internalization; Inhibits proliferation,< 1 pM,BLI (Octet),Kinetics buffer,CONFIRMED,081021
+11958905,Humanized anti-hTfR antibody No. 3-4,Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,081594
+11958905,Humanized anti-hTfR antibody No. 3-3,Humanized,Transferrin Receptor,,,,,,,,2.09 x 10^-11 M,BLI (Octet),,CONFIRMED,081595
+11958905,Mouse anti-hTfR antibody No. 5,Mouse,Transferrin Receptor,,,,,,,,3.64 x 10^-11 M,BLI (Octet),,CONFIRMED,081596
+11958905,Mouse anti-hTfR antibody No. 2,Mouse,Transferrin Receptor,,,,,,,,1.12 x 10^-11 M,BLI (Octet),,CONFIRMED,081597
+11958905,Humanized anti-hTfR antibody No. 2 (Variants),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,081598
+11958905,Mouse anti-hTfR antibody No. 6,Mouse,Transferrin Receptor,,,,,,,,9.58 x 10^-10 M,BLI (Octet),,CONFIRMED,081599
+11958905,Humanized anti-hTfR antibody No. 2 (Lead),Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,081600
+11958905,Mouse anti-hTfR antibody No. 10,Mouse,Transferrin Receptor,,,,,,,,1.13 x 10^-9 M,BLI (Octet),,CONFIRMED,081601
+11958905,Mouse anti-hTfR antibody No. 3,Mouse,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,081602
+11958905,Mouse anti-hTfR antibody No. 9,Mouse,Transferrin Receptor,,,,,,,,1.21 x 10^-10 M,BLI (Octet),,CONFIRMED,081603
+11958905,Humanized anti-hTfR antibody No. 3 (Variants),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,081604
+11958905,Mouse anti-hTfR antibody No. 8,Mouse,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,081605
+11958905,Humanized anti-hTfR antibody No. 3 (Lead),Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,PLAUSIBLE,081606
+11958905,Mouse anti-hTfR antibody No. 11,Mouse,Transferrin Receptor,,,,,,,,8.37 x 10^-11 M,BLI (Octet),,CONFIRMED,081607
+11958905,Mouse anti-hTfR antibody No. 4,Mouse,Transferrin Receptor,,,,,,,,1.20 x 10^-10 M,BLI (Octet),,CONFIRMED,081608
+11958905,Humanized anti-hTfR antibody No. 1 (Variants),Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,081609
+11958905,Humanized anti-hTfR antibody No. 3-2,Humanized,Transferrin Receptor,,,,,,,,2.39 x 10^-11 M,BLI (Octet),,CONFIRMED,081610
+11958905,Mouse anti-hTfR antibody No. 7,Mouse,Transferrin Receptor,,,,,,,,8.22 x 10^-11 M,BLI (Octet),,CONFIRMED,081611
+11958905,Mouse anti-hTfR antibody No. 1,Mouse,Transferrin Receptor,,,,,,,,5.09 x 10^-12 M,BLI (Octet),,CONFIRMED,081612
+11958905,Mouse anti-hTfR antibody No. 13,Mouse,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,081613
+11958905,Mouse anti-hTfR antibody No. 14,Mouse,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,081614
+11958905,Humanized anti-hTfR antibody No. 1 (Lead),Humanized,Transferrin Receptor,,,,,,,,<1.0E-12 M (KD to human TfR),BLI (Octet),,REVIEW,081615
+12012460,Humanized Anti-TfR (Variable Regions),Humanized,Transferrin Receptor,"TFRC, CD71",SEQ ID NO: 5,Linear,,,,Internalization into muscle cells; Delivery of payload,,,,PLAUSIBLE,082890
+12012460,Mouse Anti-TfR (Variable Regions),Mouse,Transferrin Receptor,"TFRC, CD71",SEQ ID NO: 5,Linear,,,,Internalization into muscle cells; Delivery of payload,,,,PLAUSIBLE,082891
+12012460,Humanized Anti-TfR IgG1,Humanized,Transferrin Receptor,"TFRC, CD71",,Linear,,,,Internalization into muscle cells; Delivery of payload,,,,REVIEW,082892
+12018087,Mouse Anti-TfR (Parent),Mouse,Transferrin Receptor,"TFRC, CD71, TFR1",Apical Domain,Linear,,,,,10^-11 M to 10^-6 M,Not Specified,,CONFIRMED,082956
+12018087,Humanized Anti-TfR IgG1,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,082958
+12018087,Humanized Anti-TfR,Humanized,Transferrin Receptor,,,,,,,,,,,CONFIRMED,082959
+12030952,Bispecific Antibody Aspect (SEQ 01-04),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,083306
+12030952,Antibody 0041 (TfR Arm),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,083311
+12030952,Antibody 0041 (TfR Arm),,Transferrin Receptor,,,,,,,,,,,CONFIRMED,083312
+12030952,Anti-TfR Binding Site,,Transferrin Receptor,,,,,,,,,,,CONFIRMED,083314
+12037408,mAb2 / mAb6 / mAb10 / mAb14,Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,1 nM or less,SPR,,CONFIRMED,083566
+12037408,A24,Mouse,Transferrin Receptor,"TfR, CD71",,,,,,,,,,CONFIRMED,083567
+12037408,mAb1 / mAb5 / mAb9 / mAb13,Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,0.315 nM,SPR,,CONFIRMED,083568
+12037408,mAb3 / mAb7 / mAb11 / mAb15,Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,1 nM or less,SPR,,CONFIRMED,083569
+12037408,mAb4 / mAb8 / mAb12 / mAb16,Humanized,Transferrin Receptor,"TfR, CD71",,,,,,,1 nM or less,SPR,,CONFIRMED,083570
+12071621,13E4_VH1 Family,Humanized,Transferrin Receptor,"CD71, TFRC",,,,,,,74.5 pM,ELISA,,CONFIRMED,083816
+12071621,13E4_VH2 Family,Humanized,Transferrin Receptor,TFRC,,,,,,,74.5 pM,ELISA,,PLAUSIBLE,083817
+12071621,Murine 13E4,Mouse,Transferrin Receptor,"CD71, TFRC",,,,,,,,,,REVIEW,083818
+12071621,13E4_VH3 Family,Humanized,Transferrin Receptor,"CD71, TFRC",,,,,,,74.5 pM,ELISA,,REVIEW,083819
+12071621,13E4_VH4 Family,Humanized,Transferrin Receptor,"CD71, TFRC",,,,,,,74.5 pM,ELISA,,PLAUSIBLE,083820
+12144866,SLN0049,Camel,Transferrin,,,,,,,,High (+++) at pH 7.4; High (+++) at pH 6.0,FACS/Cell Binding,,CONFIRMED,085553
+12144866,SLN0044,Camel,Transferrin,,,,,,,,Medium (++) at pH 7.4; High (+++) at pH 6.0,FACS/Cell Binding,,CONFIRMED,085559
+12144866,SLN0056,Camel,Transferrin,,,,,,,,High (+++) at pH 7.4; High (+++) at pH 6.0,FACS/Cell Binding,,CONFIRMED,085568
+12145995,Humanized Anti-hTfR Antibody No. 3 (and variants),Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,REVIEW,085715
+12145995,Mouse Anti-hTfR Antibody No. 3,Mouse,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,085716
+12145995,Humanized Anti-hTfR Antibody No. 3N,Humanized,Transferrin Receptor,,,,,,,,< 1.0 x 10^-12 M,BLI (Octet),,CONFIRMED,085717
+12173078,Humanized Anti-TfR1 Fab,Humanized,Transferrin Receptor,TFRC,,,,,,,,,,REVIEW,086595
+12173078,Humanized Anti-TfR1 Variable Region,Humanized,Transferrin Receptor,TFRC,,,,,,,,,,CONFIRMED,086596
+12173078,Chimeric Anti-TfR1 Variable Region,Mouse,Transferrin Receptor,TFRC,,,,,,,,,,CONFIRMED,086598
+12173078,Humanized Anti-TfR1 (IgG1),Humanized,Transferrin Receptor,"TFRC, CD71",Extracellular domain (C89-F760),Linear,,,,Internalization,10^-11 M to 10^-6 M,Not Specified,,PLAUSIBLE,086599
+12173079,Humanized Transferrin Receptor Antibody,Humanized,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,,,,CONFIRMED,086601
+12173079,Humanized Transferrin Receptor Antibody (IgG1),Humanized,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,,,,PLAUSIBLE,086602
+12173079,Mouse Transferrin Receptor Antibody,Mouse,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,10^-11 M to 10^-6 M,Not Specified,,CONFIRMED,086603
+12173079,Humanized Transferrin Receptor Antibody (Fab),Humanized,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,,,,REVIEW,086604
+12173079,Chimeric Transferrin Receptor Antibody (Fab),Mouse,Transferrin Receptor,"TFRC, CD71, TFR1",,,,,,,,,,REVIEW,086606
+12215152,Murine 8D3 (Variant 1),Mouse,Transferrin Receptor,,,,,,,,,,,PLAUSIBLE,087727
+12215152,Humanized 8D3 (Transferrin Receptor),Humanized,Transferrin Receptor,TFRC,,,,,,,,,,REVIEW,087728
+12215152,Murine 8D3 (Variant 2),Mouse,Transferrin Receptor,,,,,,,,,,,CONFIRMED,087729
+12258413,2230,Mouse,Transferrin Receptor,"TfR, TFRC",Protease-like domain,Not Specified,,,,,,,,CONFIRMED,088772
+12258413,TfR434,,Transferrin Receptor,TfR,,,,,,,,,,REVIEW,088775
+12258413,PSM4072,Human,Transferrin Receptor,TfR,,,,,,,,,,PLAUSIBLE,088777
+12258413,TfR435,Human,Transferrin Receptor,TfR,,,,,,,,,,PLAUSIBLE,088780
+12258413,TfR1071YE,Human,Transferrin Receptor,TfR,,,,,,,,,,REVIEW,088783
+12258413,cyno163,,Transferrin Receptor,TfR,,,,,,,,,,PLAUSIBLE,088784
+12258413,TfR1007,Human,Transferrin Receptor,TfR,Apical domain,Not Specified,"D352, S355, D356, K358, M365, V366, E369",,,,,,,CONFIRMED,088785
+12258413,cyno186,Human,Transferrin Receptor,TfR,Apical domain,Not Specified,"D352, S355, D356, K358, M365, V366, E369, D204, K205",,,,,,,PLAUSIBLE,088786
+12258413,T14,Human,Transferrin Receptor,TfR,Apical domain,Not Specified,"P249, L274",,,,,,,PLAUSIBLE,088787
+12258413,TfR1071,Human,Transferrin Receptor,TfR,Apical domain,Not Specified,"D352, S355, D356, K358, M365, V366, E369",,,,,,,PLAUSIBLE,088790
+12258413,cyno292,Human,Transferrin Receptor,TfR,Apical domain,Not Specified,"D352, S355, D356, K358, M365, V366, E369",,,,,,,CONFIRMED,088792
+12258413,R327,Human,Transferrin Receptor,TfR,Apical domain,Not Specified,"D352, S355, D356, K358, M365, V366, E369",,,,,,,CONFIRMED,088793

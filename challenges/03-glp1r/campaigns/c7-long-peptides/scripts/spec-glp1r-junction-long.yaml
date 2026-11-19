@@ -1,0 +1,19 @@
+entities:
+  # GLP1R ECD + ECD-TMD junction (chain R, fragment index 1-207)
+  - file:
+      path: ../../../inputs/target-ecd-junction.pdb
+      include:
+        - chain:
+            id: R
+      # Junction-only hotspots (the best configuration, campaign 1's lesson,
+      # confirmed by campaigns 3-5). The ONE variable changed versus campaign 3:
+      # the binder length range moves from 12..18 to 20..24.
+      binding_types:
+        - chain:
+            id: R
+            binding: 163,176,187,200
+  # One designed linear peptide, length 20-24
+  - protein:
+      id: E
+      sequence: 20..24
+      cyclic: True

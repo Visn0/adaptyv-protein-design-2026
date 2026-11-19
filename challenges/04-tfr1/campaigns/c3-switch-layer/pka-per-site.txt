@@ -1,0 +1,60 @@
+Campaign-3 per-site pKa read (2026-10-26), from scripts/work/c3-histidine-pka.py
+PROPKA bound vs free on the best at-site pose; binder chain B; delta = bound - free.
+The mechanism predicts negative deltas at cation-facing sites.
+
+Engineered sites (kept families):
+c3_e12rfd4_r5d1_d2   pos 8   6.35 -> 5.41  -0.94
+c3_e12rfd4_r5d1_d2   pos 27  6.01 -> 4.66  -1.35
+c3_e12rfd4_r5d1_l1   pos 27  6.00 -> 4.55  -1.45
+c3_e12rfd4_r5d1_l2   pos 8   6.35 -> 5.66  -0.69
+c3_e12rfd4_r5d1_l2   pos 27  6.12 -> 4.79  -1.33
+c3_e12rfd4_r5d1_l3   pos 8   6.36 -> 5.56  -0.80
+c3_e12rfd4_r5d1_l3   pos 27  5.92 -> 5.01  -0.91
+c3_e12rfd4_r5d1_l3   pos 31  7.09 -> 6.56  -0.53
+c3_e12rfd4_r5d1_s1   pos 27  6.02 -> 4.67  -1.35
+c3_e12rfd4_r5d1_s2   pos 8   6.36 -> 5.73  -0.63
+c3_e12b2_20_d2       pos 15  6.38 -> 3.62  -2.76
+c3_e12b2_20_d2       pos 34  5.62 -> 3.03  -2.59
+c3_e12b2_20_s1       pos 15  6.30 -> 4.18  -2.12
+c3_e12b2_20_s2       pos 34  6.37 -> 4.21  -2.16
+
+Controls (variants whose total linkage sign was negative):
+c3_e12rfd4_r4d3_s2   pos 16  6.46 -> 5.81  -0.65
+c3_e12rfd4_r6d5_s2   pos 25  6.19 -> 6.04  -0.15   (picked at 8.42 A - far edge; flat)
+c3_e12rfd4_r6d5_s2   pos 67  5.90 -> 5.32  -0.58   (native binder His)
+c3_e12rfd4_r6d5_s2   pos 73  6.07 -> 6.01  -0.06   (native binder His)
+c3_e12b2_26_s2       pos 20  6.17 -> 6.12  -0.05   (picked at 8.05 A - far edge; flat)
+c3_e12rfd4_r4d3_d2   pos 16  6.23 -> 5.25  -0.98
+c3_e12rfd4_r4d3_d2   pos 25  6.73 -> 7.21  +0.48   (wrong direction: protonation favoured when bound)
+
+Pose contact check (min heavy-atom distance to anchor NZ, parent vs variants):
+e12rfd4_r5d1   D27 -> A223 NZ   1.78 A;  D8 -> A253 NZ  2.83 A
+c3_..._r5d1_s1 H27 -> A223 NZ   3.62 A
+c3_..._r5d1_s2 H8  -> A253 NZ   3.88 A
+c3_..._r5d1_l3 H27 -> A223 NZ   2.94 A;  H8 -> A253 NZ  3.78 A
+
+Parent null (unmodified parents, same scorer): 10 of 81 positive,
+range +0.058..+1.547 (+0.058, +0.059, +0.062, +0.086, +0.092, +0.324,
++0.619, +0.774, +0.835, +1.547).
+
+
+S5 addendum (2026-10-28) — the six S5 designs in the final twenty.
+Run: scripts/work/c3-histidine-pka.py (PROPKA bound vs free, binder chain B,
+best at-site pose; the four families below were added on 2026-10-28).
+
+c3_e12rfd4_r4d5_d2   pos 9   6.19 -> 6.45  -0.26     <- champion (rank 1)
+c3_e12rfd4_r4d5_d2   pos 28  3.41 -> 6.23  -2.82     <- strongest site read
+c3_e12rfd4_r5d7_d2   pos 6   6.27 -> 6.52  -0.25
+c3_e12rfd4_r5d7_d2   pos 43  5.57 -> 6.33  -0.76
+c3_e12rfd4_r6d2_s1   pos 52  4.54 -> 6.01  -1.47
+c3_e12rfd4_r6d2_s1   pos 82  6.43 -> 6.43   0.00
+c3_e12b2_26_s1       pos 44  5.90 -> 6.38  -0.48
+
+Read: the mechanism predicts negative deltas at cation-facing sites; PROPKA's
+own error is about 0.8 pKa units, so only |delta| > 1 discriminates. Four of
+the six S5 designs carry at least one such site - b2_20_d2 (-2.76/-2.59),
+r4d5_d2 (-2.82), r6d2_s1 (-1.47), r5d1_d2 (-1.35/-0.94) - while r5d7_d2
+(-0.76/-0.25) and b2_26_s1 (-0.48) read within noise and rest on site count
+and direction alone. The champion's rank-1 switch is measurement-backed, not
+only class-awarded. Parent null for context: 10 of 81 unmodified parents read
+positive, range -2.706..+1.547 (delta_log_Ka totals, c3-linkage.csv).

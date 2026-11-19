@@ -1,0 +1,449 @@
+{
+ "peptide_burial": {
+  "g12d": [
+   {
+    "pos": 1,
+    "aa": "V",
+    "sasa_complex": 1.2,
+    "sasa_alone": 193.5,
+    "relative_exposure": 0.006
+   },
+   {
+    "pos": 2,
+    "aa": "V",
+    "sasa_complex": 2.1,
+    "sasa_alone": 142.0,
+    "relative_exposure": 0.015
+   },
+   {
+    "pos": 3,
+    "aa": "V",
+    "sasa_complex": 5.9,
+    "sasa_alone": 127.0,
+    "relative_exposure": 0.046
+   },
+   {
+    "pos": 4,
+    "aa": "G",
+    "sasa_complex": 37.0,
+    "sasa_alone": 63.5,
+    "relative_exposure": 0.583
+   },
+   {
+    "pos": 5,
+    "aa": "A",
+    "sasa_complex": 26.9,
+    "sasa_alone": 98.9,
+    "relative_exposure": 0.272
+   },
+   {
+    "pos": 6,
+    "aa": "D",
+    "sasa_complex": 21.8,
+    "sasa_alone": 118.0,
+    "relative_exposure": 0.185
+   },
+   {
+    "pos": 7,
+    "aa": "G",
+    "sasa_complex": 75.5,
+    "sasa_alone": 90.0,
+    "relative_exposure": 0.838
+   },
+   {
+    "pos": 8,
+    "aa": "V",
+    "sasa_complex": 46.6,
+    "sasa_alone": 122.1,
+    "relative_exposure": 0.381
+   },
+   {
+    "pos": 9,
+    "aa": "G",
+    "sasa_complex": 15.7,
+    "sasa_alone": 56.3,
+    "relative_exposure": 0.28
+   },
+   {
+    "pos": 10,
+    "aa": "K",
+    "sasa_complex": 6.7,
+    "sasa_alone": 254.9,
+    "relative_exposure": 0.026
+   }
+  ],
+  "wt": [
+   {
+    "pos": 1,
+    "aa": "V",
+    "sasa_complex": 4.8,
+    "sasa_alone": 197.2,
+    "relative_exposure": 0.024
+   },
+   {
+    "pos": 2,
+    "aa": "V",
+    "sasa_complex": 1.1,
+    "sasa_alone": 134.8,
+    "relative_exposure": 0.008
+   },
+   {
+    "pos": 3,
+    "aa": "V",
+    "sasa_complex": 5.8,
+    "sasa_alone": 120.2,
+    "relative_exposure": 0.048
+   },
+   {
+    "pos": 4,
+    "aa": "G",
+    "sasa_complex": 32.5,
+    "sasa_alone": 60.2,
+    "relative_exposure": 0.54
+   },
+   {
+    "pos": 5,
+    "aa": "A",
+    "sasa_complex": 34.2,
+    "sasa_alone": 104.0,
+    "relative_exposure": 0.329
+   },
+   {
+    "pos": 6,
+    "aa": "G",
+    "sasa_complex": 35.2,
+    "sasa_alone": 65.5,
+    "relative_exposure": 0.538
+   },
+   {
+    "pos": 7,
+    "aa": "G",
+    "sasa_complex": 74.6,
+    "sasa_alone": 83.3,
+    "relative_exposure": 0.895
+   },
+   {
+    "pos": 8,
+    "aa": "V",
+    "sasa_complex": 61.2,
+    "sasa_alone": 124.9,
+    "relative_exposure": 0.49
+   },
+   {
+    "pos": 9,
+    "aa": "G",
+    "sasa_complex": 20.3,
+    "sasa_alone": 69.8,
+    "relative_exposure": 0.29
+   },
+   {
+    "pos": 10,
+    "aa": "K",
+    "sasa_complex": 5.7,
+    "sasa_alone": 272.2,
+    "relative_exposure": 0.021
+   }
+  ]
+ },
+ "d6_interactions": {
+  "R114": {
+   "d": 2.95,
+   "pep_atom": "OD2",
+   "hla_atom": "R114:NH2"
+  },
+  "Q70": {
+   "d": 3.08,
+   "pep_atom": "OD2",
+   "hla_atom": "Q70:NE2"
+  },
+  "D116": {
+   "d": 5.01,
+   "pep_atom": "OD2",
+   "hla_atom": "D116:OD2"
+  }
+ },
+ "position6_burial": {
+  "g12d": {
+   "resname": "ASP",
+   "sasa_whole_A2": 21.8,
+   "sasa_sidechain_A2": 8.8,
+   "sasa_sidechain_alone_A2": 85.2,
+   "sidechain_relative_exposure": 0.104
+  },
+  "wt": {
+   "resname": "GLY",
+   "sasa_whole_A2": 35.2,
+   "sasa_sidechain_A2": 0,
+   "sasa_sidechain_alone_A2": 0,
+   "sidechain_relative_exposure": null
+  }
+ },
+ "bfactors": {
+  "g12d": {
+   "peptide": {
+    "1": 83.2,
+    "2": 81.1,
+    "3": 87.0,
+    "4": 78.8,
+    "5": 76.7,
+    "6": 73.5,
+    "7": 77.1,
+    "8": 75.9,
+    "9": 76.6,
+    "10": 89.0
+   },
+   "hla_mean": 96.1
+  },
+  "wt": {
+   "peptide": {
+    "1": 86.5,
+    "2": 76.9,
+    "3": 78.0,
+    "4": 80.5,
+    "5": 76.7,
+    "6": 72.7,
+    "7": 75.5,
+    "8": 73.7,
+    "9": 77.5,
+    "10": 83.0
+   },
+   "hla_mean": 88.7
+  },
+  "rcsb_7OW6": {
+   "peptide": {
+    "1": 83.2,
+    "2": 81.1,
+    "3": 87.0,
+    "4": 78.8,
+    "5": 76.7,
+    "6": 73.5,
+    "7": 77.1,
+    "8": 75.9,
+    "9": 76.6,
+    "10": 89.0
+   },
+   "hla_mean": 96.1
+  }
+ },
+ "waters_7OW6": {
+  "total_HOH": 18,
+  "within_6A_of_peptide": 0,
+  "within_4_5A_of_D6_carboxylate": 0,
+  "bridging_pMHC_TCR": 1,
+  "min_dist_water_to_peptide_A": 6.97
+ },
+ "tcr_footprint": {
+  "n_contacts_4_5A": 275,
+  "peptide_contacts_per_pos": {
+   "4": 2,
+   "5": 4,
+   "6": 5,
+   "7": 32,
+   "8": 9,
+   "9": 3
+  },
+  "hla_contacts_per_res": {
+   "58": 14,
+   "62": 26,
+   "65": 37,
+   "66": 2,
+   "68": 9,
+   "69": 18,
+   "72": 8,
+   "73": 16,
+   "75": 7,
+   "76": 11,
+   "150": 2,
+   "151": 6,
+   "154": 16,
+   "155": 31,
+   "158": 2,
+   "163": 15
+  },
+  "peptide_contact_share": 0.2,
+  "interface_area_A2": 1669.0
+ },
+ "tcr_footprint_wt": {
+  "n_contacts_4_5A": 279,
+  "peptide_contacts_per_pos": {
+   "4": 5,
+   "5": 5,
+   "6": 5,
+   "7": 35,
+   "8": 9,
+   "9": 3
+  }
+ },
+ "unbound_peptide": {
+  "note": "7OW4 copy-1: heavy-chain CA superpose onto 7OW6, then peptide CA displacements",
+  "hla_ca_rmsd": 0.9,
+  "peptide_positions_present": [
+   1,
+   2,
+   3,
+   4,
+   7,
+   8,
+   9,
+   10
+  ],
+  "missing_positions": [
+   5,
+   6
+  ],
+  "per_position_ca_shift_A": {
+   "1": 0.12,
+   "2": 0.2,
+   "3": 0.33,
+   "4": 1.42,
+   "7": 3.15,
+   "8": 1.71,
+   "9": 0.85,
+   "10": 0.42
+  }
+ },
+ "peptide_free_state": {
+  "construction": "organizer file = 7OW6 coordinates with the peptide deleted; heavy-chain CA RMSD vs the G12D file = 0.0 A",
+  "total_new_sasa_A2": 678.0,
+  "top_newly_exposed": [
+   {
+    "res": 155,
+    "d_sasa_A2": 62.0
+   },
+   {
+    "res": 147,
+    "d_sasa_A2": 60.7
+   },
+   {
+    "res": 66,
+    "d_sasa_A2": 50.2
+   },
+   {
+    "res": 159,
+    "d_sasa_A2": 47.8
+   },
+   {
+    "res": 77,
+    "d_sasa_A2": 45.5
+   },
+   {
+    "res": 70,
+    "d_sasa_A2": 40.9
+   },
+   {
+    "res": 146,
+    "d_sasa_A2": 39.1
+   },
+   {
+    "res": 73,
+    "d_sasa_A2": 37.9
+   },
+   {
+    "res": 63,
+    "d_sasa_A2": 32.3
+   },
+   {
+    "res": 9,
+    "d_sasa_A2": 25.3
+   },
+   {
+    "res": 99,
+    "d_sasa_A2": 23.7
+   },
+   {
+    "res": 114,
+    "d_sasa_A2": 23.0
+   },
+   {
+    "res": 150,
+    "d_sasa_A2": 22.9
+   },
+   {
+    "res": 156,
+    "d_sasa_A2": 20.7
+   },
+   {
+    "res": 163,
+    "d_sasa_A2": 19.8
+   }
+  ]
+ },
+ "electrostatics": {
+  "note": "Debye-Huckel point-charge estimate of the D6 carboxylate field; the WT state carries no such charge, so this is the G12D-minus-WT difference field. Uniform dielectric, no boundary - order-of-magnitude only.",
+  "direction_above_groove": [
+   0.353,
+   0.935,
+   -0.024
+  ],
+  "phi_table": [
+   {
+    "epsilon": 10,
+    "distance_A": 6,
+    "phi_kT_per_e": -4.34
+   },
+   {
+    "epsilon": 10,
+    "distance_A": 7,
+    "phi_kT_per_e": -3.34
+   },
+   {
+    "epsilon": 10,
+    "distance_A": 8,
+    "phi_kT_per_e": -2.61
+   },
+   {
+    "epsilon": 20,
+    "distance_A": 6,
+    "phi_kT_per_e": -2.17
+   },
+   {
+    "epsilon": 20,
+    "distance_A": 7,
+    "phi_kT_per_e": -1.67
+   },
+   {
+    "epsilon": 20,
+    "distance_A": 8,
+    "phi_kT_per_e": -1.31
+   },
+   {
+    "epsilon": 40,
+    "distance_A": 6,
+    "phi_kT_per_e": -1.08
+   },
+   {
+    "epsilon": 40,
+    "distance_A": 7,
+    "phi_kT_per_e": -0.83
+   },
+   {
+    "epsilon": 40,
+    "distance_A": 8,
+    "phi_kT_per_e": -0.65
+   },
+   {
+    "epsilon": 80,
+    "distance_A": 6,
+    "phi_kT_per_e": -0.54
+   },
+   {
+    "epsilon": 80,
+    "distance_A": 7,
+    "phi_kT_per_e": -0.42
+   },
+   {
+    "epsilon": 80,
+    "distance_A": 8,
+    "phi_kT_per_e": -0.33
+   }
+  ],
+  "patch_sweep_eps20_7A": {
+   "min_phi_kT_per_e": -0.83,
+   "lateral_offset_A": [
+    0.0,
+    0.0
+   ]
+  },
+  "min_dist_D6_carboxylate_to_TCR_A": 7.51
+ }
+}

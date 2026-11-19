@@ -1,0 +1,9 @@
+{
+  "x3c-groove": {
+    "input": "challenges/02-tnfa/handoff/rfd3/target-x3c-groove.pdb",
+    "contig": "70-95,/0,A15-30,A32-35,A46,A58-81,A94-122,A133-153,B60-78,B94-107,B109-121,B141-143,B146,B148-150,C18,C24-26,C58-83,C89-124,C132-144,C148-153",
+    "select_hotspots": "A65,A67,C75",
+    "infer_ori_strategy": "hotspots",
+    "is_non_loopy": true
+  }
+}

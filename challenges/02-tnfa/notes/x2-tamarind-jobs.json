@@ -1,0 +1,63 @@
+{
+ "created": "2026-10-15",
+ "experiment": "c2-x2 rfd3 generator probe",
+ "payloads": {
+  "c2-x2-rfd3-s1-groove": {
+   "task": "protein-binder-design",
+   "pdbFile": "1TNF.pdb",
+   "targetChains": [
+    "A",
+    "B",
+    "C"
+   ],
+   "binderLength": "70,95",
+   "numDesigns": 48,
+   "diffusionBatchSize": 6,
+   "nonLoopy": true,
+   "stepScale": 1.5,
+   "gammaZero": 0.6,
+   "runDesignability": false,
+   "claude_inference_optimization": "off",
+   "hotspots": {
+    "A": "65 67",
+    "C": "75"
+   }
+  },
+  "c2-x2-rfd3-s2-switch": {
+   "task": "protein-binder-design",
+   "pdbFile": "1TNF.pdb",
+   "targetChains": [
+    "A",
+    "B",
+    "C"
+   ],
+   "binderLength": "70,95",
+   "numDesigns": 48,
+   "diffusionBatchSize": 6,
+   "nonLoopy": true,
+   "stepScale": 1.5,
+   "gammaZero": 0.6,
+   "runDesignability": false,
+   "claude_inference_optimization": "off",
+   "hotspots": {
+    "A": "103",
+    "B": "103 112"
+   }
+  }
+ },
+ "results": {
+  "c2-x2-rfd3-s1-groove": {
+   "validate_status": 200,
+   "validate_text": "{\"valid\":true,\"normalized\":{\"task\":\"protein-binder-design\",\"pdbFile\":\"agent-231a3b5c-0b8@agents.tamarind.agent/1TNF.pdb\",\"targetChains\":[\"A\",\"B\",\"C\"],\"binderLength\":\"70,95\",\"numDesigns\":48,\"diffusionBatchSize\":6,\"nonLoopy\":true,\"stepScale\":1.5,\"gammaZero\":0.6,\"runDesignability\":false,\"claude_inference_optimization\":\"off\",\"hotspots\":{\"A\":\"65 67\",\"C\":\"75\"},\"useSolubleMpnn\":false},\"job_name\":\"c2-x2-rfd3-s1-groove\"}",
+   "submit_status": 200,
+   "submit_text": "c2-x2-rfd3-s1-groove batch submitted to queue."
+  },
+  "c2-x2-rfd3-s2-switch": {
+   "validate_status": 200,
+   "validate_text": "{\"valid\":true,\"normalized\":{\"task\":\"protein-binder-design\",\"pdbFile\":\"agent-231a3b5c-0b8@agents.tamarind.agent/1TNF.pdb\",\"targetChains\":[\"A\",\"B\",\"C\"],\"binderLength\":\"70,95\",\"numDesigns\":48,\"diffusionBatchSize\":6,\"nonLoopy\":true,\"stepScale\":1.5,\"gammaZero\":0.6,\"runDesignability\":false,\"claude_inference_optimization\":\"off\",\"hotspots\":{\"A\":\"103\",\"B\":\"103 112\"},\"useSolubleMpnn\":false},\"job_name\":\"c2-x2-rfd3-s2-switch\"}",
+   "submit_status": 400,
+   "submit_text": "{\"error\":\"Monthly job limit exceeded. You have 9 jobs this month and are trying to submit 6 more, but your limit is 10.\",\"code\":\"monthly_limit_exceeded\",\"quota\":{\"used\":9,\"limit\":10,\"remaining\":1,\"requested\":6}}"
+  },
+  "status_check": "{\"jobs\":[{\"JobName\":\"c2-x2-rfd3-s1-groove\",\"JobStatus\":\"In Queue\",\"Created\":\"2026-10-15 16:20:00\",\"Type\":\"batch\",\"TamarindSchemaVersion\":\"1.2\",\"batchStatus\":\"Running\"}],\"notFound\":[\"c2-x2-rfd3-s2-switch\"],\"statuses\":{\"Complete\":0,\"In Queue\":1,\"Running\":0,\"Stopped\":0}}"
+ }
+}

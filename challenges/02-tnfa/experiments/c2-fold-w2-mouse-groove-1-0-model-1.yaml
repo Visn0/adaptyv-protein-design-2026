@@ -1,0 +1,13 @@
+name: c2-fold-w2-mouse-groove-1-0-model-1
+challenge: 02-tnfa
+pipeline: fold
+description: "W2 mouse fold of the X2 shortlist design config_c2-x2-rfd3-s1-groove-1_0_model_1.pdb (rank 2, 73 aa) against the mouse TNF-alpha trimer: five Boltz-2 samples on the RTX 5070, every sample scored with IPSAE."
+resources: cpu   # the import stage is CPU work; the fold itself ran on the GPU
+requires_network: false
+stages: [import]
+params:
+  source: data/boltz2/w2-mouse-groove-1_0_model_1
+  design: config_c2-x2-rfd3-s1-groove-1_0_model_1.pdb
+  binder_chain: A
+  target_chains: B,C,D
+  input_pdb: handoff/designs/pdb/config_c2-x2-rfd3-s1-groove-1_0_model_1.pdb

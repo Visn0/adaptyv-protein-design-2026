@@ -1,0 +1,5 @@
+structure,ligand_len,depth_max,depth_min,contacts_ecd,contacts_tmd,contacts_intracellular,anion_to_R190,aromatic_at_Y148,small_at_W306,hbond_to_Q234,hydrophobe_at_E387,ecl3_contact,features_met,tier
+6X18,30,20.59,-23.06,19,33,0,2.78,3.36,3.61,3.12,3.45,2.62,6,deep
+6B3J,33,23.57,-23.05,17,30,0,5.03,4.77,3.06,3.39,3.3,3.22,4,deep
+7LLL,28,18.92,-25.47,7,23,0,3.64,4.01,3.8,4.93,4.09,6.66,4,deep
+9IVG,21,14.15,-18.34,11,14,0,7.59,6.02,10.26,9.46,3.97,7.65,1,shelf

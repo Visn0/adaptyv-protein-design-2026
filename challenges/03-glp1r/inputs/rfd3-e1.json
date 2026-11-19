@@ -1,0 +1,9 @@
+{
+  "c3-e1": {
+    "input": "challenges/03-glp1r/inputs/target-ecd-junction.pdb",
+    "contig": "60-100,/0,R29-129,R136-241",
+    "select_hotspots": "R67,R69,R88,R91,R121,R128,R197,R210,R221,R234",
+    "infer_ori_strategy": "hotspots",
+    "is_non_loopy": true
+  }
+}

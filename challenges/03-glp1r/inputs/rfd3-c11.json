@@ -1,0 +1,9 @@
+{
+  "c11-deep": {
+    "input": "challenges/03-glp1r/inputs/target-full-construct.pdb",
+    "contig": "60-100,/0,R1-409",
+    "select_hotspots": "R118,R178,R275,R276,R277,R283,R357,R361",
+    "infer_ori_strategy": "hotspots",
+    "is_non_loopy": true
+  }
+}

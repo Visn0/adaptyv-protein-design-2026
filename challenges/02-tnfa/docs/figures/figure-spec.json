@@ -1,0 +1,205 @@
+{
+  "challenge": "02-tnfa",
+  "funnel": {
+    "title": "The funnel: 36 backbones in, 8 designs out",
+    "subtitle": "green = free (CPU, seconds) \u00b7 orange = GPU minutes on the 12 GB local RTX 5070 \u00b7 pink = the post-submission verification round",
+    "generation": {
+      "heading": "Generation - 36 Genie 3 backbones",
+      "sub": "Genie 3 (347 MB checkpoint) on the released BinderBench problem 10_tnfa, hotspots B102 + D62 - two residues on two different protomers of the trimer; binder length 50-120. 66 s per design, 8 of 8 in batch-01 engaging the designed interface (CA-CA 4.3-8.1 A).",
+      "slices": [
+        {
+          "label": "batch-01 \u00b7 8",
+          "count": 8,
+          "color": "#60a5fa",
+          "legend": "batch-01: the released problem, first pass - it produced d7, the 64-residue backbone every submitted design descends from"
+        },
+        {
+          "label": "batch-02 \u00b7 16",
+          "count": 16,
+          "color": "#34d399",
+          "legend": "batch-02: the same problem, a wider draw - it produced d12 (a second working family, human-only), plus d4 and d15"
+        },
+        {
+          "label": "RBS batch-03 \u00b7 12",
+          "count": 12,
+          "color": "#f59e0b",
+          "legend": "RBS batch-03: our own receptor-binding junction (1TNF 84-89 + 143-148) - a deliberate retry of the epitope the brief recommends; it failed"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "kind": "filter",
+        "title": "First-pass sequences and folds (the CA-only trap)",
+        "text": "ProteinMPNN run on CA atoms only - the generator's own default, since Genie 3 emits CA traces. Then Boltz-2 co-fold (5 samples, seed 42) and ipSAE at the designed site.",
+        "cost": "GPU minutes - ~3.5 min per design",
+        "tone": "orange"
+      },
+      {
+        "kind": "result",
+        "heading": "Every CA-only sequence caps at 0.248 at-site ipSAE",
+        "sub": "Ten of fourteen at-site samples read exactly 0.000; best score in the whole 40-fold batch 0.252, and off-site. The backbones are fine; the sequences are not."
+      },
+      {
+        "kind": "filter",
+        "title": "Backbone selection by folded spread",
+        "text": "Read each backbone's five-sample at-site spread before spending sequence work on it. Control backbone d6 never passed 0.19 under identical treatment; d15 buried 373-551 interface atom pairs - more than any released winner - at only 0.47-0.69.",
+        "cost": "free - seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "2 of 36 backbones carry a family",
+        "sub": "d7 (64 aa, batch-01) and d12 (92 aa, batch-02). The RBS batch closes at 0.653 with its high scorers moved off the junction."
+      },
+      {
+        "kind": "filter",
+        "title": "Full-backbone ProteinMPNN re-sequencing",
+        "text": "Re-sequence the FOLDED backbone, which carries a full backbone rather than CA positions only: vanilla v_48_020, T = 0.1 and 0.3, several seeds; fixed-position mode (3 free positions) for the evolution and dual-select rounds. 234 unique sequences over the campaign.",
+        "cost": "free - CPU, seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "d7 jumps from 0.248 to 0.63-0.85",
+        "sub": "18 members, every sequence 5/5 at the designed site; champion d7x-t3-3 reads 0.832 / 0.837 / 0.840 / 0.842 / 0.852 across five independent folds."
+      },
+      {
+        "kind": "filter",
+        "title": "Boltz-2 co-fold",
+        "text": "Boltz-2 2.2.1, 5 diffusion samples per design, seed 42, MSA server, 12.5 GB memory cap. The fold is read as a distribution: the whole spread is reported, never a single sample.",
+        "cost": "GPU minutes - 1,370 samples",
+        "tone": "orange"
+      },
+      {
+        "kind": "result",
+        "heading": "1,370 samples on 274 designs",
+        "sub": "notes/genie3/genie3-all-scores.csv holds every row, human and mouse folds alike."
+      },
+      {
+        "kind": "filter",
+        "title": "ipSAE at-site screen",
+        "text": "ipSAE at a 10 A PAE cutoff PLUS the site rule: the binder must touch both halves of the epitope, on two different protomers (screen_all.py, screen_folds_site.py). Bar: >= 0.8 to submit, 0.6 as the do-not-discard floor. pDockQ2 recorded but not gating - the calibration showed released non-binders at 0.49-0.57 against the winners' 0.07-0.28.",
+        "cost": "free - CPU, seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "227 samples at site and >= 0.8",
+        "sub": "896 of 1,370 samples sit at the designed site; 279 of those land in the 0.6-0.8 band and 390 below the floor."
+      },
+      {
+        "kind": "filter",
+        "title": "Mouse-first selection",
+        "text": "Fold against the mouse construct (P06804 85-235, built by alignment from human 82-233) BEFORE any human confirmation fold. Cross-reactivity is selected for, not checked for - the first human-selected family lost about 0.2 on mouse.",
+        "cost": "GPU minutes",
+        "tone": "orange"
+      },
+      {
+        "kind": "result",
+        "heading": "mce-14: 1 of 16 reaches the mouse band",
+        "sub": "mouse 0.847 / human 0.852, both 5/5 at the designed junction - the first dual-species design, and the parent of every switch variant."
+      },
+      {
+        "kind": "filter",
+        "title": "PROPKA linkage score",
+        "text": "delta_log_Ka across the 6.0-7.4 window, from PROPKA 3.5.1 pKa predictions through the Wyman linkage relation. Positive means binding is favoured at pH 7.4 - the direction this challenge wants. The SIGN is the decision variable; the magnitude ranks only within it.",
+        "cost": "free - CPU, seconds",
+        "tone": "green"
+      },
+      {
+        "kind": "result",
+        "heading": "Every un-retrofitted design reads the wrong sign",
+        "sub": "-0.113 to -0.991 across five complexes: the lineage's natural linkage binds tighter in acid. Objective 1 is unclaimable without a retrofit."
+      },
+      {
+        "kind": "filter",
+        "title": "Histidine retrofit, reversion scan, position scan (sr1-sr6)",
+        "text": "Histidines placed against the target's interface cation trio (Arg103 / Lys112, charge class kept in mouse), then moved 7-9 A off the binding face. Every variant re-folded on both species and re-scored for linkage. Whole-chain recovery resampling (sr3/sr4) collapsed; the sr6 reversion scan localised the binding cost to H37.",
+        "cost": "GPU minutes",
+        "tone": "orange"
+      },
+      {
+        "kind": "result",
+        "heading": "Three switch variants keep binding and flip the sign",
+        "sub": "Best: E33H alone - a salt-bridge glutamate turned into the switch - at +1.738 (54.7x toward pH 7.4), human 0.849 / mouse 0.847. The strongest switch of all (r2b, +2.07 / 117.6x) was dropped: 1 of 5 samples at site."
+      },
+      {
+        "kind": "filter",
+        "title": "Independent re-score of the submitted complexes",
+        "text": "Two days after submission, all eight complexes re-folded and re-analysed with a different instrument: BoltzGen 0.3.2 protein-redesign, one complex per run, structure held fixed.",
+        "cost": "the expensive verification round",
+        "tone": "pink"
+      },
+      {
+        "kind": "result",
+        "heading": "All eight plausible, the ranking disagrees",
+        "sub": "pTM 0.93-0.96 and 67-77 of buried surface on every design; BoltzGen puts r2a first and our lead r2c fifth. Zero PLIP hydrogen bonds across the set - a hydrophobic helix-bundle interface."
+      }
+    ],
+    "final": {
+      "heading": "8 designs submitted",
+      "sub": "All 64 residues, single chain, all descended from backbone d7: five switch variants plus three paired no-switch controls. Seven of the eight read >= 0.8 at-site on human or mouse."
+    },
+    "note": {
+      "title": "Loops that fed new variants back in.",
+      "text": "Four loops re-entered the funnel: directed evolution (two generations of 3-position ProteinMPNN mutants - generation 1 produced the human record by a single D47A), dual-species selection (two generations, mouse stage then human stage - generation 1 produced the submission head by a single T48S), two pre-registered mining rounds (80 fresh sequences, then the four best untreated backbones), and the switch recovery work (sr3/sr4 whole-chain resampling, then the sr6 reversion scan). None of this is machine learning: nothing is trained, and every child is judged by the same fold-and-score instruments as its parent."
+    }
+  },
+  "molecular_figures": [
+    {
+      "slug": "d7-lineage-junction",
+      "caption": "Three members of the single surviving lineage, each on the human TNF-alpha trimer (protomers in blue, cyan and light blue; binder in its own colour). Left: e1b-d7x-t3-3-v6, the human record (0.871) that could not hold mouse. Centre: ds-mce-14-v6, the dual-species head (0.856 human / 0.854 mouse) and the paired no-switch control. Right: sr2-ds-mce-14-v6-r2c, the same binder with one substitution (E33H) that adds the pH switch. In every panel the binder lies along the seam where two protomers meet - the geometry the at-site screen enforces.",
+      "panels": [
+        {
+          "label": "e1b-d7x-t3-3-v6 \u2014 the human record (0.871)",
+          "source_fold": "~/c2-work/genie3/folds/e1b-d7x-t3-3-v6",
+          "model": 2,
+          "binder_chain": "A",
+          "target_label": "human TNF-\u03b1 trimer"
+        },
+        {
+          "label": "ds-mce-14-v6 \u2014 the dual-species head (0.856 / 0.854)",
+          "source_fold": "~/c2-work/genie3/folds/dsh-mce-14-v6",
+          "model": 1,
+          "binder_chain": "A",
+          "target_label": "human TNF-\u03b1 trimer"
+        },
+        {
+          "label": "sr2-ds-mce-14-v6-r2c \u2014 the same binder plus E33H (switch +1.738)",
+          "source_fold": "~/c2-work/genie3/folds/sr2-ds-mce-14-v6-r2c",
+          "model": 2,
+          "binder_chain": "A",
+          "target_label": "human TNF-\u03b1 trimer"
+        }
+      ]
+    },
+    {
+      "slug": "switch-geometries",
+      "caption": "Three ways the campaign placed the switch on the same 64-residue scaffold, each shown on the human trimer. Left: sr1-mce-14-b, three histidines (L37H + L43H + G45H) on the binding face - the sign flips (+0.836) but binding drops to 0.659. Centre: sr6-r37, the same design with position 37 reverted, which recovers binding (mouse 0.872, the project record) and loses most of the switch (+0.169). Right: sr2-ds2-mce-14-v7-v1-r2a, two histidines moved off the binding face (Q30H + E33H) - binding kept (0.843 / 0.860) with a +0.734 switch. The submitted champion is the single-substitution version of this last geometry.",
+      "panels": [
+        {
+          "label": "sr1-mce-14-b \u2014 three histidines on the binding face",
+          "source_fold": "~/c2-work/genie3/folds/sr1-mce-14-b",
+          "model": 2,
+          "binder_chain": "A",
+          "target_label": "human TNF-\u03b1 trimer"
+        },
+        {
+          "label": "sr6-r37 \u2014 position 37 reverted, binding recovered",
+          "source_fold": "~/c2-work/genie3/folds/sr6-r37",
+          "model": 2,
+          "binder_chain": "A",
+          "target_label": "human TNF-\u03b1 trimer"
+        },
+        {
+          "label": "sr2-ds2-mce-14-v7-v1-r2a \u2014 the switch moved off the binding face",
+          "source_fold": "~/c2-work/genie3/folds/sr2-ds2-mce-14-v7-v1-r2a",
+          "model": 0,
+          "binder_chain": "A",
+          "target_label": "human TNF-\u03b1 trimer"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 256" font-family="'JetBrains Mono','SF Mono','Cascadia Code',monospace">
+<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+<rect width="100%" height="100%" fill="#0f172a"/>
+<rect width="100%" height="100%" fill="url(#grid)"/>
+<text x="40" y="44" fill="#f8fafc" font-size="16" font-weight="700">Campaign 4 — per-design wall time against the mouse target (Gantt)</text>
+<text x="40" y="64" fill="#94a3b8" font-size="9">measured campaign-4 numbers · 33 designs · mouse target prep once (alignment + MSA), then identical folds</text>
+<g font-size="8" fill="#64748b">
+<text x="320" y="94" text-anchor="middle">0</text>
+<text x="450" y="94" text-anchor="middle">2</text>
+<text x="580" y="94" text-anchor="middle">4</text>
+<text x="710" y="94" text-anchor="middle">6</text>
+<text x="840" y="94" text-anchor="middle">8</text>
+<text x="970" y="94" text-anchor="middle">10</text>
+<text x="1100" y="94" text-anchor="middle">min</text>
+</g>
+<g stroke="#1e293b" stroke-width="0.7" stroke-dasharray="3,5">
+<line x1="320" y1="100" x2="320" y2="172"/>
+<line x1="450" y1="100" x2="450" y2="172"/>
+<line x1="580" y1="100" x2="580" y2="172"/>
+<line x1="710" y1="100" x2="710" y2="172"/>
+<line x1="840" y1="100" x2="840" y2="172"/>
+<line x1="970" y1="100" x2="970" y2="172"/>
+<line x1="1100" y1="100" x2="1100" y2="172"/>
+</g>
+<text x="40" y="136" fill="#f8fafc" font-size="10.5" font-weight="600">mouse pipeline</text>
+<text x="40" y="151" fill="#64748b" font-size="8">target prep once (~3 min: alignment, ColabFold MSA, pqt) → restrained fold → paired read</text>
+<rect x="320.0" y="120" width="195.0" height="22" rx="3" fill="#94a3b8" opacity="0.92"/>
+<text x="417.5" y="134.5" fill="#0b1220" font-size="8" font-weight="600" text-anchor="middle">prep (once)</text>
+<rect x="521.5" y="120" width="494.0" height="22" rx="3" fill="#f472b6" opacity="0.92"/>
+<text x="768.5" y="134.5" fill="#0b1220" font-size="8" font-weight="600" text-anchor="middle">restrained fold</text>
+<rect x="1018.8" y="120" width="9.8" height="22" rx="3" fill="#fbbf24" opacity="0.92"/>
+<text x="1032.5" y="115" fill="#e2e8f0" font-size="8">paired read</text>
+<text x="40" y="190" fill="#64748b" font-size="8.5">33 designs, 165 samples · 4.2 h GPU · anchors by alignment: human K344/K374 → mouse K346/K376 (fold 224/254)</text>
+<text x="40" y="203" fill="#64748b" font-size="8.5">top band: e12rfd4_r4d5 (−0.050) and c3_e12rfd4_r3d4_d2 (+0.018, carries the switch); tightest human parents are mouse-weakest</text>
+</svg>

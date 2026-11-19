@@ -1,0 +1,19 @@
+arm | instrument | metric | mean | min | max | n
+pos-g12d | boltz | b2m_contacts_45 | 0.000 | 0 | 0 | 5
+pos-g12d | boltz | b2m_read | 0.772 | 0.751 | 0.799 | 5
+pos-g12d | boltz | hla_contacts_45 | 228.000 | 219 | 236 | 5
+pos-g12d | boltz | hla_read | 0.871 | 0.856 | 0.887 | 5
+pos-g12d | boltz | p6_min_dist | 3.014 | 2.97 | 3.08 | 5
+pos-g12d | boltz | peptide_binder_residues | 8.000 | 8 | 8 | 5
+pos-g12d | boltz | peptide_contacts_45 | 57.200 | 55 | 61 | 5
+pos-g12d | boltz | peptide_read | 0.676 | 0.65 | 0.71 | 5
+
+delta (pos-g12d - pos-wt), boltz means:
+  b2m_contacts_45: +nan
+  b2m_read: +nan
+  hla_contacts_45: +nan
+  hla_read: +nan
+  p6_min_dist: +nan
+  peptide_binder_residues: +nan
+  peptide_contacts_45: +nan
+  peptide_read: +nan

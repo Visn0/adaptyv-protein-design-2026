@@ -1,0 +1,21 @@
+design,length,n_glyc_sequons,deamidation_motifs,met_count,cys_count,flags,flags_at_or_next_to_interface
+c3_e12rfd4_r4d5_d2,76,0,p46,0,0,deamid: p46,p46
+c3_e12rfd4_r5d1_d2,64,0,,0,0,clean,-
+c3_b4_H_r1d0000_53h,104,0,p38,1,0,deamid: p38,p38
+c3_e12rfd4_r5d7_d2,93,0,p33,0,0,deamid: p33,p33
+c3_e12b2_20_s2,108,0,p10;p58,0,0,"deamid: p10,p58","p10,p58"
+c3_e12rfd4_r3d4_d2,108,0,,1,0,clean,-
+c3_b4_H_r1d0004_13_48,75,0,,1,0,clean,-
+c3_e12rfd4_r4d3_s1,77,0,p15,0,0,deamid: p15,p15
+c3_e12rfd4_r6d2_s1,102,0,p30;p47,0,0,"deamid: p30,p47",-
+c3_e12b2_26_s1,73,0,p9;p21,1,0,"deamid: p9,p21",p9
+e12rfd4_r6d5,92,0,p25;p49,1,0,"deamid: p25,p49","p25,p49"
+c3_e12_18_21h,78,0,p71,4,0,deamid: p71 | 4xMet,p71
+e12b2_8,99,0,,1,0,clean,-
+e12b2_29,60,0,,2,0,clean,-
+b3_E12_r90003,81,0,,2,0,clean,-
+e12_9,100,0,p62,3,0,deamid: p62 | 3xMet,p62
+e12b2_23,83,0,,0,2,clean,-
+b3_E12_r110007,75,0,,0,0,clean,-
+e12rfd4_r4d6,88,0,,0,1,odd Cys (free thiol),-
+e12rfd4_r8d4,70,0,p24;p36;p38,0,2,"deamid: p24,p36,p38",-

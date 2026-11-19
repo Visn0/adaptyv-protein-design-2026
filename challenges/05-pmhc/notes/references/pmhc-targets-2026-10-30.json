@@ -1,0 +1,146 @@
+{
+ "source": "https://proteinbase.com/competitions/anthropic-adaptyv-2026/challenges/pmhc",
+ "captured": "2026-10-30",
+ "note": "The three target states exactly as the page serializes them (org structures are TCR-removed, tags not shown; the heavy chain is renumbered 1-276).",
+ "targets": {
+  "kras-g12d": {
+   "id": "kras-g12d",
+   "name": "KRAS G12D pMHC",
+   "chainName": "HLA-A*11:01 heavy chain",
+   "accession": "Q5S3G3",
+   "uniprotUrl": "https://www.uniprot.org/uniprotkb/Q5S3G3/entry",
+   "residues": "25–305",
+   "sequence": "GSHSMRYFYTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDQETRNVKAQSQTDRVDLGTLRGYYNQSEDGSHTIQIMYGCDVGPDGRFLRGYRQDAYDGKDYIALNEDLRSWTAADMAAQITKRKWEAAHAAEQQRAYLEGRCVEWLRRYLENGKETLQRTDPPKTHMTHHPISDHEATLRCWALGFYPAEITLTWQRDGEDQTQDTELVETRPAGDGTFQKWAAVVVPSGEEQRYTCHVQHEGLPKPLTLRWELSSQPT",
+   "chains": [
+    {
+     "name": "β2-microglobulin",
+     "accession": "P61769",
+     "uniprotUrl": "https://www.uniprot.org/uniprotkb/P61769/entry",
+     "residues": "21–119",
+     "sequence": "IQRTPKIQVYSRHPAENGKSNFLNCYVSGFHPSDIEVDLLKNGERIEKVEHSDLSFSKDWSFYLLYYTEFTPTEKDEYACRVNHVTLSQPKIVKWDRDM"
+    },
+    {
+     "name": "KRAS G12D peptide",
+     "accession": "P01116",
+     "uniprotUrl": "https://www.uniprot.org/uniprotkb/P01116/entry",
+     "residues": "7–16",
+     "sequence": "VVVGADGVGK"
+    }
+   ],
+   "form": "To bind",
+   "details": [
+    {
+     "label": "Assay construct",
+     "value": "Complex of the three chains · tags not shown"
+    },
+    {
+     "label": "Allele",
+     "value": "A*11:01:01:01 · IPD-IMGT/HLA HLA00043"
+    },
+    {
+     "label": "Mutation",
+     "value": "KRAS Gly12 to Asp · peptide position 6"
+    },
+    {
+     "label": "Recommended epitope",
+     "value": "The peptide and the groove around it"
+    },
+    {
+     "label": "Structure reference",
+     "value": "7OW6 · Chains A–C · TCR removed",
+     "href": "https://www.rcsb.org/structure/7OW6"
+    }
+   ],
+   "structure": {
+    "url": "https://proteinbase.com/structures/9f173095cef238c74ad7b41fd78c387a/target.pdb",
+    "referenceUrl": "https://www.rcsb.org/structure/7OW6",
+    "label": "PDB 7OW6 · TCR removed"
+   }
+  },
+  "wild-type": {
+   "id": "wild-type",
+   "name": "Wild-type KRAS pMHC",
+   "chainName": "HLA-A*11:01 heavy chain",
+   "accession": "Q5S3G3",
+   "uniprotUrl": "https://www.uniprot.org/uniprotkb/Q5S3G3/entry",
+   "residues": "25–305",
+   "sequence": "GSHSMRYFYTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDQETRNVKAQSQTDRVDLGTLRGYYNQSEDGSHTIQIMYGCDVGPDGRFLRGYRQDAYDGKDYIALNEDLRSWTAADMAAQITKRKWEAAHAAEQQRAYLEGRCVEWLRRYLENGKETLQRTDPPKTHMTHHPISDHEATLRCWALGFYPAEITLTWQRDGEDQTQDTELVETRPAGDGTFQKWAAVVVPSGEEQRYTCHVQHEGLPKPLTLRWELSSQPT",
+   "chains": [
+    {
+     "name": "β2-microglobulin",
+     "accession": "P61769",
+     "uniprotUrl": "https://www.uniprot.org/uniprotkb/P61769/entry",
+     "residues": "21–119",
+     "sequence": "IQRTPKIQVYSRHPAENGKSNFLNCYVSGFHPSDIEVDLLKNGERIEKVEHSDLSFSKDWSFYLLYYTEFTPTEKDEYACRVNHVTLSQPKIVKWDRDM"
+    },
+    {
+     "name": "Wild-type KRAS peptide",
+     "accession": "P01116",
+     "uniprotUrl": "https://www.uniprot.org/uniprotkb/P01116/entry",
+     "residues": "7–16",
+     "sequence": "VVVGAGGVGK"
+    }
+   ],
+   "form": "Not to bind",
+   "details": [
+    {
+     "label": "Assay construct",
+     "value": "Same HLA and β2-microglobulin · wild-type KRAS peptide"
+    },
+    {
+     "label": "Differs from G12D",
+     "value": "Peptide position 6 (KRAS residue 12): glycine for aspartate"
+    },
+    {
+     "label": "Structure reference",
+     "value": "7OW5 · Chains A–C · TCR removed",
+     "href": "https://www.rcsb.org/structure/7OW5"
+    }
+   ],
+   "structure": {
+    "url": "https://proteinbase.com/structures/9f173095cef238c74ad7b41fd78c387a/offtarget.pdb",
+    "referenceUrl": "https://www.rcsb.org/structure/7OW5",
+    "label": "PDB 7OW5 · TCR removed"
+   }
+  },
+  "peptide-free": {
+   "id": "peptide-free",
+   "name": "Peptide-free MHC",
+   "chainName": "HLA-A*11:01 heavy chain",
+   "accession": "Q5S3G3",
+   "uniprotUrl": "https://www.uniprot.org/uniprotkb/Q5S3G3/entry",
+   "residues": "25–305",
+   "sequence": "GSHSMRYFYTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDQETRNVKAQSQTDRVDLGTLRGYYNQSEDGSHTIQIMYGCDVGPDGRFLRGYRQDAYDGKDYIALNEDLRSWTAADMAAQITKRKWEAAHAAEQQRAYLEGRCVEWLRRYLENGKETLQRTDPPKTHMTHHPISDHEATLRCWALGFYPAEITLTWQRDGEDQTQDTELVETRPAGDGTFQKWAAVVVPSGEEQRYTCHVQHEGLPKPLTLRWELSSQPT",
+   "chains": [
+    {
+     "name": "β2-microglobulin",
+     "accession": "P61769",
+     "uniprotUrl": "https://www.uniprot.org/uniprotkb/P61769/entry",
+     "residues": "21–119",
+     "sequence": "IQRTPKIQVYSRHPAENGKSNFLNCYVSGFHPSDIEVDLLKNGERIEKVEHSDLSFSKDWSFYLLYYTEFTPTEKDEYACRVNHVTLSQPKIVKWDRDM"
+    }
+   ],
+   "form": "Not to bind",
+   "details": [
+    {
+     "label": "Assay construct",
+     "value": "Same HLA and β2-microglobulin · no peptide"
+    },
+    {
+     "label": "Differs from G12D",
+     "value": "No peptide in the groove"
+    },
+    {
+     "label": "Structure reference",
+     "value": "7OW6 · Chains A–B · peptide and TCR removed",
+     "href": "https://www.rcsb.org/structure/7OW6"
+    }
+   ],
+   "structure": {
+    "url": "https://proteinbase.com/structures/9f173095cef238c74ad7b41fd78c387a/peptidefree.pdb",
+    "referenceUrl": "https://www.rcsb.org/structure/7OW6",
+    "label": "PDB 7OW6 · peptide and TCR removed"
+   }
+  }
+ }
+}

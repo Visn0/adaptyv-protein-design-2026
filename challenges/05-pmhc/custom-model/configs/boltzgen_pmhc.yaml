@@ -1,0 +1,29 @@
+# BoltzGen design spec for the KRAS G12D pMHC challenge.
+# Mirrors the shipped helicon_against_peptide_in_pmhc example.
+# The binder (chain A) must read the G12D peptide in the HLA-A*11:01 groove.
+entities:
+  # designed binder, 60-90 residues
+  - protein:
+      id: A
+      sequence: 60..90
+
+  # the pMHC target, taken from the crystallographic structure
+  - file:
+      path: ../../inputs/7OW6-G12D-noTCR.pdb
+      include:
+        - chain:
+            id: A  # HLA-A*11:01 heavy chain
+        - chain:
+            id: B  # beta2-microglobulin
+        - chain:
+            id: C  # KRAS G12D peptide VVVGADGVGK
+      binding_types:
+        # bind the whole peptide (the challenge's recommended epitope)
+        - chain:
+            id: C
+            binding: "all"
+        # plus the groove residues the natural JDI receptor reads
+        - chain:
+            id: A
+            binding: 70,114,116,73,155,156
+      structure_groups: "all"

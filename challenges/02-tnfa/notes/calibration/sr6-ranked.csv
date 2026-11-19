@@ -1,0 +1,4 @@
+design,delta_log_Ka,fold_selectivity,ddG_kcal_per_mol,effective_sites,delta_nu_at_high_pH,delta_nu_at_low_pH
+sr6-r45.pdb,0.246,1.8,-0.336,3,-0.08,-0.388
+sr6-r37.pdb,0.169,1.5,-0.231,2,-0.121,-0.101
+sr6-r43.pdb,0.072,1.2,-0.099,4,-0.032,-0.028

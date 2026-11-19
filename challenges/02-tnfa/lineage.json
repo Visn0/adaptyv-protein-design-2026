@@ -1,0 +1,3945 @@
+{
+ "experiments": [
+  {
+   "id": "c2-rfd3",
+   "title": "C2 campaign \u2014 RFdiffusion3",
+   "date": "2026-10-15 \u2192 16",
+   "verdict": "negative",
+   "scores": {},
+   "verdict_detail": "The campaign's record counts 18 designs and 90 samples across two batches; the fold runs that survive in this workspace are listed in the generation chapters. Closed as a negative: the generator was replaced (Genie 3) and the acceptance bar moved from 0.6 to 0.8.",
+   "summary": "The first attempt at the released problem: RFdiffusion3 backbones, Boltz-2 folds, IPSAE screening \u2014 closed as a negative. Every recorded design and score kept below.",
+   "goal": "Run the released TNF-\u03b1 problem end to end with RFdiffusion3 as the generator: generate, fold, screen, and judge against the challenge's objectives. The campaign is the baseline the Genie 3 campaign is measured against.",
+   "goal_extra": [
+    "The brief ranks three objectives: (1) pH-selective human binding (bind at 7.4, none at 6.0), (2) mouse cross-reactivity, (3) affinity.",
+    "This campaign tests the first generator (RFdiffusion3) against objective 3 (binding) only \u2014 and produced no submission candidate.",
+    "Its negative result set the rules for the Genie 3 campaign: full-backbone re-sequencing, the 0.8 acceptance line, and mouse-first selection."
+   ],
+   "chapters": [
+    {
+     "id": "rfd3-generation",
+     "title": "Generation \u2014 RFdiffusion3",
+     "date": "2026-10-15",
+     "tools": [
+      "RFdiffusion3"
+     ],
+     "text": "RFdiffusion3 (the released checkpoint) generated binder backbones against the released TNF-\u03b1 problem, in two batches (w1/w2) around the B102/D62 junction and the human groove.",
+     "steps": [
+      {
+       "title": "Batch w1 + w2",
+       "text": "Backbones under hotspot constraints; several models per design id.",
+       "image": null
+      }
+     ],
+     "outcome": "40 backbones across the batches."
+    },
+    {
+     "id": "rfd3-folding",
+     "title": "Folding \u2014 Boltz-2 on the local GPU",
+     "date": "2026-10-15",
+     "tools": [
+      "Boltz-2"
+     ],
+     "text": "Each candidate co-folded with the human TNF-\u03b1 construct: 5 diffusion samples per design, seed 42, on the local RTX 5070.",
+     "steps": [
+      {
+       "title": "Five samples per design",
+       "text": "The fold is a distribution over poses; the spread across samples is read, not the best row alone.",
+       "image": null
+      }
+     ],
+     "outcome": "One fold run per design."
+    },
+    {
+     "id": "rfd3-screening",
+     "title": "Screening \u2014 IPSAE at the designed site",
+     "date": "2026-10-15",
+     "tools": [
+      "IPSAE"
+     ],
+     "text": "IPSAE scored every sample at the designed interface (10 \u00c5 PAE cutoff); the bar: ipSAE >= 0.6 AND pDockQ2 >= 0.23. Later recalibrated: the submission line moved to 0.8.",
+     "steps": [
+      {
+       "title": "Score every sample",
+       "text": "fold_metrics.csv per run; the at-site check distinguishes a real interface from an off-site pose.",
+       "image": null
+      }
+     ],
+     "outcome": "0 of 18 designs cleared the bar at the designed site."
+    },
+    {
+     "id": "rfd3-outcome",
+     "title": "Outcome \u2014 the negative, and what it taught",
+     "date": "2026-10-16",
+     "tools": [],
+     "text": "The campaign closed as a documented negative: good iPTM, weak interfaces. The lesson shaped everything after: generator choice dominates (Genie 3 8/23 vs RFdiffusion3 1/40 on the calibration), and the acceptance line belongs at 0.8.",
+     "steps": [
+      {
+       "title": "Recorded, not discarded",
+       "text": "Every design stays in the table below with its score \u2014 the negative is part of the campaign's evidence.",
+       "image": null
+      }
+     ],
+     "outcome": "Closed 2026-10-16; Genie 3 became the generator."
+    }
+   ],
+   "proteins": [
+    {
+     "design": "c2-x2-rfd3-s1-groove-1_0_model_1",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.81,
+     "human_site": "0/5",
+     "ipsae_min": 0.643,
+     "pdockq2": 0.217,
+     "iptm": 0.964,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-1_0_model_1",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w1",
+     "human": 0.733,
+     "human_site": "0/5",
+     "ipsae_min": 0.488,
+     "pdockq2": 0.133,
+     "iptm": 0.937,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-4_1_model_2",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.449,
+     "human_site": "0/5",
+     "ipsae_min": 0.278,
+     "pdockq2": 0.091,
+     "iptm": 0.92,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-2_1_model_0",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.359,
+     "human_site": "0/5",
+     "ipsae_min": 0.252,
+     "pdockq2": 0.273,
+     "iptm": 0.938,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-2_1_model_5",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.347,
+     "human_site": "0/5",
+     "ipsae_min": 0.224,
+     "pdockq2": 0.06,
+     "iptm": 0.926,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-5_0_model_5",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.304,
+     "human_site": "0/5",
+     "ipsae_min": 0.229,
+     "pdockq2": 0.048,
+     "iptm": 0.922,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-0_1_model_1",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.281,
+     "human_site": "0/5",
+     "ipsae_min": 0.256,
+     "pdockq2": 0.052,
+     "iptm": 0.922,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-3_1_model_1",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.046,
+     "human_site": "0/5",
+     "ipsae_min": 0.011,
+     "pdockq2": 0.033,
+     "iptm": 0.876,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-3_1_model_1",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.0,
+     "human_site": "0/5",
+     "ipsae_min": 0.0,
+     "pdockq2": 0.015,
+     "iptm": 0.831,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "c2-x2-rfd3-s1-groove-5_0_model_4",
+     "sequence": null,
+     "phase": "rfd3-generation",
+     "note": "batch w2",
+     "human": 0.0,
+     "human_site": "0/5",
+     "ipsae_min": 0.0,
+     "pdockq2": 0.0,
+     "iptm": 0.887,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    }
+   ],
+   "viewer": []
+  },
+  {
+   "id": "genie3-campaign",
+   "title": "Genie 3 campaign \u2014 the night run",
+   "date": "2026-10-17 \u2192 18",
+   "verdict": "record",
+   "best": true,
+   "scores": {
+    "human": 0.871,
+    "mouse": 0.872,
+    "ph": 1.738
+   },
+   "summary": "One campaign, one methodology (Genie 3 \u2192 ProteinMPNN \u2192 Boltz-2 \u2192 IPSAE), several experiments: 279 designs, from the first 0.25 to the submission set. Every design and score below, experiment by experiment.",
+   "goal": "Take the one productive backbone (d7, from Genie 3) and run experiments on it \u2014 re-sequencing, dual-species selection, directed evolution, and finally the histidine retrofit for the pH switch. Each experiment answers one objective; they are the sections below.",
+   "goal_extra": [
+    "The brief ranks three objectives: (1) pH-selective human binding (bind at 7.4, none at 6.0), (2) mouse cross-reactivity, (3) affinity \u2014 all three on one molecule.",
+    "This experiment answers all three: sr2-ds-mce-14-v6-r2c \u2014 human 0.849, mouse 0.847 (both 5/5 at the designed site), pH switch +1.738 (54.7x toward 7.4).",
+    "Every experiment has its own section: re-sequencing, mouse-first selection, directed evolution, and the histidine retrofit that flipped the switch.",
+    "All numbers are in-silico (Boltz-2, IPSAE, PROPKA); no wet-lab data exists."
+   ],
+   "chapters": [
+    {
+     "id": "calibration",
+     "title": "Calibration \u2014 the bars",
+     "date": "2026-10-16",
+     "verdict": "baseline",
+     "scores": {
+      "human": null,
+      "mouse": null,
+      "ph": null
+     },
+     "summary": "The released campaign re-scored through our pipeline: sets every bar the campaign used.",
+     "goal": "Before designing anything, the released Anthropic/Adaptyv campaign (150 TNF-\u03b1 designs, 13 wet-lab binders) was re-scored with our own Boltz-2 + IPSAE pipeline. This fixed the acceptance bars: ipSAE >= 0.8 for submission-grade, mouse cross-reactivity tracks tightness, and the pipeline itself reproduces the released numbers within \u00b10.03.",
+     "tools": [
+      "Boltz-2",
+      "IPSAE"
+     ],
+     "steps": [
+      {
+       "title": "Re-score six released designs",
+       "text": "Three wet-lab winners and three high-scoring losers folded with the standard protocol. Their ipsae_min_boltz2 reproduced within \u00b10.03.",
+       "image": null
+      },
+      {
+       "title": "Read the outcomes",
+       "text": "The 0.6-0.7 band produced 0/22 binders; >= 0.8 bound at ~26%. Two never-bound designs outscored every winner \u2014 the metric is rank-grade, never a promise.",
+       "image": null
+      }
+     ],
+     "viewer": [],
+     "text": "The bars came from released wet-lab data (filter-calibration): ipSAE 0.8 / pDockQ2 0.23 as the line, 0.6 as the do-not-discard floor - the 0.6-0.7 band bound nothing in that dataset.",
+     "outcome": "Bars fixed before generation."
+    },
+    {
+     "id": "generation",
+     "title": "Generation \u2014 Genie 3",
+     "date": "2026-10-17",
+     "verdict": "negative",
+     "scores": {
+      "human": 0.25,
+      "mouse": null,
+      "ph": null
+     },
+     "summary": "8 Genie 3 designs on the released problem; CA-only sequences capped at 0.25 \u2014 the backbone survived.",
+     "goal": "Generate binders for the released TNF-\u03b1 problem (hotspots B102 + D62) with Genie 3, then re-sequence and fold. This generation exposed the CA-only ProteinMPNN trap and produced the d7 backbone that everything later builds on.",
+     "tools": [
+      "Genie 3"
+     ],
+     "steps": [
+      {
+       "title": "Generate 8 designs",
+       "text": "Genie 3 (aqlaboratory, 347 MB checkpoint) on the BinderBench problem 10_tnfa. All 8 placed on the designed interface.",
+       "image": null
+      },
+      {
+       "title": "CA-only re-sequencing",
+       "text": "ProteinMPNN on CA atoms only \u2014 every sequence capped at 0.248 ipSAE. The trap: sequence design needs the full backbone.",
+       "image": null
+      },
+      {
+       "title": "The lesson",
+       "text": "Re-sequence the FOLDED backbone with full-backbone ProteinMPNN instead. That fix is what produced the d7 family.",
+       "image": null
+      }
+     ],
+     "viewer": [],
+     "text": "One methodology throughout: Genie 3 backbones, ProteinMPNN sequences, Boltz-2 co-folds, IPSAE scoring - the first batches against the campaign's hotspot sets.",
+     "outcome": "The first families land around 0.25 at-site ipSAE."
+    },
+    {
+     "id": "d7-family",
+     "title": "The d7 family",
+     "date": "2026-10-17",
+     "verdict": "positive",
+     "scores": {
+      "human": 0.852,
+      "mouse": null,
+      "ph": null
+     },
+     "summary": "Full-backbone re-sequencing of the folded d7 backbone: 18 variants 0.63-0.85, champion d7x-t3-3.",
+     "goal": "Take the d7 backbone's FOLDED conformation and re-sequence it with vanilla full-backbone ProteinMPNN. The family converged: one backbone, many sequences, all at the designed interface.",
+     "tools": [
+      "ProteinMPNN",
+      "Boltz-2",
+      "IPSAE"
+     ],
+     "steps": [
+      {
+       "title": "Extract the folded backbone",
+       "text": "Chain A of the d7 fold becomes the template.",
+       "image": null
+      },
+      {
+       "title": "Re-sequence with ProteinMPNN",
+       "text": "vanilla v_48_020, T = 0.1/0.3, several seeds \u2014 18 variants.",
+       "image": null
+      },
+      {
+       "title": "Fold and screen",
+       "text": "Every variant co-folded (Boltz-2, 5 samples, seed 42) and screened at the designed two-protomer junction. Champion: d7x-t3-3 (0.832-0.852).",
+       "image": null
+      }
+     ],
+     "viewer": [
+      "d7x-t3-3",
+      "d7x-t3-1",
+      "bb-d7-3"
+     ],
+     "text": "Round 2: the d7 family resequenced with ProteinMPNN - the first designs in the winners' zone (best at-site ipSAE 0.248, crossing D/C).",
+     "outcome": "The d7 family becomes the working scaffold."
+    },
+    {
+     "id": "evolution",
+     "title": "Directed evolution",
+     "date": "2026-10-17",
+     "verdict": "record",
+     "scores": {
+      "human": 0.871,
+      "mouse": null,
+      "ph": null
+     },
+     "summary": "Fixed-position mutation around the champions: D47A lifts the record to 0.871; generation 2 converged.",
+     "goal": "Mutate the best family members directly (ProteinMPNN with 3 free positions per variant), fold, and keep what improves. The RF-style loop: each generation mutates the winners of the last and re-selects.",
+     "tools": [
+      "ProteinMPNN",
+      "Boltz-2",
+      "IPSAE"
+     ],
+     "steps": [
+      {
+       "title": "Generation 1",
+       "text": "24 variants around d7x-t3-3 / d7x-t3-1 / m1-d7b-3. e1b-d7x-t3-3-v6 = champion + ONE substitution (D47A) -> 0.871, the human record.",
+       "image": null
+      },
+      {
+       "title": "Generation 2",
+       "text": "Mutants of v6 and the tight d7 members. Converged: no design beat v6; e2-e1b-d7x-t3-3-v6-v2 joined the ladder.",
+       "image": null
+      }
+     ],
+     "viewer": [
+      "e1b-d7x-t3-3-v6",
+      "e2-e1b-d7x-t3-3-v6-v2"
+     ],
+     "text": "Directed evolution: fixed-position ProteinMPNN around the d7 pockets; the ladder climbs within the family.",
+     "outcome": "e1b-d7x-t3-3-v6 (human 0.871, mouse 0.632) heads the ladder."
+    },
+    {
+     "id": "mouse-check",
+     "title": "Mouse check + calibration",
+     "date": "2026-10-17",
+     "verdict": "mixed",
+     "scores": {
+      "human": null,
+      "mouse": 0.872,
+      "ph": null
+     },
+     "summary": "The family keeps the designed interface on mouse but degraded; the released mouse binders set the band (0.73-0.89).",
+     "goal": "The challenge requires mouse cross-reactivity. Every candidate folded against the mouse construct (aligned window, P06804 85-235). The released mouse-binding winners were folded through the same pipeline to calibrate what a real cross-reactive binder reads.",
+     "tools": [
+      "Boltz-2",
+      "IPSAE"
+     ],
+     "steps": [
+      {
+       "title": "Build the mouse target",
+       "text": "Human 82-233 -> mouse 85-235 by alignment; the designed site remaps to positions 107 + 67 (human H68 -> mouse Y).",
+       "image": null
+      },
+      {
+       "title": "Fold the candidates",
+       "text": "The champions keep the designed interface on mouse but ~0.2 lower; the released mouse binders hold their human scores (0.73-0.89) \u2014 our family sat below that band.",
+       "image": null
+      },
+      {
+       "title": "The fix",
+       "text": "Cross-reactivity must be selected for, not checked for. Next generation: select on mouse.",
+       "image": null
+      }
+     ],
+     "viewer": [],
+     "text": "The mouse cross-check: the family's top designs folded against the mouse construct to read the species gap before redesigning for it.",
+     "outcome": "The species gap measured; the mce design follows."
+    },
+    {
+     "id": "mouse-directed",
+     "title": "Mouse-directed redesign",
+     "date": "2026-10-17",
+     "verdict": "positive",
+     "scores": {
+      "human": 0.852,
+      "mouse": 0.847,
+      "ph": null
+     },
+     "summary": "The d7 backbone re-sequenced and selected ON mouse: mce-14 is the first dual-species hit.",
+     "goal": "Re-sequence the d7 backbone (64 sequences) and fold the top 16 against MOUSE first. Select on the harder target; confirm human after. mce-14 came out of this: mouse 0.704-0.847 and human 0.693-0.852, both 5/5 at the designed junction.",
+     "tools": [
+      "ProteinMPNN",
+      "Boltz-2"
+     ],
+     "steps": [
+      {
+       "title": "Generate + select on mouse",
+       "text": "64 ProteinMPNN sequences; the 16 best-predicted folded against mouse.",
+       "image": null
+      },
+      {
+       "title": "One hit",
+       "text": "mce-14: the only candidate reaching the mouse band. Human retention confirmed on the same binder.",
+       "image": "viewers/views/mce-14-mouse/mce-14-mouse_interface_view1.png"
+      },
+      {
+       "title": "Visual check",
+       "text": "mce-14 hugs the trimer the same way on both species \u2014 the pose of the good designs.",
+       "image": "viewers/views/mce-14-human/mce-14-human_cartoon_view1.png"
+      }
+     ],
+     "viewer": [
+      "mce-14"
+     ],
+     "text": "Mouse-directed redesign (mce): resequencing toward the mouse-conserved contacts.",
+     "outcome": "mce-14 - the first dual-species hit."
+    },
+    {
+     "id": "dualselect-01",
+     "title": "Dual-select generation 1",
+     "date": "2026-10-17",
+     "verdict": "positive",
+     "scores": {
+      "human": 0.856,
+      "mouse": 0.854,
+      "ph": null
+     },
+     "summary": "Mutants of the dual hits: five dual hits; ds-mce-14-v6 (T48S) beats its parent on both targets.",
+     "goal": "Fixed-position mutants of mce-14 / m1-d7b-3 / v6, selected with the mouse-first cascade (mouse fold -> promote >= 0.7 -> human confirmation).",
+     "tools": [
+      "ProteinMPNN",
+      "Boltz-2"
+     ],
+     "steps": [
+      {
+       "title": "Mouse stage",
+       "text": "All five mce-14 mutants hold mouse at 5/5 (0.839-0.863); one m1-d7b-3 mutant promoted.",
+       "image": null
+      },
+      {
+       "title": "Human stage",
+       "text": "All six promoted designs fold 5/5 at-site. ds-mce-14-v6 (one substitution, T48S) = mouse 0.854 / human 0.856 \u2014 beats the parent on BOTH targets.",
+       "image": "viewers/views/dsmce14v6-mouse/dsmce14v6-mouse_interface_view1.png"
+      }
+     ],
+     "viewer": [
+      "ds-mce-14-v6",
+      "ds-mce-14-v7",
+      "ds-mce-14-v3"
+     ],
+     "text": "Dual-select generation 1: selection pressure on the human and mouse reads together (the ds lineage).",
+     "outcome": "ds-mce-14-v6 - the submission head."
+    },
+    {
+     "id": "dualselect-02",
+     "title": "Dual-select generation 2",
+     "date": "2026-10-17",
+     "verdict": "positive",
+     "scores": {
+      "human": 0.842,
+      "mouse": 0.868,
+      "ph": null
+     },
+     "summary": "One step deeper: seven dual hits; ds2-mce-14-v7-v1 sets the mouse record (0.868); combined plateau reached.",
+     "goal": "The same cascade around the three best dual designs. The render-based tie-breaker fired on one borderline design (perched pose -> excluded).",
+     "tools": [
+      "ProteinMPNN",
+      "Boltz-2",
+      "Mol*"
+     ],
+     "steps": [
+      {
+       "title": "Mouse stage",
+       "text": "8 of 9 mutants >= 0.847 at-site; ds2-mce-14-v7-v1 = new mouse record 0.868.",
+       "image": null
+      },
+      {
+       "title": "Human stage",
+       "text": "All seven promoted fold 5/5 (0.824-0.842). No design beats ds-mce-14-v6's combined profile: the family has plateaued.",
+       "image": null
+      }
+     ],
+     "viewer": [
+      "ds2-mce-14-v7-v1",
+      "ds2-mce-14-v6-v5"
+     ],
+     "text": "Dual-select generation 2: a second round of combined selection.",
+     "outcome": "No combined improvement over the ds-14-v6 line (ds2-mce-14-v7-v1 kept for the ladder)."
+    },
+    {
+     "id": "linkage-check",
+     "title": "pH linkage check \u2014 the missing objective",
+     "date": "2026-10-17",
+     "verdict": "negative",
+     "scores": {
+      "human": null,
+      "mouse": null,
+      "ph": -0.113
+     },
+     "summary": "The family has no pH switch \u2014 its natural linkage runs the wrong way (tighter at pH 6.0).",
+     "goal": "The challenge ranks pH-selective binding FIRST. The vendored PROPKA linkage scorer (validated blind on FcRn) measured the binding-linked proton release of five lineage folds. All negative: the wrong direction.",
+     "tools": [
+      "PROPKA 3.5.1"
+     ],
+     "steps": [
+      {
+       "title": "Score the family",
+       "text": "delta_log_Ka from -0.11 to -0.99 \u2014 every design binds more in acid. Objective 1 unclaimable.",
+       "image": null
+      },
+      {
+       "title": "The mechanism to retrofit",
+       "text": "A histidine facing a positively charged target residue: neutral at 7.4 (binds), +1 at 6.0 (repelled).",
+       "image": null
+      }
+     ],
+     "viewer": [],
+     "text": "The pH layer measured with PROPKA and the Wyman linkage: does the lineage carry a switch?",
+     "outcome": "No switch in the lineage - recorded negative; the retrofit follows."
+    },
+    {
+     "id": "switch-retrofit",
+     "title": "The switch \u2014 his retrofit + E33H",
+     "date": "2026-10-18",
+     "verdict": "record",
+     "scores": {
+      "human": 0.851,
+      "mouse": 0.872,
+      "ph": 1.738
+     },
+     "summary": "Histidine retrofit flips the linkage; the E33H single substitution gives the best design: human 0.849 / mouse 0.847 / switch 54.7x.",
+     "goal": "Retrofit the upstream campaign's switch mechanism onto backbones that actually dock: histidines placed facing the interface cations (found in the fold geometry). Round 1 flipped the sign at a binding cost; the alternative-position scan found E33H \u2014 a salt-bridge residue converted into the switch \u2014 with binding intact on both species.",
+     "tools": [
+      "PROPKA 3.5.1",
+      "ProteinMPNN",
+      "Boltz-2"
+     ],
+     "steps": [
+      {
+       "title": "Round 1 \u2014 the sign flips",
+       "text": "Nine His mutants; the best (G45H+L37H+S48H) reads +0.877 (7.5x toward 7.4) at a binding cost of ~0.15-0.2.",
+       "image": "viewers/views/sr2-r2c-human/sr2-r2c-human_interface_view1.png"
+      },
+      {
+       "title": "The b-class survives mouse",
+       "text": "sr1-mce-14-b: human 0.659 / mouse 0.703, both 5/5, switch +0.836.",
+       "image": null
+      },
+      {
+       "title": "Recovery generations",
+       "text": "Whole-chain resampling (sr3/sr4) collapsed \u2014 recorded negative. The reversion scan (sr6) localized the cost to H37.",
+       "image": null
+      },
+      {
+       "title": "E33H \u2014 the winner",
+       "text": "Converting the Glu33 salt bridge into a histidine: sr2-ds-mce-14-v6-r2c reads human 0.849 / mouse 0.847 / switch +1.738 (54.7x) \u2014 all three objectives, one molecule.",
+       "image": "viewers/views/sr2-r2c-mouse/sr2-r2c-mouse_interface_view1.png"
+      }
+     ],
+     "viewer": [
+      "sr2-ds-mce-14-v6-r2c",
+      "sr2-ds-mce-14-v6-r2a",
+      "sr2-ds2-mce-14-v7-v1-r2a",
+      "sr6-r37",
+      "sr1-mce-14-b",
+      "ds-mce-14-v6"
+     ],
+     "text": "Histidine switch retrofit (sr1): E33H - the linkage sign flips on paper.",
+     "outcome": "sr1 carries the engineered linkage; the pH objective stays open."
+    },
+    {
+     "id": "d12-family",
+     "title": "The d12 family \u2014 second scaffold",
+     "date": "2026-10-17",
+     "verdict": "mixed",
+     "scores": {
+      "human": 0.788,
+      "mouse": 0.426,
+      "ph": null
+     },
+     "summary": "The independent scaffold from Genie 3 batch 2: strong human interfaces, but mouse-weak.",
+     "goal": "Batch 2 (16 Genie 3 designs) was screened the same way; its best backbone (d12, 92-residue binder) was re-sequenced and folded. It passes both legs of the original bar but drops on mouse (0.426) \u2014 kept as the independent backup family.",
+     "tools": [
+      "ProteinMPNN",
+      "Boltz-2"
+     ],
+     "steps": [
+      {
+       "title": "Batch 2 screening",
+       "text": "16 designs; the d12 backbone re-sequenced with full-backbone ProteinMPNN.",
+       "image": null
+      },
+      {
+       "title": "The mouse verdict",
+       "text": "b2x-d12-2: human 0.788 / mouse 0.426 \u2014 human-context only; the d7 lineage carries the dual objective.",
+       "image": null
+      }
+     ],
+     "viewer": [
+      "b2x-d12-2"
+     ],
+     "text": "A second family (d12): scores 0.62-0.83, every sequence 5/5 at the designed leg; d12-2 buries 311 atom pairs.",
+     "outcome": "A second working scaffold next to d7."
+    },
+    {
+     "id": "mining-01",
+     "title": "Mining-01 \u2014 the d7 plateau",
+     "date": "2026-10-17",
+     "verdict": "mixed",
+     "scores": {
+      "human": 0.837,
+      "mouse": null,
+      "ph": null
+     },
+     "summary": "80 further sequences on both backbones: plateau per the pre-registered rules; two members entered the ladder.",
+     "goal": "After the families were established: broaden the sequence space (d7 at T = 0.1/0.3/0.5, d12 at 0.1/0.3), 20 folded. Outcome: no new best >= 0.85 and no worst-fold >= 0.80 \u2014 plateau; the d7 family now holds ~30 members.",
+     "tools": [
+      "ProteinMPNN",
+      "Boltz-2"
+     ],
+     "steps": [
+      {
+       "title": "Sample wide",
+       "text": "80 sequences across two backbones and three temperatures.",
+       "image": null
+      },
+      {
+       "title": "Plateau",
+       "text": "Best new 0.837 (< 0.85 bar). m1-d7b-3 and m1-d7a-4 joined the ladder; the family ceiling was measured.",
+       "image": null
+      }
+     ],
+     "viewer": [
+      "m1-d7b-3"
+     ],
+     "text": "Mining-01 (pre-registered): 80 further sequences across both families.",
+     "outcome": "Two mining members entered the ladder."
+    },
+    {
+     "id": "mining-02",
+     "title": "Mining-02 \u2014 fresh backbones",
+     "date": "2026-10-17",
+     "verdict": "negative",
+     "scores": {
+      "human": 0.599,
+      "mouse": null,
+      "ph": null
+     },
+     "summary": "The four best untreated backbones re-sequenced: no design reached 0.80 \u2014 those backbones are closed.",
+     "goal": "Pre-registered search on four fresh backbones (b2-d14, b2-d11, b2-d10, genie3-d0). 24 designs folded. FAIL/STOP per the rules: best 0.599 at-site. No third family exists in the first two batches.",
+     "tools": [
+      "ProteinMPNN",
+      "Boltz-2"
+     ],
+     "steps": [
+      {
+       "title": "Fresh backbones only",
+       "text": "The four best untreated backbones from both Genie 3 batches, vanilla MPNN, top-6 folded each.",
+       "image": null
+      },
+      {
+       "title": "Closed",
+       "text": "Best: 0.599 at-site (5/5) \u2014 a near-miss. Recorded; the two families stand as the only productive scaffolds.",
+       "image": null
+      }
+     ],
+     "viewer": [],
+     "text": "Mining-02 (pre-registered): the four best untreated backbones resequenced.",
+     "outcome": "Logged; no new head above the ladder."
+    },
+    {
+     "id": "rbs-batch-03",
+     "title": "RBS batch-03 + redesign",
+     "date": "2026-10-17",
+     "verdict": "negative",
+     "scores": {
+      "human": 0.23,
+      "mouse": null,
+      "ph": null
+     },
+     "summary": "Targeting our own campaign's receptor-binding site: the junction never scores; the r3x redesign confirmed it.",
+     "goal": "A test of the alternative epitope (the campaign's own RBS junction): 12 Genie 3 designs at hotspots 78/82/84 + 142, then a full-backbone redesign (r3x, 18 folds). CA-only scores 0.02-0.23; the redesign did not rescue it.",
+     "tools": [
+      "Genie 3",
+      "ProteinMPNN",
+      "Boltz-2"
+     ],
+     "steps": [
+      {
+       "title": "RBS batch",
+       "text": "12 designs on the campaign's junction; winner-scale interfaces but low scores.",
+       "image": null
+      },
+      {
+       "title": "r3x redesign",
+       "text": "Full-backbone re-sequencing on the three best backbones \u2014 still negative. The released problem's surface is the productive one.",
+       "image": null
+      }
+     ],
+     "viewer": [],
+     "text": "RBS batch-03 + redesign: the RBS epitope retried under the fixed protocol.",
+     "outcome": "The RBS negative holds; the campaign closes on the submission lineage."
+    }
+   ],
+   "proteins": [
+    {
+     "design": "e1b-d7x-t3-3-v6",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDATARAPAEAALAQARALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.871,
+     "human_site": "5/5",
+     "mouse": 0.632,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9496,
+     "pdockq2": 0.8263
+    },
+    {
+     "design": "e2-e1b-d7x-t3-3-v6-v1",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDATARAPAEAALAEARALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.864,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e2-e1b-d7x-t3-3-v6-v2",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALAGDATARAPAEAALAQARALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.863,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9486,
+     "pdockq2": 0.8194
+    },
+    {
+     "design": "e2-e1b-d7x-t3-3-v6-v6",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALAGDATARAPAEAALAQARALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.863,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e2-e1b-d7x-t3-3-v6-v5",
+     "sequence": "SEADRLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDATARAPAEAALAQARALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.857,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds-mce-14-v6",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDASALAPAEAALAKARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": 0.856,
+     "human_site": "5/5",
+     "mouse": 0.854,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9393,
+     "pdockq2": 0.7456
+    },
+    {
+     "design": "d7x-t3-3",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDDTARAPAEAALAQARALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.852,
+     "human_site": "5/5",
+     "mouse": 0.636,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9483,
+     "pdockq2": 0.817
+    },
+    {
+     "design": "mce-14",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": 0.852,
+     "human_site": "5/5",
+     "mouse": 0.847,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9356,
+     "pdockq2": 0.7186
+    },
+    {
+     "design": "sr2-ds-mce-14-v6-r2a",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARHAAHRAILLYDRALAGDASALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.851,
+     "human_site": "5/5",
+     "mouse": 0.852,
+     "mouse_site": "5/5",
+     "ph": 0.629,
+     "ipsae_min": 0.9472,
+     "pdockq2": 0.8157
+    },
+    {
+     "design": "ds-mce-14-v4",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATAIAPAEAALAEARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": 0.85,
+     "human_site": "5/5",
+     "mouse": 0.839,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9382,
+     "pdockq2": 0.7499
+    },
+    {
+     "design": "d7x-t1-2",
+     "sequence": "SREERLRALKAEAEALLKQAKAAKNKAAAQAAQKAIVLYDKALAGDESAIAPAEAALAQAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.849,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr2-ds-mce-14-v6-r2c",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAHRAILLYDRALAGDASALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.849,
+     "human_site": "5/5",
+     "mouse": 0.847,
+     "mouse_site": "5/5",
+     "ph": 1.738,
+     "ipsae_min": 0.9489,
+     "pdockq2": 0.8209
+    },
+    {
+     "design": "ds-mce-14-v3",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATALAPADAALAKARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": 0.846,
+     "human_site": "5/5",
+     "mouse": 0.86,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9411,
+     "pdockq2": 0.7294
+    },
+    {
+     "design": "ds-mce-14-v7",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": 0.844,
+     "human_site": "5/5",
+     "mouse": 0.863,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9386,
+     "pdockq2": 0.7417
+    },
+    {
+     "design": "e2-d7x-t3-3-v4",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDDTARAPAEAALAEARALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.844,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr2-ds2-mce-14-v7-v1-r2c",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAHRAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.844,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": 0.499,
+     "ipsae_min": 0.9452,
+     "pdockq2": 0.8313
+    },
+    {
+     "design": "sr2-ds2-mce-14-v7-v1-r2a",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARHAAHRAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.843,
+     "human_site": "5/5",
+     "mouse": 0.86,
+     "mouse_site": "5/5",
+     "ph": 0.734,
+     "ipsae_min": 0.9455,
+     "pdockq2": 0.8211
+    },
+    {
+     "design": "bb-d7-5",
+     "sequence": "SMEAELRAKKAEAEALLAQAKAAKNKAAAQAAQRAIVLFDKALAGDESARDPALAALAQAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.842,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds2-mce-14-v6-v5",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDASALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": 0.842,
+     "human_site": "5/5",
+     "mouse": 0.853,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9406,
+     "pdockq2": 0.7513
+    },
+    {
+     "design": "e1b-d7x-t3-3-v3",
+     "sequence": "SEADRLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDDTARAPAEAALAQARALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.84,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds2-mce-14-v7-v4",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAKNAAARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": 0.837,
+     "human_site": "5/5",
+     "mouse": 0.862,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "ds2-mce-14-v3-v1",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAAARQAAERAILLYDRALAGDATALAPADAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": 0.836,
+     "human_site": "5/5",
+     "mouse": 0.847,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "ds2-mce-14-v7-v2",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAGNAEARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": 0.836,
+     "human_site": "5/5",
+     "mouse": 0.863,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "b2x-d12-3",
+     "sequence": "SLELQKAELVFDLIYAEAQGGAADAAAAIAAVAEQLGISVEEVQERLKIFKEYLVEQGLLDEAEIAEMDKLIAGKLTRAEVLAFFDRIRARR",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.833,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds2-mce-14-v7-v3",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDASALAPAEAALAKAKALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": 0.832,
+     "human_site": "5/5",
+     "mouse": 0.858,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "ds2-mce-14-v6-v2",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDTSALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": 0.831,
+     "human_site": "5/5",
+     "mouse": 0.854,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "ds-mce-14-v1",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDTTALAPAEAALAKARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": 0.828,
+     "human_site": "5/5",
+     "mouse": 0.857,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9394,
+     "pdockq2": 0.7459
+    },
+    {
+     "design": "e2-e1b-d7x-t3-1-v7-v4",
+     "sequence": "SKEDELRANKAEAEALLKQAKAAKNKEAAQAAQKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.827,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d7-3",
+     "sequence": "STTAELKANKAEAEALLKQAKAAKNKDAAQAAQKAIVLYDKALAGDTSAIAPAKAALAKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.826,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9454,
+     "pdockq2": 0.7924
+    },
+    {
+     "design": "d7x-t3-1",
+     "sequence": "SLEDELRANKAEAEALLKQAKAAKNKEAAQAAEKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.826,
+     "human_site": "5/5",
+     "mouse": 0.258,
+     "mouse_site": "3/5",
+     "ph": null,
+     "ipsae_min": 0.9504,
+     "pdockq2": 0.8298
+    },
+    {
+     "design": "e1b-d7x-t3-1-v7",
+     "sequence": "SKEDELRANKAEAEALLKQAKAAKNKEAAQAAEKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.825,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9471,
+     "pdockq2": 0.8296
+    },
+    {
+     "design": "ds2-mce-14-v7-v1",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": 0.824,
+     "human_site": "5/5",
+     "mouse": 0.868,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9432,
+     "pdockq2": 0.7491
+    },
+    {
+     "design": "ds-m1-d7b-3-v4",
+     "sequence": "SLEAQIKANQAQAQALLAQAKAQKNTAAAQNAQQAILLYDKALAGDSSALAPANAALAKAQALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": 0.821,
+     "human_site": "5/5",
+     "mouse": 0.736,
+     "mouse_site": "3/5",
+     "ph": null
+    },
+    {
+     "design": "d7x-t1-5",
+     "sequence": "SKAEELRAKKAEAEALLAQAKAAKNKAAAQAAERAIVLFDKALAGDESAIEPANAALAQAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.816,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9498,
+     "pdockq2": 0.8157
+    },
+    {
+     "design": "e1b-d7x-t3-1-v6",
+     "sequence": "SLTDELRANKAEAEALLKQAKAAKNKEAAQAAEKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.816,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e2-e1b-d7x-t3-1-v7-v2",
+     "sequence": "SKEAELRANKAEAEALLKQAKAAKNKEAAQAAEKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.815,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "d7x-t3-5",
+     "sequence": "SEEAELKKLLAEAQALKAQAKAAGNKEALQAAEKAIVLYDKALAGDESAKEPAKAALAKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.814,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d7-6",
+     "sequence": "SAADALKANKAEAQALLKQAKAQKNKAAKQEAEKAIVLYDKALAGDESAVAAANEALAKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.813,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr6-r37",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRAHAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.811,
+     "human_site": "5/5",
+     "mouse": 0.872,
+     "mouse_site": "5/5",
+     "ph": 0.169,
+     "ipsae_min": 0.9493,
+     "pdockq2": 0.8058
+    },
+    {
+     "design": "d7x-t1-3",
+     "sequence": "SKEAELQAKKAEAEALLKQAKAAKNKEAAQAAQRAIVLFDKALSGDESAIEPANAALAKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.81,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1b-d7x-t3-1-v5",
+     "sequence": "SLEDELKANKAEAEALLKQAKAAKNKEAAQEAEKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.809,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1b-d7x-t3-1-v2",
+     "sequence": "SLEDELRANKAEAEALLKQAKAAKNKAAAQAAEKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.808,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d7-2",
+     "sequence": "SATAELKAQKAEAEALLAQAKAAKNKAAAQAAQKSIVLYDKALAGDESAVAPAKAALAQAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.803,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1b-m1-d7b-3-v8",
+     "sequence": "SLEAQIKANQAQAQALLAQAKAQKNTAAAQAAQQAILLYDKALAGDSSALAPANAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.803,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1b-d7x-t3-1-v8",
+     "sequence": "SLEDELRANKAEAEALLAQAKAAKNKEAAQAAEKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.802,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1b-m1-d7b-3-v3",
+     "sequence": "SLEAQIKANQAQAQALLAQAKAQKNTAAAQNAQQAILLYDKALAGDSSALAAANAALAKAQALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.802,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1b-d7x-t3-1-v4",
+     "sequence": "SLEDELRANKAEAEALLKQAKAAKNKEAAQAAEKAIVLYDKALSGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.8,
+     "human_site": "4/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "d7x-t3-2",
+     "sequence": "SLAEELRALKAEAEELLKKAKEQKNKAAAQEAQRAIVLLDKALAGDESAIEPAKAALEKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.796,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1b-m1-d7b-3-v2",
+     "sequence": "SLEAQIKANQAQAQALLAQAKAAKNTAAAQNAQQAILLYDKALAGDSSALAPANAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": 0.792,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d12-2",
+     "sequence": "SLELERAELVADLIYAEAQGGAANAAEAIERVAERLGISPEEVRAALRVLRDALVAAGLLDDAEVAAFDRLIAGKLTRDEVLALFDRLRARR",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.788,
+     "human_site": "5/5",
+     "mouse": 0.426,
+     "mouse_site": "5/5",
+     "ph": null,
+     "ipsae_min": 0.9441,
+     "pdockq2": 0.7854
+    },
+    {
+     "design": "bb-d7-4",
+     "sequence": "SQTAQLKAQQAEAQALLAQAKAAGNKAAAQAAQRSIVLYDKALSGDTSAIAPAQAALAEAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.787,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr2-ds2-mce-14-v7-v1-r2b",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAHRAIHLYDRALAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.783,
+     "human_site": "4/5",
+     "mouse": 0.769,
+     "mouse_site": "3/5",
+     "ph": 1.097,
+     "ipsae_min": 0.9467,
+     "pdockq2": 0.834
+    },
+    {
+     "design": "bb-d7-1",
+     "sequence": "STAAELKAKQAEAQALLAQAKAAGNKAAAQAAEKAIVLYDKALSGDESAKAPADEALAKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.778,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "d7x-t1-4",
+     "sequence": "SEEAELKAQQAEAEALLKQAKAQKNKEARQAAEKAILLYDKALAGDKSAIEPAKEALAKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.773,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "d7x-t1-1",
+     "sequence": "SLTAELKAKKAEAEALLAKAKAAKNKAAAQAAQKAIVLFDKALSGDQSAIAPANAALAKAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.754,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d12-1",
+     "sequence": "AAALTRAETVMDLIYAEAQGGAANAAEAIQRTAERLGISVEEVKAALRTYKAYLVEQGLLDAEEVAQMDKLIAGELTRDEVLAFFDRLRARR",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.735,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr1-mce-14-a",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.72,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": 0.072
+    },
+    {
+     "design": "sr6-r43",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.72,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": 0.072
+    },
+    {
+     "design": "sr6-r45",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRAHAGDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.693,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": 0.246
+    },
+    {
+     "design": "sr1-ds2-mce-14-v7-v1-a",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.687,
+     "human_site": "3/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": -0.091
+    },
+    {
+     "design": "b2x-d12-4",
+     "sequence": "SLALERAELVMDLIYAEAQGGAADAAAAIAATAARLGISVEEVREALRIFRDALVAQGLLDEEEVAQMDRLIAGELTREEVLAFFDRLRARL",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.671,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d7-7",
+     "sequence": "STTAELKAQRAEAEALLAQAKAAKNKAAAQAAEKSIVLFDKALAGDESAIAPARAALAEAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.671,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr1-mce-14-b",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRAHAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.659,
+     "human_site": "5/5",
+     "mouse": 0.703,
+     "mouse_site": "5/5",
+     "ph": 0.836,
+     "ipsae_min": 0.9447,
+     "pdockq2": 0.7929
+    },
+    {
+     "design": "sr1-ds2-mce-14-v7-v1-b",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAERAIHLYDRAHAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.658,
+     "human_site": "5/5",
+     "mouse": 0.703,
+     "mouse_site": "5/5",
+     "ph": 0.561,
+     "ipsae_min": 0.9447,
+     "pdockq2": 0.771
+    },
+    {
+     "design": "sr1-ds-mce-14-v6-b",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRAHAHDASALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.638,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": 0.451,
+     "ipsae_min": 0.9444,
+     "pdockq2": 0.8082
+    },
+    {
+     "design": "bb-d7-8",
+     "sequence": "SLTEEIKAKKAEAQALLAQAKAQKNKEAAQAAQKAIVLFDKALSGDESALEPALAALAQAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.628,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d15-2",
+     "sequence": "GPGVGAEKIGEPGRSVDGGGENLCEKIGALQKAHPNDSATVNAAVLAAVAANS",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.627,
+     "human_site": "4/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr1-ds-mce-14-v6-c",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDAHALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.621,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": "0/5",
+     "ph": 0.877,
+     "ipsae_min": 0.9417,
+     "pdockq2": 0.8151
+    },
+    {
+     "design": "sr1-mce-14-c",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDAHALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.621,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": "0/5",
+     "ph": 0.877,
+     "ipsae_min": 0.9417,
+     "pdockq2": 0.8151
+    },
+    {
+     "design": "b2x-d12-5",
+     "sequence": "ALELEKAELVMELIYAEAQGGAANAAEAIQRVAEQLGITVEEVQAYLKVFKAALLAEGLLDAEEAAEMDKLIAGELTRDEVLAFFDRLRARR",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.617,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "d7x-t3-4",
+     "sequence": "SLAAELEAKRAEAEALLAKAKAAKNKAAAQAAEASILLFDKALAGDTSAVEPALAELARAKALV",
+     "phase": "d7-family",
+     "note": null,
+     "human": 0.615,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d15-4",
+     "sequence": "GSGVGAEKIGDPGDLVDGGGENLNSFIGEAQKAYPNDSAKVNAAVLAKVAANR",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.547,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr1-ds-mce-14-v6-a",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDASALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.486,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": 0.542,
+     "ipsae_min": 0.947,
+     "pdockq2": 0.8053
+    },
+    {
+     "design": "b2x-d15-5",
+     "sequence": "GVGVGAEKIGAPGRGVDGGGENLNAFIGELQKAHPNDSATVNAAVLAAVAKNR",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.482,
+     "human_site": "4/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d4-2",
+     "sequence": "DAQAKAIAEVDKLIEEAKKSNYFEALKLLSKAAAIAEKYKLPQEVIDKIEALLKEKEAALAAKG",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.482,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d15-1",
+     "sequence": "GVGVGAEKIGSPGRGVDGGGVNLNEAIAALQAAHPNDSATVNAAVNALVAANT",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.47,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr2-ds-mce-14-v6-r2b",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAHRAIHLYDRALAHDASALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.47,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": 2.07
+    },
+    {
+     "design": "sr3-07",
+     "sequence": "SRKEEIEKLKKEAEKLLKKAKAAKNKEAEAAAEKAIHLFDLALNHDEHALEPALEALEKAKKLV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.456,
+     "human_site": "3/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr4-05",
+     "sequence": "SEAAELAARLAEAEALLAAAEAAGNAAAAAAAREAIHLYRLAHAHRAEALAPADAALARARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.45,
+     "human_site": "3/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d15-3",
+     "sequence": "GVGVGAEKIGSPGRGVDGGGVNLNAAIGALQAAYPDDSARVAAAVQALVAANE",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.445,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr1-ds2-mce-14-v7-v1-c",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDAHALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.424,
+     "human_site": "4/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": -0.313
+    },
+    {
+     "design": "sr3-02",
+     "sequence": "SMKKEIEEKRKEAEELLKKAKEEGNEEAEKAAKEAIHLFDLALNHDEHALEPALEALEKAKELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.402,
+     "human_site": "4/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr4-06",
+     "sequence": "SKKEELEEKKKEAEELLKKAEEAGNEEAIKAAKEAIHLFDLAHNHDEEAIEPAEEALKKAKELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.354,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr3-04",
+     "sequence": "SHHEELEEKLKRAKELLEKAKKAGNEEAEKAAKEAIHLYELALNHDEHAIEPADEALKKAEELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.343,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d4-4",
+     "sequence": "SAQEEAIKEVDKLIEEAKKSNYFESLKLLSQAASICEKYNLPQEVKDKVEALLKEKEAALAAKG",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.338,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d4-3",
+     "sequence": "SAQEQAKKEVDALIEKAKQAGYFEALKLLAEAASICEKHNLPQEVKDKVEALLKEKEAALAAAG",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.328,
+     "human_site": "3/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr3-08",
+     "sequence": "SLEEELKEKLERAKELLKKAKEAGNEEAEKAAREAIHLFELALAHDEHAIEPALEALKKAEELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.304,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d4-1",
+     "sequence": "SAREAAVAEVDALIEQAKQSNYFEALKLLSRAAAICERHDLPQEVVDRVEALLAEKEAALAAKG",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.298,
+     "human_site": "5/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2x-d4-5",
+     "sequence": "SAKEAAIKEVEELMEKAKKSGYFEALKLLAQAAAICERYDLPQEVVDKVEALLKEVEAALAAKG",
+     "phase": "d12-family",
+     "note": null,
+     "human": 0.254,
+     "human_site": "3/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "genie3-d7",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "generation",
+     "note": null,
+     "human": 0.248,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9358,
+     "pdockq2": 0.8176
+    },
+    {
+     "design": "sr4-02",
+     "sequence": "SMAAEIAAKLAEARALLAAARAAGNAAAAAAAQAAIHLYEAAHNHDAAALAPADAALAAARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.176,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr3-05",
+     "sequence": "SHEAELRALRAEAEALLARARAAGNEAAAAAAAEAVHLFDLALAHDEHALEPALAALARARELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.128,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "genie3-d5",
+     "sequence": "DEVLRRALEAARRLDLEELAEHVEKLRDVEDLLRVLEVAAEEAARRDPELARELELLRRDVREAAERGVPVEEIAERVARQLRALAQARS",
+     "phase": "generation",
+     "note": null,
+     "human": 0.127,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr3-06",
+     "sequence": "SHEEELQKKLKEAEELLKKAKEEGNEEAEKAAQEAIHLFKLALAHDEHAIEPALEALKKAKELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.111,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "genie3-d0",
+     "sequence": "SEEELLKKALELLADYPKQVAAIKKVLEGKPLTDEEIQAVKNAIDVLLGMGRYEEALALAKAAARILVEEGRYDEAIELLEHAISVAPEKEKEKLKKLLEEVKKKK",
+     "phase": "generation",
+     "note": null,
+     "human": 0.013,
+     "human_site": "3/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr3-03",
+     "sequence": "SREAELRALRAEAEALLARAEAAGNAEAAAAARRAIHLFDAALAHDEHAVAPALEALARARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.011,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr4-01",
+     "sequence": "SQAAQIQAQLQQAQALLQQAQQAGNAQAIAAAQQAIHLFQLAHAHDAAALAPAQAALAQAQALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.011,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d0",
+     "sequence": "GLVEELRRLVRELEEALRRGEDTSELVERLVEAAERLARELERELAEKGDLERLEEVARLAAALREAYRRGDVPGLVEAARRLAELAEEA",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d1",
+     "sequence": "MKEEVRKEIEELIERIRKERPNASVEDILIELSEFLIEKIKEGTPLERIKILREEIKKYLIEEEGVESEEEIERLLEGSGLKELIEKALEELKKK",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d10",
+     "sequence": "SREELLKEVEKVIEEIEKLIEEDKRELIPELIEKLERLSDLLAELGLFDLAEEVDRLAERLRKAETEEELEEILKEIREVLERIRKELEKLKEE",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d11",
+     "sequence": "GVEEAEKLAEVLLMIQRGTPAEELLRRIEELELSDEQIAEVLAEAAAVDPELAEKLRELLRERGVPEEVIERGL",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d12",
+     "sequence": "SKELERAKLVADLIYAEALAGKKNAKEAIKAVAEKLGISEETVKKHLKILKEHLVEKGLLNEEEVKKMEKLIKGEMSREEVIELFVYIQRKL",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9334,
+     "pdockq2": 0.7986
+    },
+    {
+     "design": "b2-d13",
+     "sequence": "DLAEALAEAIREVTGDEELAREALEALRAGDREALREVAERLAERMGLSEEQREALLRALEAAAAGDAEAALAALEEADPSLAEEFRRRL",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d14",
+     "sequence": "TLVEKCERLIDAALAGDFERARRLARELFGEERAERFMEAVEALHAGDRERLERMLGRETAERLLAADREEAVLLLMRLFAEELEEEDPELARAVREAIERREALRAA",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d15",
+     "sequence": "GGGAGAAAVGGAGGGAGGGGVALADRIAALQAAHPDDPEAVEAAIRELAAEEL",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d2",
+     "sequence": "DEEKKRELALKMIEEIAEEIRQAFGDEEAAEELRKKLEEIVEKAKSIEELEKQVKEAIRETLAEIYRRLAEETGDPELEALAERLESLDLEEAAKVCPVLARLLKKVEKMAEEMKK",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d3",
+     "sequence": "VEERLEEVKREVREILIEEAGLSEEVAERVVERLLELVERAVREGEDRDPEEIVDEALREVLEEMKRDPEVPEEEIRRLEELLRRRTPEAAEIRERLVELVREIRRLLEERRRE",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d4",
+     "sequence": "SKKEEAVKKVEELLEKAKESDFFEALKLLSKAQSIIDKYDLPEEVREKVDELLKEICAEEEKKK",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d5",
+     "sequence": "KSVEELLGKLAKAVEENAPKEEIEKILAELYEKLKELSEEERETVLKNVATILGKSVEEVEKLLEEAAKKL",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d6",
+     "sequence": "SEEELERKVREMLRELERALAEGDLEGLRKKLEEIVKELPELKELAEELLRLAEAVLEGAPLEEIKEIFKKILKILKEKNLPQLRLEAKTLAQAIGLSEEEIKELEEEA",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d7",
+     "sequence": "SEMEELKDRLVEAYLTDPDEAVRLVKELYELGASEEEFRELAERLGLDEETRRLLLEGDFEGLRRRLA",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d8",
+     "sequence": "SEAEELARLIVHDPEKFEEKLKESEEEEKKILEIAKKLAERLREEGIPEELIIKILTAAIEALKESETLEEALEKLRKLLEEEGIPESLIDYVLSLVRELS",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "b2-d9",
+     "sequence": "SEEEFLTACRSLGPELAELYKKILETEDEEEKKELLKKFLELLEEEARRRIEAALQNDPELRERRLELVKKIIEELRKKIEEGVETEKLIEYLGRLAILVANLASVEELEKLLKEIKE",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d6-1",
+     "sequence": "SAAALEAQLSAVDLHLISRGLPGALAADLVRAVLAARSRAELRAITAAWVARHGEATAARLAEALATSPTAVGRALSALLRAELLRREGTPEAKAEADALEAAAWALLA",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d6-2",
+     "sequence": "AEAALAAALSAVTQHLIDRGLPGADAAALARALLAARSRAELRAIVAAWVARHGRALAARLAEALATSPTPLGRALSCALRAELLRLEGTPEARAEAEALYARAWELLA",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d6-3",
+     "sequence": "AAEAEEAALSAVAQHLIDRGLPGSWVADLLRRLLAAQSLEELRAVVAAWVARHGEATAARVAEALAGSPTPAGRALSAALRAELLRRKGTAADKAEADALWEEAWALLR",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d6-4",
+     "sequence": "AAAALEAALSAVALHLIERGVPGAYVAPLLRAVAAAQSLEELRAVVEAWVERHGEALAARVAEALATSPTPAGRALSAALRAVLLEREGTAEAKARAEALWEEAWALLA",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d6-5",
+     "sequence": "SQEELEAQLSAVAQHLIDRGLPGALAADLVRKVLAAKSKEELKAIVTAWVERHGETTAARLAEALATSPTPVGQALSCLLRAELLEKQGTAEAKKEAEELLEKAWELLK",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d6-6",
+     "sequence": "EEERLEAQLSAVAEHLISRGLPGSEAADLVRRVLAAKSLEELKKIVEEYVKRKGEETAARLAEALATSPTPVGKALSLALKAELLRKKGTEEDKKKAEELYKQAWKLLQ",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d6-7",
+     "sequence": "SEEELERALSEVTEHLISRGIPGSLVSELARKVMKAKSEEELKEIVREYVEEKGEKTAARLAEALAESPTPLGKALSCLLRAELLEREGTEEAKKEAEKLYKEAWELLK",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "bb-d6-8",
+     "sequence": "SEAALAEAESAVADHLIAHGVPGALAAPLLRALLAAKSKEEIKAITEAWVARHGEKTAARLAEVLATSPTPAGQALACALQAELLRKQGTAEAKKQAEALLDQAWELLK",
+     "phase": "generation",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds-e1b-d7x-t3-3-v6-v2",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDATARAPAEAALAEARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.579,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "ds-e1b-d7x-t3-3-v6-v4",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALAGDATARAPAEAALAQARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.435,
+     "mouse_site": "1/5",
+     "ph": null
+    },
+    {
+     "design": "ds2-mce-14-v6-v7",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIVLYDRALAGDASALAPADAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.714,
+     "mouse_site": "4/5",
+     "ph": null
+    },
+    {
+     "design": "ds2h-mce-14-v3-v1",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAAARQAAERAILLYDRALAGDATALAPADAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds2h-mce-14-v6-v2",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDTSALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds2h-mce-14-v6-v5",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDASALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds2h-mce-14-v7-v1",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9497,
+     "pdockq2": 0.824
+    },
+    {
+     "design": "ds2h-mce-14-v7-v2",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAGNAEARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds2h-mce-14-v7-v3",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDASALAPAEAALAKAKALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "ds2h-mce-14-v7-v4",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAKNAAARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "dualselect-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "dsh-m1-d7b-3-v4",
+     "sequence": "SLEAQIKANQAQAQALLAQAKAQKNTAAAQNAQQAILLYDKALAGDSSALAPANAALAKAQALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "dsh-mce-14-v1",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDTTALAPAEAALAKARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "dsh-mce-14-v3",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATALAPADAALAKARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "dsh-mce-14-v4",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATAIAPAEAALAEARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "dsh-mce-14-v6",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDASALAPAEAALAKARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9506,
+     "pdockq2": 0.8239
+    },
+    {
+     "design": "dsh-mce-14-v7",
+     "sequence": "SEAARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "dualselect-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-1-v1",
+     "sequence": "SLEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-1-v2",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-1-v3",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIVLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-1-v4",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALSGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-1-v5",
+     "sequence": "SMEEELKEMKKEAEEILKEAKEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-1-v6",
+     "sequence": "SMEEELKEMKKEAEEILKKAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-1-v7",
+     "sequence": "SEEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-1-v8",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-3-v1",
+     "sequence": "SMEEELKEMKKEAEEILKKAEEKKNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-3-v2",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNKEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-3-v3",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-3-v4",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEAKINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-3-v5",
+     "sequence": "SMEEELKEMKKEAEEILKKAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-3-v6",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-3-v7",
+     "sequence": "SMEEELKEMKKEAEEILKEAEKKKNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-d7x-t3-3-v8",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSSIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-m1-d7b-3-v1",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-m1-d7b-3-v2",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-m1-d7b-3-v3",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-m1-d7b-3-v4",
+     "sequence": "SMEEELKEMKKEAEELLKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKESLEKAKKLV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-m1-d7b-3-v5",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-m1-d7b-3-v6",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEAKQNAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-m1-d7b-3-v7",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1-m1-d7b-3-v8",
+     "sequence": "SMEEELKEMKKEAEEILKEAEEKDNDEARINAEKAIQLFDKALAGDKSAIEKAKEYLEKAKKEV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "e1b-d7x-t3-1-v1",
+     "sequence": "SKEDELRANKAEAEALLKQAKAAKNKEAAQAAQKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "evolution",
+     "note": null,
+     "human": null,
+     "human_site": "0/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "genie3-d1",
+     "sequence": "SEVERLAEELKRELEEIEKLIKEGAPEEELLEKLERVKRLVEKLLELEPPEELRRELAERLERVAQLAEKAGRDKLAEALYALARSLVEELPVEETRRRVEHALS",
+     "phase": "generation",
+     "note": null,
+     "human": 0.0,
+     "human_site": "3/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "genie3-d2",
+     "sequence": "SIEELKEEVRRIAKEIFEEALKEYIKEKNLSEEEKKALEEAIEKAVETLAEKDEDEAYEAFIKTLEEKGFSKEKAEEIAEEIFNIAELKHPEEVEKIRELQKEIKKLK",
+     "phase": "generation",
+     "note": null,
+     "human": 0.0,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "genie3-d3",
+     "sequence": "SYEEELVRQIKTLYSRDPEAAQLVAAVAIKLGLLSEEQAKELKELLNMSEEVLKMSVEEARRKLRERGAEEALALIDEAERLAA",
+     "phase": "generation",
+     "note": null,
+     "human": 0.0,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "genie3-d4",
+     "sequence": "DAIRRLAEKFGIPEEVIRRLREKGLSLEQIEEAIKKIKELERLKKHLAEATGEEKEVAERDLKLLEEEIEKDPAVRLLLEELKKL",
+     "phase": "generation",
+     "note": null,
+     "human": 0.0,
+     "human_site": "2/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "genie3-d6",
+     "sequence": "SRAQREAQLAQVTAHLIERGIDGAVVQELAERVLEAESLEELRRIVREFVRRHGREEARRLAEALAESPTPLGKALAHLLRAVLLEEEGTEEARREAEELYERARRLLE",
+     "phase": "generation",
+     "note": null,
+     "human": 0.0,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d12a-1",
+     "sequence": "SLALQKAELVMDLVYAEAQGGAADAAAALKRVAEQLGISVAEVQEALRTFKAALVAEGLLDAAGVAQMDKLIAGELTQAEVLAFFDRLRARR",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d12a-2",
+     "sequence": "SAALTRAQLVMDLIYAEAQGGAADAAAAIARTAERLGISVAEVQAALRTFKAALVAQGLLDAAGVAAMDKLIAGTLTRDEVLALFDALRARR",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d12a-3",
+     "sequence": "ALELQRAELVADLIYAEAQGGAANAAEAIERVAERLGISVEEVRAALRTLKAALVAAGLLDADEVAAMDRLIAGKLTRDEVLALFDRLRARR",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d12a-4",
+     "sequence": "ALALERAALVFDLIYAEAQGGAANAAAALKATAERLGISVAEVQAALRTFRAALVAEGLLDAAGVAQMDALIAGTLSRAGVLALADALRARR",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d12b-1",
+     "sequence": "AAALRRAEVVMDLIYAEAQGGAADAAEAIQRVAERLGITVEEVRTDLEIYRDALVAAGLLDPEEVAAMDRLIAGKLTREEVLAFFDRLRARR",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d12b-2",
+     "sequence": "ALELEKAELVADLIYAEAQGGAADAAAAIEGVAKQLGISVEEVRERLRVLRAALLAAGLLDAAEAAALDALIAGTLTRAEVLALFDRLRARL",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d12b-3",
+     "sequence": "AARLTRAELVFELIYAEAQGGAANAAAALQAVAERLGITVEEVQADLRVLRAALVAAGLLDADEVAQMDRLIAGKLSREEVLAFFDRLRARL",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d12b-4",
+     "sequence": "SLALERAEVVMDLIYAEAQGGAADAAAAIERVAERLGISVAEVQEDLAIFRAALVAEGLLDAAEVAAFDQLIAGKLTRDEVLAFFDRLRARR",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7a-1",
+     "sequence": "STTAELKAQKAEAEALLAKAKAAKNKAAAQAAQKAIVLYDKALAGDTSAIAPAKAALAQAKALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7a-2",
+     "sequence": "SETDALKAKRAEAQALLAQAKAAKNAAARQAAERAIVLYDKALAGDKSAIAPADAALAQAKALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7a-3",
+     "sequence": "SLTAQLQAKKAQAQALLAQAKAAKNKAAAQAAQKAIVLYDKALAGDTSAIAPADAALAQAKALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7a-4",
+     "sequence": "STTAQLKALKAQAQALLAQAKAAKNKDAAQAAQKSIVLLDKALAGDTSAIAPAQAALAQAQALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9475,
+     "pdockq2": 0.7548
+    },
+    {
+     "design": "m1-d7b-1",
+     "sequence": "SQTEELRAQLAQAQALLAQAKAQKNKAAAQAAQRAIDLFNKALSGDESAIEPARAALAQAQALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7b-2",
+     "sequence": "SMTAELEAKRAEAQALLAQAKAAKNVAASQEAQKAILLYDKALAGDTSAIDAADAALAAAKALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7b-3",
+     "sequence": "SLEAQIKANQAQAQALLAQAKAQKNTAAAQNAQQAILLYDKALAGDSSALAPANAALAKAKALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.762,
+     "mouse_site": "3/5",
+     "ph": null,
+     "ipsae_min": 0.9502,
+     "pdockq2": 0.812
+    },
+    {
+     "design": "m1-d7b-4",
+     "sequence": "SATAELKAKRAEAQALLKQAKTQKNKDAAQAAQRSIVLFDKALAGDESAREPALAALEKAKALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7c-1",
+     "sequence": "STVADLKAKRAQAEALLAEAKAQKNAAAKQAADKSIVLFDKALSGDQSAIAPALAALTAAQALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7c-2",
+     "sequence": "TELARIKEKRAEAVALLAQAKKAKNQAAEQAAQTAIVLYDKALAGDKSAIAPAEEALAKAKALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7c-3",
+     "sequence": "GLAQELQAHKAEAEELLKVAKAKKNKEAKQAAEKAIVLFDKALSGDLSSIAPALESLKKAKELV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m1-d7c-4",
+     "sequence": "SPKAVLRAKKEEAQALLAQAKAAKNTAAANAAQYAITLFDRALAGDTAAIAPAEAALAKAKALV",
+     "phase": "mining-01",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d0-1",
+     "sequence": "SEKALLERAIALLADHPAAVAAIRKVLAGEPLTPEEVEAVKYAMDLLFGMGRYDEAIALAKAAAKILAAEGRYEEAIALLTHAISFAPADQKAELEKLLAEVKAAA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d0-2",
+     "sequence": "SMQELLDKAIELLKDYPKAVAAIKKVKAGEPLTPEEVEAVKYGMDLLFGMGKYDEAIALAIKAAEILVKEGRYDEAIALLEHAISFAPPEDKEKLEKLLEEVKKKK",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d0-3",
+     "sequence": "SMEELLKEAIELLADDPAAVAAIEKVLAGEPLTDEEVAAVKEGMDRLFGMGRYKEAIALAVAAAEILVKEGRYEEAIDLLEHAISFAPPEEKKKLEKLLEEVKKKA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d0-4",
+     "sequence": "SMEELLKRAIELLADHPKAVAAIKKVLAGEPLTEEEIEAVMYGMDLLFGMGKYDEAIALALKAAEILVKEGRYEEAIKLLEHAISFAPPEDKAKLKKKLEEVKKKK",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d0-5",
+     "sequence": "SMEELLDRAIELLADHPAAVAAIKKVRAGEPLTAEEVEAVKEAIDLLFGMGRYDEAIALAVAAAKILAKEGKYDEAIALLEHAISFAPADQKAKLEKLLAKVKAEK",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d0-6",
+     "sequence": "SSKELLEEAIKLLADDPAAVAAIKKVLAGEPLTPEEVEAVKHAMDRLFGMGRYDEAIALALEAAKILVKEGRYQEAIDLLKHAISFAPEADKKKLEKELKEVEKAA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d10-1",
+     "sequence": "NREELIKKVEELIKEIEELIKKNKEELIPELIKKLDELAALLAELGLTELADKVDELAEKLRKAKTKEEREKILKEIKKLLKEIRKKLEELRKE",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d10-2",
+     "sequence": "NREELLKKVEKLIDEIKKLIKENKEEKIPELIAKLNELAAALADLGLTELADRVNELAERLRKAKTKEEREEILKEIEKLLEEIKKELKKLRAE",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d10-3",
+     "sequence": "NRAALLAAVEATIAAIEALIAADRPEDRPALIALLRRLAALLADLGLTELADRVDALAEALAAARTAAEREAILAEIRALLAEIRAELAKLRAE",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d10-4",
+     "sequence": "NRAALLAEVRATIAEIEALIARNRPEDRPALIAALRRLAALLADLGLTDLAARAEELAERLARARTAEEWEEILEEIRALLAEVEAALAALEAE",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d10-5",
+     "sequence": "TREELIKEVEKTIKKIKELIKKNKEELIPELIKLLRELSALLADLGLTELADKVDELAEKLSKAKTEEEREKILKEIEKLLEEIEKELKKLKEE",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d10-6",
+     "sequence": "SREALIEEVEALIKEIKELIKRNKEEDRPALIAKLRELSAKLADLGLTELADKVDELAEKLSKAKTEEEWKKILKEIEKLLKEIEKELKELRKR",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d11-1",
+     "sequence": "GLREQYKLSLVLQMIDDGAPAEALLARIQELQLSDAQIAEVLARAAEVDPALAAALRALLAAAGVPAAVLARGA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d11-2",
+     "sequence": "GLEAQRKLSLVLLLIEQGAPAEALLARIQELQLTPEQIAEVLARAAEVDPALAEALRALLAAAGVPAEVLARGA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d11-3",
+     "sequence": "GLEEQRKLSLVLRMVEEGAPAEELLARIQELALSDAQIAEVIARAAAVDPARAAALRALLAAAGVPAAVLARGA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d11-4",
+     "sequence": "GLEEQRKLSLVLQMIEDGAPAEEILAEIQRLKLSDEQIAEVIARAAAVDPARAAELRELLRAAGVPEEVLARGA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d11-5",
+     "sequence": "GLDEQRKLSLVLRMVEDGAPAAELLAAIKALQLSPEQIAEVLARAAAVDPARAAELRALLAAEGVPAEVLARGA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d11-6",
+     "sequence": "GLTEQRKLSEVLLLIEQGAPAEEILKKIKELKLTPEQIAQVIAKAAEVDPKLAEELRKLLKEEGVPEEVIAKGA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d14-1",
+     "sequence": "SLVERCRALIEAAIAGRFDEARALAEELFGPELAARLVAAVRALHAGDRAALEALLGRELADRLLALPREEAVLLLLELFAEELKEKDPELAAAVRAAVAARRAEAAA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d14-2",
+     "sequence": "SLTDRCRALIDAALAGRFDEARALAEELFGPELADRLLRVVQALHAGDRAELTALLGEERAQRLLALDRESAVLEIFELFAEELAERDPELAAAIRAAVAERRAELAA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d14-3",
+     "sequence": "SLVERCLALIDAAVAGRFDEAEALAVELFGEELAARLIAAVRALHAGDRAALEALLGAERAAALLAASREAAVLALLELFAEELAERDPELAAAVLEAVAQRRAELEA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d14-4",
+     "sequence": "SLVEKCRALIAAAVAGRFDEARALAEELFGPELAAELTRVLQALHAGDRAELEALLGAERADELLALDREEAVLAIFEYFAEKLEERDPELAKAVREAVEEERRRREA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d14-5",
+     "sequence": "SLVDLCRQLIAAAVAGRFAEARALAVQLFGEELAAELLAALQALHAGDRATLTALLGAERAAALLAADREEAVLLLFELFAERLKERDPALAAAVRAAVAAARAERAA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "m2-d14-6",
+     "sequence": "SRVERCRALIDAAVAGRFDEARRLAEELFGPELAERLLRVVQALHAGDRATLEALLGAERAAELLAAPREEAVLLIFELFAEELEERDPETAEAVREAVAARRAELAA",
+     "phase": "mining-02",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "mc-b2x-d12-2",
+     "sequence": "SLELERAELVADLIYAEAQGGAANAAEAIERVAERLGISPEEVRAALRVLRDALVAAGLLDDAEVAAFDRLIAGKLTRDEVLALFDRLRARR",
+     "phase": "mouse-check",
+     "note": "champion folded against mouse",
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9303,
+     "pdockq2": 0.5253
+    },
+    {
+     "design": "mc-d7x-t3-1",
+     "sequence": "SLEDELRANKAEAEALLKQAKAAKNKEAAQAAEKAIVLYDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "mouse-check",
+     "note": "champion folded against mouse",
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9312,
+     "pdockq2": 0.597
+    },
+    {
+     "design": "mc-d7x-t3-3",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDDTARAPAEAALAQARALV",
+     "phase": "mouse-check",
+     "note": "champion folded against mouse",
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9398,
+     "pdockq2": 0.672
+    },
+    {
+     "design": "mc-e1b-d7x-t3-3-v6",
+     "sequence": "SEAERLRALRAEAEALLAQARAAGNKDAAQAAERAIVLYDRALSGDATARAPAEAALAQARALV",
+     "phase": "mouse-check",
+     "note": "champion folded against mouse",
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9397,
+     "pdockq2": 0.6703
+    },
+    {
+     "design": "mc-m1-d7b-3",
+     "sequence": "SLEAQIKANQAQAQALLAQAKAQKNTAAAQNAQQAILLYDKALAGDSSALAPANAALAKAKALV",
+     "phase": "mouse-check",
+     "note": "champion folded against mouse",
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9412,
+     "pdockq2": 0.6789
+    },
+    {
+     "design": "mce-01",
+     "sequence": "STTAQLKAQQAQAQALLAQAKAAKNKAAAQAAQKAIVLYDKALSGDTSAIAPAQAALAQAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.52,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "mce-02",
+     "sequence": "SAAAALKANKAKAQALLAQAKAAGNKAAAQAAEKAIVLYDKALSGDTSAVAAANAALAQAQALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.0,
+     "mouse_site": "1/5",
+     "ph": null
+    },
+    {
+     "design": "mce-03",
+     "sequence": "SLTAQLKAKQAEAQALLAKAKAAKNKAAAQAAEKAIVLFDKALAGDTSAIAPAEAALAKAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.011,
+     "mouse_site": "2/5",
+     "ph": null
+    },
+    {
+     "design": "mce-04",
+     "sequence": "SETAELKALKAEAQALLAQAKAAKNKAAAQAAEKAIVLFDKALAGDTSAIAPAKAALAKAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.208,
+     "mouse_site": "3/5",
+     "ph": null
+    },
+    {
+     "design": "mce-05",
+     "sequence": "SKKEELKALKAEAEALLAKAKAAKNKAAAQAAQKAIVLFDKALAGDESAIEPAKAALAKAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.399,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "mce-06",
+     "sequence": "SLAAQLKALQAQAEALLAQAKAAKNKAAAQAAERAIVLFDKALAGDQSAIAPAQAALAQAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": "0/5",
+     "ph": null
+    },
+    {
+     "design": "mce-07",
+     "sequence": "SATAAVKAQQAQAQALLAQAKAAKNKAAAQAAQQAIVLYDKALAGDTSALAAAQAALAQAQALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.289,
+     "mouse_site": "3/5",
+     "ph": null
+    },
+    {
+     "design": "mce-08",
+     "sequence": "SEAAELKALKAEAEALLKKAKAAKNKAAAQAAQKAIVLFDKALAGDASAKAPAKAALAKAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.391,
+     "mouse_site": "4/5",
+     "ph": null
+    },
+    {
+     "design": "mce-09",
+     "sequence": "SQTAQLKAQQAQAQALLAQAKAQKNKAAAQEAQKAIVLYDKALAGDTSAIAPAQAALAAAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.395,
+     "mouse_site": "2/5",
+     "ph": null
+    },
+    {
+     "design": "mce-10",
+     "sequence": "GLEAEIRAQRAQAEALLAQAKAAGNKAAAQEAERAIVLFDKALAGDQSALAPARAALAAAQALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": "0/5",
+     "ph": null
+    },
+    {
+     "design": "mce-11",
+     "sequence": "SLKADLEAKKQEAEALLKQAKAAKNKAAAQAAERAIVLYDKALSGDESSIAAADAALAKAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.434,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "mce-12",
+     "sequence": "SEAAQLKAKKAEAQELLKKAKAAKNKDAAQAAQKAIVLYDKALSGDTSAKAPADAALEKAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.45,
+     "mouse_site": "5/5",
+     "ph": null
+    },
+    {
+     "design": "mce-13",
+     "sequence": "SDTAALKAAKAQAEALLAQAQAANNKAAKQAAQKAIVLYDKALAGDDTAKAAADAALAQAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.435,
+     "mouse_site": "4/5",
+     "ph": null
+    },
+    {
+     "design": "mce-15",
+     "sequence": "TTEAELKQKKAEAEALLAKAKAQKNKEARQAAEKAIVLYDKALAGDESAKEPADKALEKAKALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.558,
+     "mouse_site": "3/5",
+     "ph": null
+    },
+    {
+     "design": "mce-16",
+     "sequence": "SLDAELKAKRKEAQALLAKAQAAKNLEAKQAAEKSIVLYDKALAGDTSAIAPADEALEKAKKLV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": 0.405,
+     "mouse_site": "2/5",
+     "ph": null
+    },
+    {
+     "design": "mceh-14",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "mouse-directed",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9499,
+     "pdockq2": 0.8246
+    },
+    {
+     "design": "r3-d0",
+     "sequence": "SELEKLIKEAAELAKKGTEEAIEEILRIIQKARDEFGREAAAKVAEAALKAAGVPKEKIEEVKKLILDPKTSESEIQYAIIKALTE",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d1",
+     "sequence": "SKRSEKLKELAEKTGLSEEFIELFELIKSAVENNQDNEFIAELAKKAAELARKEGDEELAKLFEKLAEAAKKGDWEKVKKLVEEIEKKLEEREKKN",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d10",
+     "sequence": "MLEEAEKAKKEIEEEIEENKKRSEEYIKKNKKKFEEERKKEIEELKKYFEEKSDEELKEELLKERNADPNNPKVVEVIEEEIKERKEFLEKE",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d11",
+     "sequence": "SEALEKLIELVRETKQNEDIVRLLELTVKILKGDFSALPEFEEALKRVSETLSEEEIKETLSLIAQIARDLGASEEEKEAIKEAVKRNLPEELYEYFKELLEK",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d2",
+     "sequence": "SLKEIHEKILKALKEKGLEEEAKKLEEFIKLHPDASKLELIALVIILIDDKELVKEIIKYADPSITDEEIDKIIEKVKEIKENFPNLTDEEKAIMVANELK",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d3",
+     "sequence": "SKKLELTREQLLEEAREAGFSEEELKELEEKLKKAESVGEAIEIFNEFKEKH",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d4",
+     "sequence": "SEYEEYFRELYEKKGWSPEELREEAEKLDFENEKPAENVPTDEELKKAMEEEVKELEEKNKTGKKIEVKEPVTGTPYVNTEPVEACDRVLAEKSA",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d5",
+     "sequence": "KEEVEKIIQELLDKGLINEEAAKILKKYLNLEAVKKLKEILENGTPPEFSEEEEKEAEEIIEKLLKEGKINEEEAKIIRENKNLRYALLLSEKEKEKKKKE",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d6",
+     "sequence": "MKPEMSDEELLEKVEELVKKGLLSEKELLAAEAAILTGDEEAKKRILEKIKEVEKKL",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d7",
+     "sequence": "MKLPDNLPIDEESAEEILKALEESIDEALLKIKEAAKKKLPVNKELVKKIEEALKKREKELEAREEARVKAANGALTPEEEARLAAAEAAEAAKDWAAAAAALS",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d8",
+     "sequence": "MVERIEELRRIIEEHPGTPEGHEAAAELRELLNEARRRYPRLFAFVDAVAERTGLSPEERERLLLELLRLAEEVGEEEAIRRLVERLLAEGRLTEEQARELLAL",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3-d9",
+     "sequence": "SEEEERERRLEELLERELKRQGIDPEEQPEAAEELRETLRLAMEHGGGGGGSLAGAGPTKEEEEEREKKKKEEEEEYKKKLEERLK",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d4-1",
+     "sequence": "SEYEEYFRRLVEEEGKSKEEVLRIANRLARKLMTPAKPIPTAAEYAAAFAAEIAEYKARKARGEPYVARDTAMGTETIDTTPLDAAERVLDEIEN",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d4-2",
+     "sequence": "SRYEEYFRRLALEEGKSPVELRREANRLTYKNMTPAPPIPTAAQYQAAFAAEIAEYKARKAKGEPFKAYDSAMGTETIDTTPLDACDRVLAELAE",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d4-3",
+     "sequence": "SAYEEYFRRLAEEEGWSKEELLREANRLSRRLMTPAKPIPTAAEYAAAFAAEIAEYKARKAAGQPFVARDTAMGTETIDTTPIDAALRVIEEIEN",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d4-4",
+     "sequence": "SEYEEYFRRLALEEGWSREELLREANRLARRLMTPARPIPTAAEYAAAFAEEIAEHKARKAAGKPYVAYDRAMGTETIDTTPLEACERVLRELEE",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d4-5",
+     "sequence": "SEYEEYFRRLLEEEGWSEEELLREANRLTYRLMTPARPIPTAAEYAAAFAAEIAEYKARKAAGKPFVARDTAMGTETIDTTPLDAAERVLRERRE",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d4-6",
+     "sequence": "SEYEERFRRLVEEEGWTEQEVLAEANRLARRLMTPAKPIPTAAEYQAAFAAEQAEYAARKAAGEPLVVRDTAMGTETIDTTPLEAAERVLAEIRE",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d7-1",
+     "sequence": "MKLPADLPIDAAGAAAILAALERSVDAALLEIARAARRPLPVDPALRAEIEAALNAAAAVEAALAAARARAAAGKLTPAERAALAAAEAARARLDWAAAAAALA",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d7-2",
+     "sequence": "MKLPADLPIDAESAARILAALEQSVDLALLEIERAAKKPLPVNPELIAEIQAALDERAAVQAALAAAKAAAAAGTLTPAQRAALAAAEAALARLDWAAAAAALA",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d7-3",
+     "sequence": "MKLPADLPIDAAGAARILAALEISEELALLEIAEAARRDLPVDPALIAEIEAALNKRQAVLDALQAARDRAARGELTPAEMAALAAAEAARARLDWAAAAAALA",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d7-4",
+     "sequence": "MKLPADLKINAEEAAAILAALQQSVELALLKIKEAAKKDLPVNPELIAEIEAALNAAAAVEAALAAAKARAAAGKLTPEERARLLAAEAARARLDWAAAAAALA",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d7-5",
+     "sequence": "MKLPADLPINAESAAAILAALDVSVDLALLEIAKAAKKDLPVDPALIAEIEAALNARAAVEAALAAARAKAARGELTPAERAALLAAEKARAALDWAAAAAALA",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d7-6",
+     "sequence": "MKLPEDLPIDEASAAAILAALERSLEDALLAIAEAAKKDLPVNPELIAEIEAALNARAAVEAKLAAAKAKAARGELTPAEMAALDAALAARARLDWAAAAAALA",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d9-1",
+     "sequence": "SAAAAAQAALDAALARELAALGIDPAAQPAEAAALRADLATARAYAGGGGGTQLRLPATPEGRAAYLAARAAADAADLAALAARLA",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d9-2",
+     "sequence": "SAAAAAAAAEAAALARELRDLGIDPAAQPAEAAALAADIATARRYAGGGGGTQLRLPATAEGRAAKLAAEAAAAAAFAAELAARLQ",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d9-3",
+     "sequence": "SAEAAAQAALDAALARELRALGIDPEAQPAEAAALRADLETARRYAGGGGGTQLRLPATAEGRAAYLAARAERDAADAAALAARLK",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d9-4",
+     "sequence": "SAEAARQARLEALLARELRDLGIDPEAQPAEAASLRDDLATALRYAGGGGGTQLRLPATPEGRAAKEAAAAAAAAADAAALAARLK",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d9-5",
+     "sequence": "SAAAARQARLDARLAAELAALGIDPEAQPAEAAALRDDLATALEYAGGGGGSQLRLPATPEGRAAYLAARAAAAAADAAALAARLK",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "r3x-d9-6",
+     "sequence": "SAEAAAQARLDALLARELRALGIDPAAQPAEAAALRDDIATCLKYAGGGGGTQLRLPATPEGRAALEAARAAAAAADAAALAARLK",
+     "phase": "rbs-batch-03",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr1m-ds-mce-14-v6-c",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDAHALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9361,
+     "pdockq2": 0.6637
+    },
+    {
+     "design": "sr1m-ds2-mce-14-v7-v1-b",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAERAIHLYDRAHAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9336,
+     "pdockq2": 0.6435
+    },
+    {
+     "design": "sr1m-mce-14-b",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRAHAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9341,
+     "pdockq2": 0.6084
+    },
+    {
+     "design": "sr1m-mce-14-c",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAIHLYDRALAHDAHALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9361,
+     "pdockq2": 0.6637
+    },
+    {
+     "design": "sr2m-ds-mce-14-v6-r2a",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARHAAHRAILLYDRALAGDASALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9407,
+     "pdockq2": 0.7683
+    },
+    {
+     "design": "sr2m-ds-mce-14-v6-r2c",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAHRAILLYDRALAGDASALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.935,
+     "pdockq2": 0.771
+    },
+    {
+     "design": "sr2m-ds2-mce-14-v7-v1-r2a",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARHAAHRAILLYDRALAGDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9405,
+     "pdockq2": 0.7565
+    },
+    {
+     "design": "sr2m-ds2-mce-14-v7-v1-r2b",
+     "sequence": "SEAARIRALRAEAEALLAQAKAAKNAEARQAAHRAIHLYDRALAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9353,
+     "pdockq2": 0.6481
+    },
+    {
+     "design": "sr3-01",
+     "sequence": "SHEEEIKELLEEAKELLKKAKEAGNKEAEKAAKEAIHLFEKALAHDEHALEPAKEALKKAKELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": "0/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr4-03",
+     "sequence": "SHLEEIKEKKEEAKELLKKAKEAGNEEAEEAAKKAIHLYDLAHNHEEEALEPAEEALEKAKKLV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": "0/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr4-04",
+     "sequence": "SKAAEIEALLAEARELLARAEAAGNEEAAAAAREAIHLFELAHAHDEAALEPARAALARARELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": 0.0,
+     "human_site": "1/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr4-07",
+     "sequence": "SELEELRALRAEAEALLARARAAGNAEAEAAAREAIHLFDLAHAHRAEARAPALAALARARELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": "0/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr4-08",
+     "sequence": "SRLAEIEALRAEAEALLARARAAGNAEAERAAREAIHLFDRAHAHDESALEPALAALARARELV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": "0/5",
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null
+    },
+    {
+     "design": "sr6m-r37",
+     "sequence": "SETARIRAARAEAEALLAQAKAAKNAEARQAAERAILLYDRAHAHDATALAPAEAALAKARALV",
+     "phase": "switch-retrofit",
+     "note": null,
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9571,
+     "pdockq2": 0.6451
+    },
+    {
+     "design": "wm-rank02",
+     "sequence": "SPLLENNMARAVEELHQLLDEIARAADDPEKQAALKEQLAKFLDENPGFLLGFATPEQLERLKAGDKSVLEELKAERLALLLK",
+     "phase": "mouse-check",
+     "note": "released mouse binder \u2014 calibration",
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9306,
+     "pdockq2": 0.6336
+    },
+    {
+     "design": "wm-rank03",
+     "sequence": "MVSLPYNSAQALEKLHELLDEIEKAKDDPEKRAKLIEELRKFLDENPGFLLGRATPEELEALKAGDKSVLERLKEETLKLLTK",
+     "phase": "mouse-check",
+     "note": "released mouse binder \u2014 calibration",
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9304,
+     "pdockq2": 0.6726
+    },
+    {
+     "design": "wm-rank05",
+     "sequence": "SPLMEDNMAKATEELHRLLDEIERAKDDPAKRAALEKRLEEFLDRNPGFLLGFATPEELEALKAGDTSVYERLKARRLELLLK",
+     "phase": "mouse-check",
+     "note": "released mouse binder \u2014 calibration",
+     "human": null,
+     "human_site": null,
+     "mouse": null,
+     "mouse_site": null,
+     "ph": null,
+     "ipsae_min": 0.9395,
+     "pdockq2": 0.5882
+    }
+   ],
+   "viewer": [
+    "sr2-ds-mce-14-v6-r2c",
+    "sr2-ds2-mce-14-v7-v1-r2a",
+    "sr2-ds-mce-14-v6-r2a",
+    "sr6-r37",
+    "sr1-mce-14-b",
+    "ds-mce-14-v6",
+    "ds2-mce-14-v7-v1",
+    "e1b-d7x-t3-3-v6"
+   ]
+  }
+ ]
+}

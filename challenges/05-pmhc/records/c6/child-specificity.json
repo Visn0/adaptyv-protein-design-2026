@@ -1,0 +1,62 @@
+[
+ {
+  "parent": "mini-wave1__run-011__design_0001",
+  "child": "c5",
+  "dWT": 0.004,
+  "dfree": 0.752
+ },
+ {
+  "parent": "nat-wave1__run-011__design_0004",
+  "child": "c1",
+  "dWT": 0.048,
+  "dfree": 0.406
+ },
+ {
+  "parent": "nim-wave3__run-001__design_0004",
+  "child": "c7",
+  "dWT": 0.01,
+  "dfree": 0.536
+ },
+ {
+  "parent": "peprim-wave1__run-012__design_0006",
+  "child": "c3",
+  "dWT": 0.11,
+  "dfree": 0.571
+ },
+ {
+  "parent": "peprim-wave1__run-013__design_0007",
+  "child": "c1",
+  "dWT": 0.023,
+  "dfree": 0.665
+ },
+ {
+  "parent": "wave1-pep__run-007__design_0000",
+  "child": "c6",
+  "dWT": 0.349,
+  "dfree": 0.35
+ },
+ {
+  "parent": "wave1-pep__run-033__design_0003",
+  "child": "c3",
+  "dWT": 0.016,
+  "dfree": 0.267
+ },
+ {
+  "parent": "wave2-pep__run-009__design_0007",
+  "child": "c2",
+  "dWT": 0.347,
+  "dfree": 0.205
+ },
+ {
+  "parent": "wave2-pep__run-024__design_0007",
+  "child": "c5",
+  "dWT": 0.06,
+  "dfree": 0.677
+ },
+ {
+  "parent": "wave2-pep__run-054__design_0005",
+  "child": "c7",
+  "dWT": 0.066,
+  "dfree": 0.713
+ }
+]

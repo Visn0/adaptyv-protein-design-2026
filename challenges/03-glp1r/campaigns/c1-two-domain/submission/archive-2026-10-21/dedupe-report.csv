@@ -1,0 +1,4 @@
+dropped,family,identical_to,identity
+c12-mpnn-b32-d03-v1,rfd4-mpnn,c12-mpnn-b32-d03-v2,0.938
+c6-e1-r0025-s1,solublemnn-resequenced,c6-e1-r0025-s2,0.939
+c6-e1-r0025-s4,solublemnn-resequenced,c6-e1-r0025-s2,0.939

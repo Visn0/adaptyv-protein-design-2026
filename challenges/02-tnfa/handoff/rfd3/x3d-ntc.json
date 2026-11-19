@@ -1,0 +1,9 @@
+{
+  "x3d-ntc": {
+    "input": "challenges/02-tnfa/handoff/rfd3/target-x3d-ntc.pdb",
+    "contig": "70-95,/0,A6-21,A26-63,A78-84,A93-95,A117-136,A142-157,B6-15,B34,B36,B38-39,B52-61,B94,B119-126,B148,B151-157,C6-18,C27-31,C34-62,C77-97,C118-136,C148,C150-157",
+    "select_hotspots": "A6,A7,A8,C55,C56,C125",
+    "infer_ori_strategy": "hotspots",
+    "is_non_loopy": true
+  }
+}

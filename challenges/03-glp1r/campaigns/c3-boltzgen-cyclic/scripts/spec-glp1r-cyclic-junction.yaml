@@ -1,0 +1,19 @@
+entities:
+  # GLP1R ECD + ECD-TMD junction (chain R, fragment index 1-207)
+  - file:
+      path: ../../../inputs/target-ecd-junction.pdb
+      include:
+        - chain:
+            id: R
+      # VARIANT: junction-only hotspots (the c1 lesson: junction-only beat
+      # groove+junction for two-domain reach). Fragment numbering of
+      # UniProt 197,210,221,234.
+      binding_types:
+        - chain:
+            id: R
+            binding: 163,176,187,200
+  # One designed cyclic peptide, length 12-18
+  - protein:
+      id: E
+      sequence: 12..18
+      cyclic: True

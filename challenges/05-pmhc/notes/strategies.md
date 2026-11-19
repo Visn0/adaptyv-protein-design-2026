@@ -1,0 +1,249 @@
+# 05 — strategies and the campaign set (2026-10-30)
+
+Evidence base: `research-synthesis.md` (the two decisive facts),
+`target-physics.md` (the measured 13-item checklist), `reuse-audit.md`
+(what we already own), `deep-campaigns.md` (published yields). Nothing in
+those files is restated here. This file only decides **what we run, in what
+order, and what kills each campaign.**
+
+## The decision in one line
+
+Two generators as a hedge, two specificity layers on top of both, and one
+mandatory instrument-calibration gate in front of all of them — because the
+measured control says our default scorer is blind to the objective.
+
+## The campaign contract
+
+Every campaign inherits, without restating them: the 13-item checklist in
+`target-physics.md`, the P4–P8 readable ridge, the peptide-first footprint
+rule, the 10-mer register (Asp at **P6**, never the public 9-mer numbering),
+and the C-terminus-away assay constraint. A campaign that breaks any of them
+is not run.
+
+## C0 — instrument calibration · GATE · must finish first
+
+Not a design campaign. The precondition the synthesis names twice.
+
+**Step 0 (cheap, no GPU): read the crystals themselves** (`7OW6` vs `7OW5`)
+with the contact metric — the geometric ground truth the folded reads must
+reproduce. Done 2026-10-30: the two states' contact patterns are nearly
+identical (P6 min dist 3.37 vs 3.48 Å; P7 32 vs 35 contacts), so a separating
+metric must work on the ipSAE/energetic read or the electrostatic layer —
+contact counts cannot separate the states by construction.
+
+| item | value |
+|---|---|
+| Question | can any scorer we own separate G12D from WT for a **known** binder? |
+| Positives | JDI TCR + G12D (7OW6 chains), JDI TCR + WT (7OW5 chains — the matured JDIa41b1, a 425 nM WT binder: the ~6000× window is the control's signal, not binary binding) |
+| Negatives | shuffled binder sequences; the peptide-free state (`7OW6-peptide-free.pdb`) |
+| Instruments | Chai-1 restrained (pocket restraints, P4–P8 + groove rim; control arm runs single-sequence — noted) · Boltz-2 + ipSAE chain-pair table (all binder×target pairs, not one) · BindCraft2 `bindcraft score` contact fractions |
+| Known failure to beat | AF2-Multimer gives JDI **ipTM 0.84 on both** G12D and WT — raw ipTM is disqualified as a ranking signal |
+| Side errand | VRAM smoke run: binder + heavy chain + β2m + peptide ≈ 500–600 residues on 12 GB (3-chain fold memory is unmeasured; use the depth-capped MSA path) |
+| Deliverable | the pre-registered tri-state metric, with its cutoffs fixed **before** any design batch |
+| Kill criterion | if no instrument separates G12D from WT on the JDI control, we do **not** rank on fold scores at all — selection falls back to the electrostatic placement rule (C3) plus footprint geometry, and we say so in the submission |
+
+Cost: hours, not days. Campaign folder:
+`challenges/05-pmhc/campaigns/c0-instrument-calibration/` (pre-registered
+README, control builder, crystal read, metric script, run commands). MSAs:
+`fetch_msas.py` (ColabFold) or `fetch_msas_local.py` (local mmseqs over the
+on-disk SwissProt+PDB DBs — the ColabFold API was down 2026-10-30; shallower
+but offline).
+
+Two build notes found while preparing this campaign (2026-10-30):
+`tools/pipelines/screen.py` cannot score C5 designs as-is — its hotspot
+matching assumes ONE target chain (the largest), and in C5 the hotspot carrier
+is the peptide. C0 therefore runs a purpose-built control scorer
+(`scripts/work/c0-tri-state-metric.py`, explicit chain roles); that scorer is
+the seed of the C5 pipeline. And the ipsae helper lives at
+`~/tools/IPSAE/ipsae.py` (the old scratch copy was pruned).
+
+## The campaign set
+
+| # | the bet | generator | where it runs | cut first? |
+|---|---|---|---|---|
+| C1 | volume, Liu-style: arc above the groove, peptide-ridge hotspots | RFD4-Proteina | hosted (re-point `nim/build_request.py`) | no — this is the backbone supply |
+| C2 | the same geometry, different prior, as a generator hedge | RFdiffusion3 | local, overnight | no — insurance against a hosted-route failure |
+| C3 | the differentiator: a cation placed 6–8 Å above P6–P7 | selection layer over C1+C2 | local, cheap | no — this is our edge |
+| C4 | counter-selection round on the survivors | partial diffusion + MPNN re-design | local | no — doubles the specific-design rate in the literature |
+| C5 | modality hedge: VHH / nanobody format | Germinal | local | **yes, cut first** |
+
+### C1 — hosted volume campaign
+
+The only route that can produce the backbone count the published yields
+demand. Hotspots on the outward-facing P4–P8 ridge plus the groove rim,
+never the groove floor or the anchors. Target 1,000–2,000 backbones, 4–8
+MPNN sequences each, matching the Liu et al. cycle shape. Re-point the
+request builder — it hard-codes the TfR1 patch today.
+
+**Status 2026-10-31 (strategy-completeness audit):**
+- NIM route confirmed at volume: r8 = 8 designs per call, ~10–60 s per call,
+  ~1,000 designs generated by 10:00 (waves 1–2); no quota failure.
+- **Ridge+rim arm (firm verdict 2026-10-31):** ridge-only wins on the
+  registered footprint. Full arms: ridge-only pool (n=1,000) 68%
+  peptide-first; PEPRIM wave (n=184) 60% peptide-first, 28% C3, 18% pass
+  all three vs the ridge-only 20%. The 24-design pilot's dramatic gap
+  (21/24 vs 12/24) overshot — the true cost of the rim conditioning is
+  ~8 points of peptide-first, and it buys nothing. The 33 peprim passers
+  stay in the pool (they clear every registered filter); ridge-only remains
+  the volume arm of record. C1 closes with both arms measured.
+- **MPNN multiplication (deviation, recorded):** "4–8 MPNN sequences each"
+  is deferred from the full pool to the post-screen survivors — 4–8 MPNN
+  rediversifications per surviving family near the winners is worth more
+  than 7,000 sequences of unvalidated backbones, and the measured fold cost
+  makes folding the difference impossible before the deadline. The gates do
+  not change; the MPNN step lands in the C3/C4 window on the shortlist.
+
+**Before committing the volume:** confirm the NIM's batch size, quota and
+current terms (the C4 batch pattern was one design per call; if that still
+holds, shift the volume to C2 and keep C1 as the hedge).
+
+**Kill criterion:** hosted quota or API shape blocks it → C2 absorbs the
+whole budget and the design count drops, not the gate stringency.
+
+### C2 — local RFdiffusion3 hedge
+
+Installed already. Its pMHC hotspot choice is an open question upstream, so
+the numbering is on us: derive it from the measured 7OW6 contact map
+(JDI: P7 32 contacts, P8 9, P6 5, P5 4, P4 2), not from third-party configs
+written for the 9-mer. Runs overnight on the box alongside nothing else.
+
+**Kill criterion:** two overnight runs produce no backbone that arcs the
+groove with a peptide-first footprint → stop, hand the budget to C1.
+
+### C3 — electrostatic placement (the differentiator)
+
+The measured handle: the G12D-minus-WT difference field is **negative with
+its epicentre 6–8 Å above P6–P7** (the public APBS analysis measured up to
+8.4 kT/e; our uniform-dielectric estimate is −0.8 to −4.3 kT/e depending on
+the local dielectric). Asp6 is ~90% buried and salt-bridged to HLA Arg114,
+so no design will ever touch it — the mutation is read as a field, exactly
+as the JDI TCR reads it (nearest atom 7.5 Å).
+
+Implemented as a **scoring and re-design layer over C1 and C2 output**, not
+as a separate generator: that is the cheap version and it costs no extra
+backbones. Require an Arg, Lys or His side-chain nitrogen in the 6–8 Å shell
+over P6–P7, and prefer designs where it is the only formal positive nearby.
+Mechanism to fix at build time: pick the placement from the fold, then either
+pinned-type MPNN re-design (the C4 interface-pinning pattern) or a hard
+geometric filter — the filter is the cheap one.
+
+**Honesty limit:** the field is a Debye-Hückel estimate with a uniform
+dielectric, order-of-magnitude, not a free energy. APBS is not installed.
+Decide on the install only if this layer becomes the deciding signal — which
+C0's kill criterion may force.
+
+### C4 — counter-selection round
+
+The literature's biggest specificity multiplier: explicit negative design
+against the counter-targets raises the specific-design rate 6.0% → 14.2%,
+and negative selection on unpulsed (peptide-free) cells is what fixed the
+C8K10D programme's mid-affinity clones. So: take the C1+C2 survivors, run
+partial diffusion (12–25 steps) and MPNN re-design with the WT complex and
+the peptide-free state as explicit negatives, then re-screen tri-state.
+
+**Why it is not optional:** mid-affinity TCRm clones routinely pick up
+peptide-free binding, and objective 2 is scored on exactly that.
+
+**Negative design, honestly:** true gradient-based negative design
+(Odin-Multi) is not installed and unverified on 12 GB. The practical
+implementation is partial diffusion + MPNN re-design + a hard tri-state
+re-screen where the WT and peptide-free arms are kill criteria — that is
+where the doubling comes from. Odin-Multi stays a stretch item.
+
+### C5 — VHH modality hedge · cut first
+
+The format is allowed and industrial zero-shot VHH design now works
+(0.93 Å cryo-EM match on KRAS G12V). But it needs a second generator stack
+inside a 9-day window on one 12 GB card. Run it only if C0 finishes early
+and C1 is healthy.
+
+## Pre-registered gates
+
+Fixed now, before any deciding batch. Measured values and provenance are in
+the notes; this is the commitment.
+
+| gate | threshold | source |
+|---|---|---|
+| Interface confidence | ipSAE_min > 0.61 standard · > 0.70 stringent | organizers |
+| Joint acceptance | ipSAE ≥ 0.6 **and** pDockQ2 ≥ 0.23 | `07-tools-to-measure-binding.md` |
+| Peptide contact | contacts to the **peptide at P6** required in every passing fold | domain rule |
+| Footprint | peptide-first; binder–HLA and binder–β2m chain-pair rows stay weak | checklist item 4 |
+| Specificity delta | **C0 verdict 2026-10-31: fold-score deltas are DISQUALIFIED as a specificity ranking** (the JDI control reads −0.043, wrong sign). ΔG12D−WT goes into the record per design, not into the ranking; ranking uses the C3 field rule + footprint discipline | C0 control |
+| Peptide dependence | peptide contacts present in the G12D fold **and** a large engagement drop in the peptide-free fold | pre-registered proposal |
+| Pose agreement | 5 seeds × 2 models, consistent site (**finalists only** — stage 3) | C3 lesson |
+| Liability | `length_range=(10, 250)`, `min_his=0` — the 40–100 aa / 2-His defaults are C1 pH assumptions and must not be quoted here | `reuse-audit.md` |
+| Novelty | `kras-pmhc` prescreen arm (TCR-only by construction; the prior-art arm does the real work) | prescreen |
+
+## Budget arithmetic
+
+Published pMHC pass rates: Johansen ~2% (44 filtered → 1 binder), ElainW
+0.4% (914 AF2-tested → 4). We submit **20** designs (Tracks 2/3). The funnel
+is **staged**, because the naive "tri-state screen of everything" does not
+close on one 12 GB card (C4 measured ~90 s per ~490-res Boltz fold;
+three states × 1,000 designs ≈ 75 GPU-hours before chai):
+
+**Revision 2026-10-31 (measured fold cost):** the C0 folds cost ~3.5 min
+each on this host (2:33 prediction + featurization; ~4 min including the
+safeguards). Folding ~1,000 designs against G12D alone would be ≈ 55-65
+GPU-hours — two-plus days of continuous GPU on a host with a 0x20001 crash
+background. The screen therefore runs **on the generator's own poses first**:
+every RFD4 output is already a posed binder–pMHC complex, so the C3
+electrostatic rule, peptide contacts and footprint shares apply directly
+(CPU, minutes for the whole pool). Only the shortlist gets independent
+Boltz-2 folds for the ipSAE gates and the tri-state check. Stage 2/3 counts
+below shrink accordingly; the gates do not change.
+
+| stage | count | instrument |
+|---|---|---|
+| backbones (C1 + C2) | 1,000–2,000 | — |
+| MPNN sequences | 4,000–8,000 | — |
+| stage 0: pose-based filter on generator poses (C3 rule, contacts, footprint) | → shortlist 200–400 | CPU only |
+| stage 1: G12D fold + ipSAE gates of the shortlist | 200–400 | Boltz-2 (≈ 12-25 GPU-h) |
+| stage 2: tri-state folds of stage-1 passers | 60–120 | Boltz-2 + chai restrained |
+| stage 3: multi-seed × 2-model agreement | finalists (40–60) | both |
+| survive the gates | 20–40 expected at 2%, as few as 4 at 0.4% | — |
+| submitted | 20, families spread with `diverse_pick` | — |
+
+If the survivor count lands under 20, we submit fewer rather than relaxing
+the gates — objective 1 is binary and a WT-binding design scores behind a
+specific one regardless of affinity.
+
+## Sequence to Nov 8 (deadline 23:59 AoE)
+
+| when | what |
+|---|---|
+| Oct 30–31 | C0 calibration + VRAM smoke; cutoffs pre-registered |
+| Oct 31–Nov 2 | C1 hosted generation; C2 overnight local |
+| Nov 2–4 | tri-state screen of everything |
+| Nov 4–5 | C3 electrostatic layer; C4 counter-selection round |
+| Nov 6 | liability QC + novelty prescreen |
+| Nov 7 | select 20, build the package (C4 builder adapts directly) |
+| Nov 8 | buffer and submit |
+
+## What we are deliberately not doing
+
+- **Not ranking on raw ipTM or AF3-class specificity scores.** Field verdict:
+  AF3 ROC-AUC ≈ 0.6 where ≈ 0.9 would be needed, and its discrimination
+  tracks pose placement rather than chemistry.
+- **Not chasing picomolar.** The KD(WT)/KD(G12D) window outranks absolute
+  affinity, and the highest-affinity engineered TCR variants lost specificity.
+- **Not using BindCraft2 as a generator.** The one public pMHC run accepted
+  0 of 100+ overnight. Its `score` subcommand stays as a QC layer.
+- **Not touching the pH-switch, membrane or cross-species machinery.**
+  `reuse-audit.md` section (l) rules all three out for this challenge.
+- **Not designing against 7OW4 or the 9-mer.** Fold against the provided
+  organizer files; 7OW4 lacks the P5–P6 sidechains.
+
+## Review pass (2026-10-30, second session)
+
+Reviewed against the research notes and the local toolchain. Changes applied:
+C0 gained the crystal-read step 0, the JDIa41b1 clarification, the
+single-sequence chai note, and the `screen.py` finding (its hotspot matching
+assumes one target chain — the C5 screen needs explicit chain roles); C1
+gained the NIM quota/terms check; C3's field number corrected to the measured
+range (8.4 kT/e is the public APBS maximum, not our estimate) and the
+placement mechanism made explicit; C4's negative-design mechanism made honest
+(no local gradient engine); the budget funnel restaged (the naive
+tri-state-everything does not close on one card); the pose-agreement gate
+marked finalists-only. The campaign set, the kill criteria and the
+not-doing list stand as written — agreed.

@@ -1,0 +1,13 @@
+# Methodology — conditional TNF-α binders
+
+**Hypothesis.** One small binder can carry all three ranked jobs: tight at pH 7.4, released at pH 6.0, and cross-reactive to mouse. The format came first, and it was a decision, not a default: a single small chain (the released problem allows 50 to 120 residues — our lead line landed at 64), aimed at the junction where two TNF-α protomers meet, on the full trimer, never a cut-down target, with the released hotspot pair (B102 + D62) kept to a span one binder can reach (we cap it at about 15 Å), and both halves of the epitope landing on different protomers. We explored in bulk before deciding — many backbones, many sequences per backbone, both species, several switch positions — and let the measurements make the calls. Scoring the released campaign picked the generator: Genie 3 produced winners there when most tools almost never did. A capped CA-only first family picked the sequence mode: full backbone from then on. Degraded mouse scores picked the order of work: select on mouse, confirm on human. A switch-position scan picked the final move: the first histidine version cost binding, moving one onto the E33 salt bridge kept it. And when a line plateaued, we changed the input instead of folding more of the same.
+
+**How the designs were made.** Genie 3 generated the backbones. Then we re-sequenced each folded backbone with full-backbone ProteinMPNN. An early finding set the policy: sequences designed on Cα atoms alone score low, so every design uses the full backbone. Every candidate gets co-folded with Boltz-2 and scored with ipSAE right at the designed junction. We set our acceptance bar by re-scoring the released campaign's own designs through the same pipeline, so our filters mean the same thing theirs do.
+
+**Mouse cross-reactivity.** The brief requires both species. The mouse scores came out lower than the human scores in the first results, so mouse became the primary filter: candidates that do not hold up on the mouse protein are removed before the human fold is considered.
+
+**Evolution.** Once a backbone worked, we ran generations: mutate the winners at a few positions, fold, keep what improves, repeat.
+
+**The pH switch.** A histidine at the interface is neutral at pH 7.4 and positively charged at pH 6.0. Facing a lysine on the target it is neutral at 7.4 and repelled at 6.0, so the binder holds at 7.4 and releases at 6.0 — the behavior the brief ranks first. The lead design does this by turning a salt-bridge residue (Glu33) into a histidine, and the switch signal is strong in our linkage analysis.
+
+**Controls.** Every switch design comes with its no-switch parent — same binder, histidine removed. Whatever the lab sees between a pair is the switch, nothing else.

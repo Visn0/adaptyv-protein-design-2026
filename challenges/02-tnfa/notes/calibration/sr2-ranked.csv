@@ -1,0 +1,7 @@
+design,delta_log_Ka,fold_selectivity,ddG_kcal_per_mol,effective_sites,delta_nu_at_high_pH,delta_nu_at_low_pH
+sr2-ds-mce-14-v6-r2b.pdb,2.07,117.6,-2.824,4,-1.018,-2.043
+sr2-ds-mce-14-v6-r2c.pdb,1.738,54.7,-2.371,2,-1.001,-1.333
+sr2-ds2-mce-14-v7-v1-r2b.pdb,1.097,12.5,-1.497,4,-0.224,-1.605
+sr2-ds2-mce-14-v7-v1-r2a.pdb,0.734,5.4,-1.001,2,-0.155,-1.222
+sr2-ds-mce-14-v6-r2a.pdb,0.629,4.3,-0.857,4,-0.117,-1.057
+sr2-ds2-mce-14-v7-v1-r2c.pdb,0.499,3.2,-0.681,1,-0.116,-0.782

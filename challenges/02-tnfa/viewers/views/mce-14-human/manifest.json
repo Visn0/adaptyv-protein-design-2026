@@ -1,0 +1,203 @@
+{
+  "name": "mce-14-human",
+  "source": [
+    "~/c2-work/genie3/folds/mceh-14/boltz_results_mceh-14/predictions/mceh-14/mceh-14_model_1.cif"
+  ],
+  "binder_chains": [
+    "A"
+  ],
+  "target_chains": [
+    "B",
+    "C",
+    "D"
+  ],
+  "interface_residues": [
+    [
+      7,
+      "A"
+    ],
+    [
+      10,
+      "A"
+    ],
+    [
+      14,
+      "A"
+    ],
+    [
+      15,
+      "C"
+    ],
+    [
+      16,
+      "C"
+    ],
+    [
+      17,
+      "C"
+    ],
+    [
+      18,
+      "C"
+    ],
+    [
+      21,
+      "A"
+    ],
+    [
+      24,
+      "A"
+    ],
+    [
+      25,
+      "A"
+    ],
+    [
+      26,
+      "A"
+    ],
+    [
+      27,
+      "A"
+    ],
+    [
+      29,
+      "A"
+    ],
+    [
+      30,
+      "A"
+    ],
+    [
+      33,
+      "A"
+    ],
+    [
+      34,
+      "A"
+    ],
+    [
+      36,
+      "A"
+    ],
+    [
+      37,
+      "A"
+    ],
+    [
+      40,
+      "A"
+    ],
+    [
+      41,
+      "A"
+    ],
+    [
+      43,
+      "A"
+    ],
+    [
+      44,
+      "A"
+    ],
+    [
+      46,
+      "A"
+    ],
+    [
+      60,
+      "C"
+    ],
+    [
+      62,
+      "C"
+    ],
+    [
+      67,
+      "B"
+    ],
+    [
+      68,
+      "B"
+    ],
+    [
+      69,
+      "B"
+    ],
+    [
+      70,
+      "B"
+    ],
+    [
+      72,
+      "B"
+    ],
+    [
+      92,
+      "B"
+    ],
+    [
+      105,
+      "C"
+    ],
+    [
+      108,
+      "C"
+    ],
+    [
+      110,
+      "C"
+    ],
+    [
+      132,
+      "B"
+    ],
+    [
+      133,
+      "B"
+    ],
+    [
+      139,
+      "C"
+    ],
+    [
+      140,
+      "C"
+    ],
+    [
+      141,
+      "C"
+    ],
+    [
+      144,
+      "C"
+    ]
+  ],
+  "interface_count": 40,
+  "modes": [
+    "cartoon",
+    "surface",
+    "interface"
+  ],
+  "views": 3,
+  "view_note": "viewpoints 0/1/2 are 120-degree azimuth steps at 15-degree elevation",
+  "mode_notes": {
+    "cartoon": "ribbon cartoon; binder pink, target chains cyan family",
+    "surface": "molecular surface (quality medium); same chain colours",
+    "interface": "cartoon plus interface residues as amber ball-and-stick (4.5 A heavy-atom contact)"
+  },
+  "files": [
+    "mce-14-human_cartoon_view0.png",
+    "mce-14-human_cartoon_view1.png",
+    "mce-14-human_cartoon_view2.png",
+    "mce-14-human_surface_view0.png",
+    "mce-14-human_surface_view1.png",
+    "mce-14-human_surface_view2.png",
+    "mce-14-human_interface_view0.png",
+    "mce-14-human_interface_view1.png",
+    "mce-14-human_interface_view2.png"
+  ],
+  "failures": [],
+  "generated": "2026-10-17T18:08:43+00:00",
+  "note": "Rendered from a predicted structure with Mol*; a fold is a model, not a binding measurement."
+}

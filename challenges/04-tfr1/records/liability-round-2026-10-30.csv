@@ -1,0 +1,6 @@
+variant,parent,motif_removed,swap,chai_restrained_parent,chai_restrained_variant,unrestrained_parent,unrestrained_variant,ipsae_parent,ipsae_variant,mouse,verdict
+c3_e12b2_20_s2_n10q,c3_e12b2_20_s2,NG (at interface),N10->Q,0.802,0.786,0.257,0.274,0.446,0.452,"0.261, engaged","SWAPPED IN - free, removes the one interface N-glyc site"
+c3_e12rfd4_r6d2_s1_n30q,c3_e12rfd4_r6d2_s1,NG (outside),N30->Q,0.738,0.749,0.256,0.281,0.012,0.012,"0.605, engaged","SWAPPED IN - free, equal or better on every comparable read (mouse corrected 2026-10-30: repair 0.605 vs parent 0.599)"
+e12_9__n62q,e12_9,NG (at interface),N62->Q,0.655,0.675,0.688,0.605,0.131,,"0.444, engaged",held - unrestrained site-finding regresses 0.083
+c3_e12rfd4_r4d3_s1_n15q,c3_e12rfd4_r4d3_s1,NG (at interface),N15->Q,0.667,0.602,0.405,0.423,0.057,,"0.273, engaged",held - restrained drops 0.065
+e12rfd4_r4d6__c8s,e12rfd4_r4d6,free cysteine,C8->S,0.648,0.495,0.387,0.406,0.011,,"0.400, engaged",held - restrained drops 0.15; parent keeps the (recorded) thiol

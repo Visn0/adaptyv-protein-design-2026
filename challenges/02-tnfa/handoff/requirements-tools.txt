@@ -1,0 +1,11 @@
+# Handoff tools venv — the analysis scripts only (no GPU, no CUDA).
+#
+#   uv venv --python 3.12 ~/.venvs/tools
+#   uv pip install -p ~/.venvs/tools/bin/python -r requirements-tools.txt
+#
+# The GPU stack (Boltz-2, RFdiffusion3) installs separately; see README.md W0.
+
+numpy>=1.24
+pandas>=2.0
+biopython>=1.83
+requests>=2.31

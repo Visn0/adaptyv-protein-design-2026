@@ -1,0 +1,184 @@
+1
+00:00:00,400 --> 00:00:05,637
+This is the submission for challenge
+three: a GLP-1 receptor agonist.
+
+2
+00:00:05,637 --> 00:00:13,938
+Twenty de-novo designs, seven method families, one ranked file
+— and one method that ranks them: an activation-geometry gate.
+
+3
+00:00:15,300 --> 00:00:18,175
+The brief asks for an agonist, not a binder.
+
+4
+00:00:18,175 --> 00:00:24,262
+Confirmed binders go into a receptor-activation
+assay, and only a confirmed agonist counts.
+
+5
+00:00:24,262 --> 00:00:32,338
+GLP-1 itself runs from the peptide groove of the extracellular
+domain, along the junction toward the transmembrane bundle.
+
+6
+00:00:32,338 --> 00:00:38,450
+A design that only caps the groove is the classic
+antagonist — so the designs must span the path.
+
+7
+00:00:39,800 --> 00:00:49,600
+The target: human GLP-1R, the challenge segment 24 to 432,
+scored against the active-state reference structure 6X18.
+
+8
+00:00:49,600 --> 00:01:06,775
+The amber residues are the message region of GLP-1 — arginine 190, tyrosine 148,
+tryptophan 306, glutamine 234, and glutamate 387, plus the third extracellular loop.
+
+9
+00:01:06,775 --> 00:01:11,588
+A design has to engage them, at
+the depth GLP-1 itself reaches.
+
+10
+00:01:12,900 --> 00:01:15,625
+We score activation geometry explicitly.
+
+11
+00:01:15,625 --> 00:01:34,288
+Six contacts — an anion to R190, an aromatic at Y148, a small group at W306, a hydrogen bond to
+Q234, a hydrophobe at E387, and ECL3 — plus how deep the ligand inserts below the vestibule rim.
+
+12
+00:01:34,288 --> 00:01:41,975
+The cutoffs are fixed in the published tool, so before trusting
+it we reproduced its calibration on four experimental structures.
+
+13
+00:01:41,975 --> 00:01:45,887
+GLP-1 scores six of six
+at twenty-one ångströms.
+
+14
+00:01:45,887 --> 00:01:48,887
+Exendin-P5, four of six.
+
+15
+00:01:48,887 --> 00:01:51,188
+Exendin-4, four of six.
+
+16
+00:01:51,188 --> 00:01:54,062
+And the weak partial agonist, one of six.
+
+17
+00:01:55,400 --> 00:01:58,862
+The designs come from seven
+independent method families.
+
+18
+00:01:58,862 --> 00:02:03,438
+RFdiffusion3 mini-proteins targeted
+at the groove and the junction.
+
+19
+00:02:03,438 --> 00:02:07,700
+BoltzGen cyclic peptides at the
+junction, and two shorter peptides.
+
+20
+00:02:07,700 --> 00:02:10,075
+EvoBind, from sequence alone.
+
+21
+00:02:10,075 --> 00:02:12,000
+One BindCraft2 peptide.
+
+22
+00:02:12,000 --> 00:02:18,312
+And two SolubleMPNN families that re-sequenced
+the strongest backbones with the interface pinned.
+
+23
+00:02:18,312 --> 00:02:25,000
+Every backbone was re-folded against the full receptor
+— five samples each — and every sample was scored.
+
+24
+00:02:26,467 --> 00:02:30,617
+Here they are, one by one: the
+whole submission in ranked order.
+
+25
+00:02:30,617 --> 00:02:37,792
+Each design  is shown in its predicted pose on the receptor
+— the binder in pink, the  interface residues in amber.
+
+26
+00:02:37,792 --> 00:02:42,242
+Watch the groove and the junction:
+the strongest  designs reach both.
+
+27
+00:02:42,242 --> 00:02:48,804
+The first rows carry the full six-of-six pharmacophore
+at  depth; then the strongest five-of-six binders.
+
+28
+00:02:48,804 --> 00:02:54,767
+Twenty designs, seven method  families,
+all sequences unique, no near-duplicates.
+
+29
+00:03:06,467 --> 00:03:08,904
+The first three rows carry the rubric.
+
+30
+00:03:08,904 --> 00:03:16,292
+The EvoBind peptide c2-run1-b206 hits
+all six contacts at GLP-1's own depth.
+
+31
+00:03:16,292 --> 00:03:23,854
+The RFdiffusion3 mini-protein e1-r0025
+has the strongest interface in the set.
+
+32
+00:03:23,854 --> 00:03:29,717
+And the BoltzGen peptide c8-run13 combines
+six of six with a two-domain hit.
+
+33
+00:03:29,717 --> 00:03:40,254
+Every design carries three recorded screens — fold confidence, interface score, and
+hydropathy — and the organisers' own prescreen found no known binder among them.
+
+34
+00:03:41,567 --> 00:03:42,754
+One honest limit.
+
+35
+00:03:42,754 --> 00:03:49,992
+Activation cannot be predicted from a co-fold: the gate scores
+the pose it is given, not whether the design adopts it.
+
+36
+00:03:49,992 --> 00:03:54,417
+Pose agreement across the five samples
+is the mitigation — not a proof.
+
+37
+00:03:54,417 --> 00:03:57,579
+And the binding affinities
+are for the assay to decide.
+
+38
+00:03:58,867 --> 00:04:08,879
+That is the submission: twenty designs, seven method families, ranked by activation
+evidence first, prescreen clean, with the full method in the methodology text.
+
+39
+00:04:08,879 --> 00:04:10,279
+The assay decides.

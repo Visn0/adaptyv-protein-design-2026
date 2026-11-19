@@ -1,0 +1,15 @@
+name: c2-fold-w1-gpu
+challenge: 02-tnfa
+pipeline: fold
+description: "The X2 shortlist design config_c2-x2-rfd3-s1-groove-1_0_model_1 (73 aa) co-folded against the human TNF-alpha trimer with Boltz-2 on the local RTX 5070 — five samples, every sample scored with IPSAE and compared against the Tamarind fold of the same design."
+resources: cpu   # the import stage is CPU work; the fold itself ran on the GPU
+requires_network: false
+stages: [import]
+params:
+  source: data/boltz2/w1-gpu-s42
+  design: config_c2-x2-rfd3-s1-groove-1_0_model_1
+  binder_chain: A
+  target_chains: B,C,D
+  input_pdb: handoff/designs/pdb/config_c2-x2-rfd3-s1-groove-1_0_model_1.pdb
+  reference_csv: handoff/records/x2-fold-metrics.csv
+  reference_label: Tamarind

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" font-family="'JetBrains Mono','SF Mono','Cascadia Code',monospace">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap');
+  </style>
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+
+  <!-- title block -->
+  <text x="40" y="44" fill="white" font-size="16" font-weight="700">Challenge 4 binder pipeline — per-design wall time (Gantt)</text>
+  <text x="40" y="64" fill="#94a3b8" font-size="9">genie3 path · RTX 5070 (12 GB), free machine · campaign-1 measured numbers · steps run serially on one GPU</text>
+
+  <!-- time axis -->
+  <g font-size="8" fill="#64748b">
+    <text x="320" y="94" text-anchor="middle">0</text>
+    <text x="425" y="94" text-anchor="middle">2</text>
+    <text x="530" y="94" text-anchor="middle">4</text>
+    <text x="635" y="94" text-anchor="middle">6</text>
+    <text x="740" y="94" text-anchor="middle">8</text>
+    <text x="845" y="94" text-anchor="middle">10</text>
+    <text x="950" y="94" text-anchor="middle">12</text>
+    <text x="1055" y="94" text-anchor="middle">14</text>
+    <text x="1155" y="94" text-anchor="middle">16 min</text>
+  </g>
+  <g stroke="#1e293b" stroke-width="0.7" stroke-dasharray="3,5">
+    <line x1="320" y1="100" x2="320" y2="424"/>
+    <line x1="425" y1="100" x2="425" y2="424"/>
+    <line x1="530" y1="100" x2="530" y2="424"/>
+    <line x1="635" y1="100" x2="635" y2="424"/>
+    <line x1="740" y1="100" x2="740" y2="424"/>
+    <line x1="845" y1="100" x2="845" y2="424"/>
+    <line x1="950" y1="100" x2="950" y2="424"/>
+    <line x1="1055" y1="100" x2="1055" y2="424"/>
+    <line x1="1160" y1="100" x2="1160" y2="424"/>
+  </g>
+
+  <!-- rows: label column -->
+  <g font-size="11" font-weight="600" fill="white">
+    <text x="40" y="123">genie3 generation</text>
+    <text x="40" y="169">geometry screen</text>
+    <text x="40" y="215">ProteinMPNN sequencing</text>
+    <text x="40" y="261">Boltz-2 coarse co-fold</text>
+    <text x="40" y="307">ipSAE interface score</text>
+    <text x="40" y="353">Chai-1 restrained co-fold</text>
+    <text x="40" y="399">aggregate + advance rule</text>
+  </g>
+  <g font-size="9" fill="#94a3b8">
+    <text x="40" y="138">local GPU · est 4–8 GiB</text>
+    <text x="40" y="184">python · CPU, 1 s</text>
+    <text x="40" y="230">CPU, 3 workers ≈9 threads · ~2 GiB</text>
+    <text x="40" y="276">GPU 10–11.3 GiB · 100% · 4.1 min</text>
+    <text x="40" y="322">CPU, 10 s</text>
+    <text x="40" y="368">GPU 11.2–11.7 GiB · 100% · 8.5 min</text>
+    <text x="40" y="414">python · CPU, 10 s</text>
+  </g>
+
+  <!-- bars (cumulative start times, 52.5 px per minute) -->
+  <!-- genie3: 0.00–0.83 -->
+  <rect x="320" y="103" width="44" height="24" rx="3" fill="rgba(8,51,68,0.6)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="356" y="119" fill="white" font-size="9" font-weight="600" text-anchor="end">50 s</text>
+  <!-- geometry: 0.83–0.86 (clamped) -->
+  <rect x="364" y="149" width="3" height="24" rx="1.5" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1"/>
+  <text x="365" y="185" fill="#94a3b8" font-size="8.5" text-anchor="middle">1 s</text>
+  <!-- MPNN: 0.86–2.86 -->
+  <rect x="365" y="195" width="105" height="24" rx="3" fill="rgba(6,78,59,0.55)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="462" y="211" fill="white" font-size="9" font-weight="600" text-anchor="end">2 min</text>
+  <!-- Boltz-2: 2.86–6.96 -->
+  <rect x="470" y="241" width="215" height="24" rx="3" fill="rgba(120,53,15,0.5)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="677" y="257" fill="white" font-size="9" font-weight="600" text-anchor="end">4.1 min</text>
+  <!-- ipSAE: 6.96–7.13 -->
+  <rect x="685" y="287" width="9" height="24" rx="2" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1"/>
+  <text x="689" y="323" fill="#94a3b8" font-size="8.5" text-anchor="middle">10 s</text>
+  <!-- Chai-1: 7.13–15.63 -->
+  <rect x="694" y="333" width="446" height="24" rx="3" fill="rgba(136,19,55,0.5)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="1132" y="349" fill="white" font-size="9" font-weight="600" text-anchor="end">8.5 min — slowest step</text>
+  <!-- aggregate: 15.63–15.80 -->
+  <rect x="1141" y="379" width="9" height="24" rx="2" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1"/>
+  <text x="1145" y="415" fill="#94a3b8" font-size="8.5" text-anchor="middle">10 s</text>
+
+  <!-- summary strip -->
+  <rect x="320" y="436" width="840" height="14" rx="3" fill="none" stroke="#1e293b"/>
+  <rect x="320" y="436" width="44" height="14" fill="rgba(8,51,68,0.8)"/>
+  <rect x="365" y="436" width="105" height="14" fill="rgba(6,78,59,0.8)"/>
+  <rect x="470" y="436" width="215" height="14" fill="rgba(120,53,15,0.8)"/>
+  <rect x="694" y="436" width="446" height="14" fill="rgba(136,19,55,0.8)"/>
+  <text x="320" y="466" fill="#94a3b8" font-size="8.5">total 15.8 min · Chai-1 54% · Boltz-2 26% · MPNN 13% · genie3 5% · screens+decisions &lt;1%</text>
+
+  <!-- legend -->
+  <g font-size="8.5" fill="#94a3b8">
+    <rect x="40" y="492" width="12" height="8" rx="2" fill="rgba(8,51,68,0.6)" stroke="#22d3ee"/>
+    <text x="58" y="500">local GPU (genie3)</text>
+    <rect x="196" y="492" width="12" height="8" rx="2" fill="rgba(120,53,15,0.5)" stroke="#fbbf24"/>
+    <text x="214" y="500">Boltz-2 fold (GPU)</text>
+    <rect x="352" y="492" width="12" height="8" rx="2" fill="rgba(136,19,55,0.5)" stroke="#fb7185"/>
+    <text x="370" y="500">Chai-1 fold (GPU)</text>
+    <rect x="500" y="492" width="12" height="8" rx="2" fill="rgba(6,78,59,0.55)" stroke="#34d399"/>
+    <text x="518" y="500">CPU-only (MPNN)</text>
+    <rect x="650" y="492" width="12" height="8" rx="2" fill="rgba(30,41,59,0.5)" stroke="#94a3b8"/>
+    <text x="668" y="500">scoring / decision</text>
+  </g>
+
+  <!-- notes -->
+  <text x="40" y="536" fill="#94a3b8" font-size="9">GPU is busy 12.6 of 15.8 min (80%); VRAM peak 11.7 of 12.2 GB — the two folds cannot run in parallel on this card.</text>
+  <text x="40" y="554" fill="#94a3b8" font-size="9">Alternative: hosted RFD4 replaces genie3 + MPNN (1 call = 8 designs, ~20 s each): −2.5 min/design, zero local GPU.</text>
+  <text x="40" y="572" fill="#94a3b8" font-size="9">MPNN is CPU-only and can overlap GPU steps. Under PC load the folds slow 1.5–3× (Boltz 9.8 min, Chai up to 25 min).</text>
+</svg>

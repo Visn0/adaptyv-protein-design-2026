@@ -1,0 +1,92 @@
+{
+ "created": "2026-10-15",
+ "s1_choice": {
+  "A": "65 67",
+  "C": "75"
+ },
+ "payloads": {
+  "c2-x1-s1-antibody-epitope": {
+   "binderType": "protein",
+   "targetFile": "1TNF.pdb",
+   "targetChains": [
+    "A",
+    "B",
+    "C"
+   ],
+   "scaffold": "default",
+   "lengthRange": "70,95",
+   "numDesigns": 50,
+   "budget": 50,
+   "runIpsae": true,
+   "filterBindingSite": false,
+   "skipRefolding": false,
+   "saveIntermediates": false,
+   "claude_inference_optimization": "off",
+   "bindingSite": {
+    "A": "65 67",
+    "C": "75"
+   }
+  },
+  "c2-x1-s2-cation-switch": {
+   "binderType": "protein",
+   "targetFile": "1TNF.pdb",
+   "targetChains": [
+    "A",
+    "B",
+    "C"
+   ],
+   "scaffold": "default",
+   "lengthRange": "70,95",
+   "numDesigns": 50,
+   "budget": 50,
+   "runIpsae": true,
+   "filterBindingSite": false,
+   "skipRefolding": false,
+   "saveIntermediates": false,
+   "claude_inference_optimization": "off",
+   "bindingSite": {
+    "A": "103",
+    "B": "103 112"
+   }
+  },
+  "c2-x1-s3-diagnostic": {
+   "binderType": "protein",
+   "targetFile": "1TNF.pdb",
+   "targetChains": [
+    "A",
+    "B",
+    "C"
+   ],
+   "scaffold": "default",
+   "lengthRange": "70,95",
+   "numDesigns": 50,
+   "budget": 50,
+   "runIpsae": true,
+   "filterBindingSite": false,
+   "skipRefolding": false,
+   "saveIntermediates": false,
+   "claude_inference_optimization": "off"
+  }
+ },
+ "results": {
+  "c2-x1-s1-antibody-epitope": {
+   "validate_status": 200,
+   "validate_text": "{\"valid\":true,\"normalized\":{\"binderType\":\"protein\",\"targetFile\":\"agent-231a3b5c-0b8@agents.tamarind.agent/1TNF.pdb\",\"targetChains\":[\"A\",\"B\",\"C\"],\"scaffold\":\"default\",\"lengthRange\":\"70,95\",\"numDesigns\":50,\"budget\":50,\"runIpsae\":true,\"filterBindingSite\":false,\"skipRefolding\":false,\"saveIntermediates\":false,\"claude_inference_optimization\":\"off\",\"bindingSite\":{\"A\":\"65 67\",\"C\":\"75\"},\"frameworkInputType\":\"structure\",\"pae_cutoff\":10,\"dist_cutoff\":10},\"job_name\":\"c2-x1-s1-antibody-epitope\"}",
+   "submit_status": 200,
+   "submit_text": "c2-x1-s1-antibody-epitope submitted to queue."
+  },
+  "c2-x1-s2-cation-switch": {
+   "validate_status": 200,
+   "validate_text": "{\"valid\":true,\"normalized\":{\"binderType\":\"protein\",\"targetFile\":\"agent-231a3b5c-0b8@agents.tamarind.agent/1TNF.pdb\",\"targetChains\":[\"A\",\"B\",\"C\"],\"scaffold\":\"default\",\"lengthRange\":\"70,95\",\"numDesigns\":50,\"budget\":50,\"runIpsae\":true,\"filterBindingSite\":false,\"skipRefolding\":false,\"saveIntermediates\":false,\"claude_inference_optimization\":\"off\",\"bindingSite\":{\"A\":\"103\",\"B\":\"103 112\"},\"frameworkInputType\":\"structure\",\"pae_cutoff\":10,\"dist_cutoff\":10},\"job_name\":\"c2-x1-s2-cation-switch\"}",
+   "submit_status": 200,
+   "submit_text": "c2-x1-s2-cation-switch submitted to queue."
+  },
+  "c2-x1-s3-diagnostic": {
+   "validate_status": 200,
+   "validate_text": "{\"valid\":true,\"normalized\":{\"binderType\":\"protein\",\"targetFile\":\"agent-231a3b5c-0b8@agents.tamarind.agent/1TNF.pdb\",\"targetChains\":[\"A\",\"B\",\"C\"],\"scaffold\":\"default\",\"lengthRange\":\"70,95\",\"numDesigns\":50,\"budget\":50,\"runIpsae\":true,\"filterBindingSite\":false,\"skipRefolding\":false,\"saveIntermediates\":false,\"claude_inference_optimization\":\"off\",\"frameworkInputType\":\"structure\",\"pae_cutoff\":10,\"dist_cutoff\":10},\"job_name\":\"c2-x1-s3-diagnostic\"}",
+   "submit_status": 200,
+   "submit_text": "c2-x1-s3-diagnostic submitted to queue."
+  },
+  "status_check": "{\"jobs\":[{\"JobName\":\"c2-x1-s1-antibody-epitope\",\"JobStatus\":\"In Queue\",\"Created\":\"2026-10-15 11:45:36\",\"Type\":\"boltzgen\",\"TamarindSchemaVersion\":\"2.4\"},{\"JobName\":\"c2-x1-s2-cation-switch\",\"JobStatus\":\"In Queue\",\"Created\":\"2026-10-15 11:45:41\",\"Type\":\"boltzgen\",\"TamarindSchemaVersion\":\"2.4\"},{\"JobName\":\"c2-x1-s3-diagnostic\",\"JobStatus\":\"In Queue\",\"Created\":\"2026-10-15 11:45:47\",\"Type\":\"boltzgen\",\"TamarindSchemaVersion\":\"2.4\"}],\"notFound\":[],\"statuses\":{\"Complete\":0,\"In Queue\":3,\"Running\":0,\"Stopped\":0}}"
+ }
+}

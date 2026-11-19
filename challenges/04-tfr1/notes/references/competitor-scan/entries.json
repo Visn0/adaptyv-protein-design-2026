@@ -1,0 +1,158 @@
+{
+  "task": "Public entries in the Anthropic x Adaptyv 2026 Protein Design Competition, TfR1/challenge-4 priority",
+  "scan_date": "2026-10-28",
+  "tfr1_challenge4_entries": [
+    {
+      "repo": "https://github.com/anushajain2/adaptyv-challenge4",
+      "team": "Anusha Jain (solo, GitHub anushajain2); Track 2 or 3",
+      "target": "Human TfR1 apical domain (11QC chain A res 190-383, renumbered 1-194) + mouse conservation map, 4 hotspot sets",
+      "tools": "Modal + BoltzGen (miniprotein + nanobody protocols), Chai-1 cross-check, ipSAE gating, PROPKA free/bound pKa, histidine scan (A41H/E19H/S90H), local ProteinMPNN redesign, Foldseek/TM-align + Swiss-Prot BLASTp novelty",
+      "sequences_published": "8-design submission draft CSV (bare sequences, incl. apical_short_008_A41H) at reports/submission_draft/submission_draft.csv + .fasta; 75-design pilot FASTA at reports/pilot/pilot_sequences.fasta; 16 selected structures",
+      "status": "Not submitted as of 2026-10-26; 'submission on hold'; $30 Modal budget, ~$13.5 spent",
+      "lessons": [
+        "Hotspot spec bug: binding + not_binding in one chain entry - parser reads only not_binding -> zero positive hotspot tokens in 75 earlier runs",
+        "C-terminal Twin-Strep tag compatibility unresolved; tagged variants failed core screen",
+        "Free-pKa heuristics + negative-control prep failures blocked full qualification; no design promoted",
+        "short_015 shares known backbone with AF1782/2OO2 (TM-align 1.45 A) - known-backbone backup, not novel fold"
+      ]
+    },
+    {
+      "repo": "https://github.com/rpinho/adaptyv-c4",
+      "team": "Ricardo Pinho (solo); Track 3",
+      "target": "TfR1 P02786 - targets the His707 'groove' (interface res ~V532, F685, F701-L716, K717, K720, F731, R732, L735, A738-T743), NOT the apical tip; human/mouse identity 1.00 there vs 0.59 apical",
+      "tools": "RFdiffusion-Proteina (RFD4) with histidine-enriched conditioning; PROPKA3 Wyman linkage scorer (L<=-2 target); PDB2PQR/APBS second estimator; Rosetta InterfaceAnalyzer dG_separated guard; Foldseek/TM-align novelty vs PDB + patents; dimer occlusion + epitope charge census",
+      "sequences_published": "25 ranked designs (56-100 aa, i_pDAE 0.21-0.46) at results/pods/c4_E1_human/3_Ranked/!_Ranked.csv; ~19 his707 variant PDBs in results/c4_traj; METHOD.md + TARGET_PREP.md fully public",
+      "lessons": [
+        "Histidine contribution saturates ~-1.1 to -1.3 log units and only with free pKa 7.0-8.0 + >=2-unit depression on binding; '2-3 histidines = 2 log units' claim was wrong (-0.34 measured on smoke design)",
+        "Target carboxylates dominate the budget: a target Glu whose pKa rises into the 6-7.4 window contributed +1.26 log units and flipped the sign of a C3 design (total L=+1.20). Measure per-residue contributions, not His count",
+        "Apical sites dead for two independent reasons: 0.59 human/mouse identity; E2a has no His, E2b buries 10 carboxylates",
+        "Put Asp/Glu next to switch His on binder's own surface (raises free pKa; desolvation on binding depresses it)",
+        "Charge-compensate every buried carboxylate rather than excluding acids; size of pKa shift matters only if it crosses the 6.0-7.4 window"
+      ]
+    },
+    {
+      "repo": "https://github.com/olimpijada72/tfr1-design",
+      "team": "Unknown solo (GitHub olimpijada72); planning stage, created 2026-10-27",
+      "target": "TfR1 apical domain, 20-design portfolio incl. 2 unmodified controls",
+      "tools": "Plan: RFdiffusion -> ProteinMPNN -> Boltz-2; ipSAE filter; mouse re-fold gate; His grafting via 3 routes: A manual + FoldX BuildModel + Boltz-2 refold gate + ArcRefine; B Baker lab ph_binder_paper his_ph_interface (priority); C Proton-PottsMPNN (wild card)",
+      "sequences_published": "None (docs only: tfr1-architecture.md, tfr1-biological-doc.md)",
+      "lessons": [
+        "ipTM useless for ranking (target-dominated with 195-res target vs 75-res binder); ipSAE separates better",
+        "Binder length 65-90 aa deliberately: large interfaces cannot be broken by one protonated histidine",
+        "His next to Arg = strongest placement (Arg stays positive at both pH -> protonation creates active repulsion)",
+        "Cut to apical domain 189-383, keep one chain, strip heteroatoms/sugars before generation"
+      ]
+    },
+    {
+      "repo": "https://github.com/wwwtalalahmed98-collab/ph-switch-binders",
+      "team": "Talal Ahmed; Track 3; all four challenges",
+      "target": "TfR1 C4 in progress (plus C1 EGFR 5 designs, C2 TNF 20, C3 GLP-1R 20 submitted)",
+      "tools": "AF2 hallucination (AfDesign/ColabDesign), ProteinMPNN rescore, ESMFold self-consistency, independent re-prediction at 3 recycles; PROPKA 3.5.1 Wyman linkage (tfr1/pka_switch.py); Kaggle T4x2",
+      "sequences_published": "C1 EGFR sequences in repo; C2/C3 withheld pending results; C4 TfR1 sequences not yet published (in progress). Epitope choice + PKA validation docs public",
+      "lessons": [
+        "TfR1 epitope: conserved shoulder of apical domain (R325/E272/A269/S327 patch, 80-86% conserved) primary; S706 patch (94% conserved) secondary; apical tip only as declared long shot (33% conserved)",
+        "PKA validation: Wyman linkage on PROPKA 3.5.1 validated on 1I1A FcRn (-0.94, correct sign), 1BRS (+0.04), 3HFM (+0.20); first attempt on 1FRT failed (+0.86) because 4.5 A structure had a His310/Glu117 clash -> never use low-res structures for pKa geometry",
+        "Adjacent histidines shift each other's pKa; space His sites apart ('two histidines are not twice one')",
+        "AF2 interface confidence anti-correlated with functional epitope engagement (GLP-1R, -0.96/-0.67/-0.80); truncated target invented a phantom binding site; TNF pH ranking metric had wrong sign (+0.24)"
+      ]
+    },
+    {
+      "repo": "https://github.com/Laurencejaboro19/Adaptyv-Bio-x-Anthropic-competition-",
+      "team": "Protein Design for Africa (PDFA)",
+      "target": "TfR1 C4 (two arms) + C1 EGFR, C2 TNF, C3 GLP-1R",
+      "tools": "tfr1_rfd4: RFD4-Proteina on Modal (generator only). tfr1_bc2: BindCraft2 -> Boltz-2 refold -> ipSAE -> PROPKA Wyman linkage on Modal. Shared: BindCraft2 with His-favored prior + Cys excluded; Boltz-2 as source of truth; histidine scan",
+      "sequences_published": "C4 sequences and hotspots withheld until challenge closes; pipelines/code public",
+      "lessons": [
+        "Coldspots within ~15 A of hotspots collapsed i_pTM (C1 ablation)",
+        "Carboxylate proximity alone insufficient for good His switch: 30/68 complexes flagged bad due to nearby Lys/Arg even where carboxylates present",
+        "All evidence computational; pH preference = PROPKA3/Wyman estimate, not measured"
+      ]
+    },
+    {
+      "repo": "https://github.com/Cloudhabil/PLQ",
+      "team": "Elias Oulad Brahim (ToposLang & PLQ Initiative)",
+      "target": "TfR1 C4: apical 202-215/348/371 (Tyr211 anchor)",
+      "tools": "Non-ML pure-Python 'Pharmacological Lattice Quantization' platform: 8D Clifford algebra, topological invariants, in-silico dynamic-well screening; tfr1_ph_binder.py + tfr1_rgg_v2.py (Rule-Guided Generation v2, 5000 designs); 'inverted histidine switch' ON@7.4/OFF@6.0",
+      "sequences_published": "Claims 38,200+ designs in SQLite DBs (18,200 pan-biosphere, 10,000 topological, 4,000 ProteinBase export) + wwPDB-format deposits (1,000 candidates, 24 PDBs incl. no TfR1 PDB listed); tfr1 results DBs in repo. Self-certified 75/75 tests",
+      "lessons": ["Unconventional terminology, self-certified metrics; no evidence of competition submission - treat all claims as unverified"]
+    },
+    {
+      "repo": "https://github.com/xanthine-adenine/anthropic-x-adaptyv-competition-2026",
+      "team": "Unknown solo (GitHub xanthine-adenine)",
+      "target": "C4 TfR1 (challenge_4/)",
+      "tools": "BoltzGen cyclic peptide design on Modal (cyclic_peptide_to_ppif.yaml, pinned boltzgen commit 247b9bbd, L40S GPU); fetch/process structure scripts",
+      "sequences_published": "None; README 96 bytes",
+      "lessons": []
+    },
+    {
+      "repo": "https://github.com/DKchemistry/tfr1-binder-design",
+      "team": "Unknown solo (GitHub DKchemistry); pre-competition TfR1 research (created 2026-09-21), not confirmed as a submission",
+      "target": "TfR1 apical domain crop (6WRW chain A 189-383), macrocyclic peptide binders (14/15/18-mers)",
+      "tools": "RFdiffusion + beta-pair targeting conditioning (Sappington et al. 2026), RFpeptides-style cyclic positional encoding (RFD3 port in progress), CyclicMPNN vs ProteinMPNN, RosettaRelax, ipAE/RMSD oracle",
+      "sequences_published": "None",
+      "lessons": [
+        "Crop to apical domain: ~3 min per run vs ~2 h for full 641-residue target (Apple MPS)",
+        "RFdiffusion chain numbering pitfall: binder=chain A, target chain B starts at n+1 -> hotspot analysis silently misaligned",
+        "Relaxation vs first ProteinMPNN design: marginal difference at high compute cost; CyclicMPNN did not beat ProteinMPNN in small-scale test"
+      ]
+    }
+  ],
+  "challenge1to3_transferable": [
+    {
+      "repo": "https://github.com/jimjmccann/CCNY-McCann-Koder",
+      "team": "James McCann + Koder Group, CCNY",
+      "targets": "C1 EGFR (16 submitted, 11 passed novelty), C2 TNF (20, all passed), C3 GLP-1R (20, all passed)",
+      "sequences_published": "Yes - submission files per challenge (11 EGFR, 20 TNF, 20 GLP-1R)",
+      "lessons": [
+        "Accidental CTPR homology discovered pre-submission; cutting sequence identity 30-45 points did not move the fold -> sequence vs structural novelty separable",
+        "Structural novelty must be measured on the monomer (organizers fold the submitted sequence alone): 0/693 draws high-similarity when measured correctly",
+        "Confidence axis AUROC 0.601 - not predictive; entanglement vs engagement anti-correlated; median interface ipAE 18 A",
+        "0/88 (C1) and 0/96 (C3) designs passed their own Baker-criteria predictor; submitted anyway with limitations stated"
+      ]
+    },
+    {
+      "repo": "https://github.com/norrischarles207-commits/adaptyv-2026",
+      "team": "Unknown solo; Track 3",
+      "targets": "C1 EGFR (5 designs), C2 TNF (12 designs), C3 GLP-1R in progress; no C4 found",
+      "sequences_published": "Yes - challenges/egfr/submission.csv (5), challenges/tnfa/submission.csv (12)",
+      "lessons": [
+        "Selection calibrated on Adaptyv wet-lab data (N~2,600) + literature (3,766 binders): shape complementarity >=0.58 (pyrosetta Lawrence-Colman, cross-validation value decides) and Boltz ipSAE_min >=0.60",
+        "C1 pH switch placed on target His409 via binder carboxylate (Liu et al. 2022 G532 mechanism); C2 uses binder-side His vs target R32/K65 repulsion",
+        "pH selectivity and mouse cross-reactivity conflicted at a single residue - no molecule met both; predictors do not model protonation"
+      ]
+    },
+    {
+      "repo": "https://github.com/hashkanna/anthropic-adaptyv-proteinbase-challenge-2026",
+      "team": "Unknown solo (GitHub hashkanna) - distinct from nandinii27 and jianurr",
+      "targets": "C1 EGFR (18 designs), C2 TNF (6 designs)",
+      "sequences_published": "Yes - submission.csv + sequences.fasta per challenge; raw PROPKA outputs",
+      "lessons": [
+        "Stack: BoltzGen designs/repairs -> Boltz-2 + ESMFold2 -> free vs bound pKa (PROPKA) -> portal novelty screen",
+        "Portal novelty 3/4 for 18 designs, 2/4 for 2 (excluded); 967-sequence census",
+        "Key correction: binding responds to free-vs-bound protonation difference, not charge change inside the complex"
+      ]
+    },
+    {
+      "repo": "https://github.com/superchessmachine/ProteinBase_Analysis",
+      "team": "Unknown solo; scoring-stack analysis, not an entry",
+      "targets": "Proteinbase public data (5,253 designs; Nipah 1,029 labeled complexes)",
+      "sequences_published": "No - metrics + models; uses public Proteinbase structures",
+      "lessons": [
+        "Physics-only scoring (66 mechanistic descriptors + L1 logistic, nested family-grouped CV): AUROC 0.709, AUPRC 0.328, P@10=0.90 vs 9.8% base rate",
+        "Beats Rosetta InterfaceAnalyzer (0.651) and best single Boltz-2 min ipSAE (0.638); AUPRC>0.9 unreachable even with leakage"
+      ]
+    },
+    {
+      "repo": "https://nitter.rdrama.net/ryaneshea/status/2110741411465179368",
+      "team": "Ryan Shea (aiiq.org)",
+      "targets": "C3 GLP-1R",
+      "sequences_published": "No repo found; X posts only",
+      "lessons": ["BindCraft -> SolubleMPNN -> AF2 + Boltz-2 second check: 'another model's assessment, not just the designer grading its own work'"]
+    }
+  ],
+  "known_and_gaps": {
+    "peptai": "X article 'What we've learned so far in the Anthropic x Adaptyv protein design competition' posted ~2026-10-27; profile https://x.com/peptai_ (mirror https://teapawt.net/peptai_); exact article URL not resolvable from mirrors",
+    "proteinbase_results": "No challenge-4 results or entries published on Proteinbase yet (wet-lab data due December 2026); selection prompt public at https://proteinbase.com/competitions/anthropic-adaptyv-2026/selection",
+    "convergent_stack": "C4 pH entries converge on PROPKA3-based Wyman linkage on free/bound states (rpinho, wwwtalalahmed98, Laurencejaboro19, hashkanna) + Boltz-2/ipSAE interface confidence + Foldseek/TM-align novelty; two entries (rpinho, wwwtalalahmed98) validate the linkage scorer against known switches (FcRn 1I1A)"
+  }
+}
