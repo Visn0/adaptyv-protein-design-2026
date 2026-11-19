@@ -62,9 +62,10 @@ const GIF_LEAD = 3.0; // how long before the click the GIF starts: the recorder'
 // of the video file (the browser starts capturing after the page is created, and the click
 // takes time to dispatch), so the window is generous and always opens on the index.
 
-// The tour's stops, in order. Each stop is one visit: the card, the page, the structure
-// explorer, then back to the index for the next one.
-const TOUR_STOPS = ['03-glp1r', '04-tfr1', '05-pmhc'];
+// The tour's stops, in order. One stop: the KRAS G12D pMHC challenge, whose page ends on the
+// submitted designs. All three stops with that scroll made the GIF 12 MB, which is too heavy
+// for a README, so the take tells one challenge's story in full instead.
+const TOUR_STOPS = ['05-pmhc'];
 
 // --------------------------------------------------------------------- pacing
 // Every pause in one place, in milliseconds. Re-timing a take must never mean touching the
@@ -75,13 +76,14 @@ const PACE = {
   toCard: 900, // the short glide that brings the challenge card into the viewport
   toViewer: 3600, // the glide from the hero down to the structure explorer
   viewer: 2800, // the explorer turning, with nothing moving it
-  toEnd: 6200, // the glide through the rest of the page to the submission section
+  toDesigns: 4200, // the glide on down to the final-submission table
+  designs: 1500, // the hold on the designs themselves
   end: 1900, // the final hold
   homeHero: 1500, // the index hero, before the scroll starts
   homeScroll: 7500, // the one continuous glide down the index
   homeEnd: 2000, // the final hold on the tools table
   // The tour runs the same story three times, so each stop is tighter than a solo take.
-  tour: { settle: 400, hero: 0, toViewer: 1700, viewer: 1000 },
+  tour: { settle: 400, hero: 0, toViewer: 1700, viewer: 800, toDesigns: 3600, designs: 1400 },
 };
 
 const beat = (page, ms) => page.waitForTimeout(ms);
@@ -335,6 +337,12 @@ async function visitChallenge(page, route, pace, notes) {
     await glide(page, settled, 400, header);
   }
   await beat(page, pace.viewer);
+  // The designs themselves are further down: the final-submission table.
+  const designsTop = await headingTop(page, 'Final submission');
+  if (designsTop !== null) {
+    await glide(page, designsTop, pace.toDesigns, header);
+    await beat(page, pace.designs);
+  }
 }
 
 /** Back to the index through the sticky nav's Home button, wherever the page is scrolled. */
@@ -384,12 +392,8 @@ try {
     stamp('end');
   } else {
     // One challenge: click its card, hold on the hero, glide to the structure explorer and let
-    // it turn, then glide through the rest of the page to the end.
+    // it turn, then on down to the designs.
     await visitChallenge(page, ROUTE, PACE, notes);
-    // End on the submission section: the page's tail after it is the methodology prose, which
-    // is a wall of text and a weak final shot.
-    const endTop = await headingTop(page, 'Final submission');
-    await glide(page, endTop ?? (await pageBottom(page)), PACE.toEnd, await headerHeight(page));
     await beat(page, PACE.end);
   }
 } finally {
@@ -436,7 +440,7 @@ if (WITH_GIF) {
     : (marks.ready ?? 0.9);
   // A tour is one long take: the window is the tour itself, from the first click to the end.
   const gifSeconds = ROUTE === 'tour' && marks.end !== undefined
-    ? Math.max(4, Math.min(marks.end - gifStart, 40))
+    ? Math.max(4, Math.min(marks.end - gifStart, 55))
     : GIF_SECONDS;
   // `-t` before the input it belongs to: between the two `-i`s it would limit the palette
   // image instead of the video, and every GIF would run to the end of the take.
