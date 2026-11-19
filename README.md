@@ -9,7 +9,7 @@ negative results included.
 
 **https://protein-design-workbench.antonchernysh.workers.dev**
 
-![The workbench: the index, then challenges 03, 04 and 05](site/demo/workbench-tour.gif)
+![The workbench: the index, then the KRAS G12D pMHC challenge](site/demo/workbench-tour.gif)
 
 Or run it locally:
 
