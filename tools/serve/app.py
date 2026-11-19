@@ -702,10 +702,22 @@ details.chapter[open] .chapterbody { animation: fadeup .35s ease both; }
 }
 
 /* A long column — a design name, a sequence, a note — keeps one line and scrolls
-   sideways, so one long value cannot make every row of a table tall. */
+   sideways, so one long value cannot make every row of a table tall. The scrollbar is
+   invisible until the reader points at the cell: the space stays reserved, so nothing
+   shifts, and the cut-off text is the hint that there is more. */
 table.lt td.long { max-width: 320px; overflow-x: auto; white-space: nowrap;
-                   overscroll-behavior-x: contain; }
+                   overscroll-behavior-x: contain; scrollbar-width: thin;
+                   scrollbar-color: transparent transparent; }
 table.lt td.long code { font-size: 11px; }
+table.lt td.long:hover { scrollbar-color: rgba(139, 148, 166, .5) transparent; }
+table.lt td.long::-webkit-scrollbar, .subtable table.lt::-webkit-scrollbar { height: 4px; }
+table.lt td.long::-webkit-scrollbar-track, .subtable table.lt::-webkit-scrollbar-track {
+  background: transparent; }
+table.lt td.long::-webkit-scrollbar-thumb, .subtable table.lt::-webkit-scrollbar-thumb {
+  background: transparent; border-radius: 4px; }
+table.lt td.long:hover::-webkit-scrollbar-thumb,
+.subtable table.lt:hover::-webkit-scrollbar-thumb {
+  background: rgba(139, 148, 166, .5); }
 /* The download control that sits above a submission table. */
 .tabletools { display: flex; justify-content: flex-end; margin: 4px 0 0; }
 .csvbtn { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
