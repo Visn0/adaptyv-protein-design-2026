@@ -44,3 +44,13 @@ challenges/02-tnfa/videos/qa/frames/
 challenges/02-tnfa/viewers/views/*/molstar-bundle.js
 challenges/02-tnfa/viewers/views/*/*_page.html
 challenges/02-tnfa/viewers/views/*/*_explorer.html
+
+# The built site and the deploy tool install: never committed.
+site/dist/
+site/node_modules/
+# The recorder's scratch dir: raw .webm takes live here until they are converted.
+site/demo/.recordings/
+site/.wrangler/
+
+# Demo recorder's node dependencies (site/scripts/package.json pins them).
+node_modules/

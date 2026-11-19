@@ -8,6 +8,8 @@ changes or when we make a mistake.
 A protein-design workshop for the Anthropic x Adaptyv 2026 competition.
 - `challenges/<name>/` — one folder per challenge (inputs, data, specs, runs).
 - `tools/` — pipelines, experiment runner, report builder, local web app.
+- `site/` — the Cloudflare deployment: the plan, the Worker and the pinned
+  wrangler tool. The public site is the static export (`pdt export`).
 - `challenges/02-tnfa/handoff/` — the PC package for the live C2 campaign: designs,
   sequences, Boltz-2 inputs, records, the full notes, an archive + SHA256SUMS.
 - The app: `pdt serve` -> http://127.0.0.1:8737/.
@@ -83,6 +85,10 @@ A protein-design workshop for the Anthropic x Adaptyv 2026 competition.
     `python challenges/02-tnfa/handoff/scripts/prepare_handoff.py`, then regenerate
     MANIFEST + SHA256SUMS, then tar. MANIFEST and SHA256SUMS must exist BEFORE tarring,
     and no file inside the archive may quote the archive's own hash (circular).
+22. The public site is the static export (`pdt export`); only GitHub Actions
+    deploys it, and the deploy is armed by the repository variable `CF_DEPLOY`.
+    The export reads committed files only (run folders are ignored), so a
+    local build and a CI build match.
 
 ## Mistakes we made (do not repeat)
 

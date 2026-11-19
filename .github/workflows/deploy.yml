@@ -1,0 +1,114 @@
+# Deploy the static site to Cloudflare Workers.
+#
+# The deploy job runs only while the repository variable CF_DEPLOY is "1".
+# That variable is the go-live switch: it exists so the first deploy cannot
+# happen as a side effect of a push. The one-time setup is listed in
+# README.md ("Deploy the public site") and site/PLAN.md (section 8).
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build the site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Install the workspace
+        run: make install
+      - name: Build the static site
+        run: .venv/bin/pdt export --out site/dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: site/dist
+          retention-days: 7
+
+  deploy:
+    name: Deploy to Cloudflare
+    needs: [build]
+    # A deploy is the one thing that cannot be un-run. The variable CF_DEPLOY
+    # is the switch; without it this job is skipped, not failed.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.CF_DEPLOY == '1'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    env:
+      # Not a secret: the public URL the smoke check fetches. The first
+      # label is the `name` value in site/wrangler.toml.
+      APP_URL: https://protein-design-workbench.antonchernysh.workers.dev
+      # Pinned by site/package.json + npm ci.
+      WRANGLER: site/node_modules/.bin/wrangler
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install the pinned deploy tool
+        run: npm ci --prefix site
+      - name: Fetch the built site
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: site/dist
+      # Refuse before wrangler does any work.
+      - name: Check the deploy configuration is real
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          test -n "$CF_API_TOKEN" || { echo "::error::CLOUDFLARE_API_TOKEN is not set. Add the repository secrets listed in README.md, then set the variable CF_DEPLOY=1 again."; exit 1; }
+          test -n "$CF_ACCOUNT_ID" || { echo "::error::CLOUDFLARE_ACCOUNT_ID is not set. Add the repository secrets listed in README.md, then set the variable CF_DEPLOY=1 again."; exit 1; }
+          ! grep -q REPLACE_WITH_THE_D1_ID site/wrangler.toml || { echo "::error::site/wrangler.toml still carries the placeholder D1 id. Create the database and paste the id."; exit 1; }
+          test -f site/dist/index.html || { echo "::error::site/dist/index.html is missing - the build artifact did not arrive"; exit 1; }
+      - name: Apply the D1 schema
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: $WRANGLER d1 execute pdt-stats --remote --config site/wrangler.toml --file=site/schema.sql
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: $WRANGLER deploy --config site/wrangler.toml
+      # A deploy is not finished until the bytes are served. Every request
+      # names itself: workers.dev screens automated clients by default.
+      # Retry: a deploy needs time to reach every location (version skew).
+      - name: Smoke-check the deployed site
+        run: |
+          set -euo pipefail
+          UA="pdt-deploy-check/1.0 (+$GITHUB_SERVER_URL/$GITHUB_REPOSITORY)"
+          code=""
+          for attempt in 1 2 3 4 5; do
+            code=$(curl -sS -A "$UA" -o "$RUNNER_TEMP/index.html" -w '%{http_code}' "$APP_URL/") || true
+            [ "$code" = "200" ] && break
+            sleep 5
+          done
+          test "$code" = "200" || { echo "::error::$APP_URL/ answered $code"; exit 1; }
+          grep -qi 'Protein design workbench' "$RUNNER_TEMP/index.html" || { echo "::error::the deployed index does not carry the brand"; exit 1; }
+          # Follow redirects: Cloudflare answers an explicit /x.html with a 307.
+          for page in /ch/05-pmhc /ch/05-pmhc/history /lineage/05-pmhc/c1-main-funnel /about; do
+            got=$(curl -sSL -A "$UA" -o /dev/null -w '%{http_code}' "$APP_URL$page")
+            test "$got" = "200" || { echo "::error::$page answered $got"; exit 1; }
+          done
+          # One asset, byte-compared with the build.
+          got=$(curl -sS -A "$UA" -o "$RUNNER_TEMP/engine.js" -w '%{http_code}' "$APP_URL/engine/molstar-bundle.js")
+          test "$got" = "200" || { echo "::error::/engine/molstar-bundle.js answered $got"; exit 1; }
+          cmp "$RUNNER_TEMP/engine.js" site/dist/engine/molstar-bundle.js || { echo "::error::the served engine differs from the build"; exit 1; }
+          # The stats endpoint answers JSON.
+          got=$(curl -sS -A "$UA" -o "$RUNNER_TEMP/stats.json" -w '%{http_code}' "$APP_URL/stats.json")
+          test "$got" = "200" || { echo "::error::/stats.json answered $got"; exit 1; }
+          python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$RUNNER_TEMP/stats.json" || { echo "::error::/stats.json is not valid JSON"; exit 1; }
+          # An unknown path answers the 404 page.
+          got=$(curl -sS -A "$UA" -o /dev/null -w '%{http_code}' "$APP_URL/no-such-path-404check")
+          test "$got" = "404" || { echo "::error::an unknown path answered $got"; exit 1; }
+          echo "site is live at $APP_URL"

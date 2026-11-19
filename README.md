@@ -5,9 +5,25 @@ competition** (proteinbase.com). It contains one folder per challenge under
 `challenges/`, the shared tools under `tools/`, and a local website that shows
 every challenge, experiment and structure.
 
+## What the site looks like
+
+![The workbench: the index, the five challenges and the tools](site/demo/workbench-home.gif)
+
+The recording above shows the local website in a real browser: the index,
+the five challenge cards and the tools table. Every challenge has a take
+of its own — [02 TNF-α](site/demo/challenge-02-tnfa.gif),
+[03 GLP1R](site/demo/challenge-03-glp1r.gif),
+[04 TfR1](site/demo/challenge-04-tfr1.gif),
+[05 pMHC](site/demo/challenge-05-pmhc.gif) — and every take has a
+full-size MP4 next to its GIF. To record them again after a page change,
+run `pdt serve`, then `npm --prefix site/scripts install` and
+`node site/scripts/record-demo.mjs --route home`.
+
 ## Deploy the website
 
-The website is the local web app. It runs on this machine only.
+The website is the local web app. The public site is the same pages, built as
+a static export and deployed by GitHub Actions (see "Deploy the public site"
+below).
 
 ```bash
 make install              # one time: venv (Python 3.12) + editable install
@@ -28,6 +44,32 @@ Static pages need no server. Open them from disk in any browser:
 - the hub page `runs-dashboard.html` (`pdt dashboard` builds it).
 - each run's `report.html` (tables, charts and a 3D view).
 - each challenge history in `challenges/<c>/docs/` (figures embedded).
+
+## Deploy the public site
+
+The public site is a static export of the workbench, served by one Cloudflare
+Worker. GitHub Actions builds and deploys it; nothing deploys from a laptop.
+The full design is in [site/PLAN.md](site/PLAN.md).
+
+One-time setup:
+
+1. Add the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+2. Create the D1 database: `npx wrangler@4.165.0 d1 create pdt-stats`. Put the
+   returned id into `site/wrangler.toml`.
+3. Register the hostname in Cloudflare Web Analytics and put the token into
+   `site/config.json` (the token is public by design).
+4. Set the counter salt, once the Worker exists:
+   `npx wrangler@4.165.0 secret put COUNTER_SALT --config site/wrangler.toml`.
+5. Set the repository variable `CF_DEPLOY` to `1` to arm the deploy.
+
+Every push to `main` then deploys. To build and check the site locally:
+
+```bash
+pdt export --out site/dist
+npx wrangler dev --config site/wrangler.toml --port 8788
+```
+
+The deploy job stops with a clear message while a step above is missing.
 
 ## Documentation
 

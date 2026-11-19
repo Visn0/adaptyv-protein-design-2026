@@ -1,0 +1,8 @@
+{
+  "name": "adaptyv-site",
+  "private": true,
+  "description": "Deploy tooling for the static site. The site itself is built by `pdt export`; this package only pins wrangler, the deploy tool.",
+  "devDependencies": {
+    "wrangler": "4.165.0"
+  }
+}

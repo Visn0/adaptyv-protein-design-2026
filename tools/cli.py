@@ -7,6 +7,7 @@
     pdt report <run_dir>         (re)build one run's HTML report
     pdt dashboard                hub HTML: challenge -> experiment -> 3D view
     pdt serve                    local web app (hub, reports, 3Dmol viewer)
+    pdt export --out site/dist   static site build for the Cloudflare Worker
     pdt movie <run_dir>          MP4 of one structure (real MD playback, sim, dock, spin)
     pdt device                   show cpu / mps / cuda availability
     pdt fetch-data               copy the public target files into challenges/*/inputs
@@ -86,6 +87,12 @@ def cmd_serve(args) -> int:
 
     serve_app.run(port=args.port, open_browser=args.open)
     return 0
+
+
+def cmd_export(args) -> int:
+    from tools.serve import export as export_mod
+
+    return export_mod.run(Path(args.out).expanduser())
 
 
 def cmd_movie(args) -> int:
@@ -179,6 +186,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--port", type=int, default=8737)
     p.add_argument("--open", action="store_true", help="open the browser automatically")
     p.set_defaults(func=cmd_serve)
+
+    p = sub.add_parser("export", help="build the static site for the Cloudflare Worker (site/dist)")
+    p.add_argument("--out", default="site/dist")
+    p.set_defaults(func=cmd_export)
 
     p = sub.add_parser("movie", help="MP4 of a run's structure (MD trajectory, sim physics, dock, spin)")
     p.add_argument("run_dir")

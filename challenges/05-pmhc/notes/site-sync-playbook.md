@@ -54,7 +54,8 @@ Purpose: the challenge-5 website must never lag behind the work. Any agent
 
 ## Hard rules
 
-- Never deploy anything to Cloudflare or any cloud; the site is local only.
+- The app stays local. The public site is the static export, deployed by
+  GitHub Actions only (`site/PLAN.md`).
 - Never print values from `.env`; source it only if a tool needs it.
 - One GPU job at a time; the site sync itself needs no GPU.
 - The final response of a sync run: max 6 lines — what was added/changed,

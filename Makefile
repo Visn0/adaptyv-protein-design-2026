@@ -6,7 +6,7 @@ UV ?= $(shell { command -v uv || ls $(HOME)/.local/bin/uv || ls $(HOME)/.hermes/
 PY := .venv/bin/python
 SUBDATE := $(shell date +%F)
 
-.PHONY: install sync fetch-data exp-list exp-run exp-status dashboard viewers select device torch setup-gpu rfd3 md-deps clean-runs uv-check
+.PHONY: install sync fetch-data exp-list exp-run exp-status dashboard export viewers select device torch setup-gpu rfd3 md-deps clean-runs uv-check
 
 uv-check:
 	@test -x "$(UV)" || { echo "uv not found: install it, or run make UV=/path/to/uv (resolved: $(UV))"; exit 2; }
@@ -34,6 +34,9 @@ exp-status:          ## recent run ledger
 
 dashboard:           ## rebuild challenges/**/runs + global dashboard
 	$(PY) -m tools.cli dashboard
+
+export:              ## build the static site for the Cloudflare Worker (site/dist)
+	$(PY) -m tools.cli export --out site/dist
 
 viewers:             ## regenerate challenge 3's Mol* multiview pages from the shared template
 	@for f in challenges/03-glp1r/viewers/multiview/*.html; do \

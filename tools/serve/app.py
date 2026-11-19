@@ -688,7 +688,8 @@ def _topnav(challenge: str | None = None, campaign: str | None = None) -> str:
                      f"{esc(CHALLENGE_INFO.get(challenge, {}).get('title') or challenge)}</a>")
     if campaign:
         parts.append(f"<span class='sub'>/</span><span class='sub'>{esc(campaign)}</span>")
-    parts.append("<a class='navbtn' href='/'>Home</a></div>")
+    parts.append("<a class='navbtn' href='/about'>About</a> "
+                 "<a class='navbtn' href='/'>Home</a></div>")
     return "".join(parts)
 
 
@@ -844,8 +845,11 @@ def _herohome() -> str:
         number = challenge[:2]
         viewer_file = (brief_mod.BRIEF.get(challenge, {}).get("viewer") or {}).get("file")
         if viewer_file:
+            # Name the file, not the default route: a static host cannot serve
+            # both /ch/<c>/target and /ch/<c>/target/<file> (site/PLAN.md).
             visual = (f"<div class='card3d viewer-loading' "
-                      f"data-src='/ch/{esc(challenge)}/target'><span>Loading target…</span></div>")
+                      f"data-src='/ch/{esc(challenge)}/target/{esc(viewer_file)}'>"
+                      f"<span>Loading target…</span></div>")
         else:
             visual = ("<div class='card3d card3d-empty'>Target structure is not in the "
                       "workspace yet.</div>")
@@ -866,6 +870,42 @@ def _herohome() -> str:
         "far, what we used it for, and where it lives.</div>")
     body.append(_TABLES_STYLE + _tools_table_html())
     return _page("workbench", "".join(body))
+
+
+def page_about() -> str:
+    """The About page: who built this, and how to reach him."""
+    links = (
+        "<div class='rowline' style='margin-top:14px'>"
+        "<a class='navbtn' href='https://www.linkedin.com/in/anton-chernysh/'"
+        " target='_blank' rel='me noopener'>LinkedIn</a> <a class='navbtn'"
+        " href='https://github.com/Visn0' target='_blank' rel='me noopener'>GitHub</a>"
+        "</div>"
+    )
+    body = [
+        "<div class='hero'>",
+        "<div class='eyebrow'>About</div>",
+        "<h1>Anton Chernysh</h1>",
+        "<div class='lead'>I am a site reliability engineer in Zurich. "
+        "This workbench is my entry for the Anthropic \u00d7 Adaptyv 2026 "
+        "protein-design competition.</div>",
+        links,
+        "</div>",
+        "<div class='card'>",
+        "<p>I build and scale infrastructure for startups, with five years of "
+        "taking products from an early prototype to production systems that "
+        "stay up under real traffic. I write production code in Go and Python, "
+        "and I care about the whole lifecycle: architecture, observability, "
+        "incident response, and the optimizations that make systems faster "
+        "and cheaper to run.</p>",
+        "<p>This workspace is the competition work itself: one folder per "
+        "challenge, every campaign kept, the negative results included, and "
+        "every number sourced from the dated records beside it. The site you "
+        "are reading is built from the same files the local app serves.</p>",
+        "</div>",
+        "<div class='sub' style='margin-top:18px'>"
+        "<a href='/'>\u2190 back to the workbench</a></div>",
+    ]
+    return _page("about", "".join(body))
 
 
 # ------------------------------------------------------- lineage (campaign)
@@ -2612,6 +2652,8 @@ class Handler(BaseHTTPRequestHandler):
     def _route(self, path: str, query: dict):
         if path == "/":
             return _herohome()
+        if path == "/about":
+            return page_about()
         if path.startswith("/static/"):
             return self._static(path)
         match = re.fullmatch(r"/api/struct/([^/]+)/([^/]+)/(\d+)", path)

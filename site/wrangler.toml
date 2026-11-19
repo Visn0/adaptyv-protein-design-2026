@@ -1,0 +1,23 @@
+name = "protein-design-workbench"
+main = "src/index.js"
+compatibility_date = "2026-11-19"
+
+# The static export (`pdt export --out site/dist`), uploaded beside the
+# script. Page routes invoke the script (it counts the view); asset fetches
+# are served without it.
+[assets]
+directory = "dist"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
+run_worker_first = ["/", "/ch/*", "/lineage/*", "/about*", "/stats*"]
+
+# One row per page view. The /stats page and /stats.json read this table.
+# Create the database once: npx wrangler@4.165.0 d1 create pdt-stats
+[[d1_databases]]
+binding = "DB"
+database_name = "pdt-stats"
+database_id = "REPLACE_WITH_THE_D1_ID"
+
+[observability]
+enabled = true

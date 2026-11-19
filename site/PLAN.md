@@ -1,8 +1,8 @@
 # Cloudflare deployment: the plan
 
-Status: plan only. Nothing is built and nothing is deployed. Revised 2026-11-19:
-this version adds the transfer reduction, the observability stack and the About
-page.
+Status: built 2026-11-19, not deployed. The deploy is armed by the repository
+variable `CF_DEPLOY` (section 7). This version covers the transfer reduction,
+the observability stack and the About page.
 
 The model is protein-with-rust: one Cloudflare Worker serves a static site.
 GitHub Actions deploys on every push to `main`. Two repository secrets carry
@@ -23,13 +23,13 @@ same pages the app serves today.
 | five challenge homes | `page_challenge()` | small |
 | 33 campaign pages | `lineage.json`, per challenge | small |
 | four complete histories | `challenges/<c>/docs/*.html` | 7 MB |
-| Mol* explorers | `challenges/<c>/viewers/multiview/` | 73 MB |
+| Mol* explorers (34 pages ship) | `challenges/<c>/viewers/multiview/` | 63 MB |
 | Mol* engine | one copy of `molstar-bundle.js` | 7 MB |
 | 04 step figures | `challenges/04-tfr1/viewers/*.png` | 0.6 MB |
 | static assets | `tools/serve/static/` | 0.7 MB |
 | About page | `page_about()` | small |
 
-About 95 MB and about 180 files. The first draft of this plan took about
+About 88 MB and about 110 files. The first draft of this plan took about
 120 MB. Section 3 gives the reductions.
 
 Excluded, and why:
@@ -44,7 +44,7 @@ Excluded, and why:
 - `challenges/03-glp1r/viewers/assets/*.svg` (16 KB): referenced by nothing.
 
 The free plan allows 20,000 files per Worker version and 25 MiB per file. The
-largest served file is 13.5 MB. The margin is large.
+largest served file is 13.8 MB. The margin is large.
 
 ## 2. The About page
 
@@ -53,21 +53,23 @@ protein-with-rust about page: a heading, the same two profile links, a short
 biography, and a paragraph about this workspace. One new function
 (`page_about()`) serves the app route and the export.
 
-Draft text (the wording is open to edits):
+The page carries this text (edit it freely):
 
 > **Anton Chernysh**
 >
-> I am a site reliability engineer in Zurich. I build and scale infrastructure
-> for startups, with five years of taking products from an early prototype to
-> production systems that stay up under real traffic. I write production code
-> in Go and Python, and I care about the whole lifecycle: architecture,
-> observability, incident response and the optimizations that make systems
-> cheaper to run.
+> I am a site reliability engineer in Zurich. This workbench is my entry for
+> the Anthropic × Adaptyv 2026 protein-design competition.
 >
-> This workspace is my entry for the Anthropic × Adaptyv 2026 protein-design
-> competition: five challenges, one folder each, every campaign kept, the
-> negative results too. This site is its public record, built from the same
-> files the local app serves.
+> I build and scale infrastructure for startups, with five years of taking
+> products from an early prototype to production systems that stay up under
+> real traffic. I write production code in Go and Python, and I care about the
+> whole lifecycle: architecture, observability, incident response, and the
+> optimizations that make systems faster and cheaper to run.
+>
+> This workspace is the competition work itself: one folder per challenge,
+> every campaign kept, the negative results included, and every number sourced
+> from the dated records beside it. The site you are reading is built from the
+> same files the local app serves.
 >
 > [LinkedIn](https://www.linkedin.com/in/anton-chernysh/) ·
 > [GitHub](https://github.com/Visn0)
@@ -83,7 +85,7 @@ Zstandard compression that Cloudflare serves on the free plan):
 
 | File | Written | Compressed | Ratio |
 | --- | --- | --- | --- |
-| `c12-rfd4-proteina.html` (largest explorer) | 13.5 MB | 2.9 MB | 22% |
+| `c12-rfd4-proteina.html` (largest explorer) | 13.8 MB | 2.9 MB | 22% |
 | `c1-main-funnel.html` (typical explorer) | 529 KB | 130 KB | 24% |
 | `molstar-bundle.js` | 7.2 MB | 1.3 MB | 17% |
 | `challenge-5-complete-history.html` | 1.5 MB | 1.1 MB | 73% |
@@ -93,7 +95,7 @@ histories compress poorly, because their bulk is embedded base64 images.
 
 The build rules that cut the numbers:
 
-1. **One engine copy.** All 56 explorer pages reference the same engine file.
+1. **One engine copy.** All 34 shipped explorer pages reference the same engine file.
    The export writes it once at `/engine/molstar-bundle.js` and rewrites every
    `src` to point there. Upload: minus 22 MB. A visitor who opens explorers in
    two challenges downloads the engine once.
@@ -104,7 +106,7 @@ The build rules that cut the numbers:
    Worker script.
 
 One bigger redesign stays for later (section 11): the explorer pages embed
-every design's structure text in the page (the largest is one 13.5 MB line of
+every design's structure text in the page (the largest is one 13.8 MB line of
 PDB text). A split into per-design files, loaded on demand, cuts the first
 view of an explorer from megabytes to kilobytes. That changes the shared
 generator, so it stays out of v1.
@@ -176,8 +178,9 @@ be covered, and asset fetches must stay out.
 Costs: page views invoke the script and count against the free 100,000
 requests per day. Asset fetches do not invoke the script.
 
-`site/package.json` pins `wrangler` as a devDependency (4.135.0 is installed
-locally, in protein-with-rust). CI installs the pinned tool with `npm ci`.
+- `site/package.json` pins `wrangler` as a devDependency (4.165.0; 4.135.0
+  rejects the 2026-11-19 compatibility date locally). CI installs the pinned
+  tool with `npm ci`.
 
 ## 6. The build: `pdt export`
 
@@ -232,24 +235,25 @@ Deploy job, only on a push to `main`, after the build:
 5. `wrangler deploy --config site/wrangler.toml`, from the repository root.
 6. Smoke check (section 9).
 
-The job runs in the `deploy-production` concurrency group.
-
-Note: the workflow deploys by itself. The first push of this workflow to
-`main`, with the secrets in place, publishes the site.
+The job runs in the `deploy-production` concurrency group. It runs only when
+the repository variable `CF_DEPLOY` is `1`. That variable is the go-live
+switch, so a push cannot publish the site before you arm it.
 
 ## 8. One-time setup (your actions)
 
 1. Add the repository secrets `CLOUDFLARE_API_TOKEN` and
-   `CLOUDFLARE_ACCOUNT_ID` to `Visn0/adaptyv-protein-design-2026`. Same values as the
-   protein-with-rust repository. The deploy stops with a clear message when
-   they are missing.
-2. Create the D1 database: `npx wrangler@4.135.0 d1 create pdt-stats`. Put
+   `CLOUDFLARE_ACCOUNT_ID` to `Visn0/adaptyv-protein-design-2026`. Same
+   values as the protein-with-rust repository. The deploy stops with a clear
+   message when they are missing.
+2. Create the D1 database: `npx wrangler@4.165.0 d1 create pdt-stats`. Put
    the returned id into `site/wrangler.toml`.
 3. Register the site in Cloudflare Web Analytics ("Add a site", with the
    exact hostname). Put the token into `site/config.json`.
-4. Commit the site sources that are not committed yet:
-   `challenges/02-tnfa/docs/` and every other file the export checker names.
-5. Answer the open questions in section 10.
+4. Set the counter salt, once the Worker exists:
+   `npx wrangler@4.165.0 secret put COUNTER_SALT --config site/wrangler.toml`.
+   Without it the counter stores unsalted hashes.
+5. Set the repository variable `CF_DEPLOY` to `1` to arm the deploy.
+6. Answer the open questions in section 10.
 
 ## 9. Verification
 
