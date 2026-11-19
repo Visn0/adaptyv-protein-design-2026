@@ -613,6 +613,14 @@ a.brand { color: var(--text); }
 .panel { border: 1px solid var(--line); border-radius: 16px; background: var(--panel);
          padding: 20px 22px; margin: 18px 0 0; }
 .panel h2 { margin: 0; }
+/* The portrait sits beside the prose, at its own 3:4 ratio. */
+.about-grid { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 26px;
+              align-items: start; }
+.about-grid h2 { margin: 0; }
+.about-photo { display: block; width: 100%; height: auto; border-radius: 14px;
+               border: 1px solid var(--line); background: rgba(9, 11, 20, .55); }
+@media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 200px; } }
 .about-prose { margin: 12px 0 0; color: #c6cdd9; max-width: 780px; text-align: justify; }
 .back-link { margin-top: 20px; font-size: 13.5px; }
 .viewer-caption { margin-top: 10px; text-align: center; }
@@ -939,6 +947,10 @@ def page_about() -> str:
         "competition.</p>",
         "</section>",
         "<section class='panel'>",
+        "<div class='about-grid'>",
+        "<img class='about-photo' src='/static/img/anton.jpg' alt='Anton Chernysh'"
+        " width='240' height='319'>",
+        "<div>",
         "<h2>Anton Chernysh</h2>",
         "<p class='about-prose'>I build and scale infrastructure for startups, with five years "
         "of taking products from an early prototype to production systems that stay up under "
@@ -949,6 +961,8 @@ def page_about() -> str:
         "challenge, every campaign kept, the negative results included, and every number "
         "sourced from the dated records beside it. The site you are reading is built from the "
         "same files the local app serves.</p>",
+        "</div>",
+        "</div>",
         "</section>",
         "<p class='back-link'><a href='/'>\u2190 Back to the workbench</a></p>",
     ]
@@ -2757,6 +2771,10 @@ class Handler(BaseHTTPRequestHandler):
             ".css": "text/css; charset=utf-8",
             ".txt": "text/plain; charset=utf-8",
             ".woff2": "font/woff2",
+            ".jpg": "image/jpeg",
+            ".png": "image/png",
+            ".webp": "image/webp",
+            ".svg": "image/svg+xml",
         }.get(target.suffix, "application/octet-stream")
         return target.read_bytes(), 200, content_type
 
