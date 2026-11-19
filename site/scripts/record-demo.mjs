@@ -47,14 +47,17 @@ const WITH_GIF = !argv.includes('--no-gif');
 // encode. `size` must be given explicitly — it defaults to the viewport scaled to fit 800x800.
 const VIEWPORT = { width: 1280, height: 800 };
 
-// The GIF is the README's moving picture. The numbers are measured, not chosen: the tour take
-// (36 s) at 640px/6fps/48 colours is 7 MB, which is too heavy to open; 560px/6fps/40 colours is
-// 5 MB and the headings stay legible. The GIF window is computed per take: a tour starts just
-// before its first click, a single page just after it has painted.
-const GIF_FPS = 6;
-const GIF_WIDTH = 560;
+// The GIF is the README's moving picture. The numbers are measured, not chosen: the README
+// renders the file at its own width, so a wider encode is a bigger picture on the page. The
+// tour take (38 s) at 800px/6fps/40 colours is 8.8 MB, which is too heavy to open; the same
+// take at 1.2x and 5fps is 6.7 MB, and 5 fps of a 1.2x timeline is 6 frames per content second,
+// so the motion is as smooth as a straight 6 fps. The window is computed per take: a tour
+// starts just before its first click, a single page just after it has painted.
+const GIF_FPS = 5;
+const GIF_WIDTH = 800;
 const GIF_COLORS = 40;
 const GIF_SECONDS = 10;
+const GIF_SPEED = 1.2; // playback speed: shortens the file and sharpens the pacing
 const GIF_LEAD = 3.0; // how long before the click the GIF starts: the recorder's clock runs ahead
 // of the video file (the browser starts capturing after the page is created, and the click
 // takes time to dispatch), so the window is generous and always opens on the index.
@@ -78,7 +81,7 @@ const PACE = {
   homeScroll: 7500, // the one continuous glide down the index
   homeEnd: 2000, // the final hold on the tools table
   // The tour runs the same story three times, so each stop is tighter than a solo take.
-  tour: { settle: 400, hero: 400, toViewer: 2200, viewer: 1200 },
+  tour: { settle: 400, hero: 0, toViewer: 1700, viewer: 1000 },
 };
 
 const beat = (page, ms) => page.waitForTimeout(ms);
@@ -320,8 +323,17 @@ async function visitChallenge(page, route, pace, notes) {
   await beat(page, pace.settle);
   await beat(page, pace.hero);
   const header = await headerHeight(page);
-  const viewerTop = await topOf(page, '.tgt-sechead');
-  await glide(page, viewerTop ?? (await pageBottom(page)), pace.toViewer, header);
+  // Aim at the structure explorer itself, so the stop ends with the 3D view in frame.
+  const aim = async () => (await topOf(page, '.tgt3d')) ?? (await pageBottom(page));
+  const first = await aim();
+  await glide(page, first, pace.toViewer, header);
+  // The page grows while it loads — the explorer's payload and the sequence block arrive late —
+  // so the first glide lands past the target. Re-measure once and correct.
+  await beat(page, 250);
+  const settled = await aim();
+  if (Math.abs(settled - first) > 30) {
+    await glide(page, settled, 400, header);
+  }
   await beat(page, pace.viewer);
 }
 
@@ -359,11 +371,14 @@ try {
     await beat(page, PACE.homeEnd);
   } else if (ROUTE === 'tour') {
     // The tour: the index, then every stop in order — click the card, let the page and its
-    // structure explorer answer, then go back to the index and repeat.
+    // structure explorer answer, then go back to the index and repeat. The last stop ends on
+    // its 3D view, which is the take's final shot.
     await beat(page, PACE.homeHero);
     for (const stop of TOUR_STOPS) {
       await visitChallenge(page, stop, PACE.tour, notes);
-      await goHome(page);
+      if (stop !== TOUR_STOPS[TOUR_STOPS.length - 1]) {
+        await goHome(page);
+      }
     }
     await beat(page, PACE.end);
     stamp('end');
@@ -426,7 +441,9 @@ if (WITH_GIF) {
   // `-t` before the input it belongs to: between the two `-i`s it would limit the palette
   // image instead of the video, and every GIF would run to the end of the take.
   const trim = ['-ss', gifStart.toFixed(2), '-t', String(gifSeconds), '-i', mp4];
-  const scale = `fps=${GIF_FPS},scale=${GIF_WIDTH}:-1:flags=lanczos`;
+  // `setpts` first: the playback speed is a timeline change, and fps resamples the new one.
+  const speed = `setpts=${(1 / GIF_SPEED).toFixed(4)}*PTS,`;
+  const scale = `${speed}fps=${GIF_FPS},scale=${GIF_WIDTH}:-1:flags=lanczos`;
   const first = spawnSync('ffmpeg',
     ['-y', '-loglevel', 'error', ...trim, '-vf',
      `${scale},palettegen=max_colors=${GIF_COLORS}:stats_mode=diff`, palette]);
